@@ -1,0 +1,52 @@
+package com.xyz.caofancpu.d8ger.tmp;
+
+import java.util.List;
+import com.xyz.caofancpu.util.d8ger.view.Demo;
+
+/**
+ *
+ * Demo接口定义
+ */
+public interface DemoService {
+
+    /**
+     * 添加记录
+     *
+     * @param demo
+     * @return
+     */
+    int add(Demo demo);
+
+    /**
+     * 批量插入
+     *
+     * @param demoList
+     * @return
+     */
+    int batchAdd(List<Demo> demoList);
+
+    /**
+     * 查询列表
+     *
+     * @param demo
+     * @return
+     */
+    List<Demo> queryList(Demo demo);
+
+    /**
+     * 更新记录
+     *
+     * @param demo
+     * @return
+     */
+    int update(Demo demo);
+
+    /**
+     * [WARN]: 主键id物理删除
+     *
+     * @param id
+     * @return
+     */
+    int deleteById(Integer id);
+
+}

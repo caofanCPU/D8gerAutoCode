@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xyz.caofancpu.springdata.mapper.DemoMapper">
+
+<!-- auto define result set -->
+    <resultMap id="resultColumn" type="com.xyz.caofancpu.util.d8ger.view.Demo">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="school_no" property="schoolNo"/>
+    </resultMap>
+
+<!-- auto generated column -->
+    <sql id="all_column">
+        id,
+        name,
+        school_no
+    </sql>
+
+<!-- auto generated [add] -->
+    <insert id="add">
+        INSERT INTO demo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null"> id, </if>
+            <if test="name != null"> name, </if>
+            <if test="schoolNo != null"> school_no, </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null"> #{id}, </if>
+            <if test="name != null"> #{name}, </if>
+            <if test="schoolNo != null"> #{schoolNo}, </if>
+        </trim>
+    </insert>
+
+<!-- auto generated [batchAdd] -->
+    <insert id="batchAdd">
+        INSERT INTO demo(
+        <include refid="all_column"/>
+        ) VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+                #{item.id},
+                #{item.name},
+                #{item.schoolNo}
+            )
+        </foreach>
+    </insert>
+
+<!-- auto generated [update] -->
+    <update id="update">
+        UPDATE demo
+        <set>
+            <if test="id != null"> id = #{id}, </if>
+            <if test="name != null"> name = #{name}, </if>
+            <if test="schoolNo != null"> school_no = #{schoolNo} </if>
+        </set>
+         WHERE id = #{id}
+    </update>
+
+<!-- auto generated [queryList] -->
+    <select id="queryList" resultMap="resultColumn">
+        SELECT <include refid="all_column"/>
+        FROM demo
+        <where>
+            <if test="id != null"> AND id = #{id} </if>
+            <if test="name != null"> AND name = #{name} </if>
+            <if test="schoolNo != null"> AND school_no = #{schoolNo} </if>
+        </where>
+        LIMIT 100
+    </select>
+
+<!-- auto generated Code [deleteById]-->
+    <delete id="deleteById">
+        DELETE FROM demo where id = #{id}
+    </delete>
+</mapper>

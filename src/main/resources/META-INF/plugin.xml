@@ -1,0 +1,40 @@
+<idea-plugin>
+    <id>com.xyz.caofancpu.D8gerAutoCode</id>
+    <name>D8gerAutoCode</name>
+    <vendor email="xyb5to0ZCY@gmail.com" url="https://github.com/caofanCPU">caofanCPU</vendor>
+
+    <description>
+        <![CDATA[
+            What Encounter to me ever belongs to see you now<br>
+            <em>I'm DebuggerKing</em>
+        ]]>
+    </description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your customer group here -->
+        <group id="D8ger" text="D8ger" description="D8gerAutoCode" popup="true" icon="/icons/codeDog.png">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <separator/>
+
+            <!-- Add your actions here -->
+            <action id="D8gerAutoCode" class="com.xyz.caofancpu.d8ger.action.D8gerAutoCodeAction" text="D8gerAutoCode" description="D8gerAutoCode" icon="/icons/gsBank.png">>
+                <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt D"/>
+            </action>
+
+            <action id="SwaggerModelAutoRender" class="com.xyz.caofancpu.d8ger.action.SwaggerModelAutoRenderAction" text="SwaggerModelAutoRender" description="SwaggerModelAutoRender" icon="/icons/bjBank.png">
+                <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt O"/>
+            </action>
+            <action id="D8gerMore" class="com.xyz.caofancpu.d8ger.action.D8gerMoreAction" text="D8gerMore" description="D8gerMore" icon="/icons/gitHub.png"/>
+        </group>
+    </actions>
+</idea-plugin>

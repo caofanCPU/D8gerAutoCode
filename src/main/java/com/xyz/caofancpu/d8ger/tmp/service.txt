@@ -1,0 +1,75 @@
+package com.xyz.caofancpu.d8ger.tmp;
+
+import com.xyz.caofancpu.springdata.service.DemoService;
+import org.springframework.stereotype.Service;
+import javax.annotation.Resource;
+import java.util.List;
+import com.xyz.caofancpu.util.d8ger.view.Demo;
+import com.xyz.caofancpu.springdata.mapper.DemoMapper;
+
+/**
+ *
+ * Demo接口实现类
+ */
+@Service("demoService")
+public class DemoServiceImpl implements DemoService {
+
+    @Resource
+    private DemoMapper demoMapper;
+
+    /**
+     * 添加记录
+     *
+     * @param demo
+     * @return
+     */
+    @Override
+    public int add(Demo demo) {
+        return demoMapper.add(demo);
+    }
+
+    /**
+     * 批量插入
+     *
+     * @param demoList
+     * @return
+     */
+    @Override
+    public int batchAdd(List<Demo> demoList) {
+        return demoMapper.batchAdd(demoList);
+    }
+
+    /**
+     * 查询列表
+     *
+     * @param demo
+     * @return
+     */
+    @Override
+    public List<Demo> queryList(Demo demo) {
+        return demoMapper.queryList(demo);
+    }
+
+    /**
+     * 更新记录
+     *
+     * @param demo
+     * @return
+     */
+    @Override
+    public int update(Demo demo) {
+        return demoMapper.update(demo);
+    }
+
+    /**
+     * [WARN]: 主键id物理删除
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public int deleteById(Integer id) {
+        return demoMapper.deleteById(id);
+    }
+
+}
