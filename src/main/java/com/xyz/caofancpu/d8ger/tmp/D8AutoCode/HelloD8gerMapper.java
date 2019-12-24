@@ -1,9 +1,6 @@
 package com.xyz.caofancpu.d8ger.tmp.D8AutoCode;
 
-import com.xyz.caofancpu.d8ger.tmp.HelloD8ger;
-
-import java.util.List;
-
+@Mapper
 public interface HelloD8gerMapper {
 
     /**
@@ -17,10 +14,10 @@ public interface HelloD8gerMapper {
     /**
      * 批量插入
      *
-     * @param HelloD8gerList
+     * @param helloD8gerList
      * @return
      */
-    int batchAdd(List<HelloD8ger> HelloD8gerList);
+    int batchAdd(List<HelloD8ger> helloD8gerList);
 
     /**
      * 查询列表

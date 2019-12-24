@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.xyz.caofancpu'
-version '2019.12.24'
+version 'v1.0'
 
 sourceCompatibility = 1.8
 
@@ -17,7 +17,7 @@ tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
 
-//task myRun(type: JavaExec) {
+//core myRun(type: JavaExec) {
 //    classpath sourceSets.main.runtimeClasspath
 //    main = "com.xyz.caofancpu.d8ger.util.VerbalExpressionUtil"
 //}

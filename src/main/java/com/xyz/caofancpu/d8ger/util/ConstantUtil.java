@@ -86,7 +86,26 @@ public class ConstantUtil {
      */
     public static final String GENERATE_DIR = "D8AutoCode";
 
+    /**
+     * 列表变量后缀名
+     */
     public static final String LIST = "List";
+
+    /**
+     * 通知展示ID
+     */
+    public static final String NOTIFICATION_GROUP_VIEW_ID = "xtools";
+
+    /**
+     * Tab4个空格
+     */
+    public static final String TAB = SPACE + SPACE + SPACE + SPACE;
+
+    /**
+     * 换行
+     */
+    public static final String NEXT_LINE = "\n";
+
 
 
 }

@@ -1,7 +1,6 @@
 package com.xyz.caofancpu.d8ger.util;
 
 import com.intellij.ide.highlighter.JavaFileType;
-import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiAnnotationMemberValue;
 import com.intellij.psi.PsiClass;
@@ -26,12 +25,16 @@ import java.util.function.Predicate;
  **/
 public class IdeaPlatformFileTreeUtil {
 
-    public static PsiJavaFile createJavaFile(@NonNull Project project, @NonNull String name, @NonNull String content) {
-        return (PsiJavaFile) PsiFileFactory.getInstance(project).createFileFromText(name.concat(ConstantUtil.JAVA_FILE_SUFFIX), JavaFileType.INSTANCE, content);
+    public static PsiJavaFile forceCreateJavaFile(@NonNull PsiDirectory psiDirectory, @NonNull Project project, @NonNull String javaFileDotName, @NonNull String javaFileName, @NonNull String content) {
+        PsiFile originFile = psiDirectory.findFile(javaFileDotName);
+        if (Objects.nonNull(originFile)) {
+            originFile.delete();
+        }
+        return createJavaFile(project, javaFileName, content);
     }
 
-    public static PsiFile createFile(@NonNull Project project, @NonNull String name, @NonNull String fileSuffix, @NonNull FileType fileType, @NonNull String content) {
-        return PsiFileFactory.getInstance(project).createFileFromText(name.concat(fileSuffix), fileType, content);
+    public static PsiJavaFile createJavaFile(@NonNull Project project, @NonNull String name, @NonNull String content) {
+        return (PsiJavaFile) PsiFileFactory.getInstance(project).createFileFromText(name.concat(ConstantUtil.JAVA_FILE_SUFFIX), JavaFileType.INSTANCE, content);
     }
 
     public static Optional<String> getAnnotationValue(@NonNull PsiClass psiClass, @NonNull String annotation, @NonNull String field) {
