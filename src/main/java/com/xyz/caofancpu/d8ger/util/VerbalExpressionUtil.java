@@ -12,11 +12,8 @@ import java.util.regex.Pattern;
  */
 public class VerbalExpressionUtil {
 
-    public static String removeMoSuffixForTable(String moClassName) {
-        return executePatternRex(VerbalExpression.regex().capt().find(ConstantUtil.MO_NAME_SUFFIX).endCapt().endOfLine().build(),
-                moClassName,
-                ConstantUtil.EMPTY
-        );
+    public static VerbalExpression buildRegex(String matchKeyWord) {
+        return VerbalExpression.regex().capt().find(matchKeyWord).endCapt().build();
     }
 
     public static String executePatternRex(VerbalExpression regexExpression, String originText, String replacer) {

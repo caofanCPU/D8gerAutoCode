@@ -57,6 +57,11 @@ public class ConstantUtil {
     public static final String XML_FILE_SUFFIX = ".xml";
 
     /**
+     * sql文件后缀
+     */
+    public static final String SQL_FILE_SUFFIX = ".sql";
+
+    /**
      * Mo名称后缀
      */
     public static final String MO_NAME_SUFFIX = "Mo";
@@ -97,9 +102,29 @@ public class ConstantUtil {
     public static final String NOTIFICATION_GROUP_VIEW_ID = "xtools";
 
     /**
-     * Tab4个空格
+     * Tab: 4个空格
      */
     public static final String TAB = SPACE + SPACE + SPACE + SPACE;
+
+    /**
+     * 两个Tab
+     */
+    public static final String DOUBLE_TAB = TAB + TAB;
+
+    /**
+     * 三个Tab
+     */
+    public static final String TRIPLE_TAB = DOUBLE_TAB + TAB;
+
+    /**
+     * 四个Tab 四元
+     */
+    public static final String QUATERNARY_TAB = TRIPLE_TAB + TAB;
+
+    /**
+     * 五个Tab
+     */
+    public static final String PENTA_TAB = QUATERNARY_TAB + TAB;
 
     /**
      * 换行

@@ -2,6 +2,7 @@ package com.xyz.caofancpu.d8ger.util;
 
 import com.intellij.ide.highlighter.JavaFileType;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiAnnotationMemberValue;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiDirectory;
@@ -10,10 +11,12 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.codeStyle.CodeStyleManager;
+import com.intellij.psi.impl.file.PsiDirectoryFactory;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.PsiShortNamesCache;
 import lombok.NonNull;
 
+import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -25,8 +28,8 @@ import java.util.function.Predicate;
  **/
 public class IdeaPlatformFileTreeUtil {
 
-    public static PsiJavaFile forceCreateJavaFile(@NonNull PsiDirectory psiDirectory, @NonNull Project project, @NonNull String javaFileDotName, @NonNull String javaFileName, @NonNull String content) {
-        PsiFile originFile = psiDirectory.findFile(javaFileDotName);
+    public static PsiJavaFile forceCreateJavaFile(@NonNull PsiDirectory psiDirectory, @NonNull Project project, @NonNull String javaFileName, @NonNull String content) {
+        PsiFile originFile = psiDirectory.findFile(javaFileName + ConstantUtil.JAVA_FILE_SUFFIX);
         if (Objects.nonNull(originFile)) {
             originFile.delete();
         }
@@ -100,11 +103,28 @@ public class IdeaPlatformFileTreeUtil {
     /**
      * 获取或者创建子目录
      *
-     * @param parentDirectory  父级目录
-     * @param subDirectoryName 子目录名称
+     * @param project                 当前工程
+     * @param subDirectoryVirtualFile 子目录文件名称
      * @return 查找到的或者创建的子目录名称
      */
-    public static PsiDirectory getOrCreateSubDirectory(@NonNull PsiDirectory parentDirectory, @NonNull String subDirectoryName) {
-        return Optional.ofNullable(parentDirectory.findSubdirectory(subDirectoryName)).orElseGet(() -> parentDirectory.createSubdirectory(subDirectoryName));
+    public static PsiDirectory getOrCreateSubDirectory(@NonNull Project project, @NonNull VirtualFile subDirectoryVirtualFile) {
+        return PsiDirectoryFactory.getInstance(project).createDirectory(subDirectoryVirtualFile);
+    }
+
+    public static VirtualFile getOrCreateSubVirtualFile(@NonNull VirtualFile currentVirtualFile, @NonNull String subVirtualFileName) {
+        VirtualFile child = currentVirtualFile.findChild(subVirtualFileName);
+        if (Objects.isNull(child)) {
+            try {
+                child = currentVirtualFile.createChildDirectory(null, subVirtualFileName);
+            } catch (IOException e) {
+                // 创建失败时, 则以resource根目录为准
+                child = currentVirtualFile;
+            }
+        }
+        return child;
+    }
+
+    public static PsiDirectory getOrCreateSubDirectory(@NonNull Project project, @NonNull VirtualFile currentVirtualFile, @NonNull String subVirtualFileName) {
+        return getOrCreateSubDirectory(project, getOrCreateSubVirtualFile(currentVirtualFile, subVirtualFileName));
     }
 }

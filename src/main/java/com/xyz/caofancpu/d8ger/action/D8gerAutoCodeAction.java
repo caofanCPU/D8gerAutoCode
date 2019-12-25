@@ -11,16 +11,19 @@ import com.intellij.openapi.command.WriteCommandAction;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.FileIndexFacade;
+import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiJavaFile;
+import com.xyz.caofancpu.d8ger.core.AutoCodeTemplate;
 import com.xyz.caofancpu.d8ger.core.D8gerAutoCoding;
-import com.xyz.caofancpu.d8ger.template.MapperTemplateAutoCode;
 import com.xyz.caofancpu.d8ger.util.CollectionUtil;
 import com.xyz.caofancpu.d8ger.util.ConstantUtil;
 import com.xyz.caofancpu.d8ger.util.IdeaPlatformFileTreeUtil;
 import lombok.NonNull;
+import org.jetbrains.jps.model.java.JavaModuleSourceRootTypes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,9 +57,16 @@ public class D8gerAutoCodeAction extends AnAction {
         }
 
         Module currentModule = FileIndexFacade.getInstance(currentProject).getModuleForFile(currentPsiFile.getVirtualFile());
-        PsiDirectory currentDir = currentJavaFile.getContainingDirectory();
+        if (Objects.isNull(currentModule)) {
+            Messages.showErrorDialog("当前文件不在模块中", "环境错误");
+            return;
+        }
+        VirtualFile rootResource = ModuleRootManager.getInstance(currentModule).getSourceRoots(JavaModuleSourceRootTypes.RESOURCES).get(0);
+        if (!rootResource.isDirectory()) {
+            Messages.showErrorDialog("请为当前文件所在工程创建resource资源目录", "环境错误");
+        }
         // 初始化核心类
-        D8gerAutoCoding d8gerAutoCoding = D8gerAutoCoding.build(currentProject, currentModule, currentDir, currentJavaFile);
+        D8gerAutoCoding d8gerAutoCoding = D8gerAutoCoding.build(currentProject, currentModule, rootResource, currentJavaFile);
         // 执行创建目录|文件
         WriteCommandAction.runWriteCommandAction(currentProject, () -> generateAutoCodeFile(d8gerAutoCoding));
     }
@@ -69,47 +79,30 @@ public class D8gerAutoCodeAction extends AnAction {
     public void generateAutoCodeFile(D8gerAutoCoding d8gerAutoCoding) {
         List<String> fileNameList = new ArrayList<>();
         // 创建D8AutoCode目录
-        PsiDirectory d8gerAutoCodeDir = IdeaPlatformFileTreeUtil.getOrCreateSubDirectory(d8gerAutoCoding.getD8AutoCodeDir(), ConstantUtil.GENERATE_DIR);
+        PsiDirectory d8gerAutoCodeDir = IdeaPlatformFileTreeUtil.getOrCreateSubDirectory(d8gerAutoCoding.getCurrentProject(), d8gerAutoCoding.getRootResource(), ConstantUtil.GENERATE_DIR);
         d8gerAutoCoding.setD8AutoCodeDir(d8gerAutoCodeDir);
         fileNameList.add(d8gerAutoCodeDir.getName());
 
-        d8gerAutoCoding.getJavaPairMatchMap().forEach((nameKey, fileNameKey) -> {
-            PsiJavaFile moMapperJavaFile = IdeaPlatformFileTreeUtil.forceCreateJavaFile(
+        d8gerAutoCoding.getFileMap().forEach((key, pair) -> {
+            if (D8gerAutoCoding.KeyEnum.MO == key
+                    || D8gerAutoCoding.KeyEnum.MO_MAPPER_XML == key
+                    || D8gerAutoCoding.KeyEnum.MO_SQL == key) {
+                return;
+            }
+
+            PsiJavaFile autoCodeFile = IdeaPlatformFileTreeUtil.forceCreateJavaFile(
                     d8gerAutoCodeDir,
                     d8gerAutoCoding.getCurrentProject(),
-                    d8gerAutoCoding.getNameKeyMap().get(fileNameKey),
-                    d8gerAutoCoding.getNameKeyMap().get(nameKey),
-                    parseTemplateContent(fileNameKey, d8gerAutoCoding.getMoName()));
-            d8gerAutoCoding.getD8AutoCodeDir().add(moMapperJavaFile);
-            fileNameList.add(d8gerAutoCoding.getNameKeyMap().get(fileNameKey));
+                    pair.getLeft(),
+                    AutoCodeTemplate.render(pair.getRight(), d8gerAutoCoding.getKeyWordMatchMap())
+            );
+            d8gerAutoCoding.getD8AutoCodeDir().add(autoCodeFile);
+            fileNameList.add(autoCodeFile.getName());
         });
-
 
         Notifications.Bus.notify(
                 new Notification(ConstantUtil.NOTIFICATION_GROUP_VIEW_ID, "重建文件信息", CollectionUtil.join(fileNameList, ConstantUtil.NEXT_LINE), NotificationType.INFORMATION)
         );
-    }
-
-    private String parseTemplateContent(D8gerAutoCoding.NameKeyEnum fileNameKey, @NonNull String moNameKey) {
-        String content = "暂无可解析的模板: " + fileNameKey.toString();
-        switch (fileNameKey) {
-            case MO_FILE_NAME:
-                break;
-            case MO_MAPPER_FILE_NAME:
-                content = MapperTemplateAutoCode.build(moNameKey);
-                break;
-            case MO_MAPPER_XML_FILE_NAME:
-                break;
-            case MO_SERVICE_INTERFACE_FILE_NAME:
-                break;
-            case MO_SERVICE_IMPL_FILE_NAME:
-                break;
-            case MO_CONTROLLER_FILE_NAME:
-                break;
-            default:
-                break;
-        }
-        return content;
     }
 
 }
