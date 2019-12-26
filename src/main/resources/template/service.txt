@@ -1,56 +1,57 @@
 
 /**
  * TODO: 注释
- * @author ${d8Author}
+ *
+ * @author @d8Author@
  */
 @Service
-public class ${MoName}ServiceImpl implements ${MoName}Service {
+public class @MoName@ServiceImpl implements @MoName@Service {
 
     @Resource
-    private ${MoName}Mapper ${uncapitallizeMoName}Mapper;
+    private @MoName@Mapper @uncapitallizeMoName@Mapper;
 
     /**
      * 添加记录
      *
-     * @param ${uncapitallizeMoName}
+     * @param @uncapitallizeMoName@
      * @return
      */
     @Override
-    public int add(${MoName} ${uncapitallizeMoName}) {
-        return ${uncapitallizeMoName}Mapper.add(${uncapitallizeMoName});
+    public int add(@MoName@ @uncapitallizeMoName@) {
+        return @uncapitallizeMoName@Mapper.add(@uncapitallizeMoName@);
     }
 
     /**
      * 批量插入
      *
-     * @param ${uncapitallizeMoName}List
+     * @param @uncapitallizeMoName@List
      * @return
      */
     @Override
-    public int batchAdd(List<${MoName}> ${uncapitallizeMoName}List) {
-        return ${uncapitallizeMoName}Mapper.batchAdd(${uncapitallizeMoName}List);
+    public int batchAdd(List<@MoName@> @uncapitallizeMoName@List) {
+        return @uncapitallizeMoName@Mapper.batchAdd(@uncapitallizeMoName@List);
     }
 
     /**
      * 查询列表
      *
-     * @param ${uncapitallizeMoName}
+     * @param @uncapitallizeMoName@
      * @return
      */
     @Override
-    public List<${MoName}> query${MoName}List(${MoName} ${uncapitallizeMoName}) {
-        return ${uncapitallizeMoName}Mapper.query${MoName}List(${uncapitallizeMoName});
+    public List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@) {
+        return @uncapitallizeMoName@Mapper.query@MoName@List(@uncapitallizeMoName@);
     }
 
     /**
      * 更新记录
      *
-     * @param ${uncapitallizeMoName}
+     * @param @uncapitallizeMoName@
      * @return
      */
     @Override
-    public int updateSelective(${MoName} ${uncapitallizeMoName}) {
-        return ${uncapitallizeMoName}Mapper.updateSelective(${uncapitallizeMoName});
+    public int updateSelective(@MoName@ @uncapitallizeMoName@) {
+        return @uncapitallizeMoName@Mapper.updateSelective(@uncapitallizeMoName@);
     }
 
     /**
@@ -61,7 +62,7 @@ public class ${MoName}ServiceImpl implements ${MoName}Service {
      */
     @Override
     public int deleteById(Integer id) {
-        return ${uncapitallizeMoName}Mapper.deleteById(id);
+        return @uncapitallizeMoName@Mapper.deleteById(id);
     }
 
 }

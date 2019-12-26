@@ -1,41 +1,42 @@
 
 /**
  * TODO: 注释
- * @author ${d8Author}
+ *
+ * @author @d8Author@
  */
-public interface ${MoName}Service {
+public interface @MoName@Service {
 
     /**
      * 添加记录
      *
-     * @param ${uncapitallizeMoName}
+     * @param @uncapitallizeMoName@
      * @return
      */
-    int add(${MoName} ${uncapitallizeMoName});
+    int add(@MoName@ @uncapitallizeMoName@);
 
     /**
      * 批量插入
      *
-     * @param ${uncapitallizeMoName}List
+     * @param @uncapitallizeMoName@List
      * @return
      */
-    int batchAdd(List<${MoName}> ${uncapitallizeMoName}List);
+    int batchAdd(List<@MoName@> @uncapitallizeMoName@List);
 
     /**
      * 查询列表
      *
-     * @param ${uncapitallizeMoName}
+     * @param @uncapitallizeMoName@
      * @return
      */
-    List<${MoName}> query${MoName}List(${MoName} ${uncapitallizeMoName});
+    List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@);
 
     /**
      * 更新记录
      *
-     * @param ${uncapitallizeMoName}
+     * @param @uncapitallizeMoName@
      * @return
      */
-    int updateSelective(${MoName} ${uncapitallizeMoName});
+    int updateSelective(@MoName@ @uncapitallizeMoName@);
 
     /**
      * [WARN]: 主键id物理删除

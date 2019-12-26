@@ -19,6 +19,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiJavaFile;
 import com.xyz.caofancpu.d8ger.core.AutoCodeTemplate;
 import com.xyz.caofancpu.d8ger.core.D8gerAutoCoding;
+import com.xyz.caofancpu.d8ger.core.KeyEnum;
 import com.xyz.caofancpu.d8ger.util.CollectionUtil;
 import com.xyz.caofancpu.d8ger.util.ConstantUtil;
 import com.xyz.caofancpu.d8ger.util.IdeaPlatformFileTreeUtil;
@@ -84,9 +85,9 @@ public class D8gerAutoCodeAction extends AnAction {
         fileNameList.add(d8gerAutoCodeDir.getName());
 
         d8gerAutoCoding.getFileMap().forEach((key, pair) -> {
-            if (D8gerAutoCoding.KeyEnum.MO == key
-                    || D8gerAutoCoding.KeyEnum.MO_MAPPER_XML == key
-                    || D8gerAutoCoding.KeyEnum.MO_SQL == key) {
+            if (KeyEnum.MO_CONTROLLER == key
+                    || KeyEnum.MO_MAPPER_XML == key
+                    || KeyEnum.MO_SQL == key) {
                 return;
             }
 

@@ -8,14 +8,61 @@ import java.util.Map;
 
 /**
  * 代码模板字符串常量
+ *
+ * @author caofanCPU
  */
 public class AutoCodeTemplate {
 
     /**
      * MO模板字符串
      */
-    public static final String TEMPLATE_MO = "";
+    public static final String TEMPLATE_MO = "\n" +
+            "import lombok.AllArgsConstructor;\n" +
+            "import lombok.Data;\n" +
+            "import lombok.NoArgsConstructor;\n" +
+            "import lombok.experimental.Accessors;\n" +
+            "\n" +
+            "/**\n" +
+            " * TODO: 注释\n" +
+            " *\n" +
+            " * @author @d8Author@\n" +
+            " */\n" +
+            "@Data\n" +
+            "@NoArgsConstructor\n" +
+            "@AllArgsConstructor\n" +
+            "@Accessors(chain = true)\n" +
+            "public class @MoName@ {\n" +
+            "\n" +
+            "@field@\n" +
+            "\n" +
+            "}\n";
 
+    /**
+     * SwaggerMO模板字符串
+     */
+    public static final String TEMPLATE_SWAGGER_MO = "\n" +
+            "import io.swagger.annotations.ApiModel;\n" +
+            "import io.swagger.annotations.ApiModelProperty;\n" +
+            "import lombok.AllArgsConstructor;\n" +
+            "import lombok.Data;\n" +
+            "import lombok.NoArgsConstructor;\n" +
+            "import lombok.experimental.Accessors;\n" +
+            "\n" +
+            "/**\n" +
+            " * TODO: 注释\n" +
+            " *\n" +
+            " * @author @d8Author@\n" +
+            " */\n" +
+            "@Data\n" +
+            "@NoArgsConstructor\n" +
+            "@AllArgsConstructor\n" +
+            "@Accessors(chain = true)\n" +
+            "@ApiModel\n" +
+            "public class @MoName@ {\n" +
+            "\n" +
+            "@swaggerField@\n" +
+            "\n" +
+            "}\n";
 
     /**
      * Mapper模板字符串

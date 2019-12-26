@@ -7,6 +7,7 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 
 /**
  *
+ * @author caofanCPU
  */
 public class D8gerMoreAction extends AnAction {
 

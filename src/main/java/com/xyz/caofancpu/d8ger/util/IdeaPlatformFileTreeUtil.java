@@ -28,6 +28,15 @@ import java.util.function.Predicate;
  **/
 public class IdeaPlatformFileTreeUtil {
 
+    /**
+     * 强制创建文件, 源文件存在则先删除再创建
+     *
+     * @param psiDirectory
+     * @param project
+     * @param javaFileName
+     * @param content
+     * @return
+     */
     public static PsiJavaFile forceCreateJavaFile(@NonNull PsiDirectory psiDirectory, @NonNull Project project, @NonNull String javaFileName, @NonNull String content) {
         PsiFile originFile = psiDirectory.findFile(javaFileName + ConstantUtil.JAVA_FILE_SUFFIX);
         if (Objects.nonNull(originFile)) {
@@ -36,6 +45,14 @@ public class IdeaPlatformFileTreeUtil {
         return createJavaFile(project, javaFileName, content);
     }
 
+    /**
+     * 创建文件, 源文件存在时会抛出异常
+     *
+     * @param project
+     * @param name
+     * @param content
+     * @return
+     */
     public static PsiJavaFile createJavaFile(@NonNull Project project, @NonNull String name, @NonNull String content) {
         return (PsiJavaFile) PsiFileFactory.getInstance(project).createFileFromText(name.concat(ConstantUtil.JAVA_FILE_SUFFIX), JavaFileType.INSTANCE, content);
     }
@@ -111,6 +128,13 @@ public class IdeaPlatformFileTreeUtil {
         return PsiDirectoryFactory.getInstance(project).createDirectory(subDirectoryVirtualFile);
     }
 
+    /**
+     * 创建子文件
+     *
+     * @param currentVirtualFile
+     * @param subVirtualFileName
+     * @return
+     */
     public static VirtualFile getOrCreateSubVirtualFile(@NonNull VirtualFile currentVirtualFile, @NonNull String subVirtualFileName) {
         VirtualFile child = currentVirtualFile.findChild(subVirtualFileName);
         if (Objects.isNull(child)) {
@@ -124,6 +148,14 @@ public class IdeaPlatformFileTreeUtil {
         return child;
     }
 
+    /**
+     * 创建子文件目录
+     *
+     * @param project
+     * @param currentVirtualFile
+     * @param subVirtualFileName
+     * @return
+     */
     public static PsiDirectory getOrCreateSubDirectory(@NonNull Project project, @NonNull VirtualFile currentVirtualFile, @NonNull String subVirtualFileName) {
         return getOrCreateSubDirectory(project, getOrCreateSubVirtualFile(currentVirtualFile, subVirtualFileName));
     }
