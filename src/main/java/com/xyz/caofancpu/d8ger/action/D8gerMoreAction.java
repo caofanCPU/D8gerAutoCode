@@ -6,6 +6,8 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
 /**
+ * What encounter to pain me ever belongs to see you now.
+ * You can find me anytime 'cause I'm everywhere.
  *
  * @author caofanCPU
  */
