@@ -3,7 +3,6 @@ package com.xyz.caofancpu.d8ger.util;
 import com.intellij.ide.highlighter.JavaFileType;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiAnnotationMemberValue;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
@@ -33,37 +32,28 @@ public class IdeaPlatformFileTreeUtil {
      *
      * @param psiDirectory
      * @param project
-     * @param javaFileName
+     * @param dotFileName 去除.java后缀的java文件名
      * @param content
      * @return
      */
-    public static PsiJavaFile forceCreateJavaFile(@NonNull PsiDirectory psiDirectory, @NonNull Project project, @NonNull String javaFileName, @NonNull String content) {
-        PsiFile originFile = psiDirectory.findFile(javaFileName + ConstantUtil.JAVA_FILE_SUFFIX);
+    public static PsiJavaFile forceCreateJavaFile(@NonNull PsiDirectory psiDirectory, @NonNull Project project, @NonNull String dotFileName, @NonNull String content) {
+        PsiFile originFile = psiDirectory.findFile(dotFileName);
         if (Objects.nonNull(originFile)) {
             originFile.delete();
         }
-        return createJavaFile(project, javaFileName, content);
+        return createJavaFile(project, dotFileName, content);
     }
 
     /**
      * 创建文件, 源文件存在时会抛出异常
      *
      * @param project
-     * @param name
+     * @param dotFileName
      * @param content
      * @return
      */
-    public static PsiJavaFile createJavaFile(@NonNull Project project, @NonNull String name, @NonNull String content) {
-        return (PsiJavaFile) PsiFileFactory.getInstance(project).createFileFromText(name.concat(ConstantUtil.JAVA_FILE_SUFFIX), JavaFileType.INSTANCE, content);
-    }
-
-    public static Optional<String> getAnnotationValue(@NonNull PsiClass psiClass, @NonNull String annotation, @NonNull String field) {
-        return Optional.ofNullable(psiClass.getAnnotation(annotation))
-                .map(a -> {
-                    PsiAnnotationMemberValue value = a.findAttributeValue(field);
-                    return Objects.nonNull(value) ? Optional.of(value.getText()) : Optional.<String>empty();
-                })
-                .orElse(Optional.empty());
+    public static PsiJavaFile createJavaFile(@NonNull Project project, @NonNull String dotFileName, @NonNull String content) {
+        return (PsiJavaFile) PsiFileFactory.getInstance(project).createFileFromText(dotFileName, JavaFileType.INSTANCE, content);
     }
 
     /**

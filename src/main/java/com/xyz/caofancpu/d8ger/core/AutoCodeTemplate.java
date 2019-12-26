@@ -65,6 +65,22 @@ public class AutoCodeTemplate {
             "}\n";
 
     /**
+     * Sql模板字符串
+     */
+    public static final String TEMPLATE_MO_SQL = "\n" +
+            "-- D8ger-Sql-Auto-Generated\n" +
+            "-- @author @d8Author@\n" +
+            "create table @mo_table_name@\n" +
+            "(\n" +
+            "@id@" +
+            "@sql_column@\n" +
+            "@create_time@" +
+            "@update_time@" +
+            ")\n" +
+            "    comment '@MoName@表' charset = utf8mb4;\n" +
+            "\n";
+
+    /**
      * Mapper模板字符串
      */
     public static final String TEMPLATE_MAPPER = "\n" +

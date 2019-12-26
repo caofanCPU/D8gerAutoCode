@@ -12,6 +12,11 @@ import java.util.Collections;
 public class ConstantUtil {
 
     /**
+     * 英文逗号
+     */
+    public static final String ENGLISH_COMMA = ",";
+
+    /**
      * 空串
      */
     public static final String EMPTY = StringUtils.EMPTY;
@@ -20,6 +25,41 @@ public class ConstantUtil {
      * 单个空格符
      */
     public static final String SPACE = StringUtils.SPACE;
+
+    /**
+     * Tab: 4个空格
+     */
+    public static final String TAB = CollectionUtil.join(Collections.nCopies(4, SPACE), EMPTY);
+
+    /**
+     * 两个Tab
+     */
+    public static final String DOUBLE_TAB = TAB + TAB;
+
+    /**
+     * 三个Tab
+     */
+    public static final String TRIPLE_TAB = DOUBLE_TAB + TAB;
+
+    /**
+     * 四个Tab 四元
+     */
+    public static final String QUATERNARY_TAB = TRIPLE_TAB + TAB;
+
+    /**
+     * 五个Tab
+     */
+    public static final String PENTA_TAB = QUATERNARY_TAB + TAB;
+
+    /**
+     * 换行
+     */
+    public static final String NEXT_LINE = "\n";
+
+    /**
+     * 隔一行
+     */
+    public static final String DOUBLE_NEXT_LINE = NEXT_LINE + NEXT_LINE;
 
     /**
      * 英文分号
@@ -40,6 +80,36 @@ public class ConstantUtil {
      * sql文件后缀
      */
     public static final String SQL_FILE_SUFFIX = ".sql";
+
+    /**
+     * SQL主键字段
+     */
+    public static final String SQL_ID = "id";
+
+    /**
+     * SQL主键字段默认定义
+     */
+    public static final String SQL_ID_DEFAULT_DEFINITION = TAB + "id bigint unsigned auto_increment comment 'id' primary key" + ENGLISH_COMMA + NEXT_LINE;
+
+    /**
+     * SQL创建时间字段
+     */
+    public static final String SQL_CREATE_TIME = "createTime";
+
+    /**
+     * SQL创建时间字段默认定义
+     */
+    public static final String SQL_CREATE_TIME_DEFAULT_DEFINITION = TAB + "create_time datetime default CURRENT_TIMESTAMP null comment '创建时间'" + ENGLISH_COMMA + NEXT_LINE;
+
+    /**
+     * SQL更新时间字段
+     */
+    public static final String SQL_UPDATE_TIME = "updateTime";
+
+    /**
+     * SQL更新时间字段默认定义
+     */
+    public static final String SQL_UPDATE_TIME_DEFAULT_DEFINITION = TAB + "update_time datetime default CURRENT_TIMESTAMP null on update CURRENT_TIMESTAMP comment '更新时间'" + NEXT_LINE;
 
     /**
      * SwaggerMo名称后缀
@@ -81,39 +151,6 @@ public class ConstantUtil {
      */
     public static final String NOTIFICATION_GROUP_VIEW_ID = "xtools";
 
-    /**
-     * Tab: 4个空格
-     */
-    public static final String TAB = CollectionUtil.join(Collections.nCopies(4, SPACE), EMPTY);
 
-    /**
-     * 两个Tab
-     */
-    public static final String DOUBLE_TAB = TAB + TAB;
-
-    /**
-     * 三个Tab
-     */
-    public static final String TRIPLE_TAB = DOUBLE_TAB + TAB;
-
-    /**
-     * 四个Tab 四元
-     */
-    public static final String QUATERNARY_TAB = TRIPLE_TAB + TAB;
-
-    /**
-     * 五个Tab
-     */
-    public static final String PENTA_TAB = QUATERNARY_TAB + TAB;
-
-    /**
-     * 换行
-     */
-    public static final String NEXT_LINE = "\n";
-
-    /**
-     * 隔一行
-     */
-    public static final String DOUBLE_NEXT_LINE = NEXT_LINE + NEXT_LINE;
 
 }

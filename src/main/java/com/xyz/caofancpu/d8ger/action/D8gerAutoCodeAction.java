@@ -85,13 +85,10 @@ public class D8gerAutoCodeAction extends AnAction {
         fileNameList.add(d8gerAutoCodeDir.getName());
 
         d8gerAutoCoding.getFileMap().forEach((key, pair) -> {
-            if (KeyEnum.MO_CONTROLLER == key
-                    || KeyEnum.MO_MAPPER_XML == key
-                    || KeyEnum.MO_SQL == key) {
+            if (KeyEnum.MO_CONTROLLER == key || KeyEnum.MO_MAPPER_XML == key) {
                 return;
             }
-
-            PsiJavaFile autoCodeFile = IdeaPlatformFileTreeUtil.forceCreateJavaFile(
+            PsiFile autoCodeFile = IdeaPlatformFileTreeUtil.forceCreateJavaFile(
                     d8gerAutoCodeDir,
                     d8gerAutoCoding.getCurrentProject(),
                     pair.getLeft(),
@@ -102,7 +99,7 @@ public class D8gerAutoCodeAction extends AnAction {
         });
 
         Notifications.Bus.notify(
-                new Notification(ConstantUtil.NOTIFICATION_GROUP_VIEW_ID, "重建文件信息", CollectionUtil.join(fileNameList, ConstantUtil.NEXT_LINE), NotificationType.INFORMATION)
+                new Notification(ConstantUtil.NOTIFICATION_GROUP_VIEW_ID, "重建文件信息", CollectionUtil.join(fileNameList, ConstantUtil.DOUBLE_NEXT_LINE), NotificationType.INFORMATION)
         );
     }
 
