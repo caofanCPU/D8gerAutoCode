@@ -1,0 +1,52 @@
+package @package@
+
+import java.util.List;
+
+/**
+ * TODO: 注释
+ *
+ * @author @d8Author@
+ */
+public interface @MoName@Service {
+
+    /**
+     * 插入单条记录
+     *
+     * @param @uncapitallizeMoName@
+     * @return
+     */
+    int add(@MoName@ @uncapitallizeMoName@);
+
+    /**
+     * 批量插入
+     *
+     * @param @uncapitallizeMoName@List
+     * @return
+     */
+    int batchAdd(List<@MoName@> @uncapitallizeMoName@List);
+
+    /**
+     * 查询列表
+     *
+     * @param @uncapitallizeMoName@
+     * @return
+     */
+    List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@);
+
+    /**
+     * 更新非null字段
+     *
+     * @param @uncapitallizeMoName@
+     * @return
+     */
+    int updateSelective(@MoName@ @uncapitallizeMoName@);
+
+    /**
+     * 根据id物理删除
+     *
+     * @param id
+     * @return
+     */
+    int deleteById(Integer id);
+
+}

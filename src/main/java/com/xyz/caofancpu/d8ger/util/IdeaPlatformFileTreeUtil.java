@@ -36,7 +36,7 @@ public class IdeaPlatformFileTreeUtil {
      * @param content
      * @return
      */
-    public static PsiJavaFile forceCreateJavaFile(@NonNull PsiDirectory psiDirectory, @NonNull Project project, @NonNull String dotFileName, @NonNull String content) {
+    public static PsiJavaFile forceCreateJavaFile(@NonNull PsiDirectory psiDirectory, @NonNull Project project, @NonNull String dotFileName, @NonNull CharSequence content) {
         PsiFile originFile = psiDirectory.findFile(dotFileName);
         if (Objects.nonNull(originFile)) {
             originFile.delete();
@@ -52,7 +52,7 @@ public class IdeaPlatformFileTreeUtil {
      * @param content
      * @return
      */
-    public static PsiJavaFile createJavaFile(@NonNull Project project, @NonNull String dotFileName, @NonNull String content) {
+    public static PsiJavaFile createJavaFile(@NonNull Project project, @NonNull String dotFileName, @NonNull CharSequence content) {
         return (PsiJavaFile) PsiFileFactory.getInstance(project).createFileFromText(dotFileName, JavaFileType.INSTANCE, content);
     }
 

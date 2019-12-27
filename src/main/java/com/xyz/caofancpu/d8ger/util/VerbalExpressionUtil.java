@@ -58,6 +58,20 @@ public class VerbalExpressionUtil {
     }
 
     /**
+     * 相对较大字符串正则替换, 使用StringBuilder存储字符串
+     *
+     * @param regexExpression
+     * @param originText
+     * @param replacer
+     * @return
+     */
+    public static StringBuilder executePatternRex(VerbalExpression regexExpression, StringBuilder originText, StringBuilder replacer) {
+        Pattern pattern = Pattern.compile(regexExpression.toString());
+        Matcher matcher = pattern.matcher(originText);
+        return new StringBuilder(matcher.replaceAll(replacer.toString()));
+    }
+
+    /**
      * 驼峰命名转下划线
      *
      * @param originName

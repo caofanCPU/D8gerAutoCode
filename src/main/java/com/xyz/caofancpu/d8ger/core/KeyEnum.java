@@ -9,6 +9,7 @@ public enum KeyEnum {
     MO,
     SWAGGER_MO,
     MO_MAPPER,
+    MO_EXAMPLE,
     MO_MAPPER_XML,
     MO_SERVICE_INTERFACE,
     MO_SERVICE_IMPL,

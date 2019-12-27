@@ -122,6 +122,11 @@ public class ConstantUtil {
     public static final String MO_MAPPER_NAME_SUFFIX = "Mapper";
 
     /**
+     * MoExample名称后缀
+     */
+    public static final String MO_EXAMPLE_NAME_SUFFIX = "Example";
+
+    /**
      * MoService接口名称后缀
      */
     public static final String MO_SERVICE_INTERFACE_NAME_SUFFIX = "Service";

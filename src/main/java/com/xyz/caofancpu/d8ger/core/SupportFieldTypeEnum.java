@@ -29,6 +29,7 @@ public enum SupportFieldTypeEnum {
     BASIC_DOUBLE("double", "double", "double(8, 2)"),
     BASIC_FLOAT("float", "float", "double(8, 2)"),
     BASIC_SHORT("short", "short", "int(4)"),
+    BASIC_BOOLEAN("boolean", "boolean", "tinyint(1)"),
     ENUM("Enum", "", "int(4)"),
     NONE(null, null, null);
 

@@ -1,0 +1,93 @@
+package @package@;
+
+import @package@.@MoName@Example;
+import @package@.@MoName@;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+
+@Mapper
+public interface @MoName@Mapper {
+
+    /**
+     * 根据条件查询列表
+     *
+     * @param @uncapitallizeMoName@Example
+     * @return
+     */
+    List<@MoName@> selectByExample(@MoName@Example @uncapitallizeMoName@Example);
+
+    /**
+     * 批量更新, 根据主键更新非null字段
+     *
+     * @param @uncapitallizeMoName@List
+     * @return
+     */
+    int updateBatchByPrimaryKeySelective(List<@MoName@> @uncapitallizeMoName@List);
+
+    /**
+     * 根据条件更新非null字段
+     *
+     * @param @uncapitallizeMoName@
+     * @param @uncapitallizeMoName@Example
+     * @return
+     */
+    int updateByExampleSelective(@Param("record") @MoName@ @uncapitallizeMoName@, @Param("example") @MoName@Example @uncapitallizeMoName@Example);
+
+    /**
+     * 根据条件删除记录
+     *
+     * @param @uncapitallizeMoName@Example
+     * @return
+     */
+    int deleteByExample(@MoName@Example @uncapitallizeMoName@Example);
+
+    /**
+     * 根据条件统计记录
+     *
+     * @param @uncapitallizeMoName@Example
+     * @return 记录条数
+     */
+    int countByExample(@MoName@Example @uncapitallizeMoName@Example);
+
+    /**
+     * 增加单条记录, 并为入参设置ID
+     *
+     * @param @uncapitallizeMoName@
+     * @return
+     */
+    int insertWithId(@MoName@ @uncapitallizeMoName@);
+
+    /**
+     * 批量增加记录, 并为入参设置ID
+     *
+     * @param @uncapitallizeMoName@List
+     * @return
+     */
+    int insertBatchWithId(List<@MoName@> @uncapitallizeMoName@List);
+
+    /**
+     * 根据ID查询对象
+     *
+     * @param id
+     * @return
+     */
+    <T extends Number> @MoName@ selectByPrimaryKey(T id);
+
+    /**
+     * 根据主键只更新非null字段
+     *
+     * @param @uncapitallizeMoName@
+     * @return
+     */
+    int updateByPrimaryKeySelective(@MoName@ @uncapitallizeMoName@);
+
+    /**
+     * 根据ID删除记录
+     *
+     * @param id
+     * @return
+     */
+    <T extends Number> int deleteByPrimaryKey(T id);
+}

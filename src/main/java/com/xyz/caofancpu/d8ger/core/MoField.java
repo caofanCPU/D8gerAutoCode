@@ -13,6 +13,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.experimental.Accessors;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
 
@@ -124,5 +125,147 @@ public class MoField {
         }
 
         return ConstantUtil.TAB + VerbalExpressionUtil.sqlUnderLineName(name) + ConstantUtil.SPACE + fieldTypeEnum.getSqlName() + ConstantUtil.SPACE + wrapSqlDefaultValueView() + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.ENGLISH_COMMA;
+    }
+
+    /**
+     * SQL操作Example对象方法
+     *
+     * @return
+     */
+    public String toMoExampleDefinitionMethodString() {
+        String capitalizeName = StringUtils.capitalize(name);
+        String sqlColumnName = VerbalExpressionUtil.sqlUnderLineName(name);
+        String javaTypeShortName = fieldTypeEnum.getShortName();
+        StringBuilder builder = new StringBuilder();
+        builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("为null").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("IsNull() {").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("is null\");").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
+        builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("不为null").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("IsNotNull() {").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("is not null\");").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
+        builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("等于").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("EqualTo(").append(javaTypeShortName).append(ConstantUtil.SPACE).append("value) {").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("=\", value, \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
+        builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("不等于").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("NotEqualTo(").append(javaTypeShortName).append(ConstantUtil.SPACE).append("value) {").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("<>\", value, \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
+        builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("大于").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("GreaterThan(").append(javaTypeShortName).append(ConstantUtil.SPACE).append("value) {").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append(">\", value, \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
+        builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("大于等于").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("GreaterThanOrEqualTo(").append(javaTypeShortName).append(ConstantUtil.SPACE).append("value) {").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append(">=\", value, \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
+        builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("小于").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("LessThan(").append(javaTypeShortName).append(ConstantUtil.SPACE).append("value) {").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("<\", value, \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
+        builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("小于等于").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("LessThanOrEqualTo(").append(javaTypeShortName).append(ConstantUtil.SPACE).append("value) {").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("<=\", value, \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
+        builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("在列表内").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("In(List<").append(javaTypeShortName).append(">").append(ConstantUtil.SPACE).append("values) {").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("in\", values, \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
+        builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("不在列表内").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("NotIn(List<").append(javaTypeShortName).append(">").append(ConstantUtil.SPACE).append("values) {").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("not in\", values, \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
+        builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("在起始值范围内").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("Between(").append(javaTypeShortName).append(ConstantUtil.SPACE).append("value1,").append(ConstantUtil.SPACE).append(javaTypeShortName).append(ConstantUtil.SPACE).append("value2) {").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("between\", value1, value2, \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
+        builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("不在起始值范围内").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("NotBetween(").append(javaTypeShortName).append(ConstantUtil.SPACE).append("value1,").append(ConstantUtil.SPACE).append(javaTypeShortName).append(ConstantUtil.SPACE).append("value2) {").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("not between\", value1, value2, \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
+        if (SupportFieldTypeEnum.STRING == fieldTypeEnum) {
+            // 字符串字段, 添加前缀模糊查询
+            builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("模糊查询以前缀开头").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("Like(").append(javaTypeShortName).append(ConstantUtil.SPACE).append("value) {").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("like\", value + \"%\", \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
+            builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("模糊查询不以前缀匹开头").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("NotLike(").append(javaTypeShortName).append(ConstantUtil.SPACE).append("value) {").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("not like\", value + \"%\", \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
+        }
+        return builder.toString();
     }
 }

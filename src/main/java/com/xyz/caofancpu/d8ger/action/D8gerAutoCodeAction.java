@@ -47,6 +47,7 @@ public class D8gerAutoCodeAction extends AnAction {
         List<String> fileNameList = new ArrayList<>();
         // 创建D8AutoCode目录
         PsiDirectory d8gerAutoCodeDir = IdeaPlatformFileTreeUtil.getOrCreateSubDirectory(d8gerAutoCoding.getCurrentProject(), d8gerAutoCoding.getRootResource(), ConstantUtil.GENERATE_DIR);
+
         d8gerAutoCoding.setD8AutoCodeDir(d8gerAutoCodeDir);
         fileNameList.add(d8gerAutoCodeDir.getName());
 
