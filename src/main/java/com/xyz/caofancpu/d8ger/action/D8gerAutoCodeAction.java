@@ -52,7 +52,7 @@ public class D8gerAutoCodeAction extends AnAction {
         fileNameList.add(d8gerAutoCodeDir.getName());
 
         d8gerAutoCoding.getFileMap().forEach((key, pair) -> {
-            if (KeyEnum.MO_CONTROLLER == key || KeyEnum.MO_MAPPER_XML == key) {
+            if (KeyEnum.MO_CONTROLLER == key) {
                 return;
             }
             PsiFile autoCodeFile = IdeaPlatformFileTreeUtil.forceCreateJavaFile(

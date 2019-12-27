@@ -1,11 +1,11 @@
 
 -- ----------------------------
--- Table structure for @mo_table_name@
+-- Table structure for `@mo_table_name@`
 -- D8ger-Sql-Auto-Generated
 -- @author @d8Author@
 -- ----------------------------
 -- DROP TABLE IF EXISTS `@mo_table_name@`;
-CREATE TABLE @mo_table_name@
+CREATE TABLE `@mo_table_name@`
 (
 @id@@sql_column@
 @create_time@@update_time@

@@ -18,6 +18,14 @@ public enum TemplateKeyWordEnum {
     SQL_MO_ID_KEY("@id@"),
     SQL_MO_CREATE_TIME_KEY("@create_time@"),
     SQL_MO_UPDATE_TIME_KEY("@update_time@"),
+    XML_BASE_MAP_KEY("@BaseResultMap@"),
+    XML_BASE_COLUMN_LIST_KEY("@BaseColumnList@"),
+    XML_SELECT_BASE_COLUMN_LIST_KEY("@SelectBaseColumnList@"),
+    XML_BATCH_UPDATE_NONNULL_FIELD_BY_ID_KEY("@BatchUpdateNonNullFieldByID@"),
+    XML_UPDATE_NONNULL_FIELD_BY_ID_KEY("@UpdateNonNullFieldByID@"),
+    XML_UPDATE_NONNULL_FIELD_BY_EXAMPLE_KEY("@UpdateNonNullFieldByExample@"),
+    XML_INSERT_COLUMN_LIST_KEY("@InsertField@"),
+    XML_BATCH_INSERT_COLUMN_LIST_KEY("@BatchInsertField@"),
 
     ;
 

@@ -1,23 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="@package@.@MoName@Mapper">
+
     <resultMap id="BaseResultMap" type="@package@.@MoName@">
         <id column="id" property="id"/>
-        <result column="name" property="name"/>
-        <result column="content" property="content"/>
-        <result column="activity_type"property="activityType"/>
-        <result column="visible" property="visible"/>
-        <result column="is_deleted" property="isDeleted"/>
-        <result column="school_id" property="schoolId"/>
-        <result column="entry_year" property="entryYear"/>
-        <result column="education_stage" property="educationStage"/>
-        <result column="latest_snapshot_id" property="latestSnapshotId"/>
-        <result column="creator_id" property="creatorId"/>
-        <result column="modify_id" property="modifyId"/>
-        <result column="create_time" property="createTime"/>
-        <result column="modify_time" property="modifyTime"/>
-        @BaseResultMap@
+@BaseResultMap@
     </resultMap>
+
+    <!-- 查询操作时条件 -->
     <sql id="Example_Where_Clause">
         <where>
             <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -26,16 +16,16 @@
                         <foreach collection="criteria.criteria" item="criterion">
                             <choose>
                                 <when test="criterion.noValue">
-                                    and ${criterion.condition}
+                                    AND ${criterion.condition}
                                 </when>
                                 <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
+                                    AND ${criterion.condition} #{criterion.value}
                                 </when>
                                 <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}
                                 </when>
                                 <when test="criterion.listValue">
-                                    and ${criterion.condition}
+                                    AND ${criterion.condition}
                                     <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                                         #{listItem}
                                     </foreach>
@@ -47,6 +37,8 @@
             </foreach>
         </where>
     </sql>
+
+    <!-- 更新操作时条件 -->
     <sql id="Update_By_Example_Where_Clause">
         <where>
             <foreach collection="example.oredCriteria" item="criteria" separator="or">
@@ -55,16 +47,16 @@
                         <foreach collection="criteria.criteria" item="criterion">
                             <choose>
                                 <when test="criterion.noValue">
-                                    and ${criterion.condition}
+                                    AND ${criterion.condition}
                                 </when>
                                 <when test="criterion.singleValue">
-                                    and ${criterion.condition} #{criterion.value}
+                                    AND ${criterion.condition} #{criterion.value}
                                 </when>
                                 <when test="criterion.betweenValue">
-                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}
                                 </when>
                                 <when test="criterion.listValue">
-                                    and ${criterion.condition}
+                                    AND ${criterion.condition}
                                     <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                                         #{listItem}
                                     </foreach>
@@ -76,224 +68,102 @@
             </foreach>
         </where>
     </sql>
-    <sql id="Base_Column_List">
-        `id`, `name`, `content`, `activity_type`, `visible`, `is_deleted`, `school_id`, `entry_year`, `education_stage`,
-        `latest_snapshot_id`, `creator_id`, `modify_id`, `create_time`, `modify_time`
-        @Base_Column_List@
-    </sql>
+
+    <!-- 1.根据条件查询列表 -->
     <select id="selectByExample" parameterType="@package@.@MoName@Example" resultMap="BaseResultMap">
         SELECT
         <if test="distinct">
-            distinct
+            DISTINCT
         </if>
-        <include refid="Base_Column_List"/>
+@SelectBaseColumnList@
         FROM @mo_table_name@
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
         <if test="orderByClause != null">
-            order by ${orderByClause}
+            ORDER BY ${orderByClause}
         </if>
     </select>
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
-        SELECT
-        <include refid="Base_Column_List"/>
-        FROM @mo_table_name@
-        WHERE id = #{id}
-    </select>
-    <delete id="deleteByPrimaryKey">
-        delete from activity
-        where id = #{id}
-    </delete>
+
+    <!-- 2.批量更新, 根据主键更新非null字段 -->
+    <update id="updateBatchByPrimaryKeySelective" parameterType="java.util.List">
+        <foreach collection="list" open="" close="" separator=";" item="item">
+            UPDATE @mo_table_name@
+            <set>
+@BatchUpdateNonNullFieldByID@
+            </set>
+            WHERE id = #{id}
+        </foreach>
+    </update>
+
+    <!-- 3.根据条件更新非null字段 -->
+    <update id="updateByExampleSelective" parameterType="map">
+        UPDATE @mo_table_name@
+        <set>
+@UpdateNonNullFieldByExample@
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+
+    <!-- 4.根据条件删除记录 -->
     <delete id="deleteByExample" parameterType="@package@.ActivityExample">
         DELETE FROM @mo_table_name@
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </delete>
-    <insert id="insertWithId" parameterType="@package@.@MoName@" useGeneratedKeys="true" keyProperty="id">
-        <selectKey keyProperty="id" order="AFTER">
-            SELECT LAST_INSERT_ID()
-        </selectKey>
-        INSERT INTO @mo_table_name@ (<include refid="Base_Column_List"/>)
-        values (#{name,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{activityType,jdbcType=INTEGER},
-        #{visible,jdbcType=BIT}, #{isDeleted,jdbcType=BIT}, #{schoolId,jdbcType=INTEGER},
-        #{entryYear,jdbcType=INTEGER}, #{educationStage,jdbcType=BIGINT}, #{latestSnapshotId,jdbcType=BIGINT},
-        #{creatorId,jdbcType=BIGINT}, #{modifyId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP},
-        #{modifyTime,jdbcType=TIMESTAMP})
-    </insert>
-    <insert id="batchInsertWithId" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO activity (<include refid="Base_Column_List"/>)
-        VALUES
-        <foreach collection="list" item="item" separator=",">
-            (#{item.name,jdbcType=VARCHAR}, #{item.content,jdbcType=VARCHAR}, #{item.activityType,jdbcType=INTEGER},
-            #{item.visible,jdbcType=BIT}, #{item.isDeleted,jdbcType=BIT}, #{item.schoolId,jdbcType=INTEGER},
-            #{item.entryYear,jdbcType=INTEGER}, #{item.educationStage,jdbcType=BIGINT}, #{item.latestSnapshotId,jdbcType=BIGINT},
-            #{item.creatorId,jdbcType=BIGINT}, #{item.modifyId,jdbcType=BIGINT}, #{item.createTime,jdbcType=TIMESTAMP},
-            #{item.modifyTime,jdbcType=TIMESTAMP})
 
-            (@batchInsertField@)
-        </foreach>
-    </insert>
-    <insert id="insertSelectiveWithId" parameterType="@package@.@MoName@" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO @mo_table_name@
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="name != null">
-                name,
-            </if>
-            <if test="content != null">
-                content,
-            </if>
-            <if test="activityType != null">
-                activity_type,
-            </if>
-            <if test="visible != null">
-                visible,
-            </if>
-            <if test="isDeleted != null">
-                is_deleted,
-            </if>
-            <if test="schoolId != null">
-                school_id,
-            </if>
-            <if test="entryYear != null">
-                entry_year,
-            </if>
-            <if test="educationStage != null">
-                education_stage,
-            </if>
-            <if test="latestSnapshotId != null">
-                latest_snapshot_id,
-            </if>
-            <if test="creatorId != null">
-                creator_id,
-            </if>
-            <if test="modifyId != null">
-                modify_id,
-            </if>
-            <if test="createTime != null">
-                create_time,
-            </if>
-            <if test="modifyTime != null">
-                modify_time,
-            </if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="name != null">
-                #{name},
-            </if>
-            <if test="content != null">
-                #{content},
-            </if>
-            <if test="activityType != null">
-                #{activityType},
-            </if>
-            <if test="visible != null">
-                #{visible},
-            </if>
-            <if test="isDeleted != null">
-                #{isDeleted},
-            </if>
-            <if test="schoolId != null">
-                #{schoolId},
-            </if>
-            <if test="entryYear != null">
-                #{entryYear},
-            </if>
-            <if test="educationStage != null">
-                #{educationStage},
-            </if>
-            <if test="latestSnapshotId != null">
-                #{latestSnapshotId},
-            </if>
-            <if test="creatorId != null">
-                #{creatorId},
-            </if>
-            <if test="modifyId != null">
-                #{modifyId},
-            </if>
-            <if test="createTime != null">
-                #{createTime},
-            </if>
-            <if test="modifyTime != null">
-                #{modifyTime},
-            </if>
-        </trim>
-    </insert>
+    <!-- 5.根据条件统计记录 -->
     <select id="countByExample" parameterType="@package@.@MoName@Example">
         SELECT COUNT(*) FROM @mo_table_name@
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
         </if>
     </select>
-    <update id="updateByExampleSelective" parameterType="map">
-        UPDATE @mo_table_name@
-        <set>
-            <if test="record.id != null">
-                id = #{record.id},
-            </if>
-            <if test="record.name != null">
-                name = #{record.name},
-            </if>
-        </set>
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
-    <update id="updateByExample" parameterType="map">
-        UPDATE @mo_table_name@
-        SET id = #{record.id},
-        name = #{record.name}
-        <if test="_parameter != null">
-            <include refid="Update_By_Example_Where_Clause"/>
-        </if>
-    </update>
+
+    <!-- 6.增加单条记录, 返回主键 -->
+    <insert id="insertWithId" parameterType="@package@.@MoName@" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO @mo_table_name@ (
+@BaseColumnList@
+        )
+        values (
+@InsertField@
+        )
+    </insert>
+
+    <!-- 7.批量增加记录, 返回主键 -->
+    <insert id="batchInsertWithId" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO activity (
+@BaseColumnList@
+        )
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+@BatchInsertField@
+        </foreach>
+    </insert>
+
+    <!-- 8.根据ID查询对象 -->
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        SELECT
+@SelectBaseColumnList@
+        FROM @mo_table_name@
+        WHERE id = #{id}
+    </select>
+
+    <!-- 9.根据主键只更新非null字段 -->
     <update id="updateByPrimaryKeySelective" parameterType="@package@.@MoName@">
         UPDATE @mo_table_name@
         <set>
-            <if test="name != null">
-                name = #{name},
-            </if>
+@UpdateNonNullFieldByID@
         </set>
         WHERE id = #{id}
     </update>
-    <update id="updateBatchByPrimaryKeySelective" parameterType="java.util.List">
-        <foreach collection="list" open="" close="" separator=";" item="item">
-            update activity
-            <set>
-                <if test="name != null">
-                    `name` = #{name},
-                </if>
-                <if test="content != null">
-                    content = #{content},
-                </if>
-                <if test="activityType != null">
-                    activity_type = #{activityType},
-                </if>
-                <if test="visible != null">
-                    `visible` = #{visible},
-                </if>
-                <if test="schoolId != null">
-                    school_id = #{schoolId},
-                </if>
-                <if test="educationStage != null">
-                    education_stage = #{educationStage},
-                </if>
-                <if test="entryYear != null">
-                    entry_year = #{entryYear},
-                </if>
-                <if test="modifyId != null">
-                    modify_id = #{modifyId},
-                </if>
-            </set>
-            where id = #{id}
-        </foreach>
-    </update>
-    <update id="updateByPrimaryKey" parameterType="@package@.@MoName@">
-        UPDATE @mo_table_name@
-        SET
-            name = #{name},
-            content = #{content}
-        WHERE id = #{id}
-    </update>
+
+    <!-- 10.根据条件删除记录 -->
+    <delete id="deleteByPrimaryKey">
+        DELETE FROM @mo_table_name@ WHERE id = #{id}
+    </delete>
+
 </mapper>

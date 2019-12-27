@@ -69,12 +69,12 @@ public class AutoCodeTemplate {
      */
     public static final StringBuilder TEMPLATE_MO_SQL = new StringBuilder("\n" +
             "-- ----------------------------\n" +
-            "-- Table structure for @mo_table_name@\n" +
+            "-- Table structure for `@mo_table_name@`\n" +
             "-- D8ger-Sql-Auto-Generated\n" +
             "-- @author @d8Author@\n" +
             "-- ----------------------------\n" +
             "-- DROP TABLE IF EXISTS `@mo_table_name@`;\n" +
-            "CREATE TABLE @mo_table_name@\n" +
+            "CREATE TABLE `@mo_table_name@`\n" +
             "(\n" +
             "@id@" +
             "@sql_column@\n" +
@@ -86,99 +86,175 @@ public class AutoCodeTemplate {
     /**
      * Mapper模板字符串
      */
-    public static final StringBuilder TEMPLATE_MAPPER = new StringBuilder("package @package@;\n" +
+    public static final StringBuilder TEMPLATE_MAPPER = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+            "<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\n" +
+            "<mapper namespace=\"@package@.@MoName@Mapper\">\n" +
             "\n" +
-            "import @package@.@MoName@Example;\n" +
-            "import @package@.@MoName@;\n" +
-            "import org.apache.ibatis.annotations.Param;\n" +
-            "import org.apache.ibatis.annotations.Mapper;\n" +
+            "    <resultMap id=\"BaseResultMap\" type=\"@package@.@MoName@\">\n" +
+            "        <id column=\"id\" property=\"id\"/>\n" +
+            "@BaseResultMap@\n" +
+            "    </resultMap>\n" +
             "\n" +
-            "import java.util.List;\n" +
+            "    <!-- 查询操作时条件 -->\n" +
+            "    <sql id=\"Example_Where_Clause\">\n" +
+            "        <where>\n" +
+            "            <foreach collection=\"oredCriteria\" item=\"criteria\" separator=\"or\">\n" +
+            "                <if test=\"criteria.valid\">\n" +
+            "                    <trim prefix=\"(\" prefixOverrides=\"and\" suffix=\")\">\n" +
+            "                        <foreach collection=\"criteria.criteria\" item=\"criterion\">\n" +
+            "                            <choose>\n" +
+            "                                <when test=\"criterion.noValue\">\n" +
+            "                                    AND ${criterion.condition}\n" +
+            "                                </when>\n" +
+            "                                <when test=\"criterion.singleValue\">\n" +
+            "                                    AND ${criterion.condition} #{criterion.value}\n" +
+            "                                </when>\n" +
+            "                                <when test=\"criterion.betweenValue\">\n" +
+            "                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
+            "                                </when>\n" +
+            "                                <when test=\"criterion.listValue\">\n" +
+            "                                    AND ${criterion.condition}\n" +
+            "                                    <foreach close=\")\" collection=\"criterion.value\" item=\"listItem\" open=\"(\" separator=\",\">\n" +
+            "                                        #{listItem}\n" +
+            "                                    </foreach>\n" +
+            "                                </when>\n" +
+            "                            </choose>\n" +
+            "                        </foreach>\n" +
+            "                    </trim>\n" +
+            "                </if>\n" +
+            "            </foreach>\n" +
+            "        </where>\n" +
+            "    </sql>\n" +
             "\n" +
-            "@Mapper\n" +
-            "public interface @MoName@Mapper {\n" +
+            "    <!-- 更新操作时条件 -->\n" +
+            "    <sql id=\"Update_By_Example_Where_Clause\">\n" +
+            "        <where>\n" +
+            "            <foreach collection=\"example.oredCriteria\" item=\"criteria\" separator=\"or\">\n" +
+            "                <if test=\"criteria.valid\">\n" +
+            "                    <trim prefix=\"(\" prefixOverrides=\"and\" suffix=\")\">\n" +
+            "                        <foreach collection=\"criteria.criteria\" item=\"criterion\">\n" +
+            "                            <choose>\n" +
+            "                                <when test=\"criterion.noValue\">\n" +
+            "                                    AND ${criterion.condition}\n" +
+            "                                </when>\n" +
+            "                                <when test=\"criterion.singleValue\">\n" +
+            "                                    AND ${criterion.condition} #{criterion.value}\n" +
+            "                                </when>\n" +
+            "                                <when test=\"criterion.betweenValue\">\n" +
+            "                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
+            "                                </when>\n" +
+            "                                <when test=\"criterion.listValue\">\n" +
+            "                                    AND ${criterion.condition}\n" +
+            "                                    <foreach close=\")\" collection=\"criterion.value\" item=\"listItem\" open=\"(\" separator=\",\">\n" +
+            "                                        #{listItem}\n" +
+            "                                    </foreach>\n" +
+            "                                </when>\n" +
+            "                            </choose>\n" +
+            "                        </foreach>\n" +
+            "                    </trim>\n" +
+            "                </if>\n" +
+            "            </foreach>\n" +
+            "        </where>\n" +
+            "    </sql>\n" +
             "\n" +
-            "    /**\n" +
-            "     * 根据条件查询列表\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@Example\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    List<@MoName@> selectByExample(@MoName@Example @uncapitallizeMoName@Example);\n" +
+            "    <!-- 1.根据条件查询列表 -->\n" +
+            "    <select id=\"selectByExample\" parameterType=\"@package@.@MoName@Example\" resultMap=\"BaseResultMap\">\n" +
+            "        SELECT\n" +
+            "        <if test=\"distinct\">\n" +
+            "            DISTINCT\n" +
+            "        </if>\n" +
+            "@BaseColumnList@\n" +
+            "        FROM @mo_table_name@\n" +
+            "        <if test=\"_parameter != null\">\n" +
+            "            <include refid=\"Example_Where_Clause\"/>\n" +
+            "        </if>\n" +
+            "        <if test=\"orderByClause != null\">\n" +
+            "            ORDER BY ${orderByClause}\n" +
+            "        </if>\n" +
+            "    </select>\n" +
             "\n" +
-            "    /**\n" +
-            "     * 批量更新, 根据主键更新非null字段\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@List\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    int updateBatchByPrimaryKeySelective(List<@MoName@> @uncapitallizeMoName@List);\n" +
+            "    <!-- 2.批量更新, 根据主键更新非null字段 -->\n" +
+            "    <update id=\"updateBatchByPrimaryKeySelective\" parameterType=\"java.util.List\">\n" +
+            "        <foreach collection=\"list\" open=\"\" close=\"\" separator=\";\" item=\"item\">\n" +
+            "            UPDATE @mo_table_name@\n" +
+            "            <set>\n" +
+            "@BatchUpdateNonNullFieldByID@\n" +
+            "            </set>\n" +
+            "            WHERE id = #{id}\n" +
+            "        </foreach>\n" +
+            "    </update>\n" +
             "\n" +
-            "    /**\n" +
-            "     * 根据条件更新非null字段\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@\n" +
-            "     * @param @uncapitallizeMoName@Example\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    int updateByExampleSelective(@Param(\"record\") @MoName@ @uncapitallizeMoName@, @Param(\"example\") @MoName@Example @uncapitallizeMoName@Example);\n" +
+            "    <!-- 3.根据条件更新非null字段 -->\n" +
+            "    <update id=\"updateByExampleSelective\" parameterType=\"map\">\n" +
+            "        UPDATE @mo_table_name@\n" +
+            "        <set>\n" +
+            "@UpdateNonNullFieldByExample@\n" +
+            "        </set>\n" +
+            "        <if test=\"_parameter != null\">\n" +
+            "            <include refid=\"Update_By_Example_Where_Clause\"/>\n" +
+            "        </if>\n" +
+            "    </update>\n" +
             "\n" +
-            "    /**\n" +
-            "     * 根据条件删除记录\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@Example\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    int deleteByExample(@MoName@Example @uncapitallizeMoName@Example);\n" +
+            "    <!-- 4.根据条件删除记录 -->\n" +
+            "    <delete id=\"deleteByExample\" parameterType=\"@package@.ActivityExample\">\n" +
+            "        DELETE FROM @mo_table_name@\n" +
+            "        <if test=\"_parameter != null\">\n" +
+            "            <include refid=\"Example_Where_Clause\"/>\n" +
+            "        </if>\n" +
+            "    </delete>\n" +
             "\n" +
-            "    /**\n" +
-            "     * 根据条件统计记录\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@Example\n" +
-            "     * @return 记录条数\n" +
-            "     */\n" +
-            "    int countByExample(@MoName@Example @uncapitallizeMoName@Example);\n" +
+            "    <!-- 5.根据条件统计记录 -->\n" +
+            "    <select id=\"countByExample\" parameterType=\"@package@.@MoName@Example\">\n" +
+            "        SELECT COUNT(*) FROM @mo_table_name@\n" +
+            "        <if test=\"_parameter != null\">\n" +
+            "            <include refid=\"Example_Where_Clause\"/>\n" +
+            "        </if>\n" +
+            "    </select>\n" +
             "\n" +
-            "    /**\n" +
-            "     * 增加单条记录, 并为入参设置ID\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    int insertWithId(@MoName@ @uncapitallizeMoName@);\n" +
+            "    <!-- 6.增加单条记录, 返回主键 -->\n" +
+            "    <insert id=\"insertWithId\" parameterType=\"@package@.@MoName@\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
+            "        INSERT INTO @mo_table_name@ (\n" +
+            "@BaseColumnList@\n" +
+            "        )\n" +
+            "        values (\n" +
+            "@InsertField@\n" +
+            "        )\n" +
+            "    </insert>\n" +
             "\n" +
-            "    /**\n" +
-            "     * 批量增加记录, 并为入参设置ID\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@List\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    int insertBatchWithId(List<@MoName@> @uncapitallizeMoName@List);\n" +
+            "    <!-- 7.批量增加记录, 返回主键 -->\n" +
+            "    <insert id=\"batchInsertWithId\" parameterType=\"java.util.List\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
+            "        INSERT INTO activity (\n" +
+            "@BaseColumnList@\n" +
+            "        )\n" +
+            "        VALUES\n" +
+            "        <foreach collection=\"list\" item=\"item\" separator=\",\">\n" +
+            "@BatchInsertField@\n" +
+            "        </foreach>\n" +
+            "    </insert>\n" +
             "\n" +
-            "    /**\n" +
-            "     * 根据ID查询对象\n" +
-            "     *\n" +
-            "     * @param id\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    <T extends Number> @MoName@ selectByPrimaryKey(T id);\n" +
+            "    <!-- 8.根据ID查询对象 -->\n" +
+            "    <select id=\"selectByPrimaryKey\" resultMap=\"BaseResultMap\">\n" +
+            "        SELECT\n" +
+            "@BaseColumnList@\n" +
+            "        FROM @mo_table_name@\n" +
+            "        WHERE id = #{id}\n" +
+            "    </select>\n" +
             "\n" +
-            "    /**\n" +
-            "     * 根据主键只更新非null字段\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    int updateByPrimaryKeySelective(@MoName@ @uncapitallizeMoName@);\n" +
+            "    <!-- 9.根据主键只更新非null字段 -->\n" +
+            "    <update id=\"updateByPrimaryKeySelective\" parameterType=\"@package@.@MoName@\">\n" +
+            "        UPDATE @mo_table_name@\n" +
+            "        <set>\n" +
+            "@UpdateNonNullFieldByID@\n" +
+            "        </set>\n" +
+            "        WHERE id = #{id}\n" +
+            "    </update>\n" +
             "\n" +
-            "    /**\n" +
-            "     * 根据ID删除记录\n" +
-            "     *\n" +
-            "     * @param id\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    <T extends Number> int deleteByPrimaryKey(T id);\n" +
-            "}");
+            "    <!-- 10.根据条件删除记录 -->\n" +
+            "    <delete id=\"deleteByPrimaryKey\">\n" +
+            "        DELETE FROM @mo_table_name@ WHERE id = #{id}\n" +
+            "    </delete>\n" +
+            "\n" +
+            "</mapper>");
 
     /**
      * MoExample模板字符串
@@ -394,7 +470,175 @@ public class AutoCodeTemplate {
     /**
      * Mapper.xml模板字符串
      */
-    public static final StringBuilder TEMPLATE_MAPPER_XML = new StringBuilder();
+    public static final StringBuilder TEMPLATE_MAPPER_XML = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+            "<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\n" +
+            "<mapper namespace=\"@package@.@MoName@Mapper\">\n" +
+            "\n" +
+            "    <resultMap id=\"BaseResultMap\" type=\"@package@.@MoName@\">\n" +
+            "        <id column=\"id\" property=\"id\"/>\n" +
+            "@BaseResultMap@\n" +
+            "    </resultMap>\n" +
+            "\n" +
+            "    <!-- 查询操作时条件 -->\n" +
+            "    <sql id=\"Example_Where_Clause\">\n" +
+            "        <where>\n" +
+            "            <foreach collection=\"oredCriteria\" item=\"criteria\" separator=\"or\">\n" +
+            "                <if test=\"criteria.valid\">\n" +
+            "                    <trim prefix=\"(\" prefixOverrides=\"and\" suffix=\")\">\n" +
+            "                        <foreach collection=\"criteria.criteria\" item=\"criterion\">\n" +
+            "                            <choose>\n" +
+            "                                <when test=\"criterion.noValue\">\n" +
+            "                                    AND ${criterion.condition}\n" +
+            "                                </when>\n" +
+            "                                <when test=\"criterion.singleValue\">\n" +
+            "                                    AND ${criterion.condition} #{criterion.value}\n" +
+            "                                </when>\n" +
+            "                                <when test=\"criterion.betweenValue\">\n" +
+            "                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
+            "                                </when>\n" +
+            "                                <when test=\"criterion.listValue\">\n" +
+            "                                    AND ${criterion.condition}\n" +
+            "                                    <foreach close=\")\" collection=\"criterion.value\" item=\"listItem\" open=\"(\" separator=\",\">\n" +
+            "                                        #{listItem}\n" +
+            "                                    </foreach>\n" +
+            "                                </when>\n" +
+            "                            </choose>\n" +
+            "                        </foreach>\n" +
+            "                    </trim>\n" +
+            "                </if>\n" +
+            "            </foreach>\n" +
+            "        </where>\n" +
+            "    </sql>\n" +
+            "\n" +
+            "    <!-- 更新操作时条件 -->\n" +
+            "    <sql id=\"Update_By_Example_Where_Clause\">\n" +
+            "        <where>\n" +
+            "            <foreach collection=\"example.oredCriteria\" item=\"criteria\" separator=\"or\">\n" +
+            "                <if test=\"criteria.valid\">\n" +
+            "                    <trim prefix=\"(\" prefixOverrides=\"and\" suffix=\")\">\n" +
+            "                        <foreach collection=\"criteria.criteria\" item=\"criterion\">\n" +
+            "                            <choose>\n" +
+            "                                <when test=\"criterion.noValue\">\n" +
+            "                                    AND ${criterion.condition}\n" +
+            "                                </when>\n" +
+            "                                <when test=\"criterion.singleValue\">\n" +
+            "                                    AND ${criterion.condition} #{criterion.value}\n" +
+            "                                </when>\n" +
+            "                                <when test=\"criterion.betweenValue\">\n" +
+            "                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
+            "                                </when>\n" +
+            "                                <when test=\"criterion.listValue\">\n" +
+            "                                    AND ${criterion.condition}\n" +
+            "                                    <foreach close=\")\" collection=\"criterion.value\" item=\"listItem\" open=\"(\" separator=\",\">\n" +
+            "                                        #{listItem}\n" +
+            "                                    </foreach>\n" +
+            "                                </when>\n" +
+            "                            </choose>\n" +
+            "                        </foreach>\n" +
+            "                    </trim>\n" +
+            "                </if>\n" +
+            "            </foreach>\n" +
+            "        </where>\n" +
+            "    </sql>\n" +
+            "\n" +
+            "    <!-- 1.根据条件查询列表 -->\n" +
+            "    <select id=\"selectByExample\" parameterType=\"@package@.@MoName@Example\" resultMap=\"BaseResultMap\">\n" +
+            "        SELECT\n" +
+            "        <if test=\"distinct\">\n" +
+            "            DISTINCT\n" +
+            "        </if>\n" +
+            "@SelectBaseColumnList@\n" +
+            "        FROM @mo_table_name@\n" +
+            "        <if test=\"_parameter != null\">\n" +
+            "            <include refid=\"Example_Where_Clause\"/>\n" +
+            "        </if>\n" +
+            "        <if test=\"orderByClause != null\">\n" +
+            "            ORDER BY ${orderByClause}\n" +
+            "        </if>\n" +
+            "    </select>\n" +
+            "\n" +
+            "    <!-- 2.批量更新, 根据主键更新非null字段 -->\n" +
+            "    <update id=\"updateBatchByPrimaryKeySelective\" parameterType=\"java.util.List\">\n" +
+            "        <foreach collection=\"list\" open=\"\" close=\"\" separator=\";\" item=\"item\">\n" +
+            "            UPDATE @mo_table_name@\n" +
+            "            <set>\n" +
+            "@BatchUpdateNonNullFieldByID@\n" +
+            "            </set>\n" +
+            "            WHERE id = #{id}\n" +
+            "        </foreach>\n" +
+            "    </update>\n" +
+            "\n" +
+            "    <!-- 3.根据条件更新非null字段 -->\n" +
+            "    <update id=\"updateByExampleSelective\" parameterType=\"map\">\n" +
+            "        UPDATE @mo_table_name@\n" +
+            "        <set>\n" +
+            "@UpdateNonNullFieldByExample@\n" +
+            "        </set>\n" +
+            "        <if test=\"_parameter != null\">\n" +
+            "            <include refid=\"Update_By_Example_Where_Clause\"/>\n" +
+            "        </if>\n" +
+            "    </update>\n" +
+            "\n" +
+            "    <!-- 4.根据条件删除记录 -->\n" +
+            "    <delete id=\"deleteByExample\" parameterType=\"@package@.ActivityExample\">\n" +
+            "        DELETE FROM @mo_table_name@\n" +
+            "        <if test=\"_parameter != null\">\n" +
+            "            <include refid=\"Example_Where_Clause\"/>\n" +
+            "        </if>\n" +
+            "    </delete>\n" +
+            "\n" +
+            "    <!-- 5.根据条件统计记录 -->\n" +
+            "    <select id=\"countByExample\" parameterType=\"@package@.@MoName@Example\">\n" +
+            "        SELECT COUNT(*) FROM @mo_table_name@\n" +
+            "        <if test=\"_parameter != null\">\n" +
+            "            <include refid=\"Example_Where_Clause\"/>\n" +
+            "        </if>\n" +
+            "    </select>\n" +
+            "\n" +
+            "    <!-- 6.增加单条记录, 返回主键 -->\n" +
+            "    <insert id=\"insertWithId\" parameterType=\"@package@.@MoName@\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
+            "        INSERT INTO @mo_table_name@ (\n" +
+            "@BaseColumnList@\n" +
+            "        )\n" +
+            "        values (\n" +
+            "@InsertField@\n" +
+            "        )\n" +
+            "    </insert>\n" +
+            "\n" +
+            "    <!-- 7.批量增加记录, 返回主键 -->\n" +
+            "    <insert id=\"batchInsertWithId\" parameterType=\"java.util.List\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
+            "        INSERT INTO activity (\n" +
+            "@BaseColumnList@\n" +
+            "        )\n" +
+            "        VALUES\n" +
+            "        <foreach collection=\"list\" item=\"item\" separator=\",\">\n" +
+            "@BatchInsertField@\n" +
+            "        </foreach>\n" +
+            "    </insert>\n" +
+            "\n" +
+            "    <!-- 8.根据ID查询对象 -->\n" +
+            "    <select id=\"selectByPrimaryKey\" resultMap=\"BaseResultMap\">\n" +
+            "        SELECT\n" +
+            "@SelectBaseColumnList@\n" +
+            "        FROM @mo_table_name@\n" +
+            "        WHERE id = #{id}\n" +
+            "    </select>\n" +
+            "\n" +
+            "    <!-- 9.根据主键只更新非null字段 -->\n" +
+            "    <update id=\"updateByPrimaryKeySelective\" parameterType=\"@package@.@MoName@\">\n" +
+            "        UPDATE @mo_table_name@\n" +
+            "        <set>\n" +
+            "@UpdateNonNullFieldByID@\n" +
+            "        </set>\n" +
+            "        WHERE id = #{id}\n" +
+            "    </update>\n" +
+            "\n" +
+            "    <!-- 10.根据条件删除记录 -->\n" +
+            "    <delete id=\"deleteByPrimaryKey\">\n" +
+            "        DELETE FROM @mo_table_name@ WHERE id = #{id}\n" +
+            "    </delete>\n" +
+            "\n" +
+            "</mapper>");
 
 
     /**

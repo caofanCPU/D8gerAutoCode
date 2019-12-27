@@ -154,6 +154,14 @@ public class D8gerAutoCoding {
         } else {
             keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_UPDATE_TIME_KEY.getName(), new StringBuilder());
         }
+        keyWordMatchMap.put(TemplateKeyWordEnum.XML_BASE_MAP_KEY.getName(), this.getXMLBaseResultMap());
+        keyWordMatchMap.put(TemplateKeyWordEnum.XML_BASE_COLUMN_LIST_KEY.getName(), this.getXMLBaseColumnList());
+        keyWordMatchMap.put(TemplateKeyWordEnum.XML_SELECT_BASE_COLUMN_LIST_KEY.getName(), this.getXMLSelectBaseColumnList());
+        keyWordMatchMap.put(TemplateKeyWordEnum.XML_BATCH_UPDATE_NONNULL_FIELD_BY_ID_KEY.getName(), this.getXMLBatchUpdateNonNullFieldByID());
+        keyWordMatchMap.put(TemplateKeyWordEnum.XML_UPDATE_NONNULL_FIELD_BY_EXAMPLE_KEY.getName(), this.getXMLUpdateNonNullFieldByExample());
+        keyWordMatchMap.put(TemplateKeyWordEnum.XML_INSERT_COLUMN_LIST_KEY.getName(), this.getXMLInsertField());
+        keyWordMatchMap.put(TemplateKeyWordEnum.XML_BATCH_INSERT_COLUMN_LIST_KEY.getName(), this.getXMLBatchInsertField());
+        keyWordMatchMap.put(TemplateKeyWordEnum.XML_UPDATE_NONNULL_FIELD_BY_ID_KEY.getName(), this.getXMLUpdateNonNullFieldByID());
         return this;
     }
 
@@ -186,6 +194,112 @@ public class D8gerAutoCoding {
      */
     public String getPackageName() {
         return originMoJavaFile.getPackageName();
+    }
+
+    /**
+     * SQL返回字段Map定义
+     * example: <result column="sql_name" property="name"/>
+     *
+     * @return
+     */
+    public StringBuilder getXMLBaseResultMap() {
+        return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
+                item -> item.getName().equals(ConstantUtil.SQL_ID),
+                item -> ConstantUtil.DOUBLE_TAB + "<result column=\"" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "\"" + ConstantUtil.SPACE + "property=\"" + item.getName() + "\"/>"
+        ), ConstantUtil.NEXT_LINE));
+    }
+
+    /**
+     * SQL全列字段
+     * example:
+     * `id`,
+     * `name`,
+     * `hello_d8ger`
+     *
+     * @return
+     */
+    public StringBuilder getXMLBaseColumnList() {
+        return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList,
+                item -> ConstantUtil.TRIPLE_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`"
+        ), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE));
+    }
+
+    /**
+     * SQL全列字段
+     * example:
+     * `id` AS id,
+     * `name` AS name,
+     * `hello_d8ger` AS helloD8ger
+     *
+     * @return
+     */
+    public StringBuilder getXMLSelectBaseColumnList() {
+        return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList,
+                item -> ConstantUtil.TRIPLE_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "` AS " + item.getName()
+        ), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE));
+    }
+
+    /**
+     * SQL根据主键更新非null字段
+     *
+     * @return
+     */
+    public StringBuilder getXMLBatchUpdateNonNullFieldByID() {
+        return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
+                item -> item.getName().equals(ConstantUtil.SQL_ID),
+                item -> ConstantUtil.QUATERNARY_TAB + "<if test=\"" + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
+                        + ConstantUtil.PENTA_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + "=" + ConstantUtil.SPACE + "#{" + item.getName() + "}," + ConstantUtil.NEXT_LINE
+                        + ConstantUtil.QUATERNARY_TAB + "</if>"
+        ), ConstantUtil.NEXT_LINE));
+    }
+
+    /**
+     * SQL批量更新非null字段
+     *
+     * @return
+     */
+    public StringBuilder getXMLUpdateNonNullFieldByExample() {
+        return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList,
+                item -> ConstantUtil.TRIPLE_TAB + "<if test=\"record." + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
+                        + ConstantUtil.QUATERNARY_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + "=" + ConstantUtil.SPACE + "#{record." + item.getName() + "}," + ConstantUtil.NEXT_LINE
+                        + ConstantUtil.TRIPLE_TAB + "</if>"
+        ), ConstantUtil.NEXT_LINE));
+    }
+
+    /**
+     * SQL插入单条记录
+     *
+     * @return
+     */
+    public StringBuilder getXMLInsertField() {
+        return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, item -> ConstantUtil.TRIPLE_TAB + "#{item." + item.getName() + "}"),
+                ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE)
+        );
+    }
+
+    /**
+     * SQL批量插入
+     *
+     * @return
+     */
+    public StringBuilder getXMLBatchInsertField() {
+        return new StringBuilder(ConstantUtil.TRIPLE_TAB).append("(").append(ConstantUtil.NEXT_LINE)
+                .append(CollectionUtil.join(CollectionUtil.transToList(moFieldList, item -> ConstantUtil.QUATERNARY_TAB + "#{item." + item.getName() + "}"), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE))
+                .append(ConstantUtil.NEXT_LINE).append(ConstantUtil.TRIPLE_TAB).append(")");
+    }
+
+    /**
+     * SQL根据ID更新非null字段
+     *
+     * @return
+     */
+    public StringBuilder getXMLUpdateNonNullFieldByID() {
+        return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
+                item -> item.getName().equals(ConstantUtil.SQL_ID),
+                item -> ConstantUtil.TRIPLE_TAB + "<if test=\"" + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
+                        + ConstantUtil.QUATERNARY_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + "=" + ConstantUtil.SPACE + "#{" + item.getName() + "}," + ConstantUtil.NEXT_LINE
+                        + ConstantUtil.TRIPLE_TAB + "</if>"
+        ), ConstantUtil.NEXT_LINE));
     }
 
     /**
