@@ -480,7 +480,7 @@ public class AutoCodeTemplate {
             "            DISTINCT\n" +
             "        </if>\n" +
             "@SelectBaseColumnList@\n" +
-            "        FROM @mo_table_name@\n" +
+            "        FROM `@mo_table_name@`\n" +
             "        <if test=\"_parameter != null\">\n" +
             "            <include refid=\"Example_Where_Clause\"/>\n" +
             "        </if>\n" +
@@ -492,7 +492,7 @@ public class AutoCodeTemplate {
             "    <!-- 2.批量更新, 根据主键更新非null字段 -->\n" +
             "    <update id=\"updateBatchByPrimaryKeySelective\" parameterType=\"java.util.List\">\n" +
             "        <foreach collection=\"list\" open=\"\" close=\"\" separator=\";\" item=\"item\">\n" +
-            "            UPDATE @mo_table_name@\n" +
+            "            UPDATE `@mo_table_name@`\n" +
             "            <set>\n" +
             "@BatchUpdateNonNullFieldByID@\n" +
             "            </set>\n" +
@@ -502,7 +502,7 @@ public class AutoCodeTemplate {
             "\n" +
             "    <!-- 3.根据条件更新非null字段 -->\n" +
             "    <update id=\"updateByExampleSelective\" parameterType=\"map\">\n" +
-            "        UPDATE @mo_table_name@\n" +
+            "        UPDATE `@mo_table_name@`\n" +
             "        <set>\n" +
             "@UpdateNonNullFieldByExample@\n" +
             "        </set>\n" +
@@ -513,7 +513,7 @@ public class AutoCodeTemplate {
             "\n" +
             "    <!-- 4.根据条件删除记录 -->\n" +
             "    <delete id=\"deleteByExample\" parameterType=\"@package@.ActivityExample\">\n" +
-            "        DELETE FROM @mo_table_name@\n" +
+            "        DELETE FROM `@mo_table_name@`\n" +
             "        <if test=\"_parameter != null\">\n" +
             "            <include refid=\"Example_Where_Clause\"/>\n" +
             "        </if>\n" +
@@ -521,7 +521,9 @@ public class AutoCodeTemplate {
             "\n" +
             "    <!-- 5.根据条件统计记录 -->\n" +
             "    <select id=\"countByExample\" parameterType=\"@package@.@MoName@Example\">\n" +
-            "        SELECT COUNT(*) FROM @mo_table_name@\n" +
+            "        SELECT\n" +
+            "            COUNT(*)\n" +
+            "        FROM `@mo_table_name@`\n" +
             "        <if test=\"_parameter != null\">\n" +
             "            <include refid=\"Example_Where_Clause\"/>\n" +
             "        </if>\n" +
@@ -529,7 +531,7 @@ public class AutoCodeTemplate {
             "\n" +
             "    <!-- 6.增加单条记录, 返回主键 -->\n" +
             "    <insert id=\"insertWithId\" parameterType=\"@package@.@MoName@\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
-            "        INSERT INTO @mo_table_name@ (\n" +
+            "        INSERT INTO `@mo_table_name@` (\n" +
             "@BaseColumnList@\n" +
             "        )\n" +
             "        values (\n" +
@@ -539,7 +541,7 @@ public class AutoCodeTemplate {
             "\n" +
             "    <!-- 7.批量增加记录, 返回主键 -->\n" +
             "    <insert id=\"insertBatchWithId\" parameterType=\"java.util.List\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
-            "        INSERT INTO activity (\n" +
+            "        INSERT INTO `@mo_table_name@` (\n" +
             "@BaseColumnList@\n" +
             "        )\n" +
             "        VALUES\n" +
@@ -552,7 +554,7 @@ public class AutoCodeTemplate {
             "    <select id=\"query@MoName@List\" parameterType=\"@package@.@MoName@\"  resultMap=\"BaseResultMap\">\n" +
             "        SELECT\n" +
             "@SelectBaseColumnList@\n" +
-            "        FROM @mo_table_name@\n" +
+            "        FROM `@mo_table_name@`\n" +
             "        WHERE 1 = 1\n" +
             "@MoListQuery@\n" +
             "    </select>\n" +
@@ -561,13 +563,13 @@ public class AutoCodeTemplate {
             "    <select id=\"selectByPrimaryKey\" resultMap=\"BaseResultMap\">\n" +
             "        SELECT\n" +
             "@SelectBaseColumnList@\n" +
-            "        FROM @mo_table_name@\n" +
+            "        FROM `@mo_table_name@`\n" +
             "        WHERE id = #{id}\n" +
             "    </select>\n" +
             "\n" +
             "    <!-- 10.根据主键只更新非null字段 -->\n" +
             "    <update id=\"updateByPrimaryKeySelective\" parameterType=\"@package@.@MoName@\">\n" +
-            "        UPDATE @mo_table_name@\n" +
+            "        UPDATE `@mo_table_name@`\n" +
             "        <set>\n" +
             "@UpdateNonNullFieldByID@\n" +
             "        </set>\n" +
@@ -576,7 +578,7 @@ public class AutoCodeTemplate {
             "\n" +
             "    <!-- 11.根据条件删除记录 -->\n" +
             "    <delete id=\"deleteByPrimaryKey\">\n" +
-            "        DELETE FROM @mo_table_name@ WHERE id = #{id}\n" +
+            "        DELETE FROM `@mo_table_name@` WHERE id = #{id}\n" +
             "    </delete>\n" +
             "\n" +
             "</mapper>");
