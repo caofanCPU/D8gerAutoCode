@@ -1,4 +1,4 @@
-package @package@
+package @package@;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ public interface @MoName@Service {
      * @param @uncapitallizeMoName@
      * @return
      */
-    int updateSelective(@MoName@ @uncapitallizeMoName@);
+    int updateSelectiveById(@MoName@ @uncapitallizeMoName@);
 
     /**
      * 根据id物理删除
@@ -47,6 +47,6 @@ public interface @MoName@Service {
      * @param id
      * @return
      */
-    int deleteById(Integer id);
+    int delete(Integer id);
 
 }

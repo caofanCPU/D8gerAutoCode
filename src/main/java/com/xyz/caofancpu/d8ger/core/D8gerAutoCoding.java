@@ -162,6 +162,7 @@ public class D8gerAutoCoding {
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_INSERT_COLUMN_LIST_KEY.getName(), this.getXMLInsertField());
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_BATCH_INSERT_COLUMN_LIST_KEY.getName(), this.getXMLBatchInsertField());
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_UPDATE_NONNULL_FIELD_BY_ID_KEY.getName(), this.getXMLUpdateNonNullFieldByID());
+        keyWordMatchMap.put(TemplateKeyWordEnum.XML_MO_LIST_QUERY_KEY.getName(), this.getXMLMoListQuery());
         return this;
     }
 
@@ -202,7 +203,7 @@ public class D8gerAutoCoding {
      *
      * @return
      */
-    public StringBuilder getXMLBaseResultMap() {
+    private StringBuilder getXMLBaseResultMap() {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
                 item -> item.getName().equals(ConstantUtil.SQL_ID),
                 item -> ConstantUtil.DOUBLE_TAB + "<result column=\"" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "\"" + ConstantUtil.SPACE + "property=\"" + item.getName() + "\"/>"
@@ -218,7 +219,7 @@ public class D8gerAutoCoding {
      *
      * @return
      */
-    public StringBuilder getXMLBaseColumnList() {
+    private StringBuilder getXMLBaseColumnList() {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList,
                 item -> ConstantUtil.TRIPLE_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`"
         ), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE));
@@ -233,7 +234,7 @@ public class D8gerAutoCoding {
      *
      * @return
      */
-    public StringBuilder getXMLSelectBaseColumnList() {
+    private StringBuilder getXMLSelectBaseColumnList() {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList,
                 item -> ConstantUtil.TRIPLE_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "` AS " + item.getName()
         ), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE));
@@ -244,7 +245,7 @@ public class D8gerAutoCoding {
      *
      * @return
      */
-    public StringBuilder getXMLBatchUpdateNonNullFieldByID() {
+    private StringBuilder getXMLBatchUpdateNonNullFieldByID() {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
                 item -> item.getName().equals(ConstantUtil.SQL_ID),
                 item -> ConstantUtil.QUATERNARY_TAB + "<if test=\"" + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
@@ -258,7 +259,7 @@ public class D8gerAutoCoding {
      *
      * @return
      */
-    public StringBuilder getXMLUpdateNonNullFieldByExample() {
+    private StringBuilder getXMLUpdateNonNullFieldByExample() {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList,
                 item -> ConstantUtil.TRIPLE_TAB + "<if test=\"record." + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
                         + ConstantUtil.QUATERNARY_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + "=" + ConstantUtil.SPACE + "#{record." + item.getName() + "}," + ConstantUtil.NEXT_LINE
@@ -271,7 +272,7 @@ public class D8gerAutoCoding {
      *
      * @return
      */
-    public StringBuilder getXMLInsertField() {
+    private StringBuilder getXMLInsertField() {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, item -> ConstantUtil.TRIPLE_TAB + "#{item." + item.getName() + "}"),
                 ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE)
         );
@@ -282,7 +283,7 @@ public class D8gerAutoCoding {
      *
      * @return
      */
-    public StringBuilder getXMLBatchInsertField() {
+    private StringBuilder getXMLBatchInsertField() {
         return new StringBuilder(ConstantUtil.TRIPLE_TAB).append("(").append(ConstantUtil.NEXT_LINE)
                 .append(CollectionUtil.join(CollectionUtil.transToList(moFieldList, item -> ConstantUtil.QUATERNARY_TAB + "#{item." + item.getName() + "}"), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE))
                 .append(ConstantUtil.NEXT_LINE).append(ConstantUtil.TRIPLE_TAB).append(")");
@@ -293,12 +294,33 @@ public class D8gerAutoCoding {
      *
      * @return
      */
-    public StringBuilder getXMLUpdateNonNullFieldByID() {
+    private StringBuilder getXMLUpdateNonNullFieldByID() {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
                 item -> item.getName().equals(ConstantUtil.SQL_ID),
                 item -> ConstantUtil.TRIPLE_TAB + "<if test=\"" + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
                         + ConstantUtil.QUATERNARY_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + "=" + ConstantUtil.SPACE + "#{" + item.getName() + "}," + ConstantUtil.NEXT_LINE
                         + ConstantUtil.TRIPLE_TAB + "</if>"
+        ), ConstantUtil.NEXT_LINE));
+    }
+
+    /**
+     * Mo对象查询
+     *
+     * @return
+     */
+    private StringBuilder getXMLMoListQuery() {
+        return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList,
+                item -> {
+                    String tmp;
+                    if (SupportFieldTypeEnum.STRING.getShortName().equals(item.getFieldTypeShortName())) {
+                        tmp = "LIKE " + "CONCAT(#{" + item.getName() + "}, \'%\')";
+                    } else {
+                        tmp = "=" + ConstantUtil.SPACE + "#{" + item.getName() + "}";
+                    }
+                    return ConstantUtil.TRIPLE_TAB + "<if test=\"" + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
+                            + ConstantUtil.QUATERNARY_TAB + "AND `" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + tmp + ConstantUtil.NEXT_LINE
+                            + ConstantUtil.TRIPLE_TAB + "</if>";
+                }
         ), ConstantUtil.NEXT_LINE));
     }
 

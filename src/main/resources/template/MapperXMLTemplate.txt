@@ -134,7 +134,7 @@
     </insert>
 
     <!-- 7.批量增加记录, 返回主键 -->
-    <insert id="batchInsertWithId" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertBatchWithId" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO activity (
 @BaseColumnList@
         )
@@ -144,7 +144,16 @@
         </foreach>
     </insert>
 
-    <!-- 8.根据ID查询对象 -->
+    <!-- 8.@MoName@列表查询 -->
+    <select id="query@MoName@List" parameterType="@package@.@MoName@"  resultMap="BaseResultMap">
+        SELECT
+@SelectBaseColumnList@
+        FROM @mo_table_name@
+        WHERE 1 = 1
+@MoListQuery@
+    </select>
+
+    <!-- 9.根据ID查询对象 -->
     <select id="selectByPrimaryKey" resultMap="BaseResultMap">
         SELECT
 @SelectBaseColumnList@
@@ -152,7 +161,7 @@
         WHERE id = #{id}
     </select>
 
-    <!-- 9.根据主键只更新非null字段 -->
+    <!-- 10.根据主键只更新非null字段 -->
     <update id="updateByPrimaryKeySelective" parameterType="@package@.@MoName@">
         UPDATE @mo_table_name@
         <set>
@@ -161,7 +170,7 @@
         WHERE id = #{id}
     </update>
 
-    <!-- 10.根据条件删除记录 -->
+    <!-- 11.根据条件删除记录 -->
     <delete id="deleteByPrimaryKey">
         DELETE FROM @mo_table_name@ WHERE id = #{id}
     </delete>

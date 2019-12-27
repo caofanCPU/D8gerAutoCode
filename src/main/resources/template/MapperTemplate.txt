@@ -68,6 +68,14 @@ public interface @MoName@Mapper {
     int insertBatchWithId(List<@MoName@> @uncapitallizeMoName@List);
 
     /**
+     * @MoName@列表查询
+     *
+     * @param @uncapitallizeMoName@
+     * @return
+     */
+    List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@)
+
+    /**
      * 根据ID查询对象
      *
      * @param id

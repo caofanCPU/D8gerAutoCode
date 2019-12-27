@@ -30,14 +30,27 @@ public class MoField {
      * 字段注释(名称)
      */
     private String comment;
+
     /**
      * 访问修饰符, 默认private
      */
     private String accessModifier;
+
+    /**
+     * 字段原始类型名称
+     */
+    private String fieldOriginTypeName;
+
     /**
      * 字段类型简称
      */
-    private SupportFieldTypeEnum fieldTypeEnum;
+    private String fieldTypeShortName;
+
+    /**
+     * 字段SQL类型名称
+     */
+    private String fieldSqlTypeName;
+
     /**
      * 字段名称
      */
@@ -60,7 +73,17 @@ public class MoField {
                 continue;
             }
             if (child instanceof PsiTypeElement) {
-                this.fieldTypeEnum = SupportFieldTypeEnum.positionByShortName(child.getText());
+                if (Objects.nonNull(child.getText()) && StringUtils.containsIgnoreCase(child.getText(), ConstantUtil.ENUM_SUFFIX)) {
+                    // 对于名称中包含Enum或者enum的类型, 判定为枚举
+                    this.fieldOriginTypeName = SupportFieldTypeEnum.ENUM.getOriginName();
+                    this.fieldTypeShortName = child.getText();
+                    this.fieldSqlTypeName = SupportFieldTypeEnum.ENUM.getSqlName();
+                } else {
+                    SupportFieldTypeEnum fieldTypeEnum = SupportFieldTypeEnum.positionByShortName(child.getText());
+                    this.fieldOriginTypeName = fieldTypeEnum.getOriginName();
+                    this.fieldTypeShortName = fieldTypeEnum.getShortName();
+                    this.fieldSqlTypeName = fieldTypeEnum.getSqlName();
+                }
                 continue;
             }
             if (child instanceof PsiIdentifier) {
@@ -81,16 +104,16 @@ public class MoField {
      * @return
      */
     public String wrapSqlDefaultValueView() {
-        if (Objects.isNull(fieldTypeEnum) || fieldTypeEnum == SupportFieldTypeEnum.NONE) {
+        if (Objects.isNull(fieldSqlTypeName)) {
             return ConstantUtil.EMPTY;
         }
-        if (fieldTypeEnum.getSqlName().contains("int")) {
+        if (fieldSqlTypeName.contains("int")) {
             return "default 0 null";
         }
-        if (fieldTypeEnum.getSqlName().contains("double")) {
+        if (fieldSqlTypeName.contains("double")) {
             return "default 0.00 null";
         }
-        if (fieldTypeEnum.getSqlName().contains("datetime")) {
+        if (fieldSqlTypeName.contains("datetime")) {
             return name.equals(ConstantUtil.SQL_UPDATE_TIME) ? "default CURRENT_TIMESTAMP null on update CURRENT_TIMESTAMP" : "default CURRENT_TIMESTAMP null";
         }
         return "default '' null";
@@ -101,7 +124,7 @@ public class MoField {
         return ConstantUtil.TAB + "/**\n"
                 + ConstantUtil.TAB + ConstantUtil.SPACE + "*" + ConstantUtil.SPACE + comment + "\n"
                 + ConstantUtil.TAB + ConstantUtil.SPACE + "*/" + "\n"
-                + ConstantUtil.TAB + accessModifier + ConstantUtil.SPACE + fieldTypeEnum.getShortName() + ConstantUtil.SPACE + name + ConstantUtil.ENGLISH_SEMICOLON;
+                + ConstantUtil.TAB + accessModifier + ConstantUtil.SPACE + fieldTypeShortName + ConstantUtil.SPACE + name + ConstantUtil.ENGLISH_SEMICOLON;
     }
 
     /**
@@ -111,7 +134,7 @@ public class MoField {
      */
     public String toSwaggerString() {
         return ConstantUtil.TAB + "@ApiModelProperty(value = \"" + comment + "\", required = false, example = \"\", position = " + index + ")" + ConstantUtil.NEXT_LINE
-                + ConstantUtil.TAB + accessModifier + ConstantUtil.SPACE + fieldTypeEnum.getShortName() + ConstantUtil.SPACE + name + ConstantUtil.ENGLISH_SEMICOLON;
+                + ConstantUtil.TAB + accessModifier + ConstantUtil.SPACE + fieldTypeShortName + ConstantUtil.SPACE + name + ConstantUtil.ENGLISH_SEMICOLON;
     }
 
     /**
@@ -121,10 +144,10 @@ public class MoField {
      */
     public String toSqlColumnDefinitionString() {
         if (name.equals(ConstantUtil.SQL_ID)) {
-            return ConstantUtil.TAB + ConstantUtil.SQL_ID + ConstantUtil.SPACE + fieldTypeEnum.getSqlName() + ConstantUtil.SPACE + "unsigned auto_increment" + ConstantUtil.SPACE + wrapSqlDefaultValueView() + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.SPACE + "primary key" + ConstantUtil.ENGLISH_COMMA;
+            return ConstantUtil.TAB + ConstantUtil.SQL_ID + ConstantUtil.SPACE + fieldTypeShortName + ConstantUtil.SPACE + "unsigned auto_increment" + ConstantUtil.SPACE + wrapSqlDefaultValueView() + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.SPACE + "primary key" + ConstantUtil.ENGLISH_COMMA;
         }
 
-        return ConstantUtil.TAB + VerbalExpressionUtil.sqlUnderLineName(name) + ConstantUtil.SPACE + fieldTypeEnum.getSqlName() + ConstantUtil.SPACE + wrapSqlDefaultValueView() + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.ENGLISH_COMMA;
+        return ConstantUtil.TAB + VerbalExpressionUtil.sqlUnderLineName(name) + ConstantUtil.SPACE + fieldTypeShortName + ConstantUtil.SPACE + wrapSqlDefaultValueView() + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.ENGLISH_COMMA;
     }
 
     /**
@@ -135,7 +158,7 @@ public class MoField {
     public String toMoExampleDefinitionMethodString() {
         String capitalizeName = StringUtils.capitalize(name);
         String sqlColumnName = VerbalExpressionUtil.sqlUnderLineName(name);
-        String javaTypeShortName = fieldTypeEnum.getShortName();
+        String javaTypeShortName = fieldTypeShortName;
         StringBuilder builder = new StringBuilder();
         builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("为null").append(ConstantUtil.NEXT_LINE)
@@ -245,7 +268,7 @@ public class MoField {
                 .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("not between\", value1, value2, \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
-        if (SupportFieldTypeEnum.STRING == fieldTypeEnum) {
+        if (SupportFieldTypeEnum.STRING.getShortName().equals(fieldTypeShortName)) {
             // 字符串字段, 添加前缀模糊查询
             builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
                     .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("模糊查询以前缀开头").append(ConstantUtil.NEXT_LINE)

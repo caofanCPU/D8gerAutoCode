@@ -26,6 +26,8 @@ public enum TemplateKeyWordEnum {
     XML_UPDATE_NONNULL_FIELD_BY_EXAMPLE_KEY("@UpdateNonNullFieldByExample@"),
     XML_INSERT_COLUMN_LIST_KEY("@InsertField@"),
     XML_BATCH_INSERT_COLUMN_LIST_KEY("@BatchInsertField@"),
+    XML_MO_LIST_QUERY_KEY("@MoListQuery@"),
+
 
     ;
 

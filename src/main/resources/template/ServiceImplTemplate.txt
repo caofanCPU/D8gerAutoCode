@@ -1,4 +1,4 @@
-package @package@
+package @package@;
 
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class @MoName@ServiceImpl implements @MoName@Service {
      */
     @Override
     public int add(@MoName@ @uncapitallizeMoName@) {
-        return @uncapitallizeMoName@Mapper.add(@uncapitallizeMoName@);
+        return @uncapitallizeMoName@Mapper.insertWithId(@uncapitallizeMoName@);
     }
 
     /**
@@ -35,7 +35,7 @@ public class @MoName@ServiceImpl implements @MoName@Service {
      */
     @Override
     public int batchAdd(List<@MoName@> @uncapitallizeMoName@List) {
-        return @uncapitallizeMoName@Mapper.batchAdd(@uncapitallizeMoName@List);
+        return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@List);
     }
 
     /**
@@ -56,8 +56,8 @@ public class @MoName@ServiceImpl implements @MoName@Service {
      * @return
      */
     @Override
-    public int updateSelective(@MoName@ @uncapitallizeMoName@) {
-        return @uncapitallizeMoName@Mapper.updateSelective(@uncapitallizeMoName@);
+    public int updateSelectiveById(@MoName@ @uncapitallizeMoName@) {
+        return @uncapitallizeMoName@Mapper.updateBatchByPrimaryKeySelective(@uncapitallizeMoName@);
     }
 
     /**
@@ -67,8 +67,8 @@ public class @MoName@ServiceImpl implements @MoName@Service {
      * @return
      */
     @Override
-    public int deleteById(Integer id) {
-        return @uncapitallizeMoName@Mapper.deleteById(id);
+    public int delete(Integer id) {
+        return @uncapitallizeMoName@Mapper.deleteByPrimaryKey(id);
     }
 
 }

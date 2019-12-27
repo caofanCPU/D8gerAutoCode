@@ -1,7 +1,6 @@
 package com.xyz.caofancpu.d8ger.core;
 
 import com.xyz.caofancpu.d8ger.util.CollectionUtil;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,7 +29,7 @@ public enum SupportFieldTypeEnum {
     BASIC_FLOAT("float", "float", "double(8, 2)"),
     BASIC_SHORT("short", "short", "int(4)"),
     BASIC_BOOLEAN("boolean", "boolean", "tinyint(1)"),
-    ENUM("Enum", "", "int(4)"),
+    ENUM("java.lang.Enum", null, "int(4)"),
     NONE(null, null, null);
 
     private String originName;
@@ -53,10 +52,6 @@ public enum SupportFieldTypeEnum {
         SupportFieldTypeEnum result = CollectionUtil.findFirst(noneNullEnumList, item -> item.getShortName().equals(shortName));
         if (Objects.nonNull(result)) {
             return result;
-        }
-        if (Objects.nonNull(shortName) && StringUtils.containsIgnoreCase(shortName, SupportFieldTypeEnum.ENUM.getOriginName())) {
-            // 对于名称中包含Enum或者enum的类型, 判定为枚举
-            return SupportFieldTypeEnum.ENUM.setShortName(shortName);
         }
         return SupportFieldTypeEnum.NONE;
     }

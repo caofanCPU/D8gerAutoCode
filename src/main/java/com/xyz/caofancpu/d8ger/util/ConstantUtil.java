@@ -12,6 +12,11 @@ import java.util.Collections;
 public class ConstantUtil {
 
     /**
+     * 枚举名称后缀
+     */
+    public static final String ENUM_SUFFIX = "Enum";
+
+    /**
      * 英文逗号
      */
     public static final String ENGLISH_COMMA = ",";

@@ -16,7 +16,7 @@ public class AutoCodeTemplate {
     /**
      * MO模板字符串
      */
-    public static final StringBuilder TEMPLATE_MO = new StringBuilder("package @package@\n\n" +
+    public static final StringBuilder TEMPLATE_MO = new StringBuilder("package @package@;\n\n" +
             "import lombok.AllArgsConstructor;\n" +
             "import lombok.Data;\n" +
             "import lombok.NoArgsConstructor;\n" +
@@ -40,7 +40,7 @@ public class AutoCodeTemplate {
     /**
      * SwaggerMO模板字符串
      */
-    public static final StringBuilder TEMPLATE_SWAGGER_MO = new StringBuilder("package @package@\n\n" +
+    public static final StringBuilder TEMPLATE_SWAGGER_MO = new StringBuilder("package @package@;\n\n" +
             "import io.swagger.annotations.ApiModel;\n" +
             "import io.swagger.annotations.ApiModelProperty;\n" +
             "import lombok.AllArgsConstructor;\n" +
@@ -58,7 +58,7 @@ public class AutoCodeTemplate {
             "@AllArgsConstructor\n" +
             "@Accessors(chain = true)\n" +
             "@ApiModel\n" +
-            "public class @MoName@ {\n" +
+            "public class @MoName@Mo {\n" +
             "\n" +
             "@swaggerField@\n" +
             "\n" +
@@ -86,175 +86,107 @@ public class AutoCodeTemplate {
     /**
      * Mapper模板字符串
      */
-    public static final StringBuilder TEMPLATE_MAPPER = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
-            "<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\n" +
-            "<mapper namespace=\"@package@.@MoName@Mapper\">\n" +
+    public static final StringBuilder TEMPLATE_MAPPER = new StringBuilder("package @package@;\n" +
             "\n" +
-            "    <resultMap id=\"BaseResultMap\" type=\"@package@.@MoName@\">\n" +
-            "        <id column=\"id\" property=\"id\"/>\n" +
-            "@BaseResultMap@\n" +
-            "    </resultMap>\n" +
+            "import @package@.@MoName@Example;\n" +
+            "import @package@.@MoName@;\n" +
+            "import org.apache.ibatis.annotations.Param;\n" +
+            "import org.apache.ibatis.annotations.Mapper;\n" +
             "\n" +
-            "    <!-- 查询操作时条件 -->\n" +
-            "    <sql id=\"Example_Where_Clause\">\n" +
-            "        <where>\n" +
-            "            <foreach collection=\"oredCriteria\" item=\"criteria\" separator=\"or\">\n" +
-            "                <if test=\"criteria.valid\">\n" +
-            "                    <trim prefix=\"(\" prefixOverrides=\"and\" suffix=\")\">\n" +
-            "                        <foreach collection=\"criteria.criteria\" item=\"criterion\">\n" +
-            "                            <choose>\n" +
-            "                                <when test=\"criterion.noValue\">\n" +
-            "                                    AND ${criterion.condition}\n" +
-            "                                </when>\n" +
-            "                                <when test=\"criterion.singleValue\">\n" +
-            "                                    AND ${criterion.condition} #{criterion.value}\n" +
-            "                                </when>\n" +
-            "                                <when test=\"criterion.betweenValue\">\n" +
-            "                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
-            "                                </when>\n" +
-            "                                <when test=\"criterion.listValue\">\n" +
-            "                                    AND ${criterion.condition}\n" +
-            "                                    <foreach close=\")\" collection=\"criterion.value\" item=\"listItem\" open=\"(\" separator=\",\">\n" +
-            "                                        #{listItem}\n" +
-            "                                    </foreach>\n" +
-            "                                </when>\n" +
-            "                            </choose>\n" +
-            "                        </foreach>\n" +
-            "                    </trim>\n" +
-            "                </if>\n" +
-            "            </foreach>\n" +
-            "        </where>\n" +
-            "    </sql>\n" +
+            "import java.util.List;\n" +
             "\n" +
-            "    <!-- 更新操作时条件 -->\n" +
-            "    <sql id=\"Update_By_Example_Where_Clause\">\n" +
-            "        <where>\n" +
-            "            <foreach collection=\"example.oredCriteria\" item=\"criteria\" separator=\"or\">\n" +
-            "                <if test=\"criteria.valid\">\n" +
-            "                    <trim prefix=\"(\" prefixOverrides=\"and\" suffix=\")\">\n" +
-            "                        <foreach collection=\"criteria.criteria\" item=\"criterion\">\n" +
-            "                            <choose>\n" +
-            "                                <when test=\"criterion.noValue\">\n" +
-            "                                    AND ${criterion.condition}\n" +
-            "                                </when>\n" +
-            "                                <when test=\"criterion.singleValue\">\n" +
-            "                                    AND ${criterion.condition} #{criterion.value}\n" +
-            "                                </when>\n" +
-            "                                <when test=\"criterion.betweenValue\">\n" +
-            "                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
-            "                                </when>\n" +
-            "                                <when test=\"criterion.listValue\">\n" +
-            "                                    AND ${criterion.condition}\n" +
-            "                                    <foreach close=\")\" collection=\"criterion.value\" item=\"listItem\" open=\"(\" separator=\",\">\n" +
-            "                                        #{listItem}\n" +
-            "                                    </foreach>\n" +
-            "                                </when>\n" +
-            "                            </choose>\n" +
-            "                        </foreach>\n" +
-            "                    </trim>\n" +
-            "                </if>\n" +
-            "            </foreach>\n" +
-            "        </where>\n" +
-            "    </sql>\n" +
+            "@Mapper\n" +
+            "public interface @MoName@Mapper {\n" +
             "\n" +
-            "    <!-- 1.根据条件查询列表 -->\n" +
-            "    <select id=\"selectByExample\" parameterType=\"@package@.@MoName@Example\" resultMap=\"BaseResultMap\">\n" +
-            "        SELECT\n" +
-            "        <if test=\"distinct\">\n" +
-            "            DISTINCT\n" +
-            "        </if>\n" +
-            "@BaseColumnList@\n" +
-            "        FROM @mo_table_name@\n" +
-            "        <if test=\"_parameter != null\">\n" +
-            "            <include refid=\"Example_Where_Clause\"/>\n" +
-            "        </if>\n" +
-            "        <if test=\"orderByClause != null\">\n" +
-            "            ORDER BY ${orderByClause}\n" +
-            "        </if>\n" +
-            "    </select>\n" +
+            "    /**\n" +
+            "     * 根据条件查询列表\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@Example\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    List<@MoName@> selectByExample(@MoName@Example @uncapitallizeMoName@Example);\n" +
             "\n" +
-            "    <!-- 2.批量更新, 根据主键更新非null字段 -->\n" +
-            "    <update id=\"updateBatchByPrimaryKeySelective\" parameterType=\"java.util.List\">\n" +
-            "        <foreach collection=\"list\" open=\"\" close=\"\" separator=\";\" item=\"item\">\n" +
-            "            UPDATE @mo_table_name@\n" +
-            "            <set>\n" +
-            "@BatchUpdateNonNullFieldByID@\n" +
-            "            </set>\n" +
-            "            WHERE id = #{id}\n" +
-            "        </foreach>\n" +
-            "    </update>\n" +
+            "    /**\n" +
+            "     * 批量更新, 根据主键更新非null字段\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@List\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    int updateBatchByPrimaryKeySelective(List<@MoName@> @uncapitallizeMoName@List);\n" +
             "\n" +
-            "    <!-- 3.根据条件更新非null字段 -->\n" +
-            "    <update id=\"updateByExampleSelective\" parameterType=\"map\">\n" +
-            "        UPDATE @mo_table_name@\n" +
-            "        <set>\n" +
-            "@UpdateNonNullFieldByExample@\n" +
-            "        </set>\n" +
-            "        <if test=\"_parameter != null\">\n" +
-            "            <include refid=\"Update_By_Example_Where_Clause\"/>\n" +
-            "        </if>\n" +
-            "    </update>\n" +
+            "    /**\n" +
+            "     * 根据条件更新非null字段\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@\n" +
+            "     * @param @uncapitallizeMoName@Example\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    int updateByExampleSelective(@Param(\"record\") @MoName@ @uncapitallizeMoName@, @Param(\"example\") @MoName@Example @uncapitallizeMoName@Example);\n" +
             "\n" +
-            "    <!-- 4.根据条件删除记录 -->\n" +
-            "    <delete id=\"deleteByExample\" parameterType=\"@package@.ActivityExample\">\n" +
-            "        DELETE FROM @mo_table_name@\n" +
-            "        <if test=\"_parameter != null\">\n" +
-            "            <include refid=\"Example_Where_Clause\"/>\n" +
-            "        </if>\n" +
-            "    </delete>\n" +
+            "    /**\n" +
+            "     * 根据条件删除记录\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@Example\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    int deleteByExample(@MoName@Example @uncapitallizeMoName@Example);\n" +
             "\n" +
-            "    <!-- 5.根据条件统计记录 -->\n" +
-            "    <select id=\"countByExample\" parameterType=\"@package@.@MoName@Example\">\n" +
-            "        SELECT COUNT(*) FROM @mo_table_name@\n" +
-            "        <if test=\"_parameter != null\">\n" +
-            "            <include refid=\"Example_Where_Clause\"/>\n" +
-            "        </if>\n" +
-            "    </select>\n" +
+            "    /**\n" +
+            "     * 根据条件统计记录\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@Example\n" +
+            "     * @return 记录条数\n" +
+            "     */\n" +
+            "    int countByExample(@MoName@Example @uncapitallizeMoName@Example);\n" +
             "\n" +
-            "    <!-- 6.增加单条记录, 返回主键 -->\n" +
-            "    <insert id=\"insertWithId\" parameterType=\"@package@.@MoName@\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
-            "        INSERT INTO @mo_table_name@ (\n" +
-            "@BaseColumnList@\n" +
-            "        )\n" +
-            "        values (\n" +
-            "@InsertField@\n" +
-            "        )\n" +
-            "    </insert>\n" +
+            "    /**\n" +
+            "     * 增加单条记录, 并为入参设置ID\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    int insertWithId(@MoName@ @uncapitallizeMoName@);\n" +
             "\n" +
-            "    <!-- 7.批量增加记录, 返回主键 -->\n" +
-            "    <insert id=\"batchInsertWithId\" parameterType=\"java.util.List\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
-            "        INSERT INTO activity (\n" +
-            "@BaseColumnList@\n" +
-            "        )\n" +
-            "        VALUES\n" +
-            "        <foreach collection=\"list\" item=\"item\" separator=\",\">\n" +
-            "@BatchInsertField@\n" +
-            "        </foreach>\n" +
-            "    </insert>\n" +
+            "    /**\n" +
+            "     * 批量增加记录, 并为入参设置ID\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@List\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    int insertBatchWithId(List<@MoName@> @uncapitallizeMoName@List);\n" +
             "\n" +
-            "    <!-- 8.根据ID查询对象 -->\n" +
-            "    <select id=\"selectByPrimaryKey\" resultMap=\"BaseResultMap\">\n" +
-            "        SELECT\n" +
-            "@BaseColumnList@\n" +
-            "        FROM @mo_table_name@\n" +
-            "        WHERE id = #{id}\n" +
-            "    </select>\n" +
+            "    /**\n" +
+            "     * @MoName@列表查询\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@)\n" +
             "\n" +
-            "    <!-- 9.根据主键只更新非null字段 -->\n" +
-            "    <update id=\"updateByPrimaryKeySelective\" parameterType=\"@package@.@MoName@\">\n" +
-            "        UPDATE @mo_table_name@\n" +
-            "        <set>\n" +
-            "@UpdateNonNullFieldByID@\n" +
-            "        </set>\n" +
-            "        WHERE id = #{id}\n" +
-            "    </update>\n" +
+            "    /**\n" +
+            "     * 根据ID查询对象\n" +
+            "     *\n" +
+            "     * @param id\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    <T extends Number> @MoName@ selectByPrimaryKey(T id);\n" +
             "\n" +
-            "    <!-- 10.根据条件删除记录 -->\n" +
-            "    <delete id=\"deleteByPrimaryKey\">\n" +
-            "        DELETE FROM @mo_table_name@ WHERE id = #{id}\n" +
-            "    </delete>\n" +
+            "    /**\n" +
+            "     * 根据主键只更新非null字段\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    int updateByPrimaryKeySelective(@MoName@ @uncapitallizeMoName@);\n" +
             "\n" +
-            "</mapper>");
+            "    /**\n" +
+            "     * 根据ID删除记录\n" +
+            "     *\n" +
+            "     * @param id\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    <T extends Number> int deleteByPrimaryKey(T id);\n" +
+            "}");
 
     /**
      * MoExample模板字符串
@@ -606,7 +538,7 @@ public class AutoCodeTemplate {
             "    </insert>\n" +
             "\n" +
             "    <!-- 7.批量增加记录, 返回主键 -->\n" +
-            "    <insert id=\"batchInsertWithId\" parameterType=\"java.util.List\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
+            "    <insert id=\"insertBatchWithId\" parameterType=\"java.util.List\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
             "        INSERT INTO activity (\n" +
             "@BaseColumnList@\n" +
             "        )\n" +
@@ -616,7 +548,16 @@ public class AutoCodeTemplate {
             "        </foreach>\n" +
             "    </insert>\n" +
             "\n" +
-            "    <!-- 8.根据ID查询对象 -->\n" +
+            "    <!-- 8.@MoName@列表查询 -->\n" +
+            "    <select id=\"query@MoName@List\" parameterType=\"@package@.@MoName@\"  resultMap=\"BaseResultMap\">\n" +
+            "        SELECT\n" +
+            "@SelectBaseColumnList@\n" +
+            "        FROM @mo_table_name@\n" +
+            "        WHERE 1 = 1\n" +
+            "@MoListQuery@\n" +
+            "    </select>\n" +
+            "\n" +
+            "    <!-- 9.根据ID查询对象 -->\n" +
             "    <select id=\"selectByPrimaryKey\" resultMap=\"BaseResultMap\">\n" +
             "        SELECT\n" +
             "@SelectBaseColumnList@\n" +
@@ -624,7 +565,7 @@ public class AutoCodeTemplate {
             "        WHERE id = #{id}\n" +
             "    </select>\n" +
             "\n" +
-            "    <!-- 9.根据主键只更新非null字段 -->\n" +
+            "    <!-- 10.根据主键只更新非null字段 -->\n" +
             "    <update id=\"updateByPrimaryKeySelective\" parameterType=\"@package@.@MoName@\">\n" +
             "        UPDATE @mo_table_name@\n" +
             "        <set>\n" +
@@ -633,7 +574,7 @@ public class AutoCodeTemplate {
             "        WHERE id = #{id}\n" +
             "    </update>\n" +
             "\n" +
-            "    <!-- 10.根据条件删除记录 -->\n" +
+            "    <!-- 11.根据条件删除记录 -->\n" +
             "    <delete id=\"deleteByPrimaryKey\">\n" +
             "        DELETE FROM @mo_table_name@ WHERE id = #{id}\n" +
             "    </delete>\n" +
@@ -644,7 +585,7 @@ public class AutoCodeTemplate {
     /**
      * ServiceInterface模板字符串
      */
-    public static final StringBuilder TEMPLATE_SERVICE_INTERFACE = new StringBuilder("package @package@\n" +
+    public static final StringBuilder TEMPLATE_SERVICE_INTERFACE = new StringBuilder("package @package@;\n" +
             "\n" +
             "import java.util.List;\n" +
             "\n" +
@@ -685,7 +626,7 @@ public class AutoCodeTemplate {
             "     * @param @uncapitallizeMoName@\n" +
             "     * @return\n" +
             "     */\n" +
-            "    int updateSelective(@MoName@ @uncapitallizeMoName@);\n" +
+            "    int updateSelectiveById(@MoName@ @uncapitallizeMoName@);\n" +
             "\n" +
             "    /**\n" +
             "     * 根据id物理删除\n" +
@@ -693,7 +634,7 @@ public class AutoCodeTemplate {
             "     * @param id\n" +
             "     * @return\n" +
             "     */\n" +
-            "    int deleteById(Integer id);\n" +
+            "    int delete(Integer id);\n" +
             "\n" +
             "}");
 
@@ -701,7 +642,7 @@ public class AutoCodeTemplate {
     /**
      * ServiceImpl模板字符串
      */
-    public static final StringBuilder TEMPLATE_SERVICE_IMPL = new StringBuilder("package @package@\n" +
+    public static final StringBuilder TEMPLATE_SERVICE_IMPL = new StringBuilder("package @package@;\n" +
             "\n" +
             "import org.springframework.stereotype.Service;\n" +
             "\n" +
@@ -727,7 +668,7 @@ public class AutoCodeTemplate {
             "     */\n" +
             "    @Override\n" +
             "    public int add(@MoName@ @uncapitallizeMoName@) {\n" +
-            "        return @uncapitallizeMoName@Mapper.add(@uncapitallizeMoName@);\n" +
+            "        return @uncapitallizeMoName@Mapper.insertWithId(@uncapitallizeMoName@);\n" +
             "    }\n" +
             "\n" +
             "    /**\n" +
@@ -738,7 +679,7 @@ public class AutoCodeTemplate {
             "     */\n" +
             "    @Override\n" +
             "    public int batchAdd(List<@MoName@> @uncapitallizeMoName@List) {\n" +
-            "        return @uncapitallizeMoName@Mapper.batchAdd(@uncapitallizeMoName@List);\n" +
+            "        return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@List);\n" +
             "    }\n" +
             "\n" +
             "    /**\n" +
@@ -759,8 +700,8 @@ public class AutoCodeTemplate {
             "     * @return\n" +
             "     */\n" +
             "    @Override\n" +
-            "    public int updateSelective(@MoName@ @uncapitallizeMoName@) {\n" +
-            "        return @uncapitallizeMoName@Mapper.updateSelective(@uncapitallizeMoName@);\n" +
+            "    public int updateSelectiveById(@MoName@ @uncapitallizeMoName@) {\n" +
+            "        return @uncapitallizeMoName@Mapper.updateBatchByPrimaryKeySelective(@uncapitallizeMoName@);\n" +
             "    }\n" +
             "\n" +
             "    /**\n" +
@@ -770,8 +711,8 @@ public class AutoCodeTemplate {
             "     * @return\n" +
             "     */\n" +
             "    @Override\n" +
-            "    public int deleteById(Integer id) {\n" +
-            "        return @uncapitallizeMoName@Mapper.deleteById(id);\n" +
+            "    public int delete(Integer id) {\n" +
+            "        return @uncapitallizeMoName@Mapper.deleteByPrimaryKey(id);\n" +
             "    }\n" +
             "\n" +
             "}");
