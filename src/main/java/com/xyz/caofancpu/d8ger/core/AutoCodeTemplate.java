@@ -161,7 +161,7 @@ public class AutoCodeTemplate {
             "     * @param @uncapitallizeMoName@\n" +
             "     * @return\n" +
             "     */\n" +
-            "    List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@)\n" +
+            "    List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@);\n" +
             "\n" +
             "    /**\n" +
             "     * 根据ID查询对象\n" +

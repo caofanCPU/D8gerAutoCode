@@ -73,7 +73,7 @@ public interface @MoName@Mapper {
      * @param @uncapitallizeMoName@
      * @return
      */
-    List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@)
+    List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@);
 
     /**
      * 根据ID查询对象
