@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * TODO: 注释
+ * @MoName@Mo对应的ServiceImpl
  *
  * @author @d8Author@
  */
@@ -19,45 +19,45 @@ public class @MoName@ServiceImpl implements @MoName@Service {
     /**
      * 插入单条记录
      *
-     * @param @uncapitallizeMoName@
+     * @param @uncapitallizeMoName@Mo
      * @return
      */
     @Override
-    public int add(@MoName@ @uncapitallizeMoName@) {
-        return @uncapitallizeMoName@Mapper.insertWithId(@uncapitallizeMoName@);
+    public int add(@MoName@Mo @uncapitallizeMoName@Mo) {
+        return @uncapitallizeMoName@Mapper.insertWithId(@uncapitallizeMoName@Mo);
     }
 
     /**
      * 批量插入
      *
-     * @param @uncapitallizeMoName@List
+     * @param @uncapitallizeMoName@MoList
      * @return
      */
     @Override
-    public int batchAdd(List<@MoName@> @uncapitallizeMoName@List) {
-        return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@List);
+    public int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList) {
+        return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@MoList);
     }
 
     /**
      * 查询列表
      *
-     * @param @uncapitallizeMoName@
+     * @param @uncapitallizeMoName@Mo
      * @return
      */
     @Override
-    public List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@) {
-        return @uncapitallizeMoName@Mapper.query@MoName@List(@uncapitallizeMoName@);
+    public List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo) {
+        return @uncapitallizeMoName@Mapper.query@MoName@MoList(@uncapitallizeMoName@Mo);
     }
 
     /**
-     * 更新非null字段
+     * 根据id更新非null字段
      *
-     * @param @uncapitallizeMoName@
+     * @param @uncapitallizeMoName@Mo
      * @return
      */
     @Override
-    public int updateSelectiveById(@MoName@ @uncapitallizeMoName@) {
-        return @uncapitallizeMoName@Mapper.updateBatchByPrimaryKeySelective(@uncapitallizeMoName@);
+    public int updateSelectiveById(@MoName@Mo @uncapitallizeMoName@Mo) {
+        return @uncapitallizeMoName@Mapper.updateByPrimaryKeySelective(@uncapitallizeMoName@Mo);
     }
 
     /**

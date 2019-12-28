@@ -1,13 +1,15 @@
 package @package@;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 /**
- * @MoName@单表操作对象
+ * @MoName@Mo对应的Example单表操作对象
  *
- * @author MyBatis Generator
+ * @author @d8Author@
  */
 public class @MoName@Example {
 

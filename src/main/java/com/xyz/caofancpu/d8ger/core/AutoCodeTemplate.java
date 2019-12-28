@@ -16,11 +16,16 @@ public class AutoCodeTemplate {
     /**
      * MO模板字符串
      */
-    public static final StringBuilder TEMPLATE_MO = new StringBuilder("package @package@;\n\n" +
+    public static final StringBuilder TEMPLATE_MO = new StringBuilder("package @package@;\n" +
+            "\n" +
             "import lombok.AllArgsConstructor;\n" +
             "import lombok.Data;\n" +
             "import lombok.NoArgsConstructor;\n" +
             "import lombok.experimental.Accessors;\n" +
+            "\n" +
+            "import java.math.BigDecimal;\n" +
+            "import java.time.LocalDateTime;\n" +
+            "import java.util.Date;\n" +
             "\n" +
             "/**\n" +
             " * TODO: 注释\n" +
@@ -31,22 +36,27 @@ public class AutoCodeTemplate {
             "@NoArgsConstructor\n" +
             "@AllArgsConstructor\n" +
             "@Accessors(chain = true)\n" +
-            "public class @MoName@ {\n" +
+            "public class @MoName@Mo {\n" +
             "\n" +
             "@field@\n" +
             "\n" +
-            "}\n");
+            "}");
 
     /**
      * SwaggerMO模板字符串
      */
-    public static final StringBuilder TEMPLATE_SWAGGER_MO = new StringBuilder("package @package@;\n\n" +
+    public static final StringBuilder TEMPLATE_SWAGGER_MO = new StringBuilder("package @package@;\n" +
+            "\n" +
             "import io.swagger.annotations.ApiModel;\n" +
             "import io.swagger.annotations.ApiModelProperty;\n" +
             "import lombok.AllArgsConstructor;\n" +
             "import lombok.Data;\n" +
             "import lombok.NoArgsConstructor;\n" +
             "import lombok.experimental.Accessors;\n" +
+            "\n" +
+            "import java.math.BigDecimal;\n" +
+            "import java.time.LocalDateTime;\n" +
+            "import java.util.Date;\n" +
             "\n" +
             "/**\n" +
             " * TODO: 注释\n" +
@@ -58,11 +68,11 @@ public class AutoCodeTemplate {
             "@AllArgsConstructor\n" +
             "@Accessors(chain = true)\n" +
             "@ApiModel\n" +
-            "public class @MoName@Mo {\n" +
+            "public class @MoName@SwaggerMo {\n" +
             "\n" +
             "@swaggerField@\n" +
             "\n" +
-            "}\n");
+            "}");
 
     /**
      * Sql模板字符串
@@ -89,7 +99,7 @@ public class AutoCodeTemplate {
     public static final StringBuilder TEMPLATE_MAPPER = new StringBuilder("package @package@;\n" +
             "\n" +
             "import @package@.@MoName@Example;\n" +
-            "import @package@.@MoName@;\n" +
+            "import @package@.@MoName@Mo;\n" +
             "import org.apache.ibatis.annotations.Param;\n" +
             "import org.apache.ibatis.annotations.Mapper;\n" +
             "\n" +
@@ -104,24 +114,24 @@ public class AutoCodeTemplate {
             "     * @param @uncapitallizeMoName@Example\n" +
             "     * @return\n" +
             "     */\n" +
-            "    List<@MoName@> selectByExample(@MoName@Example @uncapitallizeMoName@Example);\n" +
+            "    List<@MoName@Mo> selectByExample(@MoName@Example @uncapitallizeMoName@Example);\n" +
             "\n" +
             "    /**\n" +
             "     * 批量更新, 根据主键更新非null字段\n" +
             "     *\n" +
-            "     * @param @uncapitallizeMoName@List\n" +
+            "     * @param @uncapitallizeMoName@MoList\n" +
             "     * @return\n" +
             "     */\n" +
-            "    int updateBatchByPrimaryKeySelective(List<@MoName@> @uncapitallizeMoName@List);\n" +
+            "    int updateBatchByPrimaryKeySelective(List<@MoName@Mo> @uncapitallizeMoName@MoList);\n" +
             "\n" +
             "    /**\n" +
             "     * 根据条件更新非null字段\n" +
             "     *\n" +
-            "     * @param @uncapitallizeMoName@\n" +
+            "     * @param @uncapitallizeMoName@Mo\n" +
             "     * @param @uncapitallizeMoName@Example\n" +
             "     * @return\n" +
             "     */\n" +
-            "    int updateByExampleSelective(@Param(\"record\") @MoName@ @uncapitallizeMoName@, @Param(\"example\") @MoName@Example @uncapitallizeMoName@Example);\n" +
+            "    int updateByExampleSelective(@Param(\"record\") @MoName@Mo @uncapitallizeMoName@Mo, @Param(\"example\") @MoName@Example @uncapitallizeMoName@Example);\n" +
             "\n" +
             "    /**\n" +
             "     * 根据条件删除记录\n" +
@@ -142,26 +152,26 @@ public class AutoCodeTemplate {
             "    /**\n" +
             "     * 增加单条记录, 并为入参设置ID\n" +
             "     *\n" +
-            "     * @param @uncapitallizeMoName@\n" +
+            "     * @param @uncapitallizeMoName@Mo\n" +
             "     * @return\n" +
             "     */\n" +
-            "    int insertWithId(@MoName@ @uncapitallizeMoName@);\n" +
+            "    int insertWithId(@MoName@Mo @uncapitallizeMoName@Mo);\n" +
             "\n" +
             "    /**\n" +
             "     * 批量增加记录, 并为入参设置ID\n" +
             "     *\n" +
-            "     * @param @uncapitallizeMoName@List\n" +
+            "     * @param @uncapitallizeMoName@MoList\n" +
             "     * @return\n" +
             "     */\n" +
-            "    int insertBatchWithId(List<@MoName@> @uncapitallizeMoName@List);\n" +
+            "    int insertBatchWithId(List<@MoName@Mo> @uncapitallizeMoName@MoList);\n" +
             "\n" +
             "    /**\n" +
             "     * @MoName@列表查询\n" +
             "     *\n" +
-            "     * @param @uncapitallizeMoName@\n" +
+            "     * @param @uncapitallizeMoName@Mo\n" +
             "     * @return\n" +
             "     */\n" +
-            "    List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@);\n" +
+            "    List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo);\n" +
             "\n" +
             "    /**\n" +
             "     * 根据ID查询对象\n" +
@@ -169,15 +179,15 @@ public class AutoCodeTemplate {
             "     * @param id\n" +
             "     * @return\n" +
             "     */\n" +
-            "    <T extends Number> @MoName@ selectByPrimaryKey(T id);\n" +
+            "    <T extends Number> @MoName@Mo selectByPrimaryKey(T id);\n" +
             "\n" +
             "    /**\n" +
             "     * 根据主键只更新非null字段\n" +
             "     *\n" +
-            "     * @param @uncapitallizeMoName@\n" +
+            "     * @param @uncapitallizeMoName@Mo\n" +
             "     * @return\n" +
             "     */\n" +
-            "    int updateByPrimaryKeySelective(@MoName@ @uncapitallizeMoName@);\n" +
+            "    int updateByPrimaryKeySelective(@MoName@Mo @uncapitallizeMoName@Mo);\n" +
             "\n" +
             "    /**\n" +
             "     * 根据ID删除记录\n" +
@@ -193,6 +203,8 @@ public class AutoCodeTemplate {
      */
     public static final StringBuilder TEMPLATE_MO_EXAMPLE = new StringBuilder("package @package@;\n" +
             "\n" +
+            "import java.math.BigDecimal;\n" +
+            "import java.time.LocalDateTime;\n" +
             "import java.util.ArrayList;\n" +
             "import java.util.Date;\n" +
             "import java.util.List;\n" +
@@ -406,7 +418,7 @@ public class AutoCodeTemplate {
             "<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\n" +
             "<mapper namespace=\"@package@.@MoName@Mapper\">\n" +
             "\n" +
-            "    <resultMap id=\"BaseResultMap\" type=\"@package@.@MoName@\">\n" +
+            "    <resultMap id=\"BaseResultMap\" type=\"@package@.@MoName@Mo\">\n" +
             "        <id column=\"id\" property=\"id\"/>\n" +
             "@BaseResultMap@\n" +
             "    </resultMap>\n" +
@@ -512,7 +524,7 @@ public class AutoCodeTemplate {
             "    </update>\n" +
             "\n" +
             "    <!-- 4.根据条件删除记录 -->\n" +
-            "    <delete id=\"deleteByExample\" parameterType=\"@package@.ActivityExample\">\n" +
+            "    <delete id=\"deleteByExample\" parameterType=\"@package@.@MoName@Example\">\n" +
             "        DELETE FROM `@mo_table_name@`\n" +
             "        <if test=\"_parameter != null\">\n" +
             "            <include refid=\"Example_Where_Clause\"/>\n" +
@@ -530,7 +542,7 @@ public class AutoCodeTemplate {
             "    </select>\n" +
             "\n" +
             "    <!-- 6.增加单条记录, 返回主键 -->\n" +
-            "    <insert id=\"insertWithId\" parameterType=\"@package@.@MoName@\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
+            "    <insert id=\"insertWithId\" parameterType=\"@package@.@MoName@Mo\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
             "        INSERT INTO `@mo_table_name@` (\n" +
             "@BaseColumnList@\n" +
             "        )\n" +
@@ -551,7 +563,7 @@ public class AutoCodeTemplate {
             "    </insert>\n" +
             "\n" +
             "    <!-- 8.@MoName@列表查询 -->\n" +
-            "    <select id=\"query@MoName@List\" parameterType=\"@package@.@MoName@\"  resultMap=\"BaseResultMap\">\n" +
+            "    <select id=\"query@MoName@MoList\" parameterType=\"@package@.@MoName@Mo\"  resultMap=\"BaseResultMap\">\n" +
             "        SELECT\n" +
             "@SelectBaseColumnList@\n" +
             "        FROM `@mo_table_name@`\n" +
@@ -568,7 +580,7 @@ public class AutoCodeTemplate {
             "    </select>\n" +
             "\n" +
             "    <!-- 10.根据主键只更新非null字段 -->\n" +
-            "    <update id=\"updateByPrimaryKeySelective\" parameterType=\"@package@.@MoName@\">\n" +
+            "    <update id=\"updateByPrimaryKeySelective\" parameterType=\"@package@.@MoName@Mo\">\n" +
             "        UPDATE `@mo_table_name@`\n" +
             "        <set>\n" +
             "@UpdateNonNullFieldByID@\n" +
@@ -601,34 +613,34 @@ public class AutoCodeTemplate {
             "    /**\n" +
             "     * 插入单条记录\n" +
             "     *\n" +
-            "     * @param @uncapitallizeMoName@\n" +
+            "     * @param @uncapitallizeMoName@Mo\n" +
             "     * @return\n" +
             "     */\n" +
-            "    int add(@MoName@ @uncapitallizeMoName@);\n" +
+            "    int add(@MoName@Mo @uncapitallizeMoName@Mo);\n" +
             "\n" +
             "    /**\n" +
             "     * 批量插入\n" +
             "     *\n" +
-            "     * @param @uncapitallizeMoName@List\n" +
+            "     * @param @uncapitallizeMoName@MoList\n" +
             "     * @return\n" +
             "     */\n" +
-            "    int batchAdd(List<@MoName@> @uncapitallizeMoName@List);\n" +
+            "    int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList);\n" +
             "\n" +
             "    /**\n" +
             "     * 查询列表\n" +
             "     *\n" +
-            "     * @param @uncapitallizeMoName@\n" +
+            "     * @param @uncapitallizeMoName@Mo\n" +
             "     * @return\n" +
             "     */\n" +
-            "    List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@);\n" +
+            "    List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo);\n" +
             "\n" +
             "    /**\n" +
-            "     * 更新非null字段\n" +
+            "     * 根据id更新非null字段\n" +
             "     *\n" +
-            "     * @param @uncapitallizeMoName@\n" +
+            "     * @param @uncapitallizeMoName@Mo\n" +
             "     * @return\n" +
             "     */\n" +
-            "    int updateSelectiveById(@MoName@ @uncapitallizeMoName@);\n" +
+            "    int updateSelectiveById(@MoName@Mo @uncapitallizeMoName@Mo);\n" +
             "\n" +
             "    /**\n" +
             "     * 根据id物理删除\n" +
@@ -665,45 +677,45 @@ public class AutoCodeTemplate {
             "    /**\n" +
             "     * 插入单条记录\n" +
             "     *\n" +
-            "     * @param @uncapitallizeMoName@\n" +
+            "     * @param @uncapitallizeMoName@Mo\n" +
             "     * @return\n" +
             "     */\n" +
             "    @Override\n" +
-            "    public int add(@MoName@ @uncapitallizeMoName@) {\n" +
-            "        return @uncapitallizeMoName@Mapper.insertWithId(@uncapitallizeMoName@);\n" +
+            "    public int add(@MoName@Mo @uncapitallizeMoName@Mo) {\n" +
+            "        return @uncapitallizeMoName@Mapper.insertWithId(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
             "    /**\n" +
             "     * 批量插入\n" +
             "     *\n" +
-            "     * @param @uncapitallizeMoName@List\n" +
+            "     * @param @uncapitallizeMoName@MoList\n" +
             "     * @return\n" +
             "     */\n" +
             "    @Override\n" +
-            "    public int batchAdd(List<@MoName@> @uncapitallizeMoName@List) {\n" +
-            "        return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@List);\n" +
+            "    public int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList) {\n" +
+            "        return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@MoList);\n" +
             "    }\n" +
             "\n" +
             "    /**\n" +
             "     * 查询列表\n" +
             "     *\n" +
-            "     * @param @uncapitallizeMoName@\n" +
+            "     * @param @uncapitallizeMoName@Mo\n" +
             "     * @return\n" +
             "     */\n" +
             "    @Override\n" +
-            "    public List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@) {\n" +
-            "        return @uncapitallizeMoName@Mapper.query@MoName@List(@uncapitallizeMoName@);\n" +
+            "    public List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo) {\n" +
+            "        return @uncapitallizeMoName@Mapper.query@MoName@MoList(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
             "    /**\n" +
-            "     * 更新非null字段\n" +
+            "     * 根据id更新非null字段\n" +
             "     *\n" +
-            "     * @param @uncapitallizeMoName@\n" +
+            "     * @param @uncapitallizeMoName@Mo\n" +
             "     * @return\n" +
             "     */\n" +
             "    @Override\n" +
-            "    public int updateSelectiveById(@MoName@ @uncapitallizeMoName@) {\n" +
-            "        return @uncapitallizeMoName@Mapper.updateBatchByPrimaryKeySelective(@uncapitallizeMoName@);\n" +
+            "    public int updateSelectiveById(@MoName@Mo @uncapitallizeMoName@Mo) {\n" +
+            "        return @uncapitallizeMoName@Mapper.updateByPrimaryKeySelective(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
             "    /**\n" +

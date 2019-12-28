@@ -1,12 +1,17 @@
 package @package@;
 
 import @package@.@MoName@Example;
-import @package@.@MoName@;
+import @package@.@MoName@Mo;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
+/**
+ * @MoName@Mo对应的Mapper
+ *
+ * @author @d8Author@
+ */
 @Mapper
 public interface @MoName@Mapper {
 
@@ -16,24 +21,24 @@ public interface @MoName@Mapper {
      * @param @uncapitallizeMoName@Example
      * @return
      */
-    List<@MoName@> selectByExample(@MoName@Example @uncapitallizeMoName@Example);
+    List<@MoName@Mo> selectByExample(@MoName@Example @uncapitallizeMoName@Example);
 
     /**
      * 批量更新, 根据主键更新非null字段
      *
-     * @param @uncapitallizeMoName@List
+     * @param @uncapitallizeMoName@MoList
      * @return
      */
-    int updateBatchByPrimaryKeySelective(List<@MoName@> @uncapitallizeMoName@List);
+    int updateBatchByPrimaryKeySelective(List<@MoName@Mo> @uncapitallizeMoName@MoList);
 
     /**
      * 根据条件更新非null字段
      *
-     * @param @uncapitallizeMoName@
+     * @param @uncapitallizeMoName@Mo
      * @param @uncapitallizeMoName@Example
      * @return
      */
-    int updateByExampleSelective(@Param("record") @MoName@ @uncapitallizeMoName@, @Param("example") @MoName@Example @uncapitallizeMoName@Example);
+    int updateByExampleSelective(@Param("record") @MoName@Mo @uncapitallizeMoName@Mo, @Param("example") @MoName@Example @uncapitallizeMoName@Example);
 
     /**
      * 根据条件删除记录
@@ -54,26 +59,26 @@ public interface @MoName@Mapper {
     /**
      * 增加单条记录, 并为入参设置ID
      *
-     * @param @uncapitallizeMoName@
+     * @param @uncapitallizeMoName@Mo
      * @return
      */
-    int insertWithId(@MoName@ @uncapitallizeMoName@);
+    int insertWithId(@MoName@Mo @uncapitallizeMoName@Mo);
 
     /**
      * 批量增加记录, 并为入参设置ID
      *
-     * @param @uncapitallizeMoName@List
+     * @param @uncapitallizeMoName@MoList
      * @return
      */
-    int insertBatchWithId(List<@MoName@> @uncapitallizeMoName@List);
+    int insertBatchWithId(List<@MoName@Mo> @uncapitallizeMoName@MoList);
 
     /**
      * @MoName@列表查询
      *
-     * @param @uncapitallizeMoName@
+     * @param @uncapitallizeMoName@Mo
      * @return
      */
-    List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@);
+    List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo);
 
     /**
      * 根据ID查询对象
@@ -81,15 +86,15 @@ public interface @MoName@Mapper {
      * @param id
      * @return
      */
-    <T extends Number> @MoName@ selectByPrimaryKey(T id);
+    <T extends Number> @MoName@Mo selectByPrimaryKey(T id);
 
     /**
      * 根据主键只更新非null字段
      *
-     * @param @uncapitallizeMoName@
+     * @param @uncapitallizeMoName@Mo
      * @return
      */
-    int updateByPrimaryKeySelective(@MoName@ @uncapitallizeMoName@);
+    int updateByPrimaryKeySelective(@MoName@Mo @uncapitallizeMoName@Mo);
 
     /**
      * 根据ID删除记录

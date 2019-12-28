@@ -7,8 +7,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.Date;
+
 /**
- * TODO: 注释
+ * @MoName@Mo对应的Swagger增强Api对象
  *
  * @author @d8Author@
  */
@@ -17,7 +21,7 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 @Accessors(chain = true)
 @ApiModel
-public class @MoName@ {
+public class @MoName@SwaggerMo {
 
 @swaggerField@
 

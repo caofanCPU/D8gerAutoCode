@@ -1,5 +1,6 @@
 package com.xyz.caofancpu.d8ger.util;
 
+import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 import ru.lanwen.verbalregex.VerbalExpression;
 
@@ -13,7 +14,7 @@ import java.util.regex.Pattern;
  */
 public class VerbalExpressionUtil {
 
-    public static final Pattern CAMAL_TO_LINE = Pattern.compile("[A-Z]");
+    public static final Pattern HUMP_TO_UNDERLINE = Pattern.compile("[A-Z]");
 
     /**
      * 创建正则表达式对象
@@ -78,7 +79,17 @@ public class VerbalExpressionUtil {
      * @return
      */
     public static String sqlUnderLineName(String originName) {
-        return StringUtils.lowerCase(StringUtils.uncapitalize(originName).replaceAll(CAMAL_TO_LINE.pattern(), "_$0"));
+        return StringUtils.lowerCase(StringUtils.uncapitalize(originName).replaceAll(HUMP_TO_UNDERLINE.pattern(), "_$0"));
     }
 
+    /**
+     * 对原始Mo对象名称去除尾部一个或多个Mo
+     *
+     * @param originMoName
+     * @return
+     */
+    public static String cropMoSuffix(@NonNull String originMoName) {
+        VerbalExpression regex = VerbalExpression.regex().capt().find(ConstantUtil.MO_SUFFIX).oneOrMore().endCapt().endOfLine().build();
+        return executePatternRex(regex, originMoName, ConstantUtil.EMPTY);
+    }
 }

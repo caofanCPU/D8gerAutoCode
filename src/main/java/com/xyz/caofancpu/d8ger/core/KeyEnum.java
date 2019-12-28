@@ -19,4 +19,24 @@ public enum KeyEnum {
     ;
 
     KeyEnum() {}
+
+    /**
+     * 需要导入枚举类的JAVA文件
+     *
+     * @param key
+     * @return
+     */
+    public static boolean needImportEnumClass(KeyEnum key) {
+        return MO == key || SWAGGER_MO == key || MO_EXAMPLE == key;
+    }
+
+    /**
+     * 不需要创建文件
+     *
+     * @param key
+     * @return
+     */
+    public static boolean ignoreCreateFile(KeyEnum key) {
+        return MO_CONTROLLER == key;
+    }
 }

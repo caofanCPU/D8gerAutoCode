@@ -63,6 +63,11 @@ public class D8gerAutoCoding {
     private PsiClass originMoPsiClass;
 
     /**
+     * 原始原始MoClass名称
+     */
+    private String originMoName;
+
+    /**
      * 原始MoClass对象的字段列表
      */
     private List<MoField> moFieldList;
@@ -94,6 +99,8 @@ public class D8gerAutoCoding {
                 .setCurrentModule(currentModule)
                 // 装配resource资源根目录文件
                 .setRootResource(rootResource)
+                // 装配当前Java文件所在目录
+                .setD8AutoCodeDir(moJavaFile.getContainingDirectory())
                 // 设置Mo类型
                 .setOriginMoJavaFile(moJavaFile)
                 // 设置MoClass类型
@@ -112,7 +119,7 @@ public class D8gerAutoCoding {
      * @return
      */
     private D8gerAutoCoding initFileMap() {
-        fileMap.put(KeyEnum.MO, Pair.of(this.getMoName().concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_MO));
+        fileMap.put(KeyEnum.MO, Pair.of(this.getMoName().concat(ConstantUtil.MO_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_MO));
         fileMap.put(KeyEnum.SWAGGER_MO, Pair.of(this.getMoName().concat(ConstantUtil.SWAGGER_MO_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_SWAGGER_MO));
         fileMap.put(KeyEnum.MO_EXAMPLE, Pair.of(this.getMoName().concat(ConstantUtil.MO_EXAMPLE_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_MO_EXAMPLE));
         fileMap.put(KeyEnum.MO_MAPPER, Pair.of(this.getMoName().concat(ConstantUtil.MO_MAPPER_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_MAPPER));
@@ -180,12 +187,23 @@ public class D8gerAutoCoding {
     }
 
     /**
+     * 获取枚举字段类型
+     *
+     * @return
+     */
+    public List<String> getEnumTypeClassName() {
+        return CollectionUtil.filterAndTransList(moFieldList, item -> SupportFieldTypeEnum.ENUM.getOriginName().equals(item.getFieldOriginTypeName()), MoField::getFieldTypeShortName);
+    }
+
+    /**
      * Mo名称
      *
      * @return
      */
     public String getMoName() {
-        return originMoJavaFile.getClasses()[0].getName();
+        String originMoName = Objects.nonNull(this.getOriginMoName()) ? this.getOriginMoName() : VerbalExpressionUtil.cropMoSuffix(originMoJavaFile.getClasses()[0].getName());
+        this.setOriginMoName(originMoName);
+        return originMoName;
     }
 
     /**
@@ -194,7 +212,7 @@ public class D8gerAutoCoding {
      * @return
      */
     public String getPackageName() {
-        return originMoJavaFile.getPackageName();
+        return originMoJavaFile.getPackageName() + ConstantUtil.ENGLISH_STOP + ConstantUtil.GENERATE_DIR;
     }
 
     /**

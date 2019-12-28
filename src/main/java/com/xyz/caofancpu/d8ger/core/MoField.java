@@ -144,10 +144,10 @@ public class MoField {
      */
     public String toSqlColumnDefinitionString() {
         if (name.equals(ConstantUtil.SQL_ID)) {
-            return ConstantUtil.TAB + ConstantUtil.SQL_ID + ConstantUtil.SPACE + fieldTypeShortName + ConstantUtil.SPACE + "unsigned auto_increment" + ConstantUtil.SPACE + wrapSqlDefaultValueView() + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.SPACE + "primary key" + ConstantUtil.ENGLISH_COMMA;
+            return ConstantUtil.TAB + ConstantUtil.SQL_ID + ConstantUtil.SPACE + fieldSqlTypeName + ConstantUtil.SPACE + "unsigned auto_increment" + ConstantUtil.SPACE + wrapSqlDefaultValueView() + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.SPACE + "primary key" + ConstantUtil.ENGLISH_COMMA;
         }
 
-        return ConstantUtil.TAB + VerbalExpressionUtil.sqlUnderLineName(name) + ConstantUtil.SPACE + fieldTypeShortName + ConstantUtil.SPACE + wrapSqlDefaultValueView() + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.ENGLISH_COMMA;
+        return ConstantUtil.TAB + VerbalExpressionUtil.sqlUnderLineName(name) + ConstantUtil.SPACE + fieldSqlTypeName + ConstantUtil.SPACE + wrapSqlDefaultValueView() + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.ENGLISH_COMMA;
     }
 
     /**
@@ -159,6 +159,7 @@ public class MoField {
         String capitalizeName = StringUtils.capitalize(name);
         String sqlColumnName = VerbalExpressionUtil.sqlUnderLineName(name);
         String javaTypeShortName = fieldTypeShortName;
+        String fieldTypeInListShortName = SupportFieldTypeEnum.BASIC_INT.getShortName().equals(fieldOriginTypeName) ? SupportFieldTypeEnum.INTEGER.getShortName() : StringUtils.capitalize(javaTypeShortName);
         StringBuilder builder = new StringBuilder();
         builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("为null").append(ConstantUtil.NEXT_LINE)
@@ -237,7 +238,7 @@ public class MoField {
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
-                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("In(List<").append(javaTypeShortName).append(">").append(ConstantUtil.SPACE).append("values) {").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("In(List<").append(fieldTypeInListShortName).append(">").append(ConstantUtil.SPACE).append("values) {").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("in\", values, \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
@@ -246,7 +247,7 @@ public class MoField {
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
-                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("NotIn(List<").append(javaTypeShortName).append(">").append(ConstantUtil.SPACE).append("values) {").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append("public Criteria and").append(capitalizeName).append("NotIn(List<").append(fieldTypeInListShortName).append(">").append(ConstantUtil.SPACE).append("values) {").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.TRIPLE_TAB).append("addCriterion(\"").append(sqlColumnName).append(ConstantUtil.SPACE).append("not in\", values, \"").append(name).append("\");").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);

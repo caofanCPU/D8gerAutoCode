@@ -3,7 +3,7 @@ package @package@;
 import java.util.List;
 
 /**
- * TODO: 注释
+ * @MoName@Mo对应的Service接口定义
  *
  * @author @d8Author@
  */
@@ -12,34 +12,34 @@ public interface @MoName@Service {
     /**
      * 插入单条记录
      *
-     * @param @uncapitallizeMoName@
+     * @param @uncapitallizeMoName@Mo
      * @return
      */
-    int add(@MoName@ @uncapitallizeMoName@);
+    int add(@MoName@Mo @uncapitallizeMoName@Mo);
 
     /**
      * 批量插入
      *
-     * @param @uncapitallizeMoName@List
+     * @param @uncapitallizeMoName@MoList
      * @return
      */
-    int batchAdd(List<@MoName@> @uncapitallizeMoName@List);
+    int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList);
 
     /**
      * 查询列表
      *
-     * @param @uncapitallizeMoName@
+     * @param @uncapitallizeMoName@Mo
      * @return
      */
-    List<@MoName@> query@MoName@List(@MoName@ @uncapitallizeMoName@);
+    List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo);
 
     /**
-     * 更新非null字段
+     * 根据id更新非null字段
      *
-     * @param @uncapitallizeMoName@
+     * @param @uncapitallizeMoName@Mo
      * @return
      */
-    int updateSelectiveById(@MoName@ @uncapitallizeMoName@);
+    int updateSelectiveById(@MoName@Mo @uncapitallizeMoName@Mo);
 
     /**
      * 根据id物理删除

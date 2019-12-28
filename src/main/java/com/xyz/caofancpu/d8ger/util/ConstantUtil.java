@@ -22,6 +22,11 @@ public class ConstantUtil {
     public static final String ENGLISH_COMMA = ",";
 
     /**
+     * 英文句号
+     */
+    public static final String ENGLISH_STOP = ".";
+
+    /**
      * 空串
      */
     public static final String EMPTY = StringUtils.EMPTY;
@@ -117,9 +122,14 @@ public class ConstantUtil {
     public static final String SQL_UPDATE_TIME_DEFAULT_DEFINITION = TAB + "update_time datetime default CURRENT_TIMESTAMP null on update CURRENT_TIMESTAMP comment '更新时间'" + NEXT_LINE;
 
     /**
+     * Mo名称后缀
+     */
+    public static final String MO_SUFFIX = "Mo";
+
+    /**
      * SwaggerMo名称后缀
      */
-    public static final String SWAGGER_MO_SUFFIX = "Mo";
+    public static final String SWAGGER_MO_SUFFIX = "SwaggerMo";
 
     /**
      * MoMapper名称后缀
@@ -160,7 +170,4 @@ public class ConstantUtil {
      * 通知展示ID
      */
     public static final String NOTIFICATION_GROUP_VIEW_ID = "xtools";
-
-
-
 }

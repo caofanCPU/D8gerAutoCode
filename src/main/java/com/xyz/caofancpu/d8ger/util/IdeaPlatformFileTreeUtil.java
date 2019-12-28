@@ -32,7 +32,7 @@ public class IdeaPlatformFileTreeUtil {
      *
      * @param psiDirectory
      * @param project
-     * @param dotFileName 去除.java后缀的java文件名
+     * @param dotFileName  去除.java后缀的java文件名
      * @param content
      * @return
      */
@@ -110,12 +110,12 @@ public class IdeaPlatformFileTreeUtil {
     /**
      * 获取或者创建子目录
      *
-     * @param project                 当前工程
-     * @param subDirectoryVirtualFile 子目录文件名称
+     * @param project           当前工程
+     * @param subDirVirtualFile 子目录文件名称
      * @return 查找到的或者创建的子目录名称
      */
-    public static PsiDirectory getOrCreateSubDirectory(@NonNull Project project, @NonNull VirtualFile subDirectoryVirtualFile) {
-        return PsiDirectoryFactory.getInstance(project).createDirectory(subDirectoryVirtualFile);
+    public static PsiDirectory getOrCreateSubDir(@NonNull Project project, @NonNull VirtualFile subDirVirtualFile) {
+        return PsiDirectoryFactory.getInstance(project).createDirectory(subDirVirtualFile);
     }
 
     /**
@@ -131,7 +131,7 @@ public class IdeaPlatformFileTreeUtil {
             try {
                 child = currentVirtualFile.createChildDirectory(null, subVirtualFileName);
             } catch (IOException e) {
-                // 创建失败时, 则以resource根目录为准
+                // 创建失败时, 则以currentVirtualFile根所表示的目录为准
                 child = currentVirtualFile;
             }
         }
@@ -146,7 +146,18 @@ public class IdeaPlatformFileTreeUtil {
      * @param subVirtualFileName
      * @return
      */
-    public static PsiDirectory getOrCreateSubDirectory(@NonNull Project project, @NonNull VirtualFile currentVirtualFile, @NonNull String subVirtualFileName) {
-        return getOrCreateSubDirectory(project, getOrCreateSubVirtualFile(currentVirtualFile, subVirtualFileName));
+    public static PsiDirectory getOrCreateSubDir(@NonNull Project project, @NonNull VirtualFile currentVirtualFile, @NonNull String subVirtualFileName) {
+        return getOrCreateSubDir(project, getOrCreateSubVirtualFile(currentVirtualFile, subVirtualFileName));
+    }
+
+    /**
+     * 创建子目录PsiDirectory
+     *
+     * @param currentPsiDir
+     * @param subDirName
+     * @return
+     */
+    public static PsiDirectory getOrCreateSubDir(@NonNull PsiDirectory currentPsiDir, @NonNull String subDirName) {
+        return Optional.ofNullable(currentPsiDir.findSubdirectory(subDirName)).orElseGet(() -> currentPsiDir.createSubdirectory(subDirName));
     }
 }

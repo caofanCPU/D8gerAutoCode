@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="@package@.@MoName@Mapper">
 
-    <resultMap id="BaseResultMap" type="@package@.@MoName@">
+    <resultMap id="BaseResultMap" type="@package@.@MoName@Mo">
         <id column="id" property="id"/>
 @BaseResultMap@
     </resultMap>
@@ -108,7 +108,7 @@
     </update>
 
     <!-- 4.根据条件删除记录 -->
-    <delete id="deleteByExample" parameterType="@package@.ActivityExample">
+    <delete id="deleteByExample" parameterType="@package@.@MoName@Example">
         DELETE FROM `@mo_table_name@`
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -126,7 +126,7 @@
     </select>
 
     <!-- 6.增加单条记录, 返回主键 -->
-    <insert id="insertWithId" parameterType="@package@.@MoName@" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertWithId" parameterType="@package@.@MoName@Mo" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO `@mo_table_name@` (
 @BaseColumnList@
         )
@@ -147,7 +147,7 @@
     </insert>
 
     <!-- 8.@MoName@列表查询 -->
-    <select id="query@MoName@List" parameterType="@package@.@MoName@"  resultMap="BaseResultMap">
+    <select id="query@MoName@MoList" parameterType="@package@.@MoName@Mo"  resultMap="BaseResultMap">
         SELECT
 @SelectBaseColumnList@
         FROM `@mo_table_name@`
@@ -164,7 +164,7 @@
     </select>
 
     <!-- 10.根据主键只更新非null字段 -->
-    <update id="updateByPrimaryKeySelective" parameterType="@package@.@MoName@">
+    <update id="updateByPrimaryKeySelective" parameterType="@package@.@MoName@Mo">
         UPDATE `@mo_table_name@`
         <set>
 @UpdateNonNullFieldByID@
