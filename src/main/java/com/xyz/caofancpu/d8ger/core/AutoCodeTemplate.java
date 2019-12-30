@@ -423,11 +423,6 @@ public class AutoCodeTemplate {
             "<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\n" +
             "<mapper namespace=\"@package@.@MoName@Mapper\">\n" +
             "\n" +
-            "    <resultMap id=\"BaseResultMap\" type=\"@package@.@MoName@Mo\">\n" +
-            "        <id column=\"id\" property=\"id\"/>\n" +
-            "@BaseResultMap@\n" +
-            "    </resultMap>\n" +
-            "\n" +
             "    <!-- 查询操作时条件 -->\n" +
             "    <sql id=\"Example_Where_Clause\">\n" +
             "        <where>\n" +
@@ -491,7 +486,7 @@ public class AutoCodeTemplate {
             "    </sql>\n" +
             "\n" +
             "    <!-- 1.根据条件查询列表 -->\n" +
-            "    <select id=\"selectByExample\" parameterType=\"@package@.@MoName@Example\" resultMap=\"BaseResultMap\">\n" +
+            "    <select id=\"selectByExample\" parameterType=\"@package@.@MoName@Example\" resultMap=\"@package@.@MoName@Mo\">\n" +
             "        SELECT\n" +
             "        <if test=\"distinct\">\n" +
             "            DISTINCT\n" +
@@ -568,7 +563,7 @@ public class AutoCodeTemplate {
             "    </insert>\n" +
             "\n" +
             "    <!-- 8.@MoName@列表查询 -->\n" +
-            "    <select id=\"query@MoName@MoList\" parameterType=\"@package@.@MoName@Mo\"  resultMap=\"BaseResultMap\">\n" +
+            "    <select id=\"query@MoName@MoList\" parameterType=\"@package@.@MoName@Mo\"  resultMap=\"@package@.@MoName@Mo\">\n" +
             "        SELECT\n" +
             "@SelectBaseColumnList@\n" +
             "        FROM `@mo_table_name@`\n" +
@@ -577,7 +572,7 @@ public class AutoCodeTemplate {
             "    </select>\n" +
             "\n" +
             "    <!-- 9.根据ID查询对象 -->\n" +
-            "    <select id=\"selectByPrimaryKey\" resultMap=\"BaseResultMap\">\n" +
+            "    <select id=\"selectByPrimaryKey\" resultMap=\"@package@.@MoName@Mo\">\n" +
             "        SELECT\n" +
             "@SelectBaseColumnList@\n" +
             "        FROM `@mo_table_name@`\n" +

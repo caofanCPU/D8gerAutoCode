@@ -14,7 +14,7 @@ import java.util.function.Function;
  */
 public enum SupportFieldTypeEnum {
     INTEGER("java.lang.Integer", "Integer", "int(11)"),
-    BASIC_INT("int", "int", "int(20)"),
+    BASIC_INT("int", "int", "int(11)"),
     LONG("java.lang.Long", "Long", "bigint(20)"),
     BASIC_LONG("long", "long", "bigint(20)"),
     STRING("java.lang.String", "String", "varchar(32)"),
