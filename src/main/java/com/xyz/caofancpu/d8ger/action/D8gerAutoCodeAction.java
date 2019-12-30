@@ -76,11 +76,6 @@ public class D8gerAutoCodeAction extends AnAction {
                 });
             }
 
-            if (KeyEnum.MO_SQL == key) {
-                // SQL文件也进行格式化
-                IdeaPlatformFileTreeUtil.format(d8gerAutoCoding.getCurrentProject(), autoCodeFile);
-            }
-
             d8gerAutoCoding.getD8AutoCodeDir().add(autoCodeFile);
             fileNameList.add(autoCodeFile.getName());
         });
