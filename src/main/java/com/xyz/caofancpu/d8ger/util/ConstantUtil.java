@@ -170,4 +170,19 @@ public class ConstantUtil {
      * 通知展示ID
      */
     public static final String NOTIFICATION_GROUP_VIEW_ID = "xtools";
+
+    /**
+     * 配置文件名
+     */
+    public static final String D8GER_CONFIG_FILE_NAME = "d8ger.properties";
+
+    /**
+     * author配置key
+     */
+    public static final String CONFIG_AUTHOR_KEY = "author";
+
+    /**
+     * 默认author
+     */
+    public static final String DEFAULT_AUTHOR = "D8ger";
 }

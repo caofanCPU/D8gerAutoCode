@@ -9,6 +9,7 @@ import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiJavaFile;
 import com.xyz.caofancpu.d8ger.util.CollectionUtil;
 import com.xyz.caofancpu.d8ger.util.ConstantUtil;
+import com.xyz.caofancpu.d8ger.util.PropertiesUtil;
 import com.xyz.caofancpu.d8ger.util.VerbalExpressionUtil;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,11 +18,13 @@ import lombok.experimental.Accessors;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Properties;
 
 /**
  * 自动生成代码核心类
@@ -131,6 +134,10 @@ public class D8gerAutoCoding {
         return this;
     }
 
+    public Properties loadPropertiesFromRootResource() {
+        return PropertiesUtil.loadPropertiesFromRootResource(rootResource.getPath() + File.separator + ConstantUtil.D8GER_CONFIG_FILE_NAME);
+    }
+
     /**
      * 模板关键字Map
      *
@@ -140,7 +147,8 @@ public class D8gerAutoCoding {
         keyWordMatchMap.put(TemplateKeyWordEnum.MO_NAME_KEY.getName(), new StringBuilder(this.getMoName()));
         keyWordMatchMap.put(TemplateKeyWordEnum.PACKAGE_NAME_KEY.getName(), new StringBuilder(this.getPackageName()));
         keyWordMatchMap.put(TemplateKeyWordEnum.UNCAPITALLIZE_MO_NAME_KEY.getName(), new StringBuilder(StringUtils.uncapitalize(this.getMoName())));
-        keyWordMatchMap.put(TemplateKeyWordEnum.AUTHOR_KEY.getName(), new StringBuilder("caofanCPU"));
+        Properties properties = loadPropertiesFromRootResource();
+        keyWordMatchMap.put(TemplateKeyWordEnum.AUTHOR_KEY.getName(), StringUtils.isNotBlank(properties.getProperty(ConstantUtil.CONFIG_AUTHOR_KEY)) ? new StringBuilder(properties.getProperty(ConstantUtil.CONFIG_AUTHOR_KEY)) : new StringBuilder(ConstantUtil.DEFAULT_AUTHOR));
         keyWordMatchMap.put(TemplateKeyWordEnum.MO_FIELD_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toString), ConstantUtil.DOUBLE_NEXT_LINE)));
         keyWordMatchMap.put(TemplateKeyWordEnum.SWAGGER_MO_FIELD_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toSwaggerString), ConstantUtil.DOUBLE_NEXT_LINE)));
         keyWordMatchMap.put(TemplateKeyWordEnum.MO_EXAMPLE_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toMoExampleDefinitionMethodString), ConstantUtil.EMPTY)));
@@ -161,7 +169,6 @@ public class D8gerAutoCoding {
         } else {
             keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_UPDATE_TIME_KEY.getName(), new StringBuilder());
         }
-        keyWordMatchMap.put(TemplateKeyWordEnum.XML_BASE_MAP_KEY.getName(), this.getXMLBaseResultMap());
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_BASE_COLUMN_LIST_KEY.getName(), this.getXMLBaseColumnList());
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_SELECT_BASE_COLUMN_LIST_KEY.getName(), this.getXMLSelectBaseColumnList());
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_BATCH_UPDATE_NONNULL_FIELD_BY_ID_KEY.getName(), this.getXMLBatchUpdateNonNullFieldByID());
@@ -213,19 +220,6 @@ public class D8gerAutoCoding {
      */
     public String getPackageName() {
         return originMoJavaFile.getPackageName() + ConstantUtil.ENGLISH_STOP + ConstantUtil.GENERATE_DIR;
-    }
-
-    /**
-     * SQL返回字段Map定义
-     * example: <result column="sql_name" property="name"/>
-     *
-     * @return
-     */
-    private StringBuilder getXMLBaseResultMap() {
-        return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
-                item -> item.getName().equals(ConstantUtil.SQL_ID),
-                item -> ConstantUtil.DOUBLE_TAB + "<result column=\"" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "\"" + ConstantUtil.SPACE + "property=\"" + item.getName() + "\"/>"
-        ), ConstantUtil.NEXT_LINE));
     }
 
     /**
@@ -291,7 +285,7 @@ public class D8gerAutoCoding {
      * @return
      */
     private StringBuilder getXMLInsertField() {
-        return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, item -> ConstantUtil.TRIPLE_TAB + "#{item." + item.getName() + "}"),
+        return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, item -> ConstantUtil.TRIPLE_TAB + "#{" + item.getName() + "}"),
                 ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE)
         );
     }

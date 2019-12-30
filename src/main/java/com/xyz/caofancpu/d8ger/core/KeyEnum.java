@@ -6,19 +6,34 @@ package com.xyz.caofancpu.d8ger.core;
  * @author caofanCPU
  */
 public enum KeyEnum {
-    MO,
-    SWAGGER_MO,
-    MO_MAPPER,
-    MO_EXAMPLE,
-    MO_MAPPER_XML,
-    MO_SERVICE_INTERFACE,
-    MO_SERVICE_IMPL,
-    MO_CONTROLLER,
-    MO_SQL,
-
+    MO("autoCreateMo"),
+    SWAGGER_MO("autoCreateSwaggerMo"),
+    MO_MAPPER("autoCreateMapper"),
+    MO_EXAMPLE("autoCreateExample"),
+    MO_MAPPER_XML("autoCreateXML"),
+    MO_SERVICE_INTERFACE("autoCreateServiceInterface"),
+    MO_SERVICE_IMPL("autoCreateServiceImpl"),
+    MO_CONTROLLER("autoCreateController"),
+    MO_SQL("autoCreateDefinitionSQL"),
+    FORMAT_STYLE("autoFormatStyle"),
     ;
 
-    KeyEnum() {}
+    private String key;
+
+    KeyEnum(String key) {
+        this.key = key;
+    }
+
+    /**
+     * 不需要创建文件
+     *
+     * @param key
+     * @return
+     */
+    @Deprecated
+    public static boolean ignoreCreateFile(KeyEnum key) {
+        return MO_CONTROLLER == key;
+    }
 
     /**
      * 需要导入枚举类的JAVA文件
@@ -30,13 +45,7 @@ public enum KeyEnum {
         return MO == key || SWAGGER_MO == key || MO_EXAMPLE == key;
     }
 
-    /**
-     * 不需要创建文件
-     *
-     * @param key
-     * @return
-     */
-    public static boolean ignoreCreateFile(KeyEnum key) {
-        return MO_CONTROLLER == key;
+    public String getKey() {
+        return key;
     }
 }

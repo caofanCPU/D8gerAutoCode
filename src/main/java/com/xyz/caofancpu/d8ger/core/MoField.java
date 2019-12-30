@@ -144,7 +144,7 @@ public class MoField {
      */
     public String toSqlColumnDefinitionString() {
         if (name.equals(ConstantUtil.SQL_ID)) {
-            return ConstantUtil.TAB + ConstantUtil.SQL_ID + ConstantUtil.SPACE + fieldSqlTypeName + ConstantUtil.SPACE + "unsigned auto_increment" + ConstantUtil.SPACE + wrapSqlDefaultValueView() + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.SPACE + "primary key" + ConstantUtil.ENGLISH_COMMA;
+            return ConstantUtil.TAB + ConstantUtil.SQL_ID + ConstantUtil.SPACE + fieldSqlTypeName + ConstantUtil.SPACE + "unsigned auto_increment" + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.SPACE + "primary key" + ConstantUtil.ENGLISH_COMMA;
         }
 
         return ConstantUtil.TAB + VerbalExpressionUtil.sqlUnderLineName(name) + ConstantUtil.SPACE + fieldSqlTypeName + ConstantUtil.SPACE + wrapSqlDefaultValueView() + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.ENGLISH_COMMA;

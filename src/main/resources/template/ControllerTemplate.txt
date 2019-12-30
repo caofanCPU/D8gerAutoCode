@@ -1,0 +1,66 @@
+package @package@;
+
+import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
+import com.github.xiaoymin.knife4j.annotations.ApiSort;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.validation.Valid;
+import java.util.List;
+
+/**
+ * @MoName@Mo控制器
+ *
+ * @author @d8Author@
+ */
+@RestController
+@Api(tags = {"@MoName@Mo模块接口"})
+@ApiSort(0)
+@Slf4j
+public class @MoName@Controller {
+
+    @Autowired
+    private @MoName@Service @uncapitallizeMoName@Service;
+
+    @PostMapping(value = "/d8gerAutoCoding/add")
+    @ApiOperationSupport(order = 1)
+    @ApiOperation(value = "@MoName@Mo模块新增记录")
+    public Object add(@Valid @RequestBody @MoName@Mo @uncapitallizeMoName@Mo) {
+        d8gerAutoCodingService.add(@uncapitallizeMoName@Mo);
+        return @uncapitallizeMoName@Mo.getId();
+    }
+
+    @PostMapping(value = "/d8gerAutoCoding/batchAdd")
+    @ApiOperationSupport(order = 2)
+    @ApiOperation(value = "@MoName@Mo模块批量新增记录")
+    public Object batchAdd(@Valid @RequestBody List<@MoName@Mo> @uncapitallizeMoName@MoList) {
+        return d8gerAutoCodingService.batchAdd(@uncapitallizeMoName@MoList);
+    }
+
+    @PostMapping(value = "/d8gerAutoCoding/queryList")
+    @ApiOperationSupport(order = 3)
+    @ApiOperation(value = "@MoName@Mo模块列表查询记录")
+    public Object queryList(@Valid @RequestBody D8gerAutoCodingMo @uncapitallizeMoName@Mo) {
+        return d8gerAutoCodingService.queryD8gerAutoCodingMoList(@uncapitallizeMoName@Mo);
+    }
+
+    @PostMapping(value = "/d8gerAutoCoding/update")
+    @ApiOperationSupport(order = 4)
+    @ApiOperation(value = "@MoName@Mo模块修改记录")
+    public Object update(@Valid @RequestBody D8gerAutoCodingMo @uncapitallizeMoName@Mo) {
+        return d8gerAutoCodingService.updateSelectiveById(@uncapitallizeMoName@Mo);
+    }
+
+    @PostMapping(value = "/d8gerAutoCoding/delete")
+    @ApiOperationSupport(order = 5)
+    @ApiOperation(value = "@MoName@Mo模块删除记录")
+    public Object delete(@Valid @RequestBody D8gerAutoCodingMo @uncapitallizeMoName@Mo) {
+        return d8gerAutoCodingService.delete(@uncapitallizeMoName@Mo.getId());
+    }
+
+}

@@ -54,7 +54,8 @@ public class D8gerAutoCodeAction extends AnAction {
         fileNameList.add(d8gerAutoCodeDir.getName());
 
         d8gerAutoCoding.getFileMap().forEach((key, pair) -> {
-            if (KeyEnum.ignoreCreateFile(key)) {
+            if (skipCurrentOperation(d8gerAutoCoding, key)) {
+                // 不需要创建文件
                 return;
             }
             PsiJavaFile autoCodeFile = IdeaPlatformFileTreeUtil.forceCreateJavaFile(
@@ -68,8 +69,16 @@ public class D8gerAutoCodeAction extends AnAction {
                 d8gerAutoCoding.getEnumTypeClassName().forEach(item -> {
                     Optional<PsiClass> optionalPsiClass = IdeaPlatformFileTreeUtil.findClass(d8gerAutoCoding.getCurrentProject(), item);
                     optionalPsiClass.ifPresent(autoCodeFile::importClass);
-                    IdeaPlatformFileTreeUtil.format(d8gerAutoCoding.getCurrentProject(), autoCodeFile);
+                    if (!skipCurrentOperation(d8gerAutoCoding, KeyEnum.FORMAT_STYLE)) {
+                        // 需要格式化
+                        IdeaPlatformFileTreeUtil.format(d8gerAutoCoding.getCurrentProject(), autoCodeFile);
+                    }
                 });
+            }
+
+            if (KeyEnum.MO_SQL == key) {
+                // SQL文件也进行格式化
+                IdeaPlatformFileTreeUtil.format(d8gerAutoCoding.getCurrentProject(), autoCodeFile);
             }
 
             d8gerAutoCoding.getD8AutoCodeDir().add(autoCodeFile);
@@ -79,6 +88,10 @@ public class D8gerAutoCodeAction extends AnAction {
         Notifications.Bus.notify(
                 new Notification(ConstantUtil.NOTIFICATION_GROUP_VIEW_ID, "重建文件信息", CollectionUtil.join(fileNameList, ConstantUtil.DOUBLE_NEXT_LINE), NotificationType.INFORMATION)
         );
+    }
+
+    private boolean skipCurrentOperation(D8gerAutoCoding d8gerAutoCoding, KeyEnum keyEnum) {
+        return !Boolean.valueOf(d8gerAutoCoding.loadPropertiesFromRootResource().getProperty(keyEnum.getKey()));
     }
 
 }

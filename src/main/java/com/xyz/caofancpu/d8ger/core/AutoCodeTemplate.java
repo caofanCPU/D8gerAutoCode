@@ -28,7 +28,7 @@ public class AutoCodeTemplate {
             "import java.util.Date;\n" +
             "\n" +
             "/**\n" +
-            " * TODO: 注释\n" +
+            " * @MoName@Mo\n" +
             " *\n" +
             " * @author @d8Author@\n" +
             " */\n" +
@@ -59,7 +59,7 @@ public class AutoCodeTemplate {
             "import java.util.Date;\n" +
             "\n" +
             "/**\n" +
-            " * TODO: 注释\n" +
+            " * @MoName@Mo对应的Swagger增强Api对象\n" +
             " *\n" +
             " * @author @d8Author@\n" +
             " */\n" +
@@ -105,6 +105,11 @@ public class AutoCodeTemplate {
             "\n" +
             "import java.util.List;\n" +
             "\n" +
+            "/**\n" +
+            " * @MoName@Mo对应的Mapper\n" +
+            " *\n" +
+            " * @author @d8Author@\n" +
+            " */\n" +
             "@Mapper\n" +
             "public interface @MoName@Mapper {\n" +
             "\n" +
@@ -210,9 +215,9 @@ public class AutoCodeTemplate {
             "import java.util.List;\n" +
             "\n" +
             "/**\n" +
-            " * @MoName@单表操作对象\n" +
+            " * @MoName@Mo对应的Example单表操作对象\n" +
             " *\n" +
-            " * @author MyBatis Generator\n" +
+            " * @author @d8Author@\n" +
             " */\n" +
             "public class @MoName@Example {\n" +
             "\n" +
@@ -604,7 +609,7 @@ public class AutoCodeTemplate {
             "import java.util.List;\n" +
             "\n" +
             "/**\n" +
-            " * TODO: 注释\n" +
+            " * @MoName@Mo对应的Service接口定义\n" +
             " *\n" +
             " * @author @d8Author@\n" +
             " */\n" +
@@ -664,7 +669,7 @@ public class AutoCodeTemplate {
             "import java.util.List;\n" +
             "\n" +
             "/**\n" +
-            " * TODO: 注释\n" +
+            " * @MoName@Mo对应的ServiceImpl\n" +
             " *\n" +
             " * @author @d8Author@\n" +
             " */\n" +
@@ -735,7 +740,72 @@ public class AutoCodeTemplate {
     /**
      * Controller模板字符串
      */
-    public static final StringBuilder TEMPLATE_CONTROLLER = new StringBuilder();
+    public static final StringBuilder TEMPLATE_CONTROLLER = new StringBuilder("package @package@;\n" +
+            "\n" +
+            "import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;\n" +
+            "import com.github.xiaoymin.knife4j.annotations.ApiSort;\n" +
+            "import io.swagger.annotations.Api;\n" +
+            "import io.swagger.annotations.ApiOperation;\n" +
+            "import lombok.extern.slf4j.Slf4j;\n" +
+            "import org.springframework.beans.factory.annotation.Autowired;\n" +
+            "import org.springframework.web.bind.annotation.PostMapping;\n" +
+            "import org.springframework.web.bind.annotation.RequestBody;\n" +
+            "import org.springframework.web.bind.annotation.RestController;\n" +
+            "\n" +
+            "import javax.validation.Valid;\n" +
+            "import java.util.List;\n" +
+            "\n" +
+            "/**\n" +
+            " * @MoName@Mo控制器\n" +
+            " *\n" +
+            " * @author @d8Author@\n" +
+            " */\n" +
+            "@RestController\n" +
+            "@Api(tags = {\"@MoName@Mo模块接口\"})\n" +
+            "@ApiSort(0)\n" +
+            "@Slf4j\n" +
+            "public class @MoName@Controller {\n" +
+            "\n" +
+            "    @Autowired\n" +
+            "    private @MoName@Service @uncapitallizeMoName@Service;\n" +
+            "\n" +
+            "    @PostMapping(value = \"/d8gerAutoCoding/add\")\n" +
+            "    @ApiOperationSupport(order = 1)\n" +
+            "    @ApiOperation(value = \"@MoName@Mo模块新增记录\")\n" +
+            "    public Object add(@Valid @RequestBody @MoName@Mo @uncapitallizeMoName@Mo) {\n" +
+            "        d8gerAutoCodingService.add(@uncapitallizeMoName@Mo);\n" +
+            "        return @uncapitallizeMoName@Mo.getId();\n" +
+            "    }\n" +
+            "\n" +
+            "    @PostMapping(value = \"/d8gerAutoCoding/batchAdd\")\n" +
+            "    @ApiOperationSupport(order = 2)\n" +
+            "    @ApiOperation(value = \"@MoName@Mo模块批量新增记录\")\n" +
+            "    public Object batchAdd(@Valid @RequestBody List<@MoName@Mo> @uncapitallizeMoName@MoList) {\n" +
+            "        return d8gerAutoCodingService.batchAdd(@uncapitallizeMoName@MoList);\n" +
+            "    }\n" +
+            "\n" +
+            "    @PostMapping(value = \"/d8gerAutoCoding/queryList\")\n" +
+            "    @ApiOperationSupport(order = 3)\n" +
+            "    @ApiOperation(value = \"@MoName@Mo模块列表查询记录\")\n" +
+            "    public Object queryList(@Valid @RequestBody D8gerAutoCodingMo @uncapitallizeMoName@Mo) {\n" +
+            "        return d8gerAutoCodingService.queryD8gerAutoCodingMoList(@uncapitallizeMoName@Mo);\n" +
+            "    }\n" +
+            "\n" +
+            "    @PostMapping(value = \"/d8gerAutoCoding/update\")\n" +
+            "    @ApiOperationSupport(order = 4)\n" +
+            "    @ApiOperation(value = \"@MoName@Mo模块修改记录\")\n" +
+            "    public Object update(@Valid @RequestBody D8gerAutoCodingMo @uncapitallizeMoName@Mo) {\n" +
+            "        return d8gerAutoCodingService.updateSelectiveById(@uncapitallizeMoName@Mo);\n" +
+            "    }\n" +
+            "\n" +
+            "    @PostMapping(value = \"/d8gerAutoCoding/delete\")\n" +
+            "    @ApiOperationSupport(order = 5)\n" +
+            "    @ApiOperation(value = \"@MoName@Mo模块删除记录\")\n" +
+            "    public Object delete(@Valid @RequestBody D8gerAutoCodingMo @uncapitallizeMoName@Mo) {\n" +
+            "        return d8gerAutoCodingService.delete(@uncapitallizeMoName@Mo.getId());\n" +
+            "    }\n" +
+            "\n" +
+            "}\n");
 
 
     /**

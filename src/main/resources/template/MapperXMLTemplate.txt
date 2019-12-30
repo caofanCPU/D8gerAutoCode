@@ -2,11 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="@package@.@MoName@Mapper">
 
-    <resultMap id="BaseResultMap" type="@package@.@MoName@Mo">
-        <id column="id" property="id"/>
-@BaseResultMap@
-    </resultMap>
-
     <!-- 查询操作时条件 -->
     <sql id="Example_Where_Clause">
         <where>
@@ -70,7 +65,7 @@
     </sql>
 
     <!-- 1.根据条件查询列表 -->
-    <select id="selectByExample" parameterType="@package@.@MoName@Example" resultMap="BaseResultMap">
+    <select id="selectByExample" parameterType="@package@.@MoName@Example" resultMap="@package@.@MoName@Mo">
         SELECT
         <if test="distinct">
             DISTINCT
@@ -147,7 +142,7 @@
     </insert>
 
     <!-- 8.@MoName@列表查询 -->
-    <select id="query@MoName@MoList" parameterType="@package@.@MoName@Mo"  resultMap="BaseResultMap">
+    <select id="query@MoName@MoList" parameterType="@package@.@MoName@Mo"  resultMap="@package@.@MoName@Mo">
         SELECT
 @SelectBaseColumnList@
         FROM `@mo_table_name@`
@@ -156,7 +151,7 @@
     </select>
 
     <!-- 9.根据ID查询对象 -->
-    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+    <select id="selectByPrimaryKey" resultMap="@package@.@MoName@Mo">
         SELECT
 @SelectBaseColumnList@
         FROM `@mo_table_name@`
