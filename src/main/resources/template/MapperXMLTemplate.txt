@@ -65,7 +65,7 @@
     </sql>
 
     <!-- 1.根据条件查询列表 -->
-    <select id="selectByExample" parameterType="@package@.@MoName@Example" resultMap="@package@.@MoName@Mo">
+    <select id="selectByExample" parameterType="@package@.@MoName@Example" resultType="@package@.@MoName@Mo">
         SELECT
         <if test="distinct">
             DISTINCT
@@ -142,7 +142,7 @@
     </insert>
 
     <!-- 8.@MoName@列表查询 -->
-    <select id="query@MoName@MoList" parameterType="@package@.@MoName@Mo"  resultMap="@package@.@MoName@Mo">
+    <select id="query@MoName@MoList" parameterType="@package@.@MoName@Mo"  resultType="@package@.@MoName@Mo">
         SELECT
 @SelectBaseColumnList@
         FROM `@mo_table_name@`
@@ -151,7 +151,7 @@
     </select>
 
     <!-- 9.根据ID查询对象 -->
-    <select id="selectByPrimaryKey" resultMap="@package@.@MoName@Mo">
+    <select id="selectByPrimaryKey" resultType="@package@.@MoName@Mo">
         SELECT
 @SelectBaseColumnList@
         FROM `@mo_table_name@`
