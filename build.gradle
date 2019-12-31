@@ -17,11 +17,6 @@ tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
 
-task myRun(type: JavaExec) {
-    classpath sourceSets.main.runtimeClasspath
-    main = "com.xyz.caofancpu.d8ger.util.GradleMain"
-}
-
 apply plugin: 'idea'
 apply plugin: 'org.jetbrains.intellij'
 apply plugin: 'java'
