@@ -687,6 +687,7 @@ public class AutoCodeTemplate {
             "     */\n" +
             "    @Override\n" +
             "    public int add(@MoName@Mo @uncapitallizeMoName@Mo) {\n" +
+            "        @uncapitallizeMoName@Mo.setId(null);\n" +
             "        return @uncapitallizeMoName@Mapper.insertWithId(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
@@ -698,6 +699,7 @@ public class AutoCodeTemplate {
             "     */\n" +
             "    @Override\n" +
             "    public int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList) {\n" +
+            "        @uncapitallizeMoName@MoList.forEach(item -> item.setId(null));\n" +
             "        return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@MoList);\n" +
             "    }\n" +
             "\n" +
