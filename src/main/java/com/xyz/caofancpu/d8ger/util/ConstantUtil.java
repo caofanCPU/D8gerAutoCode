@@ -195,4 +195,14 @@ public class ConstantUtil {
      * 默认接口url路径前缀
      */
     public static final String DEFAULT_API_URL_PREFIX = "/d8gerAutoCoding";
+
+    /**
+     * 分页页码字段名
+     */
+    public static final String PAGE_NUM_NAME = "pageNum";
+
+    /**
+     * 分页大小字段名
+     */
+    public static final String PAGE_SIZE_NAME = "pageSize";
 }

@@ -627,12 +627,13 @@ public class AutoCodeTemplate {
             "    int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList);\n" +
             "\n" +
             "    /**\n" +
-            "     * 查询列表\n" +
+            "     * 查询列表, 如果携带分页参数则返回分页后的列表\n" +
             "     *\n" +
             "     * @param @uncapitallizeMoName@Mo\n" +
+            "     * @param pageParams 可选分页参数\n" +
             "     * @return\n" +
             "     */\n" +
-            "    List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo);\n" +
+            "    List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo, Integer... pageParams);\n" +
             "\n" +
             "    /**\n" +
             "     * 根据id更新非null字段\n" +
@@ -658,11 +659,13 @@ public class AutoCodeTemplate {
      */
     public static final StringBuilder TEMPLATE_SERVICE_IMPL = new StringBuilder("package @package@;\n" +
             "\n" +
+            "import com.github.pagehelper.PageHelper;\n" +
             "import org.springframework.stereotype.Service;\n" +
             "import lombok.extern.slf4j.Slf4j;\n" +
             "\n" +
             "import javax.annotation.Resource;\n" +
             "import java.util.List;\n" +
+            "import java.util.Objects;\n" +
             "\n" +
             "/**\n" +
             " * @MoName@Mo对应的ServiceImpl\n" +
@@ -699,13 +702,19 @@ public class AutoCodeTemplate {
             "    }\n" +
             "\n" +
             "    /**\n" +
-            "     * 查询列表\n" +
+            "     * 查询列表, 如果携带分页参数则返回分页后的列表\n" +
             "     *\n" +
             "     * @param @uncapitallizeMoName@Mo\n" +
+            "     * @param pageParams 可选分页参数\n" +
             "     * @return\n" +
             "     */\n" +
             "    @Override\n" +
-            "    public List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo) {\n" +
+            "    public List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo, Integer... pageParams) {\n" +
+            "        if (Objects.nonNull(pageParams) && pageParams.length > 0) {\n" +
+            "            int pageNum = pageParams[0];\n" +
+            "            int pageSize = pageParams.length > 1 ? pageParams[1] : 10;\n" +
+            "            PageHelper.startPage(pageNum, pageSize);\n" +
+            "        }\n" +
             "        return @uncapitallizeMoName@Mapper.query@MoName@MoList(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
@@ -740,12 +749,12 @@ public class AutoCodeTemplate {
     public static final StringBuilder TEMPLATE_CONTROLLER = new StringBuilder("package @package@;\n" +
             "\n" +
             "import com.alibaba.fastjson.JSONObject;\n" +
+            "import com.github.pagehelper.PageInfo;\n" +
             "import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;\n" +
             "import com.github.xiaoymin.knife4j.annotations.ApiSort;\n" +
             "import io.swagger.annotations.Api;\n" +
             "import io.swagger.annotations.ApiOperation;\n" +
             "import lombok.extern.slf4j.Slf4j;\n" +
-            "import org.springframework.beans.factory.annotation.Autowired;\n" +
             "import org.springframework.web.bind.annotation.PostMapping;\n" +
             "import org.springframework.web.bind.annotation.RequestBody;\n" +
             "import org.springframework.web.bind.annotation.RestController;\n" +
@@ -766,7 +775,7 @@ public class AutoCodeTemplate {
             "@Slf4j\n" +
             "public class @MoName@Controller {\n" +
             "\n" +
-            "    @Autowired\n" +
+            "    @Resource\n" +
             "    private @MoName@Service @uncapitallizeMoName@Service;\n" +
             "\n" +
             "    @PostMapping(value = \"@apiUrlPrefix@/add\")\n" +
@@ -799,8 +808,18 @@ public class AutoCodeTemplate {
             "        return @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/update\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/query@MoName@MoPage\")\n" +
             "    @ApiOperationSupport(order = 4)\n" +
+            "    @ApiOperation(value = \"@MoName@Mo分页查询\")\n" +
+            "    public Object query@MoName@MoPage(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
+            "        // 转换数据\n" +
+            "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
+            "        List<@MoName@Mo> result@MoName@MoList = @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo, @uncapitallizeMoName@Vo.getPageNum(), @uncapitallizeMoName@Vo.getPageSize());\n" +
+            "        return PageInfo.of(resultD8gerAutoCodingMoList);\n" +
+            "    }\n" +
+            "\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/update\")\n" +
+            "    @ApiOperationSupport(order = 5)\n" +
             "    @ApiOperation(value = \"@MoName@Mo修改记录\")\n" +
             "    public Object update(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
             "        // 转换数据\n" +
@@ -809,7 +828,7 @@ public class AutoCodeTemplate {
             "    }\n" +
             "\n" +
             "    @PostMapping(value = \"@apiUrlPrefix@/delete\")\n" +
-            "    @ApiOperationSupport(order = 5)\n" +
+            "    @ApiOperationSupport(order = 6)\n" +
             "    @ApiOperation(value = \"@MoName@Mo删除记录\")\n" +
             "    public Object delete(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
             "        return @uncapitallizeMoName@Service.delete(@uncapitallizeMoName@Vo.getId());\n" +

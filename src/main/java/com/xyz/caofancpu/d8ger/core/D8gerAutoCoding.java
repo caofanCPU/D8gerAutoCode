@@ -158,7 +158,7 @@ public class D8gerAutoCoding {
         }
         keyWordMatchMap.put(TemplateKeyWordEnum.API_URL_PREFIX_KEY.getName(), new StringBuilder(apiUrlPrefix));
         keyWordMatchMap.put(TemplateKeyWordEnum.MO_FIELD_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toString), ConstantUtil.DOUBLE_NEXT_LINE)));
-        keyWordMatchMap.put(TemplateKeyWordEnum.SWAGGER_MO_FIELD_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toSwaggerString), ConstantUtil.DOUBLE_NEXT_LINE)));
+        keyWordMatchMap.put(TemplateKeyWordEnum.SWAGGER_MO_FIELD_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toSwaggerString), ConstantUtil.DOUBLE_NEXT_LINE)).append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE).append(wrapSwaggerPage()));
         keyWordMatchMap.put(TemplateKeyWordEnum.MO_EXAMPLE_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toMoExampleDefinitionMethodString), ConstantUtil.EMPTY)));
         keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_TABLE_KEY.getName(), new StringBuilder(VerbalExpressionUtil.sqlUnderLineName(this.getMoName())));
         keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_COLUMN_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toSqlColumnDefinitionString), ConstantUtil.NEXT_LINE)));
@@ -186,6 +186,18 @@ public class D8gerAutoCoding {
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_UPDATE_NONNULL_FIELD_BY_ID_KEY.getName(), this.getXMLUpdateNonNullFieldByID());
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_MO_LIST_QUERY_KEY.getName(), this.getXMLMoListQuery());
         return this;
+    }
+
+    /**
+     * 增强SwaggerMo, 增加分页请求字段
+     *
+     * @return
+     */
+    public String wrapSwaggerPage() {
+        return ConstantUtil.TAB + "@ApiModelProperty(value = \"" + "分页页码" + "\", required = false, example = \"1\", position = " + moFieldList.size() + ")" + ConstantUtil.NEXT_LINE
+                + ConstantUtil.TAB + ConstantUtil.DEFAULT_ACCESS_MODIFIER + ConstantUtil.SPACE + SupportFieldTypeEnum.INTEGER.getShortName() + ConstantUtil.SPACE + ConstantUtil.PAGE_NUM_NAME + ConstantUtil.ENGLISH_SEMICOLON + ConstantUtil.NEXT_LINE + ConstantUtil.NEXT_LINE
+                + ConstantUtil.TAB + "@ApiModelProperty(value = \"" + "分页大小" + "\", required = false, example = \"10\", position = " + (moFieldList.size() + 1) + ")" + ConstantUtil.NEXT_LINE
+                + ConstantUtil.TAB + ConstantUtil.DEFAULT_ACCESS_MODIFIER + ConstantUtil.SPACE + SupportFieldTypeEnum.INTEGER.getShortName() + ConstantUtil.SPACE + ConstantUtil.PAGE_SIZE_NAME + ConstantUtil.ENGLISH_SEMICOLON;
     }
 
     /**
@@ -230,6 +242,7 @@ public class D8gerAutoCoding {
                 keyWordEnumList.add(TemplateKeyWordEnum.XML_BASE_COLUMN_LIST_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.XML_BATCH_INSERT_COLUMN_LIST_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.XML_MO_LIST_QUERY_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.XML_INSERT_COLUMN_LIST_KEY);
                 break;
             case MO_SQL:
                 keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);

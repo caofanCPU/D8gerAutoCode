@@ -26,12 +26,13 @@ public interface @MoName@Service {
     int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList);
 
     /**
-     * 查询列表
+     * 查询列表, 如果携带分页参数则返回分页后的列表
      *
      * @param @uncapitallizeMoName@Mo
+     * @param pageParams 可选分页参数
      * @return
      */
-    List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo);
+    List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo, Integer... pageParams);
 
     /**
      * 根据id更新非null字段

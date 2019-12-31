@@ -1,10 +1,12 @@
 package @package@;
 
+import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @MoName@Mo对应的ServiceImpl
@@ -41,13 +43,19 @@ public class @MoName@ServiceImpl implements @MoName@Service {
     }
 
     /**
-     * 查询列表
+     * 查询列表, 如果携带分页参数则返回分页后的列表
      *
      * @param @uncapitallizeMoName@Mo
+     * @param pageParams 可选分页参数
      * @return
      */
     @Override
-    public List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo) {
+    public List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo, Integer... pageParams) {
+        if (Objects.nonNull(pageParams) && pageParams.length > 0) {
+            int pageNum = pageParams[0];
+            int pageSize = pageParams.length > 1 ? pageParams[1] : 10;
+            PageHelper.startPage(pageNum, pageSize);
+        }
         return @uncapitallizeMoName@Mapper.query@MoName@MoList(@uncapitallizeMoName@Mo);
     }
 
