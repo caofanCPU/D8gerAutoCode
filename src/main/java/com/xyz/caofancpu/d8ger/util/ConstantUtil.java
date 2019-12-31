@@ -129,7 +129,7 @@ public class ConstantUtil {
     /**
      * SwaggerMo名称后缀
      */
-    public static final String SWAGGER_MO_SUFFIX = "SwaggerMo";
+    public static final String SWAGGER_MO_SUFFIX = "Vo";
 
     /**
      * MoMapper名称后缀
@@ -185,4 +185,14 @@ public class ConstantUtil {
      * 默认author
      */
     public static final String DEFAULT_AUTHOR = "D8ger";
+
+    /**
+     * 接口url前缀配置key
+     */
+    public static final String CONFIG_API_URL_PREFIX_KEY = "apiUrlPrefix";
+
+    /**
+     * 默认接口url路径前缀
+     */
+    public static final String DEFAULT_API_URL_PREFIX = "/d8gerAutoCoding";
 }

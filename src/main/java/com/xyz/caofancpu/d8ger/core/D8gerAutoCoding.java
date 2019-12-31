@@ -19,6 +19,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -149,6 +150,13 @@ public class D8gerAutoCoding {
         keyWordMatchMap.put(TemplateKeyWordEnum.UNCAPITALLIZE_MO_NAME_KEY.getName(), new StringBuilder(StringUtils.uncapitalize(this.getMoName())));
         Properties properties = loadPropertiesFromRootResource();
         keyWordMatchMap.put(TemplateKeyWordEnum.AUTHOR_KEY.getName(), StringUtils.isNotBlank(properties.getProperty(ConstantUtil.CONFIG_AUTHOR_KEY)) ? new StringBuilder(properties.getProperty(ConstantUtil.CONFIG_AUTHOR_KEY)) : new StringBuilder(ConstantUtil.DEFAULT_AUTHOR));
+        String apiUrlPrefix;
+        if (StringUtils.isBlank(properties.getProperty(ConstantUtil.CONFIG_API_URL_PREFIX_KEY))) {
+            apiUrlPrefix = ConstantUtil.DEFAULT_API_URL_PREFIX;
+        } else {
+            apiUrlPrefix = VerbalExpressionUtil.correctUrl(properties.getProperty(ConstantUtil.CONFIG_API_URL_PREFIX_KEY));
+        }
+        keyWordMatchMap.put(TemplateKeyWordEnum.API_URL_PREFIX_KEY.getName(), new StringBuilder(apiUrlPrefix));
         keyWordMatchMap.put(TemplateKeyWordEnum.MO_FIELD_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toString), ConstantUtil.DOUBLE_NEXT_LINE)));
         keyWordMatchMap.put(TemplateKeyWordEnum.SWAGGER_MO_FIELD_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toSwaggerString), ConstantUtil.DOUBLE_NEXT_LINE)));
         keyWordMatchMap.put(TemplateKeyWordEnum.MO_EXAMPLE_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toMoExampleDefinitionMethodString), ConstantUtil.EMPTY)));
@@ -178,6 +186,79 @@ public class D8gerAutoCoding {
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_UPDATE_NONNULL_FIELD_BY_ID_KEY.getName(), this.getXMLUpdateNonNullFieldByID());
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_MO_LIST_QUERY_KEY.getName(), this.getXMLMoListQuery());
         return this;
+    }
+
+    /**
+     * 为提升性能, 每个文件只选择内部Key, 以期减少字符串替换次数
+     *
+     * @param key
+     * @return
+     */
+    public Map<String, StringBuilder> loadEnhanceKeyWordMap(KeyEnum key) {
+        Map<String, StringBuilder> resultMap = new HashMap<>(32, 0.65f);
+        if (KeyEnum.FORMAT_STYLE == key) {
+            return resultMap;
+        }
+        List<TemplateKeyWordEnum> keyWordEnumList = new ArrayList<>(TemplateKeyWordEnum.values().length);
+        switch (key) {
+            case MO:
+                keyWordEnumList.add(TemplateKeyWordEnum.PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_FIELD_KEY);
+                break;
+            case SWAGGER_MO:
+                keyWordEnumList.add(TemplateKeyWordEnum.PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.SWAGGER_MO_FIELD_KEY);
+                break;
+            case MO_EXAMPLE:
+                keyWordEnumList.add(TemplateKeyWordEnum.PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_EXAMPLE_KEY);
+                break;
+            case MO_MAPPER_XML:
+                keyWordEnumList.add(TemplateKeyWordEnum.PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.XML_SELECT_BASE_COLUMN_LIST_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.SQL_MO_TABLE_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.XML_BATCH_UPDATE_NONNULL_FIELD_BY_ID_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.XML_UPDATE_NONNULL_FIELD_BY_EXAMPLE_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.XML_UPDATE_NONNULL_FIELD_BY_ID_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.XML_BASE_COLUMN_LIST_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.XML_BATCH_INSERT_COLUMN_LIST_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.XML_MO_LIST_QUERY_KEY);
+                break;
+            case MO_SQL:
+                keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.SQL_MO_TABLE_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.SQL_MO_ID_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.SQL_MO_COLUMN_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.SQL_MO_CREATE_TIME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.SQL_MO_UPDATE_TIME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
+                break;
+            case MO_MAPPER:
+            case MO_SERVICE_INTERFACE:
+            case MO_SERVICE_IMPL:
+                keyWordEnumList.add(TemplateKeyWordEnum.PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.UNCAPITALLIZE_MO_NAME_KEY);
+                break;
+            case MO_CONTROLLER:
+                keyWordEnumList.add(TemplateKeyWordEnum.PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.UNCAPITALLIZE_MO_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.API_URL_PREFIX_KEY);
+                break;
+        }
+        Map<String, StringBuilder> keyWordMatchMap = getKeyWordMatchMap();
+        keyWordEnumList.forEach(templateKey -> resultMap.put(templateKey.getName(), keyWordMatchMap.get(templateKey.getName())));
+        return resultMap;
     }
 
     /**

@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
- * @MoName@Mo对应的Swagger增强Api对象
+ * @MoName@Mo对应的SwaggerApi增强Vo对象
  *
  * @author @d8Author@
  */
@@ -21,7 +21,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Accessors(chain = true)
 @ApiModel
-public class @MoName@SwaggerMo {
+public class @MoName@Vo {
 
 @swaggerField@
 

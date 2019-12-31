@@ -26,6 +26,7 @@ public enum TemplateKeyWordEnum {
     XML_INSERT_COLUMN_LIST_KEY("@InsertField@"),
     XML_BATCH_INSERT_COLUMN_LIST_KEY("@BatchInsertField@"),
     XML_MO_LIST_QUERY_KEY("@MoListQuery@"),
+    API_URL_PREFIX_KEY("@apiUrlPrefix@"),
 
 
     ;

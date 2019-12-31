@@ -59,7 +59,7 @@ public class AutoCodeTemplate {
             "import java.util.Date;\n" +
             "\n" +
             "/**\n" +
-            " * @MoName@Mo对应的Swagger增强Api对象\n" +
+            " * @MoName@Mo对应的SwaggerApi增强Vo对象\n" +
             " *\n" +
             " * @author @d8Author@\n" +
             " */\n" +
@@ -68,7 +68,7 @@ public class AutoCodeTemplate {
             "@AllArgsConstructor\n" +
             "@Accessors(chain = true)\n" +
             "@ApiModel\n" +
-            "public class @MoName@SwaggerMo {\n" +
+            "public class @MoName@Vo {\n" +
             "\n" +
             "@swaggerField@\n" +
             "\n" +
@@ -79,8 +79,8 @@ public class AutoCodeTemplate {
      */
     public static final StringBuilder TEMPLATE_MO_SQL = new StringBuilder("\n" +
             "-- ----------------------------\n" +
-            "-- Table structure for `@mo_table_name@`\n" +
             "-- D8ger-Sql-Auto-Generated\n" +
+            "-- Table structure for `@mo_table_name@`\n" +
             "-- @author @d8Author@\n" +
             "-- ----------------------------\n" +
             "-- DROP TABLE IF EXISTS `@mo_table_name@`;\n" +
@@ -648,7 +648,7 @@ public class AutoCodeTemplate {
             "     * @param id\n" +
             "     * @return\n" +
             "     */\n" +
-            "    int delete(Integer id);\n" +
+            "    <T extends Number> int delete(T id);\n" +
             "\n" +
             "}");
 
@@ -659,6 +659,7 @@ public class AutoCodeTemplate {
     public static final StringBuilder TEMPLATE_SERVICE_IMPL = new StringBuilder("package @package@;\n" +
             "\n" +
             "import org.springframework.stereotype.Service;\n" +
+            "import lombok.extern.slf4j.Slf4j;\n" +
             "\n" +
             "import javax.annotation.Resource;\n" +
             "import java.util.List;\n" +
@@ -669,6 +670,7 @@ public class AutoCodeTemplate {
             " * @author @d8Author@\n" +
             " */\n" +
             "@Service\n" +
+            "@Slf4j\n" +
             "public class @MoName@ServiceImpl implements @MoName@Service {\n" +
             "\n" +
             "    @Resource\n" +
@@ -725,7 +727,7 @@ public class AutoCodeTemplate {
             "     * @return\n" +
             "     */\n" +
             "    @Override\n" +
-            "    public int delete(Integer id) {\n" +
+            "    public <T extends Number> int delete(T id) {\n" +
             "        return @uncapitallizeMoName@Mapper.deleteByPrimaryKey(id);\n" +
             "    }\n" +
             "\n" +
@@ -737,6 +739,7 @@ public class AutoCodeTemplate {
      */
     public static final StringBuilder TEMPLATE_CONTROLLER = new StringBuilder("package @package@;\n" +
             "\n" +
+            "import com.alibaba.fastjson.JSONObject;\n" +
             "import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;\n" +
             "import com.github.xiaoymin.knife4j.annotations.ApiSort;\n" +
             "import io.swagger.annotations.Api;\n" +
@@ -747,7 +750,9 @@ public class AutoCodeTemplate {
             "import org.springframework.web.bind.annotation.RequestBody;\n" +
             "import org.springframework.web.bind.annotation.RestController;\n" +
             "\n" +
+            "import javax.annotation.Resource;\n" +
             "import javax.validation.Valid;\n" +
+            "import java.util.ArrayList;\n" +
             "import java.util.List;\n" +
             "\n" +
             "/**\n" +
@@ -764,41 +769,52 @@ public class AutoCodeTemplate {
             "    @Autowired\n" +
             "    private @MoName@Service @uncapitallizeMoName@Service;\n" +
             "\n" +
-            "    @PostMapping(value = \"/d8gerAutoCoding/add\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/add\")\n" +
             "    @ApiOperationSupport(order = 1)\n" +
-            "    @ApiOperation(value = \"@MoName@Mo模块新增记录\")\n" +
-            "    public Object add(@Valid @RequestBody @MoName@Mo @uncapitallizeMoName@Mo) {\n" +
-            "        d8gerAutoCodingService.add(@uncapitallizeMoName@Mo);\n" +
+            "    @ApiOperation(value = \"@MoName@Mo新增记录\")\n" +
+            "    public Object add(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
+            "        // 转换数据\n" +
+            "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
+            "        @uncapitallizeMoName@Service.add(@uncapitallizeMoName@Mo);\n" +
             "        return @uncapitallizeMoName@Mo.getId();\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"/d8gerAutoCoding/batchAdd\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/batchAdd\")\n" +
             "    @ApiOperationSupport(order = 2)\n" +
-            "    @ApiOperation(value = \"@MoName@Mo模块批量新增记录\")\n" +
-            "    public Object batchAdd(@Valid @RequestBody List<@MoName@Mo> @uncapitallizeMoName@MoList) {\n" +
-            "        return d8gerAutoCodingService.batchAdd(@uncapitallizeMoName@MoList);\n" +
+            "    @ApiOperation(value = \"@MoName@Mo批量新增\")\n" +
+            "    public Object batchAdd(@Valid @RequestBody List<@MoName@Vo> @uncapitallizeMoName@VoList) {\n" +
+            "        List<@MoName@Mo> @uncapitallizeMoName@MoList = new ArrayList<>(@uncapitallizeMoName@VoList.size());\n" +
+            "        for (@MoName@Vo @uncapitallizeMoName@Vo : @uncapitallizeMoName@VoList) {\n" +
+            "            @uncapitallizeMoName@MoList.add(JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class));\n" +
+            "        }\n" +
+            "        return @uncapitallizeMoName@Service.batchAdd(@uncapitallizeMoName@MoList);\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"/d8gerAutoCoding/queryList\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/query@MoName@MoList\")\n" +
             "    @ApiOperationSupport(order = 3)\n" +
-            "    @ApiOperation(value = \"@MoName@Mo模块列表查询记录\")\n" +
-            "    public Object queryList(@Valid @RequestBody D8gerAutoCodingMo @uncapitallizeMoName@Mo) {\n" +
-            "        return d8gerAutoCodingService.queryD8gerAutoCodingMoList(@uncapitallizeMoName@Mo);\n" +
+            "    @ApiOperation(value = \"@MoName@Mo列表查询\")\n" +
+            "    public Object query@MoName@MoList(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
+            "        // 转换数据\n" +
+            "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
+            "        return @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"/d8gerAutoCoding/update\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/update\")\n" +
             "    @ApiOperationSupport(order = 4)\n" +
-            "    @ApiOperation(value = \"@MoName@Mo模块修改记录\")\n" +
-            "    public Object update(@Valid @RequestBody D8gerAutoCodingMo @uncapitallizeMoName@Mo) {\n" +
-            "        return d8gerAutoCodingService.updateSelectiveById(@uncapitallizeMoName@Mo);\n" +
+            "    @ApiOperation(value = \"@MoName@Mo修改记录\")\n" +
+            "    public Object update(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
+            "        // 转换数据\n" +
+            "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
+            "        return @uncapitallizeMoName@Service.updateSelectiveById(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"/d8gerAutoCoding/delete\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/delete\")\n" +
             "    @ApiOperationSupport(order = 5)\n" +
-            "    @ApiOperation(value = \"@MoName@Mo模块删除记录\")\n" +
-            "    public Object delete(@Valid @RequestBody D8gerAutoCodingMo @uncapitallizeMoName@Mo) {\n" +
-            "        return d8gerAutoCodingService.delete(@uncapitallizeMoName@Mo.getId());\n" +
+            "    @ApiOperation(value = \"@MoName@Mo删除记录\")\n" +
+            "    public Object delete(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
+            "        return @uncapitallizeMoName@Service.delete(@uncapitallizeMoName@Vo.getId());\n" +
             "    }\n" +
+            "\n" +
             "\n" +
             "}\n");
 

@@ -47,6 +47,6 @@ public interface @MoName@Service {
      * @param id
      * @return
      */
-    int delete(Integer id);
+    <T extends Number> int delete(T id);
 
 }

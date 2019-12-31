@@ -1,6 +1,7 @@
 package @package@;
 
 import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  * @author @d8Author@
  */
 @Service
+@Slf4j
 public class @MoName@ServiceImpl implements @MoName@Service {
 
     @Resource
@@ -67,7 +69,7 @@ public class @MoName@ServiceImpl implements @MoName@Service {
      * @return
      */
     @Override
-    public int delete(Integer id) {
+    public <T extends Number> int delete(T id) {
         return @uncapitallizeMoName@Mapper.deleteByPrimaryKey(id);
     }
 

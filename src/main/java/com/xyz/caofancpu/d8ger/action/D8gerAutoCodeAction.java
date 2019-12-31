@@ -62,7 +62,7 @@ public class D8gerAutoCodeAction extends AnAction {
                     d8gerAutoCodeDir,
                     d8gerAutoCoding.getCurrentProject(),
                     pair.getLeft(),
-                    AutoCodeTemplate.render(pair.getRight(), d8gerAutoCoding.getKeyWordMatchMap())
+                    AutoCodeTemplate.render(pair.getRight(), d8gerAutoCoding.loadEnhanceKeyWordMap(key))
             );
             // 查找并导入枚举类
             if (KeyEnum.needImportEnumClass(key)) {

@@ -4,6 +4,7 @@ import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 import ru.lanwen.verbalregex.VerbalExpression;
 
+import java.io.File;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -91,5 +92,16 @@ public class VerbalExpressionUtil {
     public static String cropMoSuffix(@NonNull String originMoName) {
         VerbalExpression regex = VerbalExpression.regex().capt().find(ConstantUtil.MO_SUFFIX).oneOrMore().endCapt().endOfLine().build();
         return executePatternRex(regex, originMoName, ConstantUtil.EMPTY);
+    }
+
+    /**
+     * url路径纠偏, 将多个'/'替换为一个, 且以'/'开头
+     *
+     * @param property
+     * @return
+     */
+    public static String correctUrl(String property) {
+        VerbalExpression regex = VerbalExpression.regex().capt().find(File.separator).oneOrMore().endCapt().build();
+        return executePatternRex(regex, File.separator + property, File.separator);
     }
 }
