@@ -839,6 +839,22 @@ public class AutoCodeTemplate {
             "\n" +
             "}\n");
 
+    public static final String TEMPLATE_D8GER = "# 文件作者信息, 默认D8ger, 强烈建议修改\n" +
+            "author=d8ger\n" +
+            "# 基础生成\n" +
+            "autoCreateMo=true\n" +
+            "autoCreateMapper=true\n" +
+            "autoCreateExample=true\n" +
+            "autoCreateXML=true\n" +
+            "autoCreateDefinitionSQL=true\n" +
+            "# 增强生成\n" +
+            "autoCreateSwaggerMo=true\n" +
+            "autoCreateServiceInterface=true\n" +
+            "autoCreateServiceImpl=true\n" +
+            "autoCreateController=true\n" +
+            "autoFormatStyle=true\n" +
+            "# 接口APi路径前缀\n" +
+            "# apiUrlPrefix=";
 
     /**
      * 渲染模板

@@ -46,7 +46,7 @@ public class SwaggerModelAutoRenderAction extends AnAction {
         final Project currentProject = e.getRequiredData(CommonDataKeys.PROJECT);
         final Document currentDocument = currentEditor.getDocument();
 
-        // 执行创建目录|文件
+        // 执行刷新当前文件
         WriteCommandAction.runWriteCommandAction(currentProject, () -> executeSwaggerRender(currentDocument));
     }
 

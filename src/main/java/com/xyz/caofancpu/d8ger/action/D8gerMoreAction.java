@@ -1,11 +1,22 @@
 package com.xyz.caofancpu.d8ger.action;
 
+import com.intellij.ide.browsers.BrowserLauncher;
+import com.intellij.ide.browsers.WebBrowserManager;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
+import com.intellij.openapi.actionSystem.CommonDataKeys;
+import com.intellij.openapi.command.WriteCommandAction;
+import com.intellij.openapi.editor.Document;
+import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.vfs.VirtualFile;
+import com.xyz.caofancpu.d8ger.core.EasterEggCodeTemplateEnum;
+import com.xyz.caofancpu.d8ger.util.CollectionUtil;
+import com.xyz.caofancpu.d8ger.util.ConstantUtil;
+import lombok.NonNull;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * What encounter to pain me ever belongs to see you now.
@@ -17,15 +28,24 @@ public class D8gerMoreAction extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
-//        BrowserLauncher.getInstance().browse("https://github.com/caofanCPU", WebBrowserManager.getInstance().getFirstActiveBrowser());
-        Project project = e.getProject();
-        if (project == null) return;
-        String projectName = project.getName();
-        StringBuilder sourceRootsList = new StringBuilder();
-        VirtualFile[] vFiles = ProjectRootManager.getInstance(project).getContentSourceRoots();
-        for (VirtualFile file : vFiles) {
-            sourceRootsList.append(file.getUrl()).append("\n");
+        final Editor currentEditor = e.getRequiredData(CommonDataKeys.EDITOR);
+        final Project currentProject = e.getRequiredData(CommonDataKeys.PROJECT);
+        final Document currentDocument = currentEditor.getDocument();
+        List<EasterEggCodeTemplateEnum> contentEnumList = exactContent(currentDocument);
+        if (CollectionUtil.isEmpty(contentEnumList)) {
+            WriteCommandAction.runWriteCommandAction(currentProject, () -> currentDocument.setText(currentDocument.getText() + "Welcome to my github!"));
+            BrowserLauncher.getInstance().browse("https://github.com/caofanCPU", WebBrowserManager.getInstance().getFirstActiveBrowser());
+            return;
         }
-        Messages.showInfoMessage("Source roots for the " + projectName + " plugin:\n" + sourceRootsList, "Project Properties");
+        WriteCommandAction.runWriteCommandAction(currentProject, () -> currentDocument.setText(CollectionUtil.join(CollectionUtil.transToList(contentEnumList, EasterEggCodeTemplateEnum::getTemplateCode), ConstantUtil.NEXT_LINE)));
+    }
+
+    private List<EasterEggCodeTemplateEnum> exactContent(@NonNull Document currentDocument) {
+        List<EasterEggCodeTemplateEnum> contentEnumList = new ArrayList<>(8);
+        String text = currentDocument.getText();
+        if (StringUtils.containsIgnoreCase(text, EasterEggCodeTemplateEnum.D8GER_CONFIG_FILE_KEY.getCodeKey())) {
+            contentEnumList.add(EasterEggCodeTemplateEnum.D8GER_CONFIG_FILE_KEY);
+        }
+        return contentEnumList;
     }
 }
