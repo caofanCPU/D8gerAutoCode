@@ -817,7 +817,7 @@ public class AutoCodeTemplate {
             "        // 转换数据\n" +
             "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
             "        List<@MoName@Mo> result@MoName@MoList = @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo, @uncapitallizeMoName@Vo.getPageNum(), @uncapitallizeMoName@Vo.getPageSize());\n" +
-            "        return PageInfo.of(resultD8gerAutoCodingMoList);\n" +
+            "        return PageInfo.of(result@MoName@MoList);\n" +
             "    }\n" +
             "\n" +
             "    @PostMapping(value = \"@apiUrlPrefix@/update\")\n" +

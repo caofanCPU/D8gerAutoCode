@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.xyz.caofancpu'
-version '1.20'
+version '1.21'
 
 sourceCompatibility = 1.8
 
@@ -40,7 +40,7 @@ intellij {
 patchPluginXml {
     changeNotes 
     """
-        What encounter to pain me ever belongs to see you now..<br>
-        <em>Complete the auto coding plugin fiirst publish version 1.20</em>
+        What encounter to pain me ever belongs to see you now.<br>
+        <em>Complete the auto coding plugin fiirst publish version 1.21</em>
     """
 }

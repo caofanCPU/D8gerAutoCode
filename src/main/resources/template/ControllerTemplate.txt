@@ -67,7 +67,7 @@ public class @MoName@Controller {
         // 转换数据
         @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);
         List<@MoName@Mo> result@MoName@MoList = @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo, @uncapitallizeMoName@Vo.getPageNum(), @uncapitallizeMoName@Vo.getPageSize());
-        return PageInfo.of(resultD8gerAutoCodingMoList);
+        return PageInfo.of(result@MoName@MoList);
     }
 
     @PostMapping(value = "@apiUrlPrefix@/update")

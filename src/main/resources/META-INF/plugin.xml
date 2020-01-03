@@ -29,13 +29,21 @@
         <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'd8ger' to get the configuration file template. Other code Easter eggs will be added later</li>
         <li>SwaggerVo field auto sorting, default shortcut`cmd`+`alt`+`shift`+`O`</li>
         </ul>
+
+        How To Use?
+        <img src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-1.png" />
+        <img src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-2.png" />
+        <img src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-3.png" />
+        <img src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-4.png" />
+        <img src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-5.png" />
+        <img src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-6.png" />
         ]]>
     </description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
     <!-- uncomment to enable plugin in all products
-    <depends>com.intellij.modules.lang</depends>
+    :<depends>com.intellij.modules.lang</depends>
     -->
 
     <extensions defaultExtensionNs="com.intellij">
