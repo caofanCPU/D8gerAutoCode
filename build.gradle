@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.xyz.caofancpu'
-version '1.21'
+version '1.22'
 
 sourceCompatibility = 1.8
 
@@ -41,6 +41,6 @@ patchPluginXml {
     changeNotes 
     """
         What encounter to pain me ever belongs to see you now.<br>
-        <em>Complete the auto coding plugin fiirst publish version 1.21</em>
+        <em>Fix some bugs and add Descraption fir how to use in version 1.22</em>
     """
 }
