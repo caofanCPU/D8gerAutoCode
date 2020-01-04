@@ -24,13 +24,13 @@
 1. Create Model Class
 
 <div align = "center">
-<img width = "40%" height = "20%" src = "https://github.com/caofanCPU/D8gerAutoCode/tree/master/image/2019-D8gerAutoCode-1.png" />
+<img width = "40%" height = "20%" src = "./image/2019-D8gerAutoCode-1.png" />
 </div>
 
 2. Select the class name and press the (default) shortcut key `cmd` +` alt` + `shift` +` D`
  
 <div align = "center">
-<img width = "40%" height = "30%" src = "https://github.com/caofanCPU/D8gerAutoCode/tree/master/image/2019-D8gerAutoCode-2.png" />
+<img width = "40%" height = "30%" src = "./image/2019-D8gerAutoCode-2.png" />
 </div>
 
 3. Under the default configuration, the `D8gerAutoCode` directory and data table SQL definitions and Web codes will be generated, a total of 10
