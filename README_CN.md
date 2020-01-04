@@ -22,33 +22,34 @@
 
 ##### 使用截图
 1.创建Model类  
-<img width=""50%" height="50%" align="center" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-1.png"/>
-2.选中类名, 按下(默认)快捷键`cmd` + `alt` + `shift` + `D`
-![](http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-2.png)
-3.默认配置下, 会生成`D8gerAutoCode`目录及数据表SQL定义和Web代码, 共10个
-![](http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-3.png)
+<img width="25%" height="40%" align="center" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-1.png" />
+
+2.选中类名, 按下(默认)快捷键`cmd` + `alt` + `shift` + `D`  
+<img width="40%" height="30%" align="center" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-2.png" />  
+3.默认配置下, 会生成`D8gerAutoCode`目录及数据表SQL定义和Web代码, 共10个  
+<img width="70%" height="40%" align="center" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-3.png" />  
 4.你需要做的:
 - 移动文件到项目对应的目录下, 例如**xxMo.java**放到`model`目录
 - 根据需求对**xx.sql**增加非空约束
 - 如果你生成了**xxController.java**文件, ***请注意接口返回对象类型***, 应修改为项目统一的返回类型
-- 在上述步骤中, 代码文件会飘红报错, 这需要你自行导包解决
-![](http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-4.png)
+- 在上述步骤中, 代码文件会飘红报错, 这需要你自行导包解决  
+<img width="70%" height="50%" align="center" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-4.png" />  
 5.默认配置文件模板, 代码彩蛋: 
     - 在`Model类`所在模块的***resource***根目录下, 创建`d8ger.properties`属性配置文件
-    - 输入`d8ger`, 点击`Tools`-->`D8ger`-->`D8gerMore`
-![](http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-5.png)
+    - 输入`d8ger`, 点击`Tools`-->`D8ger`-->`D8gerMore`  
+<img width="40%" height="50%" align="center" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-5.png" />  
 6.你就得到如下默认配置信息
     - 推荐你更改的配置项
         - `author`(你挖的坑可不许署我的名!)
         - `apiUrlPrefix`(接口url前缀应配置为项目接口统一Url前缀)
-    - 其他`boolean`配置项, 是让你选择需要生成哪些文件
-![](http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-6.png)
+    - 其他`boolean`配置项, 是让你选择需要生成哪些文件  
+<img width="40%" height="50%" align="center" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-6.png" />  
 
 ##### 如何安装
-- IDEA官方插件库安装
-![](http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCodeIDEA.jpeg)
-- [下载插件包](http://file.debuggerpowerzcy.top/power/D8gerAutoCode-1.22.zip)
-- 源码安装, 这需要你熟悉Gradle, 后期我会详细补充如何使用Gradle开发一个插件
+- IDEA官方插件库安装  
+<img width="50%" height="50%" align="center" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCodeIDEA.jpeg" />  
+- [下载插件包](http://file.debuggerpowerzcy.top/power/D8gerAutoCode-1.22.zip)  
+- 源码安装, 这需要你熟悉Gradle, 后期我会详细补充如何使用Gradle开发一个插件  
 
 ##### Bug&问题
 - 已知问题
