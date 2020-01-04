@@ -21,8 +21,8 @@
 
 
 ##### 使用截图
-1.创建Model类
-![](http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-1.png)
+1.创建Model类  
+<img width=""50%" height="50%" align="center" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-1.png"/>
 2.选中类名, 按下(默认)快捷键`cmd` + `alt` + `shift` + `D`
 ![](http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-2.png)
 3.默认配置下, 会生成`D8gerAutoCode`目录及数据表SQL定义和Web代码, 共10个
