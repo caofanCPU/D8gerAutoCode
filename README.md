@@ -46,7 +46,7 @@
 -In the above steps, the code file will report a red error, which requires you to guide the package to solve  
  
 <div align = "center">
-<img width = "70%" height = "100%" src = "./image/power/2019-D8gerAutoCode-4.png" />
+<img width = "70%" height = "100%" src = "./image/2019-D8gerAutoCode-4.png" />
 </div>
 
 5.Default configuration file template, code color:
