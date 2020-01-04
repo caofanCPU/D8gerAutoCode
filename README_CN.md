@@ -49,17 +49,17 @@
 	<img width="70%" height="100%" src="./image/2019-D8gerAutoCode-4.png" /> 
 </div>
 
-5.默认配置文件模板, 代码彩蛋: 
-    - 在`Model类`所在模块的***resource***根目录下, 创建`d8ger.properties`属性配置文件
+5.默认配置文件模板, 代码彩蛋:  
+    - 在`Model类`所在模块的***resource***根目录下, 创建`d8ger.properties`属性配置文件  
     - 输入`d8ger`, 点击`Tools`-->`D8ger`-->`D8gerMore`  
 <div align="center">
 	<img width="60%" height="100%" src="./image/2019-D8gerAutoCode-5.png" /> 
 </div>
 
-6.你就得到如下默认配置信息
-    - 推荐你更改的配置项
-        - `author`(你挖的坑可不许署我的名!)
-        - `apiUrlPrefix`(接口url前缀应配置为项目接口统一Url前缀)
+6.你就得到如下默认配置信息  
+    - 推荐你更改的配置项  
+        - `author`(你挖的坑可不许署我的名!)  
+        - `apiUrlPrefix`(接口url前缀应配置为项目接口统一Url前缀)  
     - 其他`boolean`配置项, 是让你选择需要生成哪些文件  
 <div align="center">
 	<img width="60%" height="60%" src="./image/2019-D8gerAutoCode-6.png" /> 

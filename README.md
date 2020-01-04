@@ -51,18 +51,18 @@
 <img width = "70%" height = "100%" src = "./image/2019-D8gerAutoCode-4.png" />
 </div>
 
-5.Default configuration file template, code color:
-    - In the ***resource*** root directory of the module where the `Model class` is located, create the` d8ger.properties` property configuration file
-    - Enter `d8ger`, click on` Tools`-> `D8ger`->` D8gerMore`
+5.Default configuration file template, code color:  
+    - In the ***resource*** root directory of the module where the `Model class` is located, create the` d8ger.properties` property configuration file  
+    - Enter `d8ger`, click on` Tools`-> `D8ger`->` D8gerMore`  
 <div align = "center">
 <img width = "60%" height = "100%" src = "./image/2019-D8gerAutoCode-5.png" />
 </div>
 
-6. You will get the following default configuration information
+6. You will get the following default configuration information  
     - It is recommended that you change the configuration items  
         - `author` (you can't sign my name in the pit you dug!)  
         - `apiUrlPrefix` (the interface url prefix should be configured as the project interface unified URL prefix)  
-    - Other `boolean` configuration items let you choose which files need to be generated
+    - Other `boolean` configuration items let you choose which files need to be generated  
 <div align = "center">
 <img width = "60%" height = "60%" src = "./image/2019-D8gerAutoCode-6.png" />
 </div>
