@@ -1,5 +1,5 @@
 # D8gerAutoCode
-##### IDEA Code Automatically Generate Plug-ins • ** `For Java Web Developer` ** Version
+##### IDEA Code Automatically Generate Plug-ins • **`For Java Web Developer`** Version
 
 > [中文说明](./README_CN.md)
 
@@ -43,8 +43,8 @@
 
 4. What you need to do:
 - Move the file to the directory corresponding to the project, for example ** xxMo.java ** into the `model` directory  
-- Add non-null constraints to ** xx.sql ** as required  
-- If you generated the ** xxController.java ** file, please note that the interface returns the object type, it should be modified to the project's uniform return type  
+- Add non-null constraints to **xx.sql** as required  
+- If you generated the **xxController.java** file, please note that the interface returns the object type, it should be modified to the project's uniform return type  
 - In the above steps, the code file will report a red error, which requires you to guide the package to solve  
  
 <div align = "center">
@@ -52,7 +52,7 @@
 </div>
 
 5.Default configuration file template, code color:
-    - In the *** resource *** root directory of the module where the `Model class` is located, create the` d8ger.properties` property configuration file
+    - In the ***resource*** root directory of the module where the `Model class` is located, create the` d8ger.properties` property configuration file
     - Enter `d8ger`, click on` Tools`-> `D8ger`->` D8gerMore`
 <div align = "center">
 <img width = "60%" height = "100%" src = "./image/2019-D8gerAutoCode-5.png" />
