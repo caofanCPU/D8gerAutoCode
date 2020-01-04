@@ -1,6 +1,8 @@
 # D8gerAutoCode
 ##### IDEA Code Automatically Generate Plug-ins • ** `For Java Web Developer` ** Version
 
+> [中文说明](./README_CN.md)
+
 ##### Convention
 - General problem plugin provides standard solutions, personalized problem plugin only provides example solutions
 

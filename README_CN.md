@@ -24,19 +24,19 @@
 1.创建Model类
 
 <div align="center">
-	<img width="40%" height="20%" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-1.png" /> 
+	<img width="40%" height="20%" src="./image/2019-D8gerAutoCode-1.png" /> 
 </div>
 
 2.选中类名, 按下(默认)快捷键`cmd` + `alt` + `shift` + `D`
  
 <div align="center">
-	<img width="40%" height="30%" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-2.png" /> 
+	<img width="40%" height="30%" src="./image/2019-D8gerAutoCode-2.png" /> 
 </div>
 
 3.默认配置下, 会生成`D8gerAutoCode`目录及数据表SQL定义和Web代码, 共10个
 
 <div align="center">
-	<img width="70%" height="100%" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-3.png" /> 
+	<img width="70%" height="100%" src="./image/2019-D8gerAutoCode-3.png" /> 
 </div>
 
 4.你需要做的:
@@ -46,14 +46,14 @@
 - 在上述步骤中, 代码文件会飘红报错, 这需要你自行导包解决
  
 <div align="center">
-	<img width="70%" height="100%" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-4.png" /> 
+	<img width="70%" height="100%" src="./image/2019-D8gerAutoCode-4.png" /> 
 </div>
 
 5.默认配置文件模板, 代码彩蛋: 
     - 在`Model类`所在模块的***resource***根目录下, 创建`d8ger.properties`属性配置文件
     - 输入`d8ger`, 点击`Tools`-->`D8ger`-->`D8gerMore`  
 <div align="center">
-	<img width="60%" height="100%" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-5.png" /> 
+	<img width="60%" height="100%" src="./image/2019-D8gerAutoCode-5.png" /> 
 </div>
 
 6.你就得到如下默认配置信息
@@ -62,14 +62,14 @@
         - `apiUrlPrefix`(接口url前缀应配置为项目接口统一Url前缀)
     - 其他`boolean`配置项, 是让你选择需要生成哪些文件  
 <div align="center">
-	<img width="60%" height="60%" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-6.png" /> 
+	<img width="60%" height="60%" src="./image/2019-D8gerAutoCode-6.png" /> 
 </div>  
 
 ##### 如何安装
 - IDEA官方插件库安装
 
 <div align="center">
-	<img width="50%" height="50%" src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCodeIDEA.jpeg" /> 
+	<img width="50%" height="50%" src="./image/2019-D8gerAutoCodeIDEA.jpeg" /> 
 </div>
 
 - [下载插件包](http://file.debuggerpowerzcy.top/power/D8gerAutoCode-1.22.zip)  
