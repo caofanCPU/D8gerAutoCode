@@ -39,6 +39,8 @@
         - `apiUrlPrefix` (the interface url prefix should be configured as the project interface unified URL prefix)  
     - As for `boolean` configuration items, let you choose which files need to be generated  
 
+> By the way, these default shortcuts are used in Mac OS, if you use Windows just take `cmd` into `ctrl`.
+
 ### User Operate Snapshot
 <div align="center">
 	<img width="100%" height="100%" src="http://file.debuggerpowerzcy.top/power/2020-Tina-D8gerAutoCode.jpg" /> 

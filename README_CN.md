@@ -39,18 +39,15 @@
         - `apiUrlPrefix`(接口url前缀应配置为项目接口统一Url前缀)  
     - 其他`boolean`配置项, 是让你选择需要生成哪些文件  
 
+>以上默认快捷键针对MacOS系统, 对于Windows用户将`cmd`看做`ctrl`即可
+
 ### 使用操作截图
 <div align="center">
 	<img width="100%" height="100%" src="http://file.debuggerpowerzcy.top/power/2020-Tina-D8gerAutoCode.jpg" /> 
 </div>
 
 ##### 如何安装
-- IDEA官方插件库安装
-
-<div align="center">
-	<img width="50%" height="50%" src="./image/2019-D8gerAutoCodeIDEA.jpeg" /> 
-</div>
-
+- IDEA官方插件库安装  
 - [下载插件包](http://file.debuggerpowerzcy.top/power/D8gerAutoCode-1.23.zip)  
 - 源码安装, 这需要你熟悉Gradle, 后期我会详细补充如何使用Gradle开发一个插件  
 
