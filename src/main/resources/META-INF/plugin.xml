@@ -81,4 +81,5 @@
 
     <idea-version since-build="145.0"/>
 
+    <depends>com.intellij.modules.java</depends>
 </idea-plugin>
