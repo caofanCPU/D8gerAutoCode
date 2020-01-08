@@ -11,33 +11,34 @@
         <br>
         <br>
         <ul>
-        1.20
+        1.23
         <li>一键生成数据表定义SQL/Mapper/Service/Controller, 单表增删改查+分页一键搞定</li>
         <li>结合SwaggerApi, 一键生成带文档定义Vo及Controller, 支持Vo自动排序</li>
-        <li>一键生成文件, 默认快捷键`cmd`+`alt`+`shift`+`D`</li>
+        <li>一键生成文件, 默认快捷键`alt`+`shift`+`cmd`+`D`</li>
         <li>支持用户自定义配置, 指定生成哪些文件及文件author等</li>
         <li>预留彩蛋, 在IDEA中编辑空白文件输入'd8ger'即可得到配置文件模板, 后期会增加其他代码彩蛋</li>
-        <li>SwaggerVo字段排序, 默认快捷键`cmd`+`alt`+`shift`+`O`</li>
+        <li>SwaggerVo字段排序, 默认快捷键`alt`+`shift`+`cmd`+`O`</li>
+        <li>JSON字符串格式化, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
+        <li>去除空白字符, 简化为单行文本, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
         </ul>
+        另外, 以上默认快捷键针对MacOS系统, 对于Windows用户将`cmd`看做`ctrl`即可
 
         <ul>
-        1.20
+        1.23
         <li>One-click generation of data table definition SQL / Mapper / Service / Controller, single table addition, deletion, modification and search + paging in one click</li>
         <li>Combined with SwaggerApi, one-click generation of Vo and Controller with document definition, support Vo automatic sorting</li>
-        <li>Generate files in one click, default shortcut`cmd`+`alt`+`shift`+`D`</li>
+        <li>Generate files in one click, default shortcut `alt`+`shift`+`cmd`+`D`</li>
         <li>Support user-defined configuration, specify which files and file authors are generated, etc.</li>
         <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'd8ger' to get the configuration file template. Other code Easter eggs will be added later</li>
-        <li>SwaggerVo field auto sorting, default shortcut`cmd`+`alt`+`shift`+`O`</li>
+        <li>SwaggerVo field auto sorting, default shortcut `alt`+`shift`+`cmd`+`O`</li>
+        <li>JSON string auto formatting, default shortcut `alt`+`shift`+`cmd`+`J`</li>
+        <li>Stripping whitespace and simplifying text into a single line, default shortcut `alt`+`shift`+`cmd`+`S`</li>
         </ul>
+        By the way, these default shortcuts are used in Mac OS, if you use Windows just take `cmd` into `ctrl`.
 
         So, How To Use?<br>
         <br>
-        <img src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-1.png" /><br>
-        <img src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-2.png" /><br>
-        <img src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-3.png" /><br>
-        <img src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-4.png" /><br>
-        <img src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-5.png" /><br>
-        <img src="http://file.debuggerpowerzcy.top/power/2019-D8gerAutoCode-6.png" /><br>
+        <img src="http://file.debuggerpowerzcy.top/power/2020-Tina-D8gerAutoCode.jpg" /><br>
         ]]>
     </description>
 
@@ -58,13 +59,22 @@
             <separator/>
 
             <!-- Add your actions here -->
-            <action id="D8gerAutoCode" class="com.xyz.caofancpu.d8ger.action.D8gerAutoCodeAction" text="D8gerAutoCode" description="D8gerAutoCode" icon="/icons/gsBank.png">>
-                <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt D"/>
+            <action id="D8gerAutoCode" class="com.xyz.caofancpu.d8ger.action.D8gerAutoCodeAction" text="D8gerAutoCode" description="D8gerAutoCode" icon="/icons/gsBank.png">
+                <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl D"/>
             </action>
 
             <action id="SwaggerModelAutoRender" class="com.xyz.caofancpu.d8ger.action.SwaggerModelAutoRenderAction" text="SwaggerModelAutoRender" description="SwaggerModelAutoRender" icon="/icons/bjBank.png">
-                <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl alt O"/>
+                <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl O"/>
             </action>
+
+            <action id="BeautifulJSONAction" class="com.xyz.caofancpu.d8ger.action.BeautifulJSONAction" text="BeautifulJSON" description="BeautifulJSON" icon="/icons/wx.png">
+                <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl J"/>
+            </action>
+
+            <action id="SimplifyOneLineAction" class="com.xyz.caofancpu.d8ger.action.SimplifyOneLineAction" text="SimplifyOneLine" description="SimplifyOneLine" icon="/icons/qq-blue.png">
+                <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl S"/>
+            </action>
+
             <action id="D8gerMore" class="com.xyz.caofancpu.d8ger.action.D8gerMoreAction" text="D8gerMore" description="D8gerMore" icon="/icons/gitHub.png"/>
         </group>
     </actions>

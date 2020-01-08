@@ -419,7 +419,7 @@ public class D8gerAutoCoding {
                 item -> {
                     String tmp;
                     if (SupportFieldTypeEnum.STRING.getShortName().equals(item.getFieldTypeShortName())) {
-                        tmp = "LIKE " + "CONCAT(#{" + item.getName() + "}, \'%\')";
+                        tmp = "LIKE " + "CONCAT(#{" + item.getName() + "}, '%')";
                     } else {
                         tmp = "=" + ConstantUtil.SPACE + "#{" + item.getName() + "}";
                     }

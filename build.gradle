@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.xyz.caofancpu'
-version '1.22'
+version '1.23'
 
 sourceCompatibility = 1.8
 
@@ -41,6 +41,6 @@ patchPluginXml {
     changeNotes 
     """
         What encounter to pain me ever belongs to see you now.<br>
-        <em>Fix some bugs and add Descraption fir how to use in version 1.22</em>
+        <em>Auto Beauty JSON String in version 1.23</em>
     """
 }

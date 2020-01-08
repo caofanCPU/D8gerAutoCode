@@ -104,4 +104,36 @@ public class VerbalExpressionUtil {
         VerbalExpression regex = VerbalExpression.regex().capt().find(File.separator).oneOrMore().endCapt().build();
         return executePatternRex(regex, File.separator + property, File.separator);
     }
+
+    /**
+     * 美化多个换行符
+     *
+     * @param source
+     * @return
+     */
+    public static String beautyNextLine(@NonNull String source) {
+        VerbalExpression regex = VerbalExpression.regex()
+                .lineBreak().oneOrMore()
+                .build();
+        return executePatternRex(regex, source, ConstantUtil.NEXT_LINE);
+    }
+
+    /**
+     * 清除空白字符
+     *
+     * @param source
+     * @return
+     */
+    public static String cleanWhiteChar(@NonNull String source) {
+        VerbalExpression regex = VerbalExpression.regex()
+                .capt()
+                .space().oneOrMore()
+                .or("\\n").oneOrMore()
+                .or("\\r\\n").oneOrMore()
+                .or("\\t").oneOrMore()
+                .endCapt()
+                .build();
+        return executePatternRex(regex, source, ConstantUtil.EMPTY);
+    }
+
 }

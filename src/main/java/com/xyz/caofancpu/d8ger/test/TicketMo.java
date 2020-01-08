@@ -10,35 +10,35 @@ public class TicketMo {
      */
     private Integer id;
     /**
-     * 起始站名称
+     * startStationName
      */
     private String startStationName;
     /**
-     * 到站名称
+     * endStationName
      */
     private String endStationName;
     /**
-     * 票价
+     * ticket's price
      */
     private BigDecimal money;
     /**
-     * 下单时间
+     * orderTime (type by java.util.Date)
      */
     private Date orderTime;
     /**
-     * 乘车时间
+     * ridingTime (type by java.time.LocalDateTime)
      */
     private LocalDateTime ridingTime;
     /**
-     * 里程
+     * mile
      */
     private Long mile;
     /**
-     * 是否成功
+     * isSuccess
      */
     private Boolean success;
     /**
-     * 是否删除
+     * deleted
      */
     private YesNoEnum deleted;
 
