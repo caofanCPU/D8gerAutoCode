@@ -21,7 +21,7 @@
         <li>JSON字符串格式化, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
         <li>去除空白字符, 简化为单行文本, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
         </ul>
-        另外, 以上默认快捷键针对MacOS系统, 对于Windows用户将`cmd`看做`ctrl`即可
+        另外, 以上默认快捷键针对MacOS系统, 对于Windows用户将`cmd`看做`ctrl`即可<br>
 
         <ul>
         1.23
@@ -34,8 +34,8 @@
         <li>JSON string auto formatting, default shortcut `alt`+`shift`+`cmd`+`J`</li>
         <li>Stripping whitespace and simplifying text into a single line, default shortcut `alt`+`shift`+`cmd`+`S`</li>
         </ul>
-        By the way, these default shortcuts are used in Mac OS, if you use Windows just take `cmd` into `ctrl`.
-
+        By the way, these default shortcuts are used in Mac OS, if you use Windows just take `cmd` into `ctrl` <br>
+        <br>
         So, How To Use?<br>
         <br>
         <img src="http://file.debuggerpowerzcy.top/power/2020-Tina-D8gerAutoCode.jpg" /><br>
