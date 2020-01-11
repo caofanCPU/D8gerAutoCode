@@ -1,5 +1,5 @@
 # D8gerAutoCode
-## IDEA Code Automatically Generate Plug-ins • **`For Java Web Developer`** Version
+## IDEA Code Automatically Generate Plug-ins • `For Java Web Developer` Version
 
 > [中文说明](./README_CN.md)
 
@@ -17,7 +17,7 @@
 - Under the help of SwaggerApi generating `Vo` | `Controller` with friendly document description, in addition to this, supporting `Vo` field automatic sorting  
 - For automatic generating files, you just need one shortcut and the default is `alt`+`shift`+`cmd`+`D`  
 - Supporting customer configuration, for example, specify the author who you are  
-- Reserving easter eggs, you can try to edit the blank file in IDEA and type 'd8ger' to get the default configuration template, other eggs will be added later  
+- Reserving easter eggs, you can try to edit the blank file in IDEA and type `d8ger` to get the default configuration template, other eggs will be added later  
 - For automatic sorting `Vo` field , you just need one shortcut and the default is `alt`+`shift`+`cmd`+`O`  
 - JSON formatting and single line text conversion, default shortcut `alt`+`shift`+`cmd`+`J` | `S`
 
