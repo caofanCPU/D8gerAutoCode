@@ -29,10 +29,12 @@
 - Move files to directory corresponding to the project, for example, **`Mo.java`** should be moved into the `model` directory  
 - Add non-null constraints to **`xx.sql`** as required  
 - If you generated the **Controller.java** file, please note the interface returns type of **`Object`**, it should be modified to the project's uniform return type  
-- In the above steps the `xx.java` file will report some errors, ***don't worry***, these just require you to import packages  
+- In the above steps the `xx.java` file will report some errors, ***don't worry***, these just require you to import packages
+
 5.Default configuration file template for easter egg:  
     - In the ***`resource`*** root directory of the module where the `Model class` is located, create `d8ger.properties` property configuration file  
-    - Type `d8ger` and click on` Tools`-> `D8ger`->` D8gerMore`, and yo will find some surprise  
+    - Type `d8ger` and click on` Tools`-> `D8ger`->` D8gerMore`, and yo will find some surprise
+
 6.You will get the following default configuration information  
     - It is recommended that you change the configuration items  
         - `author` (you can't sign my name for the pits you dug!)  
