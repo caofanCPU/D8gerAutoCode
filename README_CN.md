@@ -1,5 +1,5 @@
 # D8gerAutoCode
-##### IDEA代码自动生成插件•**`For Java Web Developer`**版本
+##### IDEA代码自动生成插件•`**For Java Web Developer**`版本
 
 ##### 约定
 - 通用问题提供规范解法, 个性化问题只提供示例解法
