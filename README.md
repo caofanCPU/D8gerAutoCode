@@ -22,9 +22,12 @@
 - JSON formatting and single line text conversion, default shortcut `alt`+`shift`+`cmd`+`J` | `S`
 
 ### Using screenshots
-1. Create Model Class  
-2. Select the class name and press the (default) shortcut `alt`+`shift`+`cmd`+`D`  
-3. Under the default configuration, `D8gerAutoCode` directory and `data table SQL definitions` and **Web codes** will be generated  
+1. Create Model Class
+
+2. Select the class name and press the (default) shortcut `alt`+`shift`+`cmd`+`D`
+
+3. Under the default configuration, `D8gerAutoCode` directory and `data table SQL definitions` and **Web codes** will be generated
+
 4. So, What you need to do:
 - Move files to directory corresponding to the project, for example, **`Mo.java`** should be moved into the `model` directory  
 - Add non-null constraints to **`xx.sql`** as required  
