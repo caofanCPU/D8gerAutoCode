@@ -1,5 +1,5 @@
 # D8gerAutoCode
-##### IDEA代码自动生成插件•**`For Java Web Developer`**版本
+##### IDEA代码自动生成插件•`For Java Web Developer`版本
 
 ##### 约定
 - 通用问题提供规范解法, 个性化问题只提供示例解法
@@ -16,7 +16,7 @@
 - 结合SwaggerApi, 一键生成带文档定义`Vo`及`Controller`, 支持Vo字段自动排序
 - 一键生成文件, 默认快捷键 `alt`+`shift`+`cmd`+`D`
 - 支持用户自定义配置, 指定生成哪些文件及文件author等
-- 预留彩蛋, 在IDEA中编辑空白文件输入'd8ger'即可得到配置文件模板, 后期会增加其他代码彩蛋
+- 预留彩蛋, 在IDEA中编辑空白文件输入`d8ger`即可得到配置文件模板, 后期会增加其他代码彩蛋
 - SwaggerVo字段排序, 默认快捷键 `alt`+`shift`+`cmd`+`O`
 - JSON格式化与单行文本转换, 默认快捷键 `alt`+`shift`+`cmd`+`J` | `S`
 

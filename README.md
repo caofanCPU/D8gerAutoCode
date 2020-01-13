@@ -1,5 +1,5 @@
 # D8gerAutoCode
-## IDEA Code Automatically Generate Plug-ins • **`For Java Web Developer`** Version
+## IDEA Code Automatically Generate Plug-ins • `For Java Web Developer` Version
 
 > [中文说明](./README_CN.md)
 
@@ -17,22 +17,27 @@
 - Under the help of SwaggerApi generating `Vo` | `Controller` with friendly document description, in addition to this, supporting `Vo` field automatic sorting  
 - For automatic generating files, you just need one shortcut and the default is `alt`+`shift`+`cmd`+`D`  
 - Supporting customer configuration, for example, specify the author who you are  
-- Reserving easter eggs, you can try to edit the blank file in IDEA and type 'd8ger' to get the default configuration template, other eggs will be added later  
+- Reserving easter eggs, you can try to edit the blank file in IDEA and type `d8ger` to get the default configuration template, other eggs will be added later  
 - For automatic sorting `Vo` field , you just need one shortcut and the default is `alt`+`shift`+`cmd`+`O`  
 - JSON formatting and single line text conversion, default shortcut `alt`+`shift`+`cmd`+`J` | `S`
 
 ### Using screenshots
-1. Create Model Class  
-2. Select the class name and press the (default) shortcut `alt`+`shift`+`cmd`+`D`  
-3. Under the default configuration, `D8gerAutoCode` directory and `data table SQL definitions` and **Web codes** will be generated  
+1. Create Model Class
+
+2. Select the class name and press the (default) shortcut `alt`+`shift`+`cmd`+`D`
+
+3. Under the default configuration, `D8gerAutoCode` directory and `data table SQL definitions` and **Web codes** will be generated
+
 4. So, What you need to do:
 - Move files to directory corresponding to the project, for example, **`Mo.java`** should be moved into the `model` directory  
 - Add non-null constraints to **`xx.sql`** as required  
 - If you generated the **Controller.java** file, please note the interface returns type of **`Object`**, it should be modified to the project's uniform return type  
-- In the above steps the `xx.java` file will report some errors, ***don't worry***, these just require you to import packages  
+- In the above steps the `xx.java` file will report some errors, ***don't worry***, these just require you to import packages
+
 5.Default configuration file template for easter egg:  
     - In the ***`resource`*** root directory of the module where the `Model class` is located, create `d8ger.properties` property configuration file  
-    - Type `d8ger` and click on` Tools`-> `D8ger`->` D8gerMore`, and yo will find some surprise  
+    - Type `d8ger` and click on` Tools`-> `D8ger`->` D8gerMore`, and yo will find some surprise
+
 6.You will get the following default configuration information  
     - It is recommended that you change the configuration items  
         - `author` (you can't sign my name for the pits you dug!)  
