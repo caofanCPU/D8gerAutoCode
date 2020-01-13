@@ -354,8 +354,8 @@ public class D8gerAutoCoding {
     private StringBuilder getXMLBatchUpdateNonNullFieldByID() {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
                 item -> item.getName().equals(ConstantUtil.SQL_ID),
-                item -> ConstantUtil.QUATERNARY_TAB + "<if test=\"" + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
-                        + ConstantUtil.PENTA_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + "=" + ConstantUtil.SPACE + "#{" + item.getName() + "}," + ConstantUtil.NEXT_LINE
+                item -> ConstantUtil.QUATERNARY_TAB + "<if test=\"item." + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
+                        + ConstantUtil.PENTA_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + "=" + ConstantUtil.SPACE + "#{item." + item.getName() + "}," + ConstantUtil.NEXT_LINE
                         + ConstantUtil.QUATERNARY_TAB + "</if>"
         ), ConstantUtil.NEXT_LINE));
     }

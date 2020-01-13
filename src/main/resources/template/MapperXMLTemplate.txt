@@ -87,7 +87,7 @@
             <set>
 @BatchUpdateNonNullFieldByID@
             </set>
-            WHERE id = #{id}
+            WHERE id = #{item.id}
         </foreach>
     </update>
 

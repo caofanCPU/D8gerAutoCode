@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.xyz.caofancpu'
-version '1.23'
+version '1.24'
 
 sourceCompatibility = 1.8
 
@@ -41,6 +41,6 @@ patchPluginXml {
     changeNotes 
     """
         What encounter to pain me ever belongs to see you now.<br>
-        <em>Auto Beauty JSON String in version 1.23</em>
+        <em>Fix 'updateBatchByPrimaryKeySelective' method of mapper.xml in version 1.24</em>
     """
 }

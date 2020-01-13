@@ -508,7 +508,7 @@ public class AutoCodeTemplate {
             "            <set>\n" +
             "@BatchUpdateNonNullFieldByID@\n" +
             "            </set>\n" +
-            "            WHERE id = #{id}\n" +
+            "            WHERE id = #{item.id}\n" +
             "        </foreach>\n" +
             "    </update>\n" +
             "\n" +

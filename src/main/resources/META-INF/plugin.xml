@@ -11,7 +11,7 @@
         <br>
         <br>
         <ul>
-        1.23
+        1.24
         <li>一键生成数据表定义SQL/Mapper/Service/Controller, 单表增删改查+分页一键搞定</li>
         <li>结合SwaggerApi, 一键生成带文档定义Vo及Controller, 支持Vo自动排序</li>
         <li>一键生成文件, 默认快捷键`alt`+`shift`+`cmd`+`D`</li>
@@ -24,7 +24,7 @@
         另外, 以上默认快捷键针对MacOS系统, 对于Windows用户将`cmd`看做`ctrl`即可<br>
 
         <ul>
-        1.23
+        1.24
         <li>One-click generation of data table definition SQL / Mapper / Service / Controller, single table addition, deletion, modification and search + paging in one click</li>
         <li>Combined with SwaggerApi, one-click generation of Vo and Controller with document definition, support Vo automatic sorting</li>
         <li>Generate files in one click, default shortcut `alt`+`shift`+`cmd`+`D`</li>
