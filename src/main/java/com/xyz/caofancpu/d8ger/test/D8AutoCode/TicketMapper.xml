@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyz.caofancpu.d8ger.test.D8AutoCode.TicketMapper">
+
+    <!-- 查询操作时条件 -->
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    AND ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    AND ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    AND ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <!-- 更新操作时条件 -->
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    AND ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    AND ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    AND ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+
+    <!-- 1.根据条件查询列表 -->
+    <select id="selectByExample" parameterType="com.xyz.caofancpu.d8ger.test.D8AutoCode.TicketExample" resultType="com.xyz.caofancpu.d8ger.test.D8AutoCode.TicketMo">
+        SELECT
+        <if test="distinct">
+            DISTINCT
+        </if>
+            `id` AS id,
+            `start_station_name` AS startStationName,
+            `end_station_name` AS endStationName,
+            `money` AS money,
+            `order_time` AS orderTime,
+            `riding_time` AS ridingTime,
+            `mile` AS mile,
+            `success` AS success,
+            `deleted` AS deleted
+        FROM `ticket`
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            ORDER BY ${orderByClause}
+        </if>
+    </select>
+
+    <!-- 2.批量更新, 根据主键更新非null字段 -->
+    <update id="updateBatchByPrimaryKeySelective" parameterType="java.util.List">
+        <foreach collection="list" open="" close="" separator=";" item="item">
+            UPDATE `ticket`
+            <set>
+                <if test="item.startStationName != null">
+                    `start_station_name` = #{item.startStationName},
+                </if>
+                <if test="item.endStationName != null">
+                    `end_station_name` = #{item.endStationName},
+                </if>
+                <if test="item.money != null">
+                    `money` = #{item.money},
+                </if>
+                <if test="item.orderTime != null">
+                    `order_time` = #{item.orderTime},
+                </if>
+                <if test="item.ridingTime != null">
+                    `riding_time` = #{item.ridingTime},
+                </if>
+                <if test="item.mile != null">
+                    `mile` = #{item.mile},
+                </if>
+                <if test="item.success != null">
+                    `success` = #{item.success},
+                </if>
+                <if test="item.deleted != null">
+                    `deleted` = #{item.deleted},
+                </if>
+            </set>
+            WHERE id = #{item.id}
+        </foreach>
+    </update>
+
+    <!-- 3.根据条件更新非null字段 -->
+    <update id="updateByExampleSelective" parameterType="map">
+        UPDATE `ticket`
+        <set>
+            <if test="record.id != null">
+                `id` = #{record.id},
+            </if>
+            <if test="record.startStationName != null">
+                `start_station_name` = #{record.startStationName},
+            </if>
+            <if test="record.endStationName != null">
+                `end_station_name` = #{record.endStationName},
+            </if>
+            <if test="record.money != null">
+                `money` = #{record.money},
+            </if>
+            <if test="record.orderTime != null">
+                `order_time` = #{record.orderTime},
+            </if>
+            <if test="record.ridingTime != null">
+                `riding_time` = #{record.ridingTime},
+            </if>
+            <if test="record.mile != null">
+                `mile` = #{record.mile},
+            </if>
+            <if test="record.success != null">
+                `success` = #{record.success},
+            </if>
+            <if test="record.deleted != null">
+                `deleted` = #{record.deleted},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+
+    <!-- 4.根据条件删除记录 -->
+    <delete id="deleteByExample" parameterType="com.xyz.caofancpu.d8ger.test.D8AutoCode.TicketExample">
+        DELETE FROM `ticket`
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+
+    <!-- 5.根据条件统计记录 -->
+    <select id="countByExample" parameterType="com.xyz.caofancpu.d8ger.test.D8AutoCode.TicketExample">
+        SELECT
+            COUNT(*)
+        FROM `ticket`
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+
+    <!-- 6.增加单条记录, 返回主键 -->
+    <insert id="insertWithId" parameterType="com.xyz.caofancpu.d8ger.test.D8AutoCode.TicketMo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `ticket` (
+            `id`,
+            `start_station_name`,
+            `end_station_name`,
+            `money`,
+            `order_time`,
+            `riding_time`,
+            `mile`,
+            `success`,
+            `deleted`
+        )
+        values (
+            #{id},
+            #{startStationName},
+            #{endStationName},
+            #{money},
+            #{orderTime},
+            #{ridingTime},
+            #{mile},
+            #{success},
+            #{deleted}
+        )
+    </insert>
+
+    <!-- 7.批量增加记录, 返回主键 -->
+    <insert id="insertBatchWithId" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `ticket` (
+            `id`,
+            `start_station_name`,
+            `end_station_name`,
+            `money`,
+            `order_time`,
+            `riding_time`,
+            `mile`,
+            `success`,
+            `deleted`
+        )
+        VALUES
+        <foreach collection="list" item="item" separator=",">
+            (
+                #{item.id},
+                #{item.startStationName},
+                #{item.endStationName},
+                #{item.money},
+                #{item.orderTime},
+                #{item.ridingTime},
+                #{item.mile},
+                #{item.success},
+                #{item.deleted}
+            )
+        </foreach>
+    </insert>
+
+    <!-- 8.Ticket列表查询 -->
+    <select id="queryTicketMoList" parameterType="com.xyz.caofancpu.d8ger.test.D8AutoCode.TicketMo"  resultType="com.xyz.caofancpu.d8ger.test.D8AutoCode.TicketMo">
+        SELECT
+            `id` AS id,
+            `start_station_name` AS startStationName,
+            `end_station_name` AS endStationName,
+            `money` AS money,
+            `order_time` AS orderTime,
+            `riding_time` AS ridingTime,
+            `mile` AS mile,
+            `success` AS success,
+            `deleted` AS deleted
+        FROM `ticket`
+        WHERE 1 = 1
+            <if test="id != null">
+                AND `id` = #{id}
+            </if>
+            <if test="startStationName != null">
+                AND `start_station_name` LIKE CONCAT(#{startStationName}, '%')
+            </if>
+            <if test="endStationName != null">
+                AND `end_station_name` LIKE CONCAT(#{endStationName}, '%')
+            </if>
+            <if test="money != null">
+                AND `money` = #{money}
+            </if>
+            <if test="orderTime != null">
+                AND `order_time` = #{orderTime}
+            </if>
+            <if test="ridingTime != null">
+                AND `riding_time` = #{ridingTime}
+            </if>
+            <if test="mile != null">
+                AND `mile` = #{mile}
+            </if>
+            <if test="success != null">
+                AND `success` = #{success}
+            </if>
+            <if test="deleted != null">
+                AND `deleted` = #{deleted}
+            </if>
+    </select>
+
+    <!-- 9.根据ID查询对象 -->
+    <select id="selectByPrimaryKey" resultType="com.xyz.caofancpu.d8ger.test.D8AutoCode.TicketMo">
+        SELECT
+            `id` AS id,
+            `start_station_name` AS startStationName,
+            `end_station_name` AS endStationName,
+            `money` AS money,
+            `order_time` AS orderTime,
+            `riding_time` AS ridingTime,
+            `mile` AS mile,
+            `success` AS success,
+            `deleted` AS deleted
+        FROM `ticket`
+        WHERE id = #{id}
+    </select>
+
+    <!-- 10.根据主键只更新非null字段 -->
+    <update id="updateByPrimaryKeySelective" parameterType="com.xyz.caofancpu.d8ger.test.D8AutoCode.TicketMo">
+        UPDATE `ticket`
+        <set>
+            <if test="startStationName != null">
+                `start_station_name` = #{startStationName},
+            </if>
+            <if test="endStationName != null">
+                `end_station_name` = #{endStationName},
+            </if>
+            <if test="money != null">
+                `money` = #{money},
+            </if>
+            <if test="orderTime != null">
+                `order_time` = #{orderTime},
+            </if>
+            <if test="ridingTime != null">
+                `riding_time` = #{ridingTime},
+            </if>
+            <if test="mile != null">
+                `mile` = #{mile},
+            </if>
+            <if test="success != null">
+                `success` = #{success},
+            </if>
+            <if test="deleted != null">
+                `deleted` = #{deleted},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!-- 11.根据条件删除记录 -->
+    <delete id="deleteByPrimaryKey">
+        DELETE FROM `ticket` WHERE id = #{id}
+    </delete>
+
+</mapper>

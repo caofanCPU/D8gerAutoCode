@@ -32,8 +32,9 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version '2019.1.4'
-    plugins 'coverage' //Bundled plugin dependencies
+//    version '2019.1.4'
+    localPath '/Applications/IntelliJ IDEA.app'
+    plugins = ['java'] //Bundled plugin dependencies
     pluginName 'D8gerAutoCode'
     updateSinceUntilBuild false
 }
