@@ -508,7 +508,7 @@ public class AutoCodeTemplate {
             "            <set>\n" +
             "@BatchUpdateNonNullFieldByID@\n" +
             "            </set>\n" +
-            "            WHERE id = #{item.id}\n" +
+            "            WHERE `id` = #{item.id}\n" +
             "        </foreach>\n" +
             "    </update>\n" +
             "\n" +
@@ -576,7 +576,7 @@ public class AutoCodeTemplate {
             "        SELECT\n" +
             "@SelectBaseColumnList@\n" +
             "        FROM `@mo_table_name@`\n" +
-            "        WHERE id = #{id}\n" +
+            "        WHERE `id` = #{id}\n" +
             "    </select>\n" +
             "\n" +
             "    <!-- 10.根据主键只更新非null字段 -->\n" +
@@ -585,12 +585,12 @@ public class AutoCodeTemplate {
             "        <set>\n" +
             "@UpdateNonNullFieldByID@\n" +
             "        </set>\n" +
-            "        WHERE id = #{id}\n" +
+            "        WHERE `id` = #{id}\n" +
             "    </update>\n" +
             "\n" +
             "    <!-- 11.根据条件删除记录 -->\n" +
             "    <delete id=\"deleteByPrimaryKey\">\n" +
-            "        DELETE FROM `@mo_table_name@` WHERE id = #{id}\n" +
+            "        DELETE FROM `@mo_table_name@` WHERE `id` = #{id}\n" +
             "    </delete>\n" +
             "\n" +
             "</mapper>");
@@ -642,6 +642,14 @@ public class AutoCodeTemplate {
             "     * @return\n" +
             "     */\n" +
             "    int updateSelectiveById(@MoName@Mo @uncapitallizeMoName@Mo);\n" +
+            "\n" +
+            "    /**\n" +
+            "     * 批量根据id更新非null字段\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@MoList\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    int batchUpdateSelectiveById(List<@MoName@Mo> @uncapitallizeMoName@MoList);\n" +
             "\n" +
             "    /**\n" +
             "     * 根据id物理删除\n" +
@@ -732,6 +740,17 @@ public class AutoCodeTemplate {
             "    }\n" +
             "\n" +
             "    /**\n" +
+            "     * 批量根据id更新非null字段\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@MoList\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    @Override\n" +
+            "    public int batchUpdateSelectiveById(List<@MoName@Mo> @uncapitallizeMoName@MoList) {\n" +
+            "        return @uncapitallizeMoName@Mapper.updateBatchByPrimaryKeySelective(@uncapitallizeMoName@MoList);\n" +
+            "    }\n" +
+            "\n" +
+            "    /**\n" +
             "     * 根据id物理删除\n" +
             "     *\n" +
             "     * @param id\n" +
@@ -743,101 +762,6 @@ public class AutoCodeTemplate {
             "    }\n" +
             "\n" +
             "}");
-
-
-    /**
-     * Controller模板字符串
-     */
-    public static final StringBuilder TEMPLATE_CONTROLLER = new StringBuilder("package @package@;\n" +
-            "\n" +
-            "import com.alibaba.fastjson.JSONObject;\n" +
-            "import com.github.pagehelper.PageInfo;\n" +
-            "import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;\n" +
-            "import com.github.xiaoymin.knife4j.annotations.ApiSort;\n" +
-            "import io.swagger.annotations.Api;\n" +
-            "import io.swagger.annotations.ApiOperation;\n" +
-            "import lombok.extern.slf4j.Slf4j;\n" +
-            "import org.springframework.web.bind.annotation.PostMapping;\n" +
-            "import org.springframework.web.bind.annotation.RequestBody;\n" +
-            "import org.springframework.web.bind.annotation.RestController;\n" +
-            "\n" +
-            "import javax.annotation.Resource;\n" +
-            "import javax.validation.Valid;\n" +
-            "import java.util.ArrayList;\n" +
-            "import java.util.List;\n" +
-            "\n" +
-            "/**\n" +
-            " * @MoName@Mo控制器\n" +
-            " *\n" +
-            " * @author @d8Author@\n" +
-            " */\n" +
-            "@RestController\n" +
-            "@Api(tags = {\"@MoName@Mo模块接口\"})\n" +
-            "@ApiSort(0)\n" +
-            "@Slf4j\n" +
-            "public class @MoName@Controller {\n" +
-            "\n" +
-            "    @Resource\n" +
-            "    private @MoName@Service @uncapitallizeMoName@Service;\n" +
-            "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/add\")\n" +
-            "    @ApiOperationSupport(order = 1)\n" +
-            "    @ApiOperation(value = \"@MoName@Mo新增记录\")\n" +
-            "    public Object add(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
-            "        // 转换数据\n" +
-            "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
-            "        @uncapitallizeMoName@Service.add(@uncapitallizeMoName@Mo);\n" +
-            "        return @uncapitallizeMoName@Mo.getId();\n" +
-            "    }\n" +
-            "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/batchAdd\")\n" +
-            "    @ApiOperationSupport(order = 2)\n" +
-            "    @ApiOperation(value = \"@MoName@Mo批量新增\")\n" +
-            "    public Object batchAdd(@Valid @RequestBody List<@MoName@Vo> @uncapitallizeMoName@VoList) {\n" +
-            "        List<@MoName@Mo> @uncapitallizeMoName@MoList = new ArrayList<>(@uncapitallizeMoName@VoList.size());\n" +
-            "        for (@MoName@Vo @uncapitallizeMoName@Vo : @uncapitallizeMoName@VoList) {\n" +
-            "            @uncapitallizeMoName@MoList.add(JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class));\n" +
-            "        }\n" +
-            "        return @uncapitallizeMoName@Service.batchAdd(@uncapitallizeMoName@MoList);\n" +
-            "    }\n" +
-            "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/query@MoName@MoList\")\n" +
-            "    @ApiOperationSupport(order = 3)\n" +
-            "    @ApiOperation(value = \"@MoName@Mo列表查询\")\n" +
-            "    public Object query@MoName@MoList(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
-            "        // 转换数据\n" +
-            "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
-            "        return @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo);\n" +
-            "    }\n" +
-            "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/query@MoName@MoPage\")\n" +
-            "    @ApiOperationSupport(order = 4)\n" +
-            "    @ApiOperation(value = \"@MoName@Mo分页查询\")\n" +
-            "    public Object query@MoName@MoPage(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
-            "        // 转换数据\n" +
-            "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
-            "        List<@MoName@Mo> result@MoName@MoList = @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo, @uncapitallizeMoName@Vo.getPageNum(), @uncapitallizeMoName@Vo.getPageSize());\n" +
-            "        return PageInfo.of(result@MoName@MoList);\n" +
-            "    }\n" +
-            "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/update\")\n" +
-            "    @ApiOperationSupport(order = 5)\n" +
-            "    @ApiOperation(value = \"@MoName@Mo修改记录\")\n" +
-            "    public Object update(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
-            "        // 转换数据\n" +
-            "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
-            "        return @uncapitallizeMoName@Service.updateSelectiveById(@uncapitallizeMoName@Mo);\n" +
-            "    }\n" +
-            "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/delete\")\n" +
-            "    @ApiOperationSupport(order = 6)\n" +
-            "    @ApiOperation(value = \"@MoName@Mo删除记录\")\n" +
-            "    public Object delete(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
-            "        return @uncapitallizeMoName@Service.delete(@uncapitallizeMoName@Vo.getId());\n" +
-            "    }\n" +
-            "\n" +
-            "\n" +
-            "}\n");
 
     public static final String TEMPLATE_D8GER = "# 文件作者信息, 默认D8ger, 强烈建议修改\n" +
             "author=d8ger\n" +

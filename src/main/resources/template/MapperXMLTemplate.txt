@@ -87,7 +87,7 @@
             <set>
 @BatchUpdateNonNullFieldByID@
             </set>
-            WHERE id = #{item.id}
+            WHERE `id` = #{item.id}
         </foreach>
     </update>
 
@@ -155,7 +155,7 @@
         SELECT
 @SelectBaseColumnList@
         FROM `@mo_table_name@`
-        WHERE id = #{id}
+        WHERE `id` = #{id}
     </select>
 
     <!-- 10.根据主键只更新非null字段 -->
@@ -164,12 +164,12 @@
         <set>
 @UpdateNonNullFieldByID@
         </set>
-        WHERE id = #{id}
+        WHERE `id` = #{id}
     </update>
 
     <!-- 11.根据条件删除记录 -->
     <delete id="deleteByPrimaryKey">
-        DELETE FROM `@mo_table_name@` WHERE id = #{id}
+        DELETE FROM `@mo_table_name@` WHERE `id` = #{id}
     </delete>
 
 </mapper>
