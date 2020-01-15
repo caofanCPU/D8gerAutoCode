@@ -124,7 +124,7 @@ public class D8gerAutoCoding {
      */
     private D8gerAutoCoding initFileMap() {
         fileMap.put(KeyEnum.MO, Pair.of(this.getMoName().concat(ConstantUtil.MO_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_MO));
-        fileMap.put(KeyEnum.SWAGGER_MO, Pair.of(this.getMoName().concat(ConstantUtil.SWAGGER_MO_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_SWAGGER_MO));
+        fileMap.put(KeyEnum.SWAGGER_MO, Pair.of(this.getMoName().concat(ConstantUtil.SWAGGER_MO_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_SWAGGER_VO));
         fileMap.put(KeyEnum.MO_EXAMPLE, Pair.of(this.getMoName().concat(ConstantUtil.MO_EXAMPLE_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_MO_EXAMPLE));
         fileMap.put(KeyEnum.MO_MAPPER, Pair.of(this.getMoName().concat(ConstantUtil.MO_MAPPER_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_MAPPER));
         fileMap.put(KeyEnum.MO_SERVICE_INTERFACE, Pair.of(this.getMoName().concat(ConstantUtil.MO_SERVICE_INTERFACE_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_SERVICE_INTERFACE));
@@ -156,6 +156,20 @@ public class D8gerAutoCoding {
         } else {
             apiUrlPrefix = VerbalExpressionUtil.correctUrl(properties.getProperty(ConstantUtil.CONFIG_API_URL_PREFIX_KEY));
         }
+        // 语言配置
+        if (StringUtils.isNotBlank(properties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY)) && StringUtils.capitalize(properties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY)).equals(ConstantUtil.OPTIONAL_CONFIG_LANGUAGE)) {
+            // 注释中文化
+            AutoCodeTemplate.TEMPLATE_MO = AutoCodeTemplate.ZN_TEMPLATE_MO;
+            AutoCodeTemplate.TEMPLATE_SWAGGER_VO = AutoCodeTemplate.ZN_TEMPLATE_SWAGGER_VO;
+            AutoCodeTemplate.TEMPLATE_MO_SQL = AutoCodeTemplate.ZN_TEMPLATE_MO_SQL;
+            AutoCodeTemplate.TEMPLATE_MAPPER = AutoCodeTemplate.ZN_TEMPLATE_MAPPER;
+            AutoCodeTemplate.TEMPLATE_MO_EXAMPLE = AutoCodeTemplate.ZN_TEMPLATE_MO_EXAMPLE;
+            AutoCodeTemplate.TEMPLATE_MAPPER_XML = AutoCodeTemplate.ZN_TEMPLATE_MAPPER_XML;
+            AutoCodeTemplate.TEMPLATE_SERVICE_INTERFACE = AutoCodeTemplate.ZN_TEMPLATE_SERVICE_INTERFACE;
+            AutoCodeTemplate.TEMPLATE_SERVICE_IMPL = AutoCodeTemplate.ZN_TEMPLATE_SERVICE_IMPL;
+            AutoCodeTemplate.TEMPLATE_CONTROLLER = AutoCodeTemplate.ZN_TEMPLATE_CONTROLLER;
+        }
+
         keyWordMatchMap.put(TemplateKeyWordEnum.API_URL_PREFIX_KEY.getName(), new StringBuilder(apiUrlPrefix));
         keyWordMatchMap.put(TemplateKeyWordEnum.MO_FIELD_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toString), ConstantUtil.DOUBLE_NEXT_LINE)));
         keyWordMatchMap.put(TemplateKeyWordEnum.SWAGGER_MO_FIELD_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toSwaggerString), ConstantUtil.DOUBLE_NEXT_LINE)).append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE).append(wrapSwaggerPage()));
@@ -194,9 +208,9 @@ public class D8gerAutoCoding {
      * @return
      */
     public String wrapSwaggerPage() {
-        return ConstantUtil.TAB + "@ApiModelProperty(value = \"" + "分页页码" + "\", required = false, example = \"1\", position = " + moFieldList.size() + ")" + ConstantUtil.NEXT_LINE
+        return ConstantUtil.TAB + "@ApiModelProperty(value = \"" + "pageNum" + "\", required = false, example = \"1\", position = " + moFieldList.size() + ")" + ConstantUtil.NEXT_LINE
                 + ConstantUtil.TAB + ConstantUtil.DEFAULT_ACCESS_MODIFIER + ConstantUtil.SPACE + SupportFieldTypeEnum.INTEGER.getShortName() + ConstantUtil.SPACE + ConstantUtil.PAGE_NUM_NAME + ConstantUtil.ENGLISH_SEMICOLON + ConstantUtil.NEXT_LINE + ConstantUtil.NEXT_LINE
-                + ConstantUtil.TAB + "@ApiModelProperty(value = \"" + "分页大小" + "\", required = false, example = \"10\", position = " + (moFieldList.size() + 1) + ")" + ConstantUtil.NEXT_LINE
+                + ConstantUtil.TAB + "@ApiModelProperty(value = \"" + "pageSize" + "\", required = false, example = \"10\", position = " + (moFieldList.size() + 1) + ")" + ConstantUtil.NEXT_LINE
                 + ConstantUtil.TAB + ConstantUtil.DEFAULT_ACCESS_MODIFIER + ConstantUtil.SPACE + SupportFieldTypeEnum.INTEGER.getShortName() + ConstantUtil.SPACE + ConstantUtil.PAGE_SIZE_NAME + ConstantUtil.ENGLISH_SEMICOLON;
     }
 

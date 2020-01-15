@@ -1,0 +1,28 @@
+package @package@;
+
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.Date;
+
+/**
+ * @MoName@Mo with SwaggerApi Enhance Vo
+ *
+ * @author @d8Author@
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
+@ApiModel
+public class @MoName@Vo {
+
+@swaggerField@
+
+}

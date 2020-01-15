@@ -197,6 +197,21 @@ public class ConstantUtil {
     public static final String DEFAULT_API_URL_PREFIX = "/d8gerAutoCoding";
 
     /**
+     * 语言配置key
+     */
+    public static final String CONFIG_LANGUAGE_KEY = "locale";
+
+    /**
+     * 默认配置语言, EN(English)
+     */
+    public static final String DEFAULT_CONFIG_LANGUAGE = "EN";
+
+    /**
+     * 可选配置语言, ZN(Chinese Simplified)
+     */
+    public static final String OPTIONAL_CONFIG_LANGUAGE = "ZN";
+
+    /**
      * 分页页码字段名
      */
     public static final String PAGE_NUM_NAME = "pageNum";

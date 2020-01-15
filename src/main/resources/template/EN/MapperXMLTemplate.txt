@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="@package@.@MoName@Mapper">
 
-    <!-- 查询操作时条件 -->
+    <!-- Conditions during query operation -->
     <sql id="Example_Where_Clause">
         <where>
             <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -33,7 +33,7 @@
         </where>
     </sql>
 
-    <!-- 更新操作时条件 -->
+    <!-- Conditions during update operation -->
     <sql id="Update_By_Example_Where_Clause">
         <where>
             <foreach collection="example.oredCriteria" item="criteria" separator="or">
@@ -64,7 +64,7 @@
         </where>
     </sql>
 
-    <!-- 1.根据条件查询列表 -->
+    <!-- 1.Query list by criteria -->
     <select id="selectByExample" parameterType="@package@.@MoName@Example" resultType="@package@.@MoName@Mo">
         SELECT
         <if test="distinct">
@@ -80,7 +80,7 @@
         </if>
     </select>
 
-    <!-- 2.批量更新, 根据主键更新非null字段 -->
+    <!-- 2.Batch update non-null fields by ID for multi-records -->
     <update id="updateBatchByPrimaryKeySelective" parameterType="java.util.List">
         <foreach collection="list" open="" close="" separator=";" item="item">
             UPDATE `@mo_table_name@`
@@ -91,7 +91,7 @@
         </foreach>
     </update>
 
-    <!-- 3.根据条件更新非null字段 -->
+    <!-- 3.Update non-null fields by ID for a single record -->
     <update id="updateByExampleSelective" parameterType="map">
         UPDATE `@mo_table_name@`
         <set>
@@ -102,7 +102,7 @@
         </if>
     </update>
 
-    <!-- 4.根据条件删除记录 -->
+    <!-- 4.Delete a single record by condition -->
     <delete id="deleteByExample" parameterType="@package@.@MoName@Example">
         DELETE FROM `@mo_table_name@`
         <if test="_parameter != null">
@@ -110,7 +110,7 @@
         </if>
     </delete>
 
-    <!-- 5.根据条件统计记录 -->
+    <!-- 5.Statistical records by query conditions -->
     <select id="countByExample" parameterType="@package@.@MoName@Example">
         SELECT
             COUNT(*)
@@ -120,7 +120,7 @@
         </if>
     </select>
 
-    <!-- 6.增加单条记录, 返回主键 -->
+    <!-- 6.Add a single record, and return the ID -->
     <insert id="insertWithId" parameterType="@package@.@MoName@Mo" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO `@mo_table_name@` (
 @BaseColumnList@
@@ -130,7 +130,7 @@
         )
     </insert>
 
-    <!-- 7.批量增加记录, 返回主键 -->
+    <!-- 7.Batch add records, and return the IDs -->
     <insert id="insertBatchWithId" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO `@mo_table_name@` (
 @BaseColumnList@
@@ -141,7 +141,7 @@
         </foreach>
     </insert>
 
-    <!-- 8.@MoName@列表查询 -->
+    <!-- 8.@MoName@ query list -->
     <select id="query@MoName@MoList" parameterType="@package@.@MoName@Mo"  resultType="@package@.@MoName@Mo">
         SELECT
 @SelectBaseColumnList@
@@ -150,7 +150,7 @@
 @MoListQuery@
     </select>
 
-    <!-- 9.根据ID查询对象 -->
+    <!-- 9.Query just one record by ID -->
     <select id="selectByPrimaryKey" resultType="@package@.@MoName@Mo">
         SELECT
 @SelectBaseColumnList@
@@ -158,7 +158,7 @@
         WHERE `id` = #{id}
     </select>
 
-    <!-- 10.根据主键只更新非null字段 -->
+    <!-- 10.Update non-null fields by ID for a single record -->
     <update id="updateByPrimaryKeySelective" parameterType="@package@.@MoName@Mo">
         UPDATE `@mo_table_name@`
         <set>
@@ -167,7 +167,7 @@
         WHERE `id` = #{id}
     </update>
 
-    <!-- 11.根据ID删除记录 -->
+    <!-- 11.Delete a record by ID -->
     <delete id="deleteByPrimaryKey">
         DELETE FROM `@mo_table_name@` WHERE `id` = #{id}
     </delete>

@@ -81,12 +81,12 @@ public class D8gerAutoCodeAction extends AnAction {
         });
 
         Notifications.Bus.notify(
-                new Notification(ConstantUtil.NOTIFICATION_GROUP_VIEW_ID, "重建文件信息", CollectionUtil.join(fileNameList, ConstantUtil.DOUBLE_NEXT_LINE), NotificationType.INFORMATION)
+                new Notification(ConstantUtil.NOTIFICATION_GROUP_VIEW_ID, "Look Rebuilding file here", CollectionUtil.join(fileNameList, ConstantUtil.DOUBLE_NEXT_LINE), NotificationType.INFORMATION)
         );
     }
 
     private boolean skipCurrentOperation(D8gerAutoCoding d8gerAutoCoding, KeyEnum keyEnum) {
-        return !Boolean.valueOf(d8gerAutoCoding.loadPropertiesFromRootResource().getProperty(keyEnum.getKey()));
+        return !Boolean.parseBoolean(d8gerAutoCoding.loadPropertiesFromRootResource().getProperty(keyEnum.getKey()));
     }
 
 }

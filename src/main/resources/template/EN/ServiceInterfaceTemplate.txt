@@ -1,0 +1,61 @@
+package @package@;
+
+import java.util.List;
+
+/**
+ * @MoName@MoService Interface Definition
+ *
+ * @author @d8Author@
+ */
+public interface @MoName@Service {
+
+    /**
+     * Insert a record
+     *
+     * @param @uncapitallizeMoName@Mo
+     * @return
+     */
+    int add(@MoName@Mo @uncapitallizeMoName@Mo);
+
+    /**
+     * Batch insert records
+     *
+     * @param @uncapitallizeMoName@MoList
+     * @return
+     */
+    int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList);
+
+    /**
+     * Query list, if the paging parameter is carried, return the list after paging
+     *
+     * @param @uncapitallizeMoName@Mo
+     * @param pageParams Optional paging parameters
+     * @return
+     */
+    List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo, Integer... pageParams);
+
+    /**
+     * Update non-null fields by ID for a record
+     *
+     * @param @uncapitallizeMoName@Mo
+     * @return
+     */
+    int updateSelectiveById(@MoName@Mo @uncapitallizeMoName@Mo);
+
+    /**
+     * Batch Update non-nulls field by ID for multi-records
+     *
+     * @param @uncapitallizeMoName@MoList
+     * @return
+     */
+    int batchUpdateSelectiveById(List<@MoName@Mo> @uncapitallizeMoName@MoList);
+
+    /**
+     * Delete a record by ID
+     *
+     * @param id
+     * @return
+     */
+    <T extends Number> int delete(T id);
+
+}

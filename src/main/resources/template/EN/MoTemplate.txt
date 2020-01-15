@@ -1,0 +1,25 @@
+package @package@;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
+
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.Date;
+
+/**
+ * @MoName@Mo
+ *
+ * @author @d8Author@
+ */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
+public class @MoName@Mo {
+
+@field@
+
+}

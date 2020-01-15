@@ -162,7 +162,7 @@ public class MoField {
         String fieldTypeInListShortName = SupportFieldTypeEnum.BASIC_INT.getShortName().equals(fieldOriginTypeName) ? SupportFieldTypeEnum.INTEGER.getShortName() : StringUtils.capitalize(javaTypeShortName);
         StringBuilder builder = new StringBuilder();
         builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
-                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("为null").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append(ConstantUtil.SPACE).append("Is Null").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
@@ -171,7 +171,7 @@ public class MoField {
                 .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
         builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
-                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("不为null").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append(ConstantUtil.SPACE).append("IS Not Null").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
@@ -180,7 +180,7 @@ public class MoField {
                 .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
         builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
-                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("等于").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append(ConstantUtil.SPACE).append("Equal").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
@@ -189,7 +189,7 @@ public class MoField {
                 .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
         builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
-                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("不等于").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append(ConstantUtil.SPACE).append("Not Equal").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
@@ -198,7 +198,7 @@ public class MoField {
                 .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
         builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
-                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("大于").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append(ConstantUtil.SPACE).append("Greater Than").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
@@ -207,7 +207,7 @@ public class MoField {
                 .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
         builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
-                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("大于等于").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append(ConstantUtil.SPACE).append("Greater Than Or Equal To").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
@@ -216,7 +216,7 @@ public class MoField {
                 .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
         builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
-                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("小于").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append(ConstantUtil.SPACE).append("Less Than").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
@@ -225,7 +225,7 @@ public class MoField {
                 .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
         builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
-                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("小于等于").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append(ConstantUtil.SPACE).append("Less Than Or Equal To").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
@@ -234,7 +234,7 @@ public class MoField {
                 .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
         builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
-                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("在列表内").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append(ConstantUtil.SPACE).append("In").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
@@ -243,7 +243,7 @@ public class MoField {
                 .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
         builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
-                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("不在列表内").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append(ConstantUtil.SPACE).append("Not In").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
@@ -252,7 +252,7 @@ public class MoField {
                 .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
         builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
-                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("在起始值范围内").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append(ConstantUtil.SPACE).append("Between").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
@@ -261,7 +261,7 @@ public class MoField {
                 .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
         builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
-                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("不在起始值范围内").append(ConstantUtil.NEXT_LINE)
+                .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append(ConstantUtil.SPACE).append("Not Between").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                 .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
@@ -272,7 +272,7 @@ public class MoField {
         if (SupportFieldTypeEnum.STRING.getShortName().equals(fieldTypeShortName)) {
             // 字符串字段, 添加前缀模糊查询
             builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
-                    .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("模糊查询以前缀开头").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append(ConstantUtil.SPACE).append("Like").append(ConstantUtil.NEXT_LINE)
                     .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                     .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                     .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)
@@ -281,7 +281,7 @@ public class MoField {
                     .append(ConstantUtil.TRIPLE_TAB).append("return (Criteria) this;").append(ConstantUtil.NEXT_LINE)
                     .append(ConstantUtil.DOUBLE_TAB).append("}").append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE);
             builder.append(ConstantUtil.DOUBLE_TAB).append("/**").append(ConstantUtil.NEXT_LINE)
-                    .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append("模糊查询不以前缀匹开头").append(ConstantUtil.NEXT_LINE)
+                    .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append(name).append(ConstantUtil.SPACE).append("Not Like").append(ConstantUtil.NEXT_LINE)
                     .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.NEXT_LINE)
                     .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*").append(ConstantUtil.SPACE).append("@return").append(ConstantUtil.NEXT_LINE)
                     .append(ConstantUtil.DOUBLE_TAB).append(ConstantUtil.SPACE).append("*/").append(ConstantUtil.NEXT_LINE)

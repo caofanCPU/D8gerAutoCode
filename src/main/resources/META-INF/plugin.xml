@@ -82,4 +82,16 @@
     <idea-version since-build="145.0"/>
 
     <depends>com.intellij.modules.java</depends>
+
+    <change-notes>
+        <![CDATA[
+        <li>1.24</li>
+        <br/>
+        BugFix: 'updateBatchByPrimaryKeySelective' method of mapper.xml
+        <br/>
+        Addition: Set default language English and you can config it as Chinese Simplified
+        <br/>
+        <li>Attention: you should configure you database connection like 'allowMultiQueries=true' for supporting batchUpdate operation</li>
+        ]]>
+    </change-notes>
 </idea-plugin>

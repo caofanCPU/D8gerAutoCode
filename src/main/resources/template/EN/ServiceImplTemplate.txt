@@ -1,0 +1,97 @@
+package @package@;
+
+import com.github.pagehelper.PageHelper;
+import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
+
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Objects;
+
+/**
+ * @MoName@MoService Implement Class
+ *
+ * @author @d8Author@
+ */
+@Service
+@Slf4j
+public class @MoName@ServiceImpl implements @MoName@Service {
+
+    @Resource
+    private @MoName@Mapper @uncapitallizeMoName@Mapper;
+
+    /**
+     * Insert a record
+     *
+     * @param @uncapitallizeMoName@Mo
+     * @return
+     */
+    @Override
+    public int add(@MoName@Mo @uncapitallizeMoName@Mo) {
+        @uncapitallizeMoName@Mo.setId(null);
+        return @uncapitallizeMoName@Mapper.insertWithId(@uncapitallizeMoName@Mo);
+    }
+
+    /**
+     * Batch insert records
+     *
+     * @param @uncapitallizeMoName@MoList
+     * @return
+     */
+    @Override
+    public int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList) {
+        @uncapitallizeMoName@MoList.forEach(item -> item.setId(null));
+        return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@MoList);
+    }
+
+    /**
+     * Query list, if the paging parameter is carried, return the list after paging
+     *
+     * @param @uncapitallizeMoName@Mo
+     * @param pageParams Optional paging parameters
+     * @return
+     */
+    @Override
+    public List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo, Integer... pageParams) {
+        if (Objects.nonNull(pageParams) && pageParams.length > 0) {
+            int pageNum = pageParams[0];
+            int pageSize = pageParams.length > 1 ? pageParams[1] : 10;
+            PageHelper.startPage(pageNum, pageSize);
+        }
+        return @uncapitallizeMoName@Mapper.query@MoName@MoList(@uncapitallizeMoName@Mo);
+    }
+
+    /**
+     * Update non-null fields by ID for a single record
+     *
+     * @param @uncapitallizeMoName@Mo
+     * @return
+     */
+    @Override
+    public int updateSelectiveById(@MoName@Mo @uncapitallizeMoName@Mo) {
+        return @uncapitallizeMoName@Mapper.updateByPrimaryKeySelective(@uncapitallizeMoName@Mo);
+    }
+
+    /**
+     * Batch Update non-nulls field by ID for multi-records
+     *
+     * @param @uncapitallizeMoName@MoList
+     * @return
+     */
+    @Override
+    public int batchUpdateSelectiveById(List<@MoName@Mo> @uncapitallizeMoName@MoList) {
+        return @uncapitallizeMoName@Mapper.updateBatchByPrimaryKeySelective(@uncapitallizeMoName@MoList);
+    }
+
+    /**
+     * Delete a record by ID
+     *
+     * @param id
+     * @return
+     */
+    @Override
+    public <T extends Number> int delete(T id) {
+        return @uncapitallizeMoName@Mapper.deleteByPrimaryKey(id);
+    }
+
+}
