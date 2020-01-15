@@ -1719,7 +1719,7 @@ public class AutoCodeTemplate {
             "\n" +
             "}\n");
 
-    public static String TEMPLATE_D8GER = "# 文件作者信息, 默认D8ger, 强烈建议修改\n" +
+    public static String TEMPLATE_D8GER = "# The default author called 'D8ger', but it's highly recommended to modify\n" +
             "author=d8ger\n" +
             "#### Basic generate\n" +
             "autoCreateMo=true\n" +

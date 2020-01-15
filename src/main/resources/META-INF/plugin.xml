@@ -12,27 +12,29 @@
         <br>
         <ul>
         1.24
+        <li>生成代码的注释支持英语|汉语配置</li>
+        <li>JSON字符串格式化, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
+        <li>去除空白字符, 简化为单行文本, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
         <li>一键生成数据表定义SQL/Mapper/Service/Controller, 单表增删改查+分页一键搞定</li>
         <li>结合SwaggerApi, 一键生成带文档定义Vo及Controller, 支持Vo自动排序</li>
         <li>一键生成文件, 默认快捷键`alt`+`shift`+`cmd`+`D`</li>
         <li>支持用户自定义配置, 指定生成哪些文件及文件author等</li>
         <li>预留彩蛋, 在IDEA中编辑空白文件输入'd8ger'即可得到配置文件模板, 后期会增加其他代码彩蛋</li>
         <li>SwaggerVo字段排序, 默认快捷键`alt`+`shift`+`cmd`+`O`</li>
-        <li>JSON字符串格式化, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
-        <li>去除空白字符, 简化为单行文本, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
         </ul>
         另外, 以上默认快捷键针对MacOS系统, 对于Windows用户将`cmd`看做`ctrl`即可<br>
 
         <ul>
         1.24
+        <li>The comments of generated codes support English(Default) | Chinese Simplified(Optional) configuration</li>
+        <li>JSON string auto formatting, default shortcut `alt`+`shift`+`cmd`+`J`</li>
+        <li>Stripping whitespace and simplifying text into a single line, default shortcut `alt`+`shift`+`cmd`+`S`</li>
         <li>One-click generation of data table definition SQL / Mapper / Service / Controller, single table addition, deletion, modification and search + paging in one click</li>
         <li>Combined with SwaggerApi, one-click generation of Vo and Controller with document definition, support Vo automatic sorting</li>
         <li>Generate files in one click, default shortcut `alt`+`shift`+`cmd`+`D`</li>
         <li>Support user-defined configuration, specify which files and file authors are generated, etc.</li>
         <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'd8ger' to get the configuration file template. Other code Easter eggs will be added later</li>
         <li>SwaggerVo field auto sorting, default shortcut `alt`+`shift`+`cmd`+`O`</li>
-        <li>JSON string auto formatting, default shortcut `alt`+`shift`+`cmd`+`J`</li>
-        <li>Stripping whitespace and simplifying text into a single line, default shortcut `alt`+`shift`+`cmd`+`S`</li>
         </ul>
         By the way, these default shortcuts are used in Mac OS, if you use Windows just take `cmd` into `ctrl` <br>
         <br>
@@ -86,12 +88,38 @@
     <change-notes>
         <![CDATA[
         <li>1.24</li>
-        <br/>
-        BugFix: 'updateBatchByPrimaryKeySelective' method of mapper.xml
-        <br/>
-        Addition: Set default language English and you can config it as Chinese Simplified
-        <br/>
-        <li>Attention: you should configure you database connection like 'allowMultiQueries=true' for supporting batchUpdate operation</li>
+        <ul>
+        <li>BugFix: Update method named'updateBatchByPrimaryKeySelective' in mapper.xml</li>
+        <li>Addition: Set default language English and you can config it as Chinese Simplified, as before, typing 'd8ger' for the latest configuration template</li>
+        <li>Attention: You should configure you database connection like 'allowMultiQueries=true' for supporting batchUpdate operation</li>
+        </ul>
+        </br>
+        <li>1.23</li>
+        <ul>
+        <li>BugFix: Fix required dependencies by Jetbrains's suggestion for some known compatibility issues</li>
+        <li>Addition: Add JSON-formatter and WhiteChar-cleaner</li>
+        <li>Attention: Con you star the project on the github?</li>
+        </ul>
+        </br>
+        <li>1.22</li>
+        <ul>
+        <li>BugFix: Fix README of style, description, picture problems</li>
+        <li>Enhance: Enhance profile for generating codes by using regex to replace the circle of matching string</li>
+        <li>Attention: Con you star the project on the github?</li>
+        </ul>
+        </br>
+        <li>1.21</li>
+        <ul>
+        <li>BugFix: Fix README of style, description, picture problems</li>
+        <li>Addition: Add MoExample autoCoding for supporting simple sql</li>
+        <li>Attention: Con you star the project on the github?</li>
+        </ul>
+        </br>
+        <li>1.20</li>
+        <ul>
+        <li>Completion: Auto coding for Mo/Example/Mapper/Xml/SQL/Service is completed, wow!</li>
+        <li>Attention: Con you star the project on the github?</li>
+        </ul>
         ]]>
     </change-notes>
 </idea-plugin>
