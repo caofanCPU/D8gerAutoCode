@@ -5,10 +5,21 @@
 
     <description>
         <![CDATA[
-            自动生成代码插件, 单表增删查找+分页一键搞定.<br>
-            Automatic code generation plug-in, single-table addition and deletion search + paging in one click.
-        <br>
-        <br>
+        Automatic code generation plug-in, single-table addition and deletion search + paging in one click.<br>
+        自动生成代码插件, 单表增删查找+分页一键搞定.<br>
+        <ul>
+        1.24
+        <li>The comments of generated codes support English(Default) | Chinese Simplified(Optional) configuration</li>
+        <li>JSON string auto formatting, default shortcut `alt`+`shift`+`cmd`+`J`</li>
+        <li>Stripping whitespace and simplifying text into a single line, default shortcut `alt`+`shift`+`cmd`+`S`</li>
+        <li>One-click generation of data table definition SQL / Mapper / Service / Controller, single table addition, deletion, modification and search + paging in one click</li>
+        <li>Combined with SwaggerApi, one-click generation of Vo and Controller with document definition, support Vo automatic sorting</li>
+        <li>Generate files in one click, default shortcut `alt`+`shift`+`cmd`+`D`</li>
+        <li>Support user-defined configuration, specify which files and file authors are generated, etc.</li>
+        <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'd8ger' to get the configuration file template. Other code Easter eggs will be added later</li>
+        <li>SwaggerVo field auto sorting, default shortcut `alt`+`shift`+`cmd`+`O`</li>
+        </ul>
+        By the way, these default shortcuts are used in Mac OS, if you use Windows just take `cmd` into `ctrl` <br>
         <br>
         <ul>
         1.24
@@ -24,20 +35,6 @@
         </ul>
         另外, 以上默认快捷键针对MacOS系统, 对于Windows用户将`cmd`看做`ctrl`即可<br>
 
-        <ul>
-        1.24
-        <li>The comments of generated codes support English(Default) | Chinese Simplified(Optional) configuration</li>
-        <li>JSON string auto formatting, default shortcut `alt`+`shift`+`cmd`+`J`</li>
-        <li>Stripping whitespace and simplifying text into a single line, default shortcut `alt`+`shift`+`cmd`+`S`</li>
-        <li>One-click generation of data table definition SQL / Mapper / Service / Controller, single table addition, deletion, modification and search + paging in one click</li>
-        <li>Combined with SwaggerApi, one-click generation of Vo and Controller with document definition, support Vo automatic sorting</li>
-        <li>Generate files in one click, default shortcut `alt`+`shift`+`cmd`+`D`</li>
-        <li>Support user-defined configuration, specify which files and file authors are generated, etc.</li>
-        <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'd8ger' to get the configuration file template. Other code Easter eggs will be added later</li>
-        <li>SwaggerVo field auto sorting, default shortcut `alt`+`shift`+`cmd`+`O`</li>
-        </ul>
-        By the way, these default shortcuts are used in Mac OS, if you use Windows just take `cmd` into `ctrl` <br>
-        <br>
         So, How To Use?<br>
         <br>
         <img src="http://file.debuggerpowerzcy.top/power/2020-Tina-D8gerAutoCode.jpg" /><br>
