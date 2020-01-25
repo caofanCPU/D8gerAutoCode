@@ -95,27 +95,27 @@
         <ul>
         <li>BugFix: Fix required dependencies by Jetbrains's suggestion for some known compatibility issues</li>
         <li>Addition: Add JSON-formatter and WhiteChar-cleaner</li>
-        <li>Attention: Con you star the project on the github?</li>
+        <li>Attention: Can you star the project on the github?</li>
         </ul>
         </br>
         <li>1.22</li>
         <ul>
         <li>BugFix: Fix README of style, description, picture problems</li>
         <li>Enhance: Enhance profile for generating codes by using regex to replace the circle of matching string</li>
-        <li>Attention: Con you star the project on the github?</li>
+        <li>Attention: Can you star the project on the github?</li>
         </ul>
         </br>
         <li>1.21</li>
         <ul>
         <li>BugFix: Fix README of style, description, picture problems</li>
         <li>Addition: Add MoExample autoCoding for supporting simple sql</li>
-        <li>Attention: Con you star the project on the github?</li>
+        <li>Attention: Can you star the project on the github?</li>
         </ul>
         </br>
         <li>1.20</li>
         <ul>
         <li>Completion: Auto coding for Mo/Example/Mapper/Xml/SQL/Service is completed, wow!</li>
-        <li>Attention: Con you star the project on the github?</li>
+        <li>Attention: Can you star the project on the github?</li>
         </ul>
         ]]>
     </change-notes>
