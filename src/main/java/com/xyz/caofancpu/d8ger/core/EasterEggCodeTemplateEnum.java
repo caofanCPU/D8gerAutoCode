@@ -1,7 +1,7 @@
 package com.xyz.caofancpu.d8ger.core;
 
 /**
- * 模板关键字枚举
+ * EasterEgg code template keyword enumeration
  *
  * @author caofanCPU
  */

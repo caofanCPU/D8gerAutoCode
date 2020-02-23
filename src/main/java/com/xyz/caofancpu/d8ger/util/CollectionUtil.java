@@ -31,12 +31,13 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 /**
- * 集合工具类: https://dzone.com/articles/functional-programming-patterns-with-java-8
+ * Collection tools: https://dzone.com/articles/functional-programming-patterns-with-java-8
  */
 public class CollectionUtil extends CollectionUtils {
 
     /**
-     * 求元素类型相同的两个集合的并集(a ∪ b), 可指定结果容器类型
+     * Find the union of two sets of the same element type, like (a ∪ b),
+     * the container type of the result can be specified
      *
      * @param resultColl
      * @param a
@@ -53,7 +54,8 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 求元素类型相同的两个集合的交集(a ∩ b), 可指定结果容器类型
+     * Find the intersection of two sets of the same element type, like (a ∩ b),
+     * the container type of the result can be specified
      *
      * @param resultColl
      * @param a
@@ -70,7 +72,8 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 求元素类型相同的两个集合的交集的补集((a ∪ b) - (a ∩ b)), 可指定结果容器类型
+     * Find the complement of the intersection of two sets of the same element type, like ((a ∪ b) - (a ∩ b)),
+     * the container type of the result can be specified
      *
      * @param resultColl
      * @param a
@@ -87,7 +90,8 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 求元素类型相同的两个集合的差集(a - ( a ∩ b)), 可指定结果容器类型
+     * Find the difference between two sets of the same element type, like (a - ( a ∩ b)),
+     * the container type of the result can be specified
      *
      * @param resultColl
      * @param a
@@ -104,7 +108,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 对列表元素指定函数(字段为数字类型)求和
+     * Sum the specified elements of a list element (fields are numeric)
      *
      * @param coll
      * @param numberValueFunction
@@ -122,7 +126,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 对列表元素指定函数(字段为数字类型)求平均
+     * Average the specified elements of a list element (fields are numeric)
      *
      * @param coll
      * @param numberValueFunction
@@ -139,7 +143,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 对列表元素指定函数(字段为数字类型), 求最大值
+     * Max the specified elements of a list element (fields are numeric)
      *
      * @param coll
      * @param numberValueFunction
@@ -158,7 +162,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 对列表元素指定函数(字段为数字类型), 求最小值
+     * Min the specified elements of a list element (fields are numeric)
      *
      * @param coll
      * @param numberValueFunction
@@ -177,7 +181,8 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 对集合元素指定字段检测重复, 返回非空重复元素
+     * Detect duplicates for the specified field of the collection element,
+     * return non-empty duplicate elements
      *
      * @param coll
      * @param mapper
@@ -193,7 +198,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 将按照分隔符固定拼接的[数字]字符串转换为指定[数字]类型的List
+     * Converts a [number] string that is concatenated according to the separator into a list of the specified [number]
      *
      * @param source
      * @param splitSymbol
@@ -206,10 +211,10 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * Map判空
+     * Judge empty or not for Map
      *
-     * @param sourceMap 数据源
-     * @return boolean 判断结果
+     * @param sourceMap data source
+     * @return boolean  judge result
      */
     public static boolean isEmpty(Map sourceMap) {
         return Objects.isNull(sourceMap) || sourceMap.isEmpty();
@@ -220,10 +225,10 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 转换为Set, 底层默认使用HashSet
+     * Convert to Set, HashSet is used by default
      *
-     * @param source 数据源
-     * @param mapper 字段执行函数
+     * @param source data source
+     * @param mapper field execution function
      * @return HashSet
      */
     public static <E, R> Set<R> transToSet(Collection<E> source, Function<? super E, ? extends R> mapper) {
@@ -231,10 +236,10 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 转换为List, 底层默认使用ArrayList
+     * Convert to List, ArrayList is used by default
      *
-     * @param source 数据源
-     * @param mapper 字段执行函数
+     * @param source data source
+     * @param mapper field execution function
      * @return ArrayList
      */
     public static <E, R> List<R> transToList(Collection<E> source, Function<? super E, ? extends R> mapper) {
@@ -242,11 +247,11 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 转换为指定的集合，常用Set/List，HashSet/ArrayList，LinkedSet/LinkedList
+     * Convert to the specified collection, commonly used Set/List，HashSet/ArrayList，LinkedSet/LinkedList
      *
-     * @param resultColl 指定集合容器
-     * @param source     数据源
-     * @param mapper     字段执行函数
+     * @param resultColl Specify a collection container
+     * @param source     data source
+     * @param mapper     field execution function
      * @return C
      */
     public static <E, R, C extends Collection<R>> C transToCollection(Supplier<C> resultColl, Collection<E> source, Function<? super E, ? extends R> mapper) {
@@ -254,35 +259,35 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 两层嵌套Collection折叠平铺为List, 底层默认使用ArrayList
-     * 多层嵌套的可以通过重复调用此方法完成平铺
+     * Two layers of Nested Collection are collapsed and tiled into a List, and ArrayList is used by default
+     * Multi-level nesting can be completed by repeatedly calling this method
      *
-     * @param source 两层嵌套List数据源
-     * @param mapper 外层元素获取内Collection的执行函数
-     * @return 平铺后收集到的List
+     * @param source Two levels of nested List data sources
+     * @param mapper Outer element gets execution function of inner collection
+     * @return List collected after tiling
      */
     public static <E, R> List<R> transToListWithFlatMap(Collection<E> source, Function<? super E, ? extends List<R>> mapper) {
         return source.stream().filter(Objects::nonNull).map(mapper).flatMap(List::stream).collect(Collectors.toList());
     }
 
     /**
-     * 两层嵌套Collection折叠平铺为Set去重, 底层默认使用HashSet
-     * 多层嵌套的可以通过重复调用此方法完成平铺
+     * Two layers of Nested Collection are collapsed and tiled into a List, and HashSet is used by default
+     * Multi-level nesting can be completed by repeatedly calling this method
      *
-     * @param source 两层嵌套List数据源
-     * @param mapper 外层元素获取内Collection的执行函数
-     * @return 平铺后收集到的List
+     * @param source Two levels of nested Set data sources
+     * @param mapper Outer element gets execution function of inner collection
+     * @return Set collected after tiling
      */
     public static <E, R> Set<R> transToSetWithFlatMap(Collection<E> source, Function<? super E, ? extends List<R>> mapper) {
         return source.stream().filter(Objects::nonNull).map(mapper).flatMap(List::stream).collect(Collectors.toSet());
     }
 
     /**
-     * 根据元素字段满足一定条件执行过滤, 并转换为Set
+     * Perform filtering based on element fields meeting certain conditions, and convert to Set
      *
-     * @param coll      原始数据源
-     * @param predicate 筛选条件
-     * @param mapper    对筛选出元素进行计算的函数
+     * @param coll      data source
+     * @param predicate filter conditions
+     * @param mapper    functions that compute the filtered out elements
      * @return HashSet
      */
     public static <F, T> Set<F> filterAndTransSet(Collection<T> coll, Predicate<? super T> predicate, Function<? super T, ? extends F> mapper) {
@@ -290,12 +295,12 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 踢除满足条件removePredicate的元素字段 并转换为Set
-     * 本方法与{@link #filterAndTransSet}筛选逻辑是相反的, 结果是互补的
+     * Remove the element fields that meet the condition removePredicate and convert to Set.
+     * This method is opposite with {@link #filterAndTransSet}, so their results are complementary
      *
-     * @param coll            原始数据源
-     * @param removePredicate 筛选条件
-     * @param mapper          对筛选出元素进行计算的函数
+     * @param coll            data source
+     * @param removePredicate filter conditions
+     * @param mapper          functions that compute the filtered out elements
      * @return HashSet
      */
     public static <F, T> Set<F> removeAndTransSet(Collection<T> coll, Predicate<? super T> removePredicate, Function<? super T, ? extends F> mapper) {
@@ -303,11 +308,11 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 根据元素字段满足一定条件执行过滤, 并转换为List
+     * Perform filtering based on element fields meeting certain conditions, and convert to List.
      *
-     * @param coll      原始数据源
-     * @param predicate 筛选条件
-     * @param mapper    对筛选出元素进行计算的函数
+     * @param coll      data source
+     * @param predicate filter conditions
+     * @param mapper    functions that compute the filtered out elements
      * @return ArrayList
      */
     public static <F, T> List<F> filterAndTransList(Collection<T> coll, Predicate<? super T> predicate, Function<? super T, ? extends F> mapper) {
@@ -315,12 +320,12 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 踢除满足条件removePredicate的元素字段 并转换为List
-     * 本方法与{@link #filterAndTransList}筛选逻辑是相反的, 结果是互补的
+     * Perform filtering based on the element field meeting certain conditions, and convert to List.
+     * This method is opposite with {@link #filterAndTransList}, so their results are complementary
      *
-     * @param coll            原始数据源
-     * @param removePredicate 筛选条件
-     * @param mapper          对筛选出元素进行计算的函数
+     * @param coll            data source
+     * @param removePredicate filter conditions
+     * @param mapper          functions that compute the filtered out elements
      * @return ArrayList
      */
     public static <F, T> List<F> removeAndTransList(Collection<T> coll, Predicate<? super T> removePredicate, Function<? super T, ? extends F> mapper) {
@@ -328,12 +333,13 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 根据元素字段满足一定条件执行过滤, 并转换为指定集合
+     * Perform filtering based on the element field meeting certain conditions,
+     * and convert to the specified collection
      *
-     * @param resultColl       结果收集容器
-     * @param sourceColl       原始数据源
-     * @param survivePredicate 保留条件
-     * @param mapper           对筛选出元素进行计算的函数
+     * @param resultColl       results collection container
+     * @param sourceColl       data source
+     * @param survivePredicate retention conditions
+     * @param mapper           functions that compute the filtered out elements
      * @return R
      */
     public static <T, F, R extends Collection<F>> R filterAndTransColl(Supplier<R> resultColl, Collection<T> sourceColl, Predicate<? super T> survivePredicate, Function<? super T, ? extends F> mapper) {
@@ -341,13 +347,13 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 踢除满足条件removePredicate的元素字段 并转换为List
-     * 本方法与{@link #filterAndTransColl}筛选逻辑是相反的, 结果是互补的
+     * Remove the element fields that meet the condition removePredicate and convert to List.
+     * This method is opposite with {@link #filterAndTransColl}, so their results are complementary
      *
-     * @param resultColl      结果收集容器
-     * @param sourceColl      原始数据源
-     * @param removePredicate 剔除条件
-     * @param mapper          对筛选出元素进行计算的函数
+     * @param resultColl      results collection container
+     * @param sourceColl      data source
+     * @param removePredicate elimination conditions
+     * @param mapper          functions that compute the filtered out elements
      * @return R
      */
     public static <T, F, R extends Collection<F>> R removeAndTransColl(Supplier<R> resultColl, Collection<T> sourceColl, Predicate<? super T> removePredicate, Function<? super T, ? extends F> mapper) {
@@ -356,10 +362,10 @@ public class CollectionUtil extends CollectionUtils {
 
 
     /**
-     * 获取元素的某个字段集合, 并去重
+     * Get a set of fields of an element, and remove duplicates
      *
-     * @param source 数据源
-     * @param mapper 字段执行函数
+     * @param source data source
+     * @param mapper field execution function
      * @return
      */
     public static <E, R> List<R> distinctList(Collection<E> source, Function<? super E, ? extends R> mapper) {
@@ -367,11 +373,12 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 根据集合元素中指定字段进行去重，返回去重后的元素集合
+     * Deduplication according to the specified field in the collection element,
+     * return the deduplicated element collection
      *
-     * @param coll               数据源
-     * @param distinctComparator 元素字段比较器(可以是多个字段的联合比较器)
-     * @return 去重后的原始元素集合
+     * @param coll               data source
+     * @param distinctComparator Element field comparator (may be a joint comparator for multiple fields)
+     * @return Deduplicated original element collection
      */
     public static <T> List<T> distinctListByField(Collection<T> coll, Comparator<T> distinctComparator) {
         if (isEmpty(coll)) {
@@ -383,16 +390,18 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 为避免数据丢失，Steam API底层对Collectors.toMap做了较为硬性的要求
-     * 1.toMap首先不允许key重复， 因而分组时需要注意使用KEY字段
-     * 2.value不允许为null
+     * In order to avoid data loss, the bottom layer of the Steam API makes more rigid requirements for Collectors.toMap
+     * 1.methods named 'toMap' are not allow duplicate keys first,
+     * so you need to pay attention to using the KEY field when grouping
+     * 2.not allow null VALUE either
      *
-     * 因而，以下*ToMap方法在使用时请注意以上两条，而*ToMapEnhance允许key重复，并启用新值替换旧值的机制
+     * Therefore, please pay attention to the above two when using the following named '*ToMap' method,
+     * and named '*ToMapEnhance' method allows the key to be duplicated and enables the new value to replace the old value
      *
      */
 
     /**
-     * 分组转换为Map<K, List<V>>，底层默认HashMap<K, ArrayList<V>>
+     * Group conversion to Map<K, List <V>>, support key function, value function, HashMap<K, ArrayList<V>> is used by default
      *
      * @param source
      * @param kFunction
@@ -403,7 +412,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 分组转换为Map<K, List<V>>, 支持key函数, value函数, 底层默认HashMap<K, ArrayList<V>>
+     * Group conversion to Map<K, List <V>>, support key function, value function, HashMap<K, ArrayList<V>> is used by default
      *
      * @param source
      * @param kFunction
@@ -418,7 +427,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 分组转换为指定的Map<K, List<V>>， 例如TreeMap<K, List<V>>/LinkedHashMap<K, List<V>>
+     * Group conversion to specified Map<K, specified List<V>>, such as TreeMap<K, LinkedList<V>> | LinkedHashMap<K, LinkedList<V>>
      *
      * @param mapColl
      * @param source
@@ -430,7 +439,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 分组转换为指定Map<K, 指定的List<V>>，例如TreeMap<K, LinkedList<V>>/LinkedHashMap<K, LinkedList<V>>
+     * Group conversion to specified Map<K, specified List<V>>, such as TreeMap<K, LinkedList<V>> | LinkedHashMap<K, LinkedList<V>>
      *
      * @param mapColl
      * @param vColl
@@ -442,8 +451,8 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 分组转换为指定Map<K, 指定的List<V>>，例如TreeMap<K, LinkedList<V>>/LinkedHashMap<K, LinkedList<V>>
-     * 并且可对原始数组元素进行计算(转化)为其他对象
+     * Group conversion to specified Map<K, specified List<V>>, such as TreeMap<K, LinkedList<V>> | LinkedHashMap<K, LinkedList<V>>,
+     * and can calculate (convert) the original array elements into other objects
      *
      * @param mapColl
      * @param vColl
@@ -458,7 +467,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 转换为Map-Value
+     * Convert to Map<Key, Value>
      *
      * @param values
      * @param kFunction
@@ -471,7 +480,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 转换为Map-Value, 重复KEY将抛出异常
+     * Convert to Map-Value, any duplicate key will throw exception
      *
      * @param mapColl
      * @param values
@@ -486,7 +495,7 @@ public class CollectionUtil extends CollectionUtils {
 
 
     /**
-     * 转换为Map-Value, 允许重复KEY
+     * Convert to Map<Key, Value>, allow duplicate key
      *
      * @param mapColl
      * @param values
@@ -501,7 +510,7 @@ public class CollectionUtil extends CollectionUtils {
 
 
     /**
-     * 转换为Map-Value
+     * Convert to Map<Key, Value>
      *
      * @param values
      * @param kFunction
@@ -516,7 +525,7 @@ public class CollectionUtil extends CollectionUtils {
 
 
     /**
-     * 转换为Map-Value, 重复KEY将抛出异常
+     * Convert to Map<Key, Value>, any duplicate key will throw exception
      *
      * @param mapColl
      * @param values
@@ -531,7 +540,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 可以将两层嵌套List，转换为Map<K, List<V>>，按照K叠加List<V>
+     * Convert two nested Lists into Map<K, List<V>>, and superimpose List<V> according to K
      *
      * @param mapColl
      * @param values
@@ -553,7 +562,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 按照指定分隔符将数组元素拼接为字符串
+     * Splicing array elements into strings according to the specified delimiter
      *
      * @param arr
      * @param separator
@@ -567,7 +576,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 按照指定分隔符将数组元素拼接为字符串
+     * Splicing array elements into strings according to the specified delimiter
      *
      * @param coll
      * @param separator
@@ -584,7 +593,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 对Map排序
+     * Sorting Map
      *
      * @param sourceMap
      * @param comparator
@@ -601,7 +610,8 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 在List中根据指定字段(函数)查找元素，找到任意一个就返回，找不到就返回null
+     * Find elements in the List according to the specified field function,
+     * if any one is found, it will be returned, or null if it is not found.
      *
      * @param coll
      * @param function
@@ -613,7 +623,8 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 在List中根据自定字段(函数)查找元素，返回找到的第一个元素，找不到就返回null
+     * Find elements in a list according to a custom field function,
+     * return the first element found or null if not found
      *
      * @param coll
      * @param function
@@ -625,7 +636,8 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 根据指定条件查找元素，返回找到的第一个元素，找不到就返回null
+     * Finds elements according to specified conditions,
+     * return the first element found or null if not found
      *
      * @param coll
      * @param predicate
@@ -636,7 +648,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 从list里根据唯一字段值 查找所有满足条件不为Null的元素
+     * Find all elements from the list based on unique field values
      *
      * @param coll
      * @param function
@@ -654,7 +666,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 判断元素在list中是否存在
+     * Determine and find all elements existed in the list
      *
      * @param coll
      * @param predicate
@@ -665,7 +677,8 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 判断元素在list中存在至少一个值，存在就立马返回
+     * Determine if an element has at least one value in the list,
+     * and return immediately if it exists
      *
      * @param coll
      * @param function
@@ -677,7 +690,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 判断元素在list中是否存在
+     * Determine if an element exists in the list
      *
      * @param coll
      * @param function
@@ -689,7 +702,7 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 判断元素在list中是否存在
+     * Determine if an element exists in the list
      *
      * @param coll
      * @param predicate
@@ -701,8 +714,8 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * Map键值对反转
-     * 示例，
+     * Map key-value pair inversion,
+     * for example,
      * { examA : [stu1, stu2, stu3], examB: [stu1, stu2] }
      * ⬇
      * {stu1 : [examA, examB], stu2 : [examA, examB], stu3 : [examA]}
@@ -724,8 +737,8 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * Map键值对反转，支持返回结果自定义收集容器
-     * 例如返回LinkedHashMap<K, LinkedList<V>
+     * Map key-value pair inversion, support return a custom collection container,
+     * for example, return LinkedHashMap<K, LinkedList<V>
      * <p>
      * Map<k1, Coll_1<v1>>  ==>  Map<k2, Coll_1<v2>>
      * kFunction.apply(k1) ==> v2
@@ -751,8 +764,8 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 针对复杂Map中，查找key匹配函数的键值对集合
-     * 不满足匹配函数条件时返回空
+     * For complex maps, find the set of key-value pairs for the key matching function
+     * Returns null if the matching function conditions are not met
      *
      * @param srcMap
      * @param kFunction
@@ -776,8 +789,8 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 针对复杂Map中，查找key匹配函数的键值对，只取一个
-     * 不满足匹配函数条件时返回null
+     * For complex Maps, find the key-value pairs of the key matching function, and only take one
+     * Returns null if the matching function conditions are not met
      *
      * @param srcMap
      * @param kFunction
@@ -796,8 +809,8 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
-     * 针对复杂Map中，查找key匹配函数的键值对，只取一个
-     * 不满足匹配函数条件时返回null
+     * For complex Maps, find the key-value pairs of the key matching function, and only take one
+     * Returns null if the matching function conditions are not met
      *
      * @param srcMap
      * @param kFunction
@@ -820,7 +833,7 @@ public class CollectionUtil extends CollectionUtils {
      */
     private static <T> BinaryOperator<T> nonDuplicateKey() {
         return (u, v) -> {
-            throw new IllegalStateException(String.format("转换Map时不允许重复Key: [%s]", u));
+            throw new IllegalStateException(String.format("Duplicate keys are not allowed when converting Map: [%s]", u));
         };
     }
 

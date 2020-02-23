@@ -84,31 +84,39 @@
 
     <change-notes>
         <![CDATA[
+        <li>2.0</li>
+        <ul>
+        <li>BugFix: Modify method name in Controller.java.</li>
+        <li>Addition: It's freely specify the directory of all generate files so that you don't need to move files manually.</li>
+        <li>Optimization: Optimize source code and improve performance.</li>
+        <li>Attention: If the icon of plugin shows error(red square with a cross), try to upgrade wht version of Intellij util 2019.3.*(greater than 2019.2.*).</li>
+        </ul>
+        </br>
         <li>1.24</li>
         <ul>
-        <li>BugFix: Update method named'updateBatchByPrimaryKeySelective' in mapper.xml</li>
-        <li>Addition: Set default language English and you can config it as Chinese Simplified, as before, typing 'd8ger' for the latest configuration template</li>
-        <li>Attention: You should configure you database connection like 'allowMultiQueries=true' for supporting batchUpdate operation</li>
+        <li>BugFix: Update method named'updateBatchByPrimaryKeySelective' in mapper.xml.</li>
+        <li>Addition: Set default language English and you can config it as Chinese Simplified, as before, typing 'd8ger' for the latest configuration template.</li>
+        <li>Attention: You should configure you database connection like 'allowMultiQueries=true' for supporting batchUpdate operation.</li>
         </ul>
         </br>
         <li>1.23</li>
         <ul>
-        <li>BugFix: Fix required dependencies by Jetbrains's suggestion for some known compatibility issues</li>
-        <li>Addition: Add JSON-formatter and WhiteChar-cleaner</li>
+        <li>BugFix: Fix required dependencies by Jetbrains's suggestion for some known compatibility issues.</li>
+        <li>Addition: Add JSON-formatter and WhiteChar-cleaner.</li>
         <li>Attention: Can you star the project on the github?</li>
         </ul>
         </br>
         <li>1.22</li>
         <ul>
-        <li>BugFix: Fix README of style, description, picture problems</li>
-        <li>Enhance: Enhance profile for generating codes by using regex to replace the circle of matching string</li>
+        <li>BugFix: Fix README of style, description, picture problems.</li>
+        <li>Enhance: Enhance profile for generating codes by using regex to replace the circle of matching string.</li>
         <li>Attention: Can you star the project on the github?</li>
         </ul>
         </br>
         <li>1.21</li>
         <ul>
-        <li>BugFix: Fix README of style, description, picture problems</li>
-        <li>Addition: Add MoExample autoCoding for supporting simple sql</li>
+        <li>BugFix: Fix README of style, description, picture problems.</li>
+        <li>Addition: Add MoExample autoCoding for supporting simple sql.</li>
         <li>Attention: Can you star the project on the github?</li>
         </ul>
         </br>

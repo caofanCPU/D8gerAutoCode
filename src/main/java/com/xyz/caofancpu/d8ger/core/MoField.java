@@ -18,7 +18,7 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Objects;
 
 /**
- * Mo封装对象
+ * Model encapsulated object
  *
  * @author caofanCPU
  */
@@ -27,37 +27,37 @@ import java.util.Objects;
 @Accessors(chain = true)
 public class MoField {
     /**
-     * 字段注释(名称)
+     * Field comment(name)
      */
     private String comment;
 
     /**
-     * 访问修饰符, 默认private
+     * Access modifier, private is used by default
      */
     private String accessModifier;
 
     /**
-     * 字段原始类型名称
+     * Field primitive type name
      */
     private String fieldOriginTypeName;
 
     /**
-     * 字段类型简称
+     * Field type abbreviation
      */
     private String fieldTypeShortName;
 
     /**
-     * 字段SQL类型名称
+     * Field SQL Type Name
      */
     private String fieldSqlTypeName;
 
     /**
-     * 字段名称
+     * Field Name
      */
     private String name;
 
     /**
-     * 字段顺序
+     * Field order
      */
     private int index;
 
@@ -74,7 +74,7 @@ public class MoField {
             }
             if (child instanceof PsiTypeElement) {
                 if (Objects.nonNull(child.getText()) && StringUtils.containsIgnoreCase(child.getText(), ConstantUtil.ENUM_SUFFIX)) {
-                    // 对于名称中包含Enum或者enum的类型, 判定为枚举
+                    // Enums or enums with names that are enumerated
                     this.fieldOriginTypeName = SupportFieldTypeEnum.ENUM.getOriginName();
                     this.fieldTypeShortName = child.getText();
                     this.fieldSqlTypeName = SupportFieldTypeEnum.ENUM.getSqlName();
@@ -99,7 +99,7 @@ public class MoField {
     }
 
     /**
-     * SQL列字段类型展示
+     * SQL columns field type display
      *
      * @return
      */
@@ -128,7 +128,7 @@ public class MoField {
     }
 
     /**
-     * Swagger字段
+     * Swagger fields
      *
      * @return
      */
@@ -138,7 +138,7 @@ public class MoField {
     }
 
     /**
-     * SQL列定义字段
+     * SQL columns definition field
      *
      * @return
      */
@@ -151,7 +151,7 @@ public class MoField {
     }
 
     /**
-     * SQL操作Example对象方法
+     * SQL operating methods by using example object
      *
      * @return
      */

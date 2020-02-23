@@ -11,7 +11,7 @@ import com.xyz.caofancpu.d8ger.util.JSONUtil;
 import lombok.NonNull;
 
 /**
- * 美化JSON
+ * Beautify JSON
  *
  * @author caofanCPU
  */
@@ -23,12 +23,12 @@ public class BeautifulJSONAction extends AnAction {
         final Project currentProject = e.getRequiredData(CommonDataKeys.PROJECT);
         final Document currentDocument = currentEditor.getDocument();
 
-        // 执行刷新当前文件
+        // Perform a refresh of the current file
         WriteCommandAction.runWriteCommandAction(currentProject, () -> executeBeautyJSONRender(currentDocument));
     }
 
     /**
-     * 重写文件, 美化JSON字符串
+     * Rewrite files for beautifying JSON string
      *
      * @param currentDocument
      */

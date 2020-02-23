@@ -9,49 +9,30 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.xyz.caofancpu.d8ger.util.CollectionUtil;
 import com.xyz.caofancpu.d8ger.util.ConstantUtil;
+import com.xyz.caofancpu.d8ger.util.VerbalExpressionUtil;
 import lombok.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
- * SwaggerModel对象自动渲染
+ * SwaggerModel model automatic rendering
  *
  * @author caofanCPU
  */
 public class SwaggerModelAutoRenderAction extends AnAction {
-
-    /**
-     * Swagger字段位置顺序正则匹配表达式
-     */
-    private static final Pattern SWAGGER_POSITION_PATTERN = Pattern.compile("((?:position)(?:\\s)*(?:\\=)(?:\\s)*(?:\\d)*)");
-
-    /**
-     * 正则替换
-     *
-     * @param originString
-     * @param positionOrder
-     * @return
-     */
-    private static String regexHandlePositionProperty(String originString, int positionOrder) {
-        Matcher matcher = SWAGGER_POSITION_PATTERN.matcher(originString);
-        return matcher.replaceAll("position = " + positionOrder);
-    }
-
     @Override
     public void actionPerformed(AnActionEvent e) {
         final Editor currentEditor = e.getRequiredData(CommonDataKeys.EDITOR);
         final Project currentProject = e.getRequiredData(CommonDataKeys.PROJECT);
         final Document currentDocument = currentEditor.getDocument();
 
-        // 执行刷新当前文件
+        // Perform a refresh of the current file
         WriteCommandAction.runWriteCommandAction(currentProject, () -> executeSwaggerRender(currentDocument));
     }
 
     /**
-     * 重写文件
+     * Rewrite file
      *
      * @param currentDocument
      */
@@ -64,7 +45,7 @@ public class SwaggerModelAutoRenderAction extends AnAction {
                 if (!item.contains("position")) {
                     item = item.replace(")", ", position = " + (i++) + ")");
                 } else {
-                    item = regexHandlePositionProperty(item, i++);
+                    item = VerbalExpressionUtil.regexHandlePositionProperty(item, "position = " + i++);
                 }
             }
             wrapLineList.add(item);

@@ -83,7 +83,7 @@ public class @MoName@Controller {
     @PostMapping(value = "@apiUrlPrefix@/batchUpdate")
     @ApiOperationSupport(order = 5)
     @ApiOperation(value = "@MoName@Mo-BatchUpdateRecords")
-    public Object update(@NotEmpty @RequestBody List<@MoName@Vo> @uncapitallizeMoName@VoList) {
+    public Object batchUpdate(@NotEmpty @RequestBody List<@MoName@Vo> @uncapitallizeMoName@VoList) {
         // convert Vo to Mo
         List<@MoName@Mo> @uncapitallizeMoName@List = new ArrayList<>(@uncapitallizeMoName@VoList.size());
         @uncapitallizeMoName@VoList.forEach(item -> @uncapitallizeMoName@List.add(JSONObject.parseObject(JSONObject.toJSONString(item), @MoName@Mo.class)));

@@ -11,7 +11,8 @@ import com.xyz.caofancpu.d8ger.util.VerbalExpressionUtil;
 import lombok.NonNull;
 
 /**
- * 去除空白字符浓缩为一行
+ * 1.Remove whitespace
+ * 2.Reduce to one line
  *
  * @author caofanCPU
  */
@@ -23,12 +24,12 @@ public class SimplifyOneLineAction extends AnAction {
         final Project currentProject = e.getRequiredData(CommonDataKeys.PROJECT);
         final Document currentDocument = currentEditor.getDocument();
 
-        // 执行刷新当前文件
+        // Perform a refresh of the current file
         WriteCommandAction.runWriteCommandAction(currentProject, () -> executeBeautyJSONRender(currentDocument));
     }
 
     /**
-     * 重写文件, 去除空白字符浓缩为一行
+     * Rewrite files for removing whitespace and reducing to one line
      *
      * @param currentDocument
      */

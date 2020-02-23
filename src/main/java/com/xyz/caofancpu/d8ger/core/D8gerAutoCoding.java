@@ -28,7 +28,7 @@ import java.util.Objects;
 import java.util.Properties;
 
 /**
- * 自动生成代码核心类
+ * Automatically generate code core classes
  *
  * @author caofanCPU
  */
@@ -37,57 +37,58 @@ import java.util.Properties;
 @Accessors(chain = true)
 public class D8gerAutoCoding {
     /**
-     * 当前文件所在工程
+     * Project where the current file is located
      */
     private Project currentProject;
 
     /**
-     * 当前文件所在模块
+     * Module where the current file is located
      */
     private Module currentModule;
 
     /**
-     * resource资源根目录文件
+     * Resource root directory file
      */
     private VirtualFile rootResource;
 
     /**
-     * 自动代码生成目录
+     * Automatic code generation directory
      */
     private PsiDirectory d8AutoCodeDir;
 
     /**
-     * 原始MO文件对象
+     * Original model file object
      */
     private PsiJavaFile originMoJavaFile;
 
     /**
-     * 原始MoClass对象, 默认只取第一个
+     * Original model class object, take only the first one by default
      */
     private PsiClass originMoPsiClass;
 
     /**
-     * 原始原始MoClass名称
+     * Original model class name
      */
     private String originMoName;
 
     /**
-     * 原始MoClass对象的字段列表
+     * Field list of the original model class object
      */
     private List<MoField> moFieldList;
 
     /**
-     * 文件Map, value: Pair<生成文件名, 模板字符串>
+     * FileMap, value: Pair<Generate file name, Template string>
      */
     private Map<KeyEnum, Pair<String, StringBuilder>> fileMap = new HashMap<>(32, 0.75f);
 
     /**
-     * 模板关键字匹配替换Map
+     * Template keyword match replacement Map
      */
     private Map<String, StringBuilder> keyWordMatchMap = new HashMap<>(32, 0.75f);
 
     /**
-     * 对外暴露的构造方法, 注意方法执行顺序
+     * Construction methods exposed to the outside world,
+     * pay attention to the method execution order
      *
      * @param currentProject
      * @param currentModule
@@ -97,28 +98,28 @@ public class D8gerAutoCoding {
      */
     public static D8gerAutoCoding build(@NonNull Project currentProject, @NonNull Module currentModule, @NonNull VirtualFile rootResource, @NonNull PsiJavaFile moJavaFile) {
         return new D8gerAutoCoding()
-                // 设置工程
+                // Set the project
                 .setCurrentProject(currentProject)
-                // 设置模块
+                // Set the module
                 .setCurrentModule(currentModule)
-                // 装配resource资源根目录文件
+                // config resource root directory file
                 .setRootResource(rootResource)
-                // 装配当前Java文件所在目录
+                // config directory which current Java file is located
                 .setD8AutoCodeDir(moJavaFile.getContainingDirectory())
-                // 设置Mo类型
+                // Set model type of PsiJavaFile
                 .setOriginMoJavaFile(moJavaFile)
-                // 设置MoClass类型
+                // Set model class type of PsiClass
                 .configOriginPsiClass()
-                // 设置字段列表
+                // Set field list
                 .initMoFieldList()
-                // 设置文件Map
+                // Config file Map
                 .initFileMap()
-                // 设置关键字Map
+                // Config keyword Map
                 .initKeyWordMap();
     }
 
     /**
-     * 文件名Map
+     * File name Map
      *
      * @return
      */
@@ -140,7 +141,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * 模板关键字Map
+     * Template keywords Map
      *
      * @return
      */
@@ -156,9 +157,9 @@ public class D8gerAutoCoding {
         } else {
             apiUrlPrefix = VerbalExpressionUtil.correctUrl(properties.getProperty(ConstantUtil.CONFIG_API_URL_PREFIX_KEY));
         }
-        // 语言配置
+        // Language configuration
         if (StringUtils.isNotBlank(properties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY)) && StringUtils.capitalize(properties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY)).equals(ConstantUtil.OPTIONAL_CONFIG_LANGUAGE)) {
-            // 注释中文化
+            // Annotation Chinese Culture
             AutoCodeTemplate.TEMPLATE_MO = AutoCodeTemplate.ZN_TEMPLATE_MO;
             AutoCodeTemplate.TEMPLATE_SWAGGER_VO = AutoCodeTemplate.ZN_TEMPLATE_SWAGGER_VO;
             AutoCodeTemplate.TEMPLATE_MO_SQL = AutoCodeTemplate.ZN_TEMPLATE_MO_SQL;
@@ -203,7 +204,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * 增强SwaggerMo, 增加分页请求字段
+     * Enhance swagger model with paging request field
      *
      * @return
      */
@@ -215,7 +216,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * 为提升性能, 每个文件只选择内部Key, 以期减少字符串替换次数
+     * To improve performance, only the internal key is selected for each file to reduce the number of string replacements
      *
      * @param key
      * @return
@@ -289,20 +290,20 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * 封装Mo字段对象
+     * Encapsulating model field object
      *
      * @return
      */
     private D8gerAutoCoding initMoFieldList() {
         PsiField[] selfOwnedFields = this.originMoPsiClass.getFields();
         this.setMoFieldList(CollectionUtil.transToList(Arrays.asList(selfOwnedFields), MoField::new));
-        // 设置字段顺序
+        // Set field order
         moFieldList.forEach(item -> item.setIndex(moFieldList.indexOf(item)));
         return this;
     }
 
     /**
-     * 获取枚举字段类型
+     * Get enum field type
      *
      * @return
      */
@@ -311,7 +312,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * Mo名称
+     * Model name
      *
      * @return
      */
@@ -322,7 +323,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * package名
+     * package name
      *
      * @return
      */
@@ -331,7 +332,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * SQL全列字段
+     * SQL-SelectBaseColumnList
      * example:
      * `id`,
      * `name`,
@@ -346,7 +347,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * SQL全列字段
+     * SQL-SelectBaseColumnList(with alias name)
      * example:
      * `id` AS id,
      * `name` AS name,
@@ -361,7 +362,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * SQL根据主键更新非null字段
+     * SQL-BatchUpdateNonNullFieldByID
      *
      * @return
      */
@@ -375,7 +376,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * SQL批量更新非null字段
+     * SQL-UpdateNonNullFieldByExample
      *
      * @return
      */
@@ -388,7 +389,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * SQL插入单条记录
+     * SQL-Insert
      *
      * @return
      */
@@ -399,7 +400,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * SQL批量插入
+     * SQL-BatchInsertField
      *
      * @return
      */
@@ -410,7 +411,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * SQL根据ID更新非null字段
+     * SQL-UpdateNonNullFieldByID
      *
      * @return
      */
@@ -424,7 +425,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * Mo对象查询
+     * SQL-QueryModelList
      *
      * @return
      */
@@ -445,7 +446,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * 配置原始MoClass
+     * Config origin Model class
      *
      * @return
      */

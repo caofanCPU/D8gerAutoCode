@@ -3,7 +3,7 @@ package com.xyz.caofancpu.d8ger.util;
 import lombok.NonNull;
 
 /**
- * JSON工具类
+ * JSON tool
  *
  * @author caofanCPU
  */
@@ -13,12 +13,14 @@ public class JSONUtil {
         String nonWhiteCharStr = VerbalExpressionUtil.cleanWhiteChar(source);
         int level = 0;
         StringBuilder resultBuilder = new StringBuilder();
-        // 循环遍历每一个字符
+        // Loop through each character
         int doubleQuoteCount = 0;
         for (int i = 0; i < nonWhiteCharStr.length(); i++) {
-            // 获取当前字符
+            // Get the current character
             char piece = nonWhiteCharStr.charAt(i);
-            // 如果上一个字符是断行, 则在本行开始按照level数值添加标记符, 排除第一行
+            // If the previous character is a line break,
+            // add a marker according to the level value at the beginning of the line,
+            // excluding the first line
             if (i != 0 && '\n' == resultBuilder.charAt(resultBuilder.length() - 1)) {
                 for (int k = 0; k < level; k++) {
                     resultBuilder.append(ConstantUtil.TAB);
@@ -32,7 +34,7 @@ public class JSONUtil {
             switch (piece) {
                 case '{':
                 case '[':
-                    // 如果字符是{或者[, 则断行, level加1
+                    // If the character is '{' or '[', then line break, level plus 1
                     resultBuilder.append(piece);
                     if (doubleQuoteCount % 2 == 0) {
                         resultBuilder.append(ConstantUtil.NEXT_LINE);
@@ -40,12 +42,12 @@ public class JSONUtil {
                     }
                     break;
                 case ',':
-                    // 如果是",", 则断行
+                    // If the character is ',' then break line
                     resultBuilder.append(piece).append(ConstantUtil.NEXT_LINE);
                     break;
                 case '}':
                 case ']':
-                    // 如果是"}"或者"]", 则断行, level减1
+                    // If the character is '}' or '}', then break line and level minus 1
                     if (doubleQuoteCount % 2 == 0) {
                         resultBuilder.append(ConstantUtil.NEXT_LINE);
                         level--;

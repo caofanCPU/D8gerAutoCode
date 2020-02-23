@@ -21,18 +21,18 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 /**
- * IDEA平台文件系统操作工具类
+ * IDEA platform file system operation tools
  *
  * @author caofanCPU
  **/
 public class IdeaPlatformFileTreeUtil {
 
     /**
-     * 强制创建文件, 源文件存在则先删除再创建
+     * Create a file forcibly, delete the source file before creating it
      *
      * @param psiDirectory
      * @param project
-     * @param dotFileName  去除.java后缀的java文件名
+     * @param dotFileName  removed '.java' suffix of a Java file name
      * @param content
      * @return
      */
@@ -45,7 +45,7 @@ public class IdeaPlatformFileTreeUtil {
     }
 
     /**
-     * 创建文件, 源文件存在时会抛出异常
+     * Create file, throw exception when source file exists
      *
      * @param project
      * @param dotFileName
@@ -57,20 +57,20 @@ public class IdeaPlatformFileTreeUtil {
     }
 
     /**
-     * 格式化代码
+     * Formatting code
      *
      * @param project
-     * @param psiElement 需要格式化的文件
+     * @param psiElement File which needs to be formatted
      */
     public static void format(@NonNull Project project, @NonNull PsiElement psiElement) {
         CodeStyleManager.getInstance(project).reformat(psiElement);
     }
 
     /**
-     * 查找类
+     * Find class
      *
-     * @param className 类名
-     * @return 查找到的类
+     * @param className class name
+     * @return
      */
     public static Optional<PsiClass> findClass(@NonNull Project project, @NonNull String className) {
         return findClass(project, className, psiClass -> true);
@@ -108,18 +108,18 @@ public class IdeaPlatformFileTreeUtil {
     }
 
     /**
-     * 获取或者创建子目录
+     * Get or create a subdirectory
      *
-     * @param project           当前工程
-     * @param subDirVirtualFile 子目录文件名称
-     * @return 查找到的或者创建的子目录名称
+     * @param project           current project
+     * @param subDirVirtualFile subdirectory file name
+     * @return
      */
     public static PsiDirectory getOrCreateSubDir(@NonNull Project project, @NonNull VirtualFile subDirVirtualFile) {
         return PsiDirectoryFactory.getInstance(project).createDirectory(subDirVirtualFile);
     }
 
     /**
-     * 创建子文件
+     * Create child files
      *
      * @param currentVirtualFile
      * @param subVirtualFileName
@@ -131,7 +131,7 @@ public class IdeaPlatformFileTreeUtil {
             try {
                 child = currentVirtualFile.createChildDirectory(null, subVirtualFileName);
             } catch (IOException e) {
-                // 创建失败时, 则以currentVirtualFile根所表示的目录为准
+                // When the creation fails, the directory indicated by the currentVirtualFile root shall prevail
                 child = currentVirtualFile;
             }
         }
@@ -139,7 +139,7 @@ public class IdeaPlatformFileTreeUtil {
     }
 
     /**
-     * 创建子文件目录
+     * Create a sub file directory
      *
      * @param project
      * @param currentVirtualFile
@@ -151,7 +151,7 @@ public class IdeaPlatformFileTreeUtil {
     }
 
     /**
-     * 创建子目录PsiDirectory
+     * Create a sub file directory which class type is PsiDirectory
      *
      * @param currentPsiDir
      * @param subDirName

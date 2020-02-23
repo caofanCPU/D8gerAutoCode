@@ -5,219 +5,219 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.Collections;
 
 /**
- * 常用符号
+ * Common symbols
  *
  * @author caofanCPU
  */
 public class ConstantUtil {
 
     /**
-     * 枚举名称后缀
+     * Enum name suffix
      */
     public static final String ENUM_SUFFIX = "Enum";
 
     /**
-     * 英文逗号
+     * Comma
      */
     public static final String ENGLISH_COMMA = ",";
 
     /**
-     * 英文句号
+     * Period
      */
     public static final String ENGLISH_STOP = ".";
 
     /**
-     * 空串
+     * Empty string
      */
     public static final String EMPTY = StringUtils.EMPTY;
 
     /**
-     * 单个空格符
+     * Single space character
      */
     public static final String SPACE = StringUtils.SPACE;
 
     /**
-     * Tab: 4个空格
+     * Tab: Four spaces
      */
     public static final String TAB = CollectionUtil.join(Collections.nCopies(4, SPACE), EMPTY);
 
     /**
-     * 两个Tab
+     * Double Tabs
      */
     public static final String DOUBLE_TAB = TAB + TAB;
 
     /**
-     * 三个Tab
+     * Triple Tabs
      */
     public static final String TRIPLE_TAB = DOUBLE_TAB + TAB;
 
     /**
-     * 四个Tab 四元
+     * Quaternary Tabs
      */
     public static final String QUATERNARY_TAB = TRIPLE_TAB + TAB;
 
     /**
-     * 五个Tab
+     * Penta Tabs
      */
     public static final String PENTA_TAB = QUATERNARY_TAB + TAB;
 
     /**
-     * 换行
+     * Newline character
      */
     public static final String NEXT_LINE = "\n";
 
     /**
-     * 隔一行
+     * Double newlines
      */
     public static final String DOUBLE_NEXT_LINE = NEXT_LINE + NEXT_LINE;
 
     /**
-     * 英文分号
+     * Semicolon
      */
     public static final String ENGLISH_SEMICOLON = ";";
 
     /**
-     * java文件后缀
+     * Java file extension
      */
     public static final String JAVA_FILE_SUFFIX = ".java";
 
     /**
-     * xml文件后缀
+     * xml file extension
      */
     public static final String XML_FILE_SUFFIX = ".xml";
 
     /**
-     * sql文件后缀
+     * sql file extension
      */
     public static final String SQL_FILE_SUFFIX = ".sql";
 
     /**
-     * SQL主键字段
+     * SQL ID column
      */
     public static final String SQL_ID = "id";
 
     /**
-     * SQL主键字段默认定义
+     * SQL ID default definition
      */
     public static final String SQL_ID_DEFAULT_DEFINITION = TAB + "id bigint unsigned auto_increment comment 'id' primary key" + ENGLISH_COMMA + NEXT_LINE;
 
     /**
-     * SQL创建时间字段
+     * SQL create time column
      */
     public static final String SQL_CREATE_TIME = "createTime";
 
     /**
-     * SQL创建时间字段默认定义
+     * SQL create time default definition
      */
     public static final String SQL_CREATE_TIME_DEFAULT_DEFINITION = TAB + "create_time datetime default CURRENT_TIMESTAMP null comment '创建时间'" + ENGLISH_COMMA + NEXT_LINE;
 
     /**
-     * SQL更新时间字段
+     * SQL update time column
      */
     public static final String SQL_UPDATE_TIME = "updateTime";
 
     /**
-     * SQL更新时间字段默认定义
+     * SQL update time default definition
      */
     public static final String SQL_UPDATE_TIME_DEFAULT_DEFINITION = TAB + "update_time datetime default CURRENT_TIMESTAMP null on update CURRENT_TIMESTAMP comment '更新时间'" + NEXT_LINE;
 
     /**
-     * Mo名称后缀
+     * Mo name suffix
      */
     public static final String MO_SUFFIX = "Mo";
 
     /**
-     * SwaggerMo名称后缀
+     * SwaggerMo name suffix
      */
     public static final String SWAGGER_MO_SUFFIX = "Vo";
 
     /**
-     * MoMapper名称后缀
+     * MoMapper name suffix
      */
     public static final String MO_MAPPER_NAME_SUFFIX = "Mapper";
 
     /**
-     * MoExample名称后缀
+     * MoExample name suffix
      */
     public static final String MO_EXAMPLE_NAME_SUFFIX = "Example";
 
     /**
-     * MoService接口名称后缀
+     * MoService interface name suffix
      */
     public static final String MO_SERVICE_INTERFACE_NAME_SUFFIX = "Service";
 
     /**
-     * MoService实现名称后缀
+     * MoService implement name suffix
      */
     public static final String MO_SERVICE_IMPL_NAME_SUFFIX = "ServiceImpl";
 
     /**
-     * MoController名称后缀
+     * MoController name suffix
      */
     public static final String MO_CONTROLLER_NAME_SUFFIX = "Controller";
 
     /**
-     * 自动代码文件目录名称
+     * Auto code file directory name
      */
     public static final String GENERATE_DIR = "D8AutoCode";
 
     /**
-     * 默认修饰符
+     * Field access Default modifier
      */
     public static final String DEFAULT_ACCESS_MODIFIER = "private";
 
     /**
-     * 通知展示ID
+     * Notification group view ID
      */
     public static final String NOTIFICATION_GROUP_VIEW_ID = "xtools";
 
     /**
-     * 配置文件名
+     * Config file name
      */
     public static final String D8GER_CONFIG_FILE_NAME = "d8ger.properties";
 
     /**
-     * author配置key
+     * Author config key
      */
     public static final String CONFIG_AUTHOR_KEY = "author";
 
     /**
-     * 默认author
+     * Default author name
      */
     public static final String DEFAULT_AUTHOR = "D8ger";
 
     /**
-     * 接口url前缀配置key
+     * Interface url prefix config key
      */
     public static final String CONFIG_API_URL_PREFIX_KEY = "apiUrlPrefix";
 
     /**
-     * 默认接口url路径前缀
+     * Default interface url prefix
      */
     public static final String DEFAULT_API_URL_PREFIX = "/d8gerAutoCoding";
 
     /**
-     * 语言配置key
+     * Language config key
      */
     public static final String CONFIG_LANGUAGE_KEY = "locale";
 
     /**
-     * 默认配置语言, EN(English)
+     * Default config language, EN(English)
      */
     public static final String DEFAULT_CONFIG_LANGUAGE = "EN";
 
     /**
-     * 可选配置语言, ZN(Chinese Simplified)
+     * Optional config language, ZN(Chinese Simplified)
      */
     public static final String OPTIONAL_CONFIG_LANGUAGE = "ZN";
 
     /**
-     * 分页页码字段名
+     * Pagination number field name
      */
     public static final String PAGE_NUM_NAME = "pageNum";
 
     /**
-     * 分页大小字段名
+     * Pagination size field name
      */
     public static final String PAGE_SIZE_NAME = "pageSize";
 }

@@ -16,7 +16,7 @@ import org.jetbrains.jps.model.java.JavaModuleSourceRootTypes;
 import java.util.Objects;
 
 /**
- * 初始化项目环境
+ * Initialize the project environment parameters
  *
  * @author caofanCPU
  */
@@ -25,32 +25,32 @@ public class ProjectEnvHandler {
     public static D8gerAutoCoding checkAndInitEnv(AnActionEvent e) {
         PsiFile currentPsiFile = e.getData(CommonDataKeys.PSI_FILE);
         if (Objects.isNull(currentPsiFile) || !(currentPsiFile instanceof PsiJavaFile)) {
-            Messages.showErrorDialog("请选中Java文件后再操作", "环境错误");
+            Messages.showErrorDialog("No .java file chosen", "Initialize Environment Error");
             return null;
         }
 
         PsiJavaFile currentJavaFile = (PsiJavaFile) currentPsiFile;
         if (currentJavaFile.getClasses().length == 0) {
-            Messages.showErrorDialog("所选文件没有定义类", "环境错误");
+            Messages.showErrorDialog("No class defined in current chosen .java file", "Initialize Environment Error");
             return null;
         }
 
         Project currentProject = e.getData(PlatformDataKeys.PROJECT);
         if (Objects.isNull(currentProject)) {
-            Messages.showErrorDialog("当前文件不在项目中", "环境错误");
+            Messages.showErrorDialog("Not included in a project for current chosen .java file", "Initialize Environment Error");
             return null;
         }
 
         Module currentModule = FileIndexFacade.getInstance(currentProject).getModuleForFile(currentPsiFile.getVirtualFile());
         if (Objects.isNull(currentModule)) {
-            Messages.showErrorDialog("当前文件不在模块中", "环境错误");
+            Messages.showErrorDialog("Not included in a module for current chosen .java file", "Initialize Environment Error");
             return null;
         }
         VirtualFile rootResource = ModuleRootManager.getInstance(currentModule).getSourceRoots(JavaModuleSourceRootTypes.RESOURCES).get(0);
         if (!rootResource.isDirectory()) {
-            Messages.showErrorDialog("请为当前文件所在工程创建resource资源目录", "环境错误");
+            Messages.showErrorDialog("No resource directory for the project where the current .java file is located", "Initialize Environment Error");
         }
-        // 初始化核心类
+        // Initialize the core class
         return D8gerAutoCoding.build(currentProject, currentModule, rootResource, currentJavaFile);
     }
 

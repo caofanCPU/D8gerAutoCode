@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.function.Function;
 
 /**
- * 支持Mo字段类型
+ * Support field types for Model
  *
  * @author caofanCPU
  */

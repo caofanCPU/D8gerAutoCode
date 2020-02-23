@@ -3,12 +3,12 @@ package com.xyz.caofancpu.d8ger.test;
 import lombok.Getter;
 
 /**
- * YesNo枚举
+ * YesNo Enum class
  */
 public enum YesNoEnum {
 
-    YES(1, "是"),
-    NO(1, "否");
+    YES(1, "Yes"),
+    NO(1, "No");
 
     @Getter
     private Integer value;

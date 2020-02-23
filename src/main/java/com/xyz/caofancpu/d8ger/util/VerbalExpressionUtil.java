@@ -15,10 +15,30 @@ import java.util.regex.Pattern;
  */
 public class VerbalExpressionUtil {
 
+    /**
+     * Uppercase regular expression
+     */
     public static final Pattern HUMP_TO_UNDERLINE = Pattern.compile("[A-Z]");
 
     /**
-     * 创建正则表达式对象
+     * Swagger field position order regular match expression
+     */
+    public static final Pattern SWAGGER_POSITION_PATTERN = Pattern.compile("((?:position)(?:\\s)*(?:\\=)(?:\\s)*(?:\\d)*)");
+
+    /**
+     * Swagger field position order regular replacement
+     *
+     * @param originString
+     * @param replaceString
+     * @return
+     */
+    public static String regexHandlePositionProperty(String originString, final String replaceString) {
+        Matcher matcher = SWAGGER_POSITION_PATTERN.matcher(originString);
+        return matcher.replaceAll(replaceString);
+    }
+
+    /**
+     * Create a regular expression object
      *
      * @param matchKeyWord
      * @return
@@ -28,7 +48,7 @@ public class VerbalExpressionUtil {
     }
 
     /**
-     * 析取正则表达式
+     * Disjunction regular expression
      *
      * @param originComment
      * @return
@@ -46,7 +66,7 @@ public class VerbalExpressionUtil {
     }
 
     /**
-     * 正则替换
+     * Regular replacement
      *
      * @param regexExpression
      * @param originText
@@ -60,7 +80,7 @@ public class VerbalExpressionUtil {
     }
 
     /**
-     * 相对较大字符串正则替换, 使用StringBuilder存储字符串
+     * Regular replacement of relatively large strings, using StringBuilder to store strings
      *
      * @param regexExpression
      * @param originText
@@ -74,7 +94,7 @@ public class VerbalExpressionUtil {
     }
 
     /**
-     * 驼峰命名转下划线
+     * Camel named underline
      *
      * @param originName
      * @return
@@ -84,7 +104,7 @@ public class VerbalExpressionUtil {
     }
 
     /**
-     * 对原始Mo对象名称去除尾部一个或多个Mo
+     * Remove the trailing one or more 'Mo's from the original Model object's name
      *
      * @param originMoName
      * @return
@@ -95,7 +115,7 @@ public class VerbalExpressionUtil {
     }
 
     /**
-     * url路径纠偏, 将多个'/'替换为一个, 且以'/'开头
+     * url path correction, remove rare '/' to keep just one '/' and begin with it
      *
      * @param property
      * @return
@@ -106,7 +126,7 @@ public class VerbalExpressionUtil {
     }
 
     /**
-     * 美化多个换行符
+     * Beautify multiple newlines
      *
      * @param source
      * @return
@@ -119,7 +139,7 @@ public class VerbalExpressionUtil {
     }
 
     /**
-     * 清除空白字符
+     * Clear whitespace
      *
      * @param source
      * @return

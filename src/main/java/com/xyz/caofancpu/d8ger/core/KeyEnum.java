@@ -1,7 +1,7 @@
 package com.xyz.caofancpu.d8ger.core;
 
 /**
- * 生成文件枚举
+ * Generate file enum
  *
  * @author caofanCPU
  */
@@ -25,7 +25,7 @@ public enum KeyEnum {
     }
 
     /**
-     * 不需要创建文件
+     * Judge create file or not
      *
      * @param key
      * @return
@@ -36,7 +36,7 @@ public enum KeyEnum {
     }
 
     /**
-     * 需要导入枚举类的JAVA文件
+     * Judge import enumeration classes or not in Java files
      *
      * @param key
      * @return

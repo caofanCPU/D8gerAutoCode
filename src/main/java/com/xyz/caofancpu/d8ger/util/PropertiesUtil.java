@@ -5,14 +5,14 @@ import java.io.IOException;
 import java.util.Properties;
 
 /**
- * 属性文件
+ * Properties file tool
  *
  * @author caofanCPU
  */
 public class PropertiesUtil {
 
     /**
-     * 加载配置文件
+     * Load configuration file
      *
      * @param configFileAbsolutePath
      * @return
@@ -20,7 +20,7 @@ public class PropertiesUtil {
     public static Properties loadPropertiesFromRootResource(String configFileAbsolutePath) {
         Properties customerProperties = new Properties();
         try {
-            // 尝试读取配置项
+            // Try to read configuration items
             customerProperties.load(new FileInputStream(configFileAbsolutePath));
         } catch (IOException e) {
             // do nothing

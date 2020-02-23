@@ -24,7 +24,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * ACP(AutoCodingProgramming)编程
+ * ACP(AutoCodingProgramming)
  *
  * @author caofanCPU
  */
@@ -36,18 +36,19 @@ public class D8gerAutoCodeAction extends AnAction {
         if (Objects.isNull(d8gerAutoCoding)) {
             return;
         }
-        // 执行创建目录|文件
+        // Create directory | file
         WriteCommandAction.runWriteCommandAction(d8gerAutoCoding.getCurrentProject(), () -> generateAutoCodeFile(d8gerAutoCoding));
     }
 
     /**
-     * 执行文件创建, 所有目录|文件的写操作都必须在此方法内部, 外部使用WriteCommandAction.runWriteCommandAction包装
+     * Perform file creation, all directory | file write operations must be inside this method,
+     * and externally use WriteCommandAction.runWriteCommandAction for wrapping
      *
      * @param d8gerAutoCoding
      */
     public void generateAutoCodeFile(D8gerAutoCoding d8gerAutoCoding) {
         List<String> fileNameList = new ArrayList<>();
-        // 创建D8AutoCode目录
+        // Create D8AutoCode directory
         PsiDirectory d8gerAutoCodeDir = IdeaPlatformFileTreeUtil.getOrCreateSubDir(d8gerAutoCoding.getD8AutoCodeDir(), ConstantUtil.GENERATE_DIR);
 
         d8gerAutoCoding.setD8AutoCodeDir(d8gerAutoCodeDir);
@@ -55,7 +56,7 @@ public class D8gerAutoCodeAction extends AnAction {
 
         d8gerAutoCoding.getFileMap().forEach((key, pair) -> {
             if (skipCurrentOperation(d8gerAutoCoding, key)) {
-                // 不需要创建文件
+                // don't create file
                 return;
             }
             PsiJavaFile autoCodeFile = IdeaPlatformFileTreeUtil.forceCreateJavaFile(
@@ -64,13 +65,13 @@ public class D8gerAutoCodeAction extends AnAction {
                     pair.getLeft(),
                     AutoCodeTemplate.render(pair.getRight(), d8gerAutoCoding.loadEnhanceKeyWordMap(key))
             );
-            // 查找并导入枚举类
+            // Find and import enum classes
             if (KeyEnum.needImportEnumClass(key)) {
                 d8gerAutoCoding.getEnumTypeClassName().forEach(item -> {
                     Optional<PsiClass> optionalPsiClass = IdeaPlatformFileTreeUtil.findClass(d8gerAutoCoding.getCurrentProject(), item);
                     optionalPsiClass.ifPresent(autoCodeFile::importClass);
                     if (!skipCurrentOperation(d8gerAutoCoding, KeyEnum.FORMAT_STYLE)) {
-                        // 需要格式化
+                        // do code formatting
                         IdeaPlatformFileTreeUtil.format(d8gerAutoCoding.getCurrentProject(), autoCodeFile);
                     }
                 });
