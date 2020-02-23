@@ -5,9 +5,9 @@
 
     <description>
         <![CDATA[
-        <h1>Automatic code generation plugin.</h1><br>
-        <h1>Single-table add, delete, update, search with paging and batch operate in one click.</h1><br>
-        <h1>自动生成代码插件, 单表增删改查+分页一键搞定.</h1><br>
+        Automatic code generation plugin.<br>
+        Single-table add, delete, update, search with paging and batch operate in one click.<br>
+        自动生成代码插件, 单表增删改查+分页一键搞定.<br>
         <ul>
         <h1>2.0</h1>
         <li>Camel-Underline-Uppercase-Lowercase can be converted to each other<br>
@@ -115,7 +115,7 @@
             </ul>
         </li>
         <li>Optimization: Optimize source code and improve performance.</li>
-        <li>Attention: If the icon of plugin shows error(red square with a cross), try to upgrade wht version of Intellij util 2019.3.*(greater than 2019.2.*).</li>
+        <li>Attention: If the icon of plugin shows error(red square with a cross), try to upgrade the version of Intellij util 2019.3.*(greater than 2019.2.*).</li>
         </ul>
         </br>
         <li><h1>1.24</h1></li>

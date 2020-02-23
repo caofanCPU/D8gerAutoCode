@@ -4,7 +4,8 @@
 > [中文说明](./README_CN.md)
 
 ### Convention
-- General problem provides standard solutions, personalized problem only provides example solutions
+- General problem provides standard solutions
+- personalized problem only provides example solutions
 
 ### Original design intention
 - Remove the fixed duplication coding for improving efficiency in development  
@@ -13,13 +14,15 @@
 - Support user-defined configuration, you can specify which file to be generated  
 
 ### Features
+- Camel-Underline-Uppercase-Lowercase can be converted to each other by shortcut `alt` + `shift` + `ctrl` + `U`
 - The comments of generated codes support English(Default) | Chinese Simplified(Optional) configuration
 - JSON formatting and single line text conversion, default shortcut `alt`+`shift`+`cmd`+`J` | `S`
 - Generating `data table definition SQL` | `Mo` | `Mapper` | `Service`, single table addition, deletion, modification and search with paging in one click  
 - Under the help of SwaggerApi generating `Vo` | `Controller` with friendly document description, in addition to this, supporting `Vo` field automatic sorting  
 - For automatic generating files, you just need one shortcut and the default is `alt`+`shift`+`cmd`+`D`  
 - Supporting customer configuration, for example, specify the author who you are  
-- Reserving easter eggs, you can try to edit the blank file in IDEA and type `d8ger` to get the default configuration template, other eggs will be added later  
+- Reserving easter eggs, you can try to edit the blank file in IDEA and type `d8ger` to get the default configuration template  
+- Reserve Easter eggs, edit the blank file in IDEA and enter 'regex' to get some commonly used regular expressions. Other code Easter eggs will be added later  
 - For automatic sorting `Vo` field , you just need one shortcut and the default is `alt`+`shift`+`cmd`+`O`  
 
 ### Using screenshots
@@ -66,6 +69,14 @@ Solution
 1. Because the IDEA file uses the VFS mechanism, as a plug-in to use the monitoring file I think it is not cost-effective  
 2. In addition, the `D8gerAutoCode` directory is an auxiliary. When we generate and modify the code, this directory should come and go.  
 3. So, delete the `D8gerAutoCode` directory and you can solve it.
+```
+
+> The icon of plugin shows error like this: red square with a cross
+
+```
+Solution
+1.This issue is caused by Intellij IDEA of new version feature.
+2.Try to upgrade the version of Intellij util 2019.3.*(greater than 2019.2.*), you'll fix it.
 ```
 
 [Other issues, please come to join room](https://github.com/caofanCPU/D8gerAutoCode/issues)
