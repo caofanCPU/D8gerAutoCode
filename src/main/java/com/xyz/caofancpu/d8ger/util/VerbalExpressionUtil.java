@@ -94,12 +94,12 @@ public class VerbalExpressionUtil {
     }
 
     /**
-     * Camel named underline
+     * Camel convert to underline
      *
      * @param originName
      * @return
      */
-    public static String sqlUnderLineName(String originName) {
+    public static String camelToUnderLineName(String originName) {
         return StringUtils.lowerCase(StringUtils.uncapitalize(originName).replaceAll(HUMP_TO_UNDERLINE.pattern(), "_$0"));
     }
 

@@ -147,7 +147,7 @@ public class MoField {
             return ConstantUtil.TAB + ConstantUtil.SQL_ID + ConstantUtil.SPACE + fieldSqlTypeName + ConstantUtil.SPACE + "unsigned auto_increment" + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.SPACE + "primary key" + ConstantUtil.ENGLISH_COMMA;
         }
 
-        return ConstantUtil.TAB + VerbalExpressionUtil.sqlUnderLineName(name) + ConstantUtil.SPACE + fieldSqlTypeName + ConstantUtil.SPACE + wrapSqlDefaultValueView() + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.ENGLISH_COMMA;
+        return ConstantUtil.TAB + VerbalExpressionUtil.camelToUnderLineName(name) + ConstantUtil.SPACE + fieldSqlTypeName + ConstantUtil.SPACE + wrapSqlDefaultValueView() + ConstantUtil.SPACE + "comment" + ConstantUtil.SPACE + "'" + comment + "'" + ConstantUtil.ENGLISH_COMMA;
     }
 
     /**
@@ -157,7 +157,7 @@ public class MoField {
      */
     public String toMoExampleDefinitionMethodString() {
         String capitalizeName = StringUtils.capitalize(name);
-        String sqlColumnName = VerbalExpressionUtil.sqlUnderLineName(name);
+        String sqlColumnName = VerbalExpressionUtil.camelToUnderLineName(name);
         String javaTypeShortName = fieldTypeShortName;
         String fieldTypeInListShortName = SupportFieldTypeEnum.BASIC_INT.getShortName().equals(fieldOriginTypeName) ? SupportFieldTypeEnum.INTEGER.getShortName() : StringUtils.capitalize(javaTypeShortName);
         StringBuilder builder = new StringBuilder();
