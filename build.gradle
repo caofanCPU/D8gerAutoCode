@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.xyz.caofancpu'
-version '1.24'
+version '2.0'
 
 sourceCompatibility = 1.8
 
@@ -43,6 +43,9 @@ patchPluginXml {
     changeNotes 
     """
         What encounter to pain me ever belongs to see you now.<br>
-        <em>Fix 'updateBatchByPrimaryKeySelective' method of mapper.xml in version 1.24</em>
+        <br>
+        Plug-in new revision, new features and high performance.<br>
+        One-click to open the coding way of God, and farewell to boring coding.<br>
+        It's very sure that you deserve to have.<br>
     """
 }
