@@ -37,7 +37,7 @@ public class D8gerMoreAction extends AnAction {
             BrowserLauncher.getInstance().browse("https://github.com/caofanCPU", WebBrowserManager.getInstance().getFirstActiveBrowser());
             return;
         }
-        WriteCommandAction.runWriteCommandAction(currentProject, () -> currentDocument.setText(CollectionUtil.join(CollectionUtil.transToList(contentEnumList, EasterEggCodeTemplateEnum::getTemplateCode), ConstantUtil.NEXT_LINE)));
+        WriteCommandAction.runWriteCommandAction(currentProject, () -> currentDocument.setText(CollectionUtil.join(CollectionUtil.transToList(contentEnumList, EasterEggCodeTemplateEnum::getTemplateCode), ConstantUtil.DOUBLE_NEXT_LINE)));
     }
 
     private List<EasterEggCodeTemplateEnum> exactContent(@NonNull Document currentDocument) {
@@ -45,6 +45,9 @@ public class D8gerMoreAction extends AnAction {
         String text = currentDocument.getText();
         if (StringUtils.containsIgnoreCase(text, EasterEggCodeTemplateEnum.D8GER_CONFIG_FILE_KEY.getCodeKey())) {
             contentEnumList.add(EasterEggCodeTemplateEnum.D8GER_CONFIG_FILE_KEY);
+        }
+        if (StringUtils.containsIgnoreCase(text, EasterEggCodeTemplateEnum.REGEX_CONFIG_FILE_KEY.getCodeKey())) {
+            contentEnumList.add(EasterEggCodeTemplateEnum.REGEX_CONFIG_FILE_KEY);
         }
         return contentEnumList;
     }

@@ -27,6 +27,11 @@ public class ConstantUtil {
     public static final String ENGLISH_STOP = ".";
 
     /**
+     * Underline
+     */
+    public static final String UNDERLINE = "_";
+
+    /**
      * Empty string
      */
     public static final String EMPTY = StringUtils.EMPTY;

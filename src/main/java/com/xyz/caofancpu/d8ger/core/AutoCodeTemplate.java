@@ -1721,6 +1721,40 @@ public class AutoCodeTemplate {
             "#### Language just for EN(English) and ZN(Chinese Simplified)\n" +
             "# locale=";
 
+    public static String TEMPLATE_REGEX = "0.About details, please refer https://github.com/caofanCPU/JavaVerbalExpressions\n" +
+            "Usage, static pattern can improve performance in regex searching:\n" +
+            "    public static final Pattern XXX_REGEX = Pattern.compile(\"...Regex string...\");\n" +
+            "\n" +
+            "1.Whitespace Regex\n" +
+            "(?:(?:(?:((?:\\s)+)|(?:(?:\\\\n)+)|(?:(?:\\\\r\\\\n)+)|(?:(?:\\\\t)+))))\n" +
+            "\n" +
+            "2.One or more newlines Regex\n" +
+            "(?:\\\\n|(?:\\\\r\\\\n))+\n" +
+            "\n" +
+            "3.Phone validate Regex\n" +
+            "^1[0-9]{10}$\n" +
+            "\n" +
+            "4.Email validate Regex\n" +
+            "^([a-z0-9A-Z]+[-|\\\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\\\.)+[a-zA-Z]{2,}$\n" +
+            "\n" +
+            "5.Password validate, rules: digital, uppercase, lowercase, special character >= 3 species\n" +
+            "^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\\\\W_]+$)(?![a-z0-9]+$)(?![a-z\\\\W_]+$)(?![0-9\\\\W_]+$)[a-zA-Z0-9\\\\W_]{8,30}$\n" +
+            "\n" +
+            "6.Keyword detect Regex, for example, position[may be have space]=[may be have space][may be have digital]\n" +
+            "(?:position)(?:\\\\s)*(?:\\\\=)(?:\\\\s)*(?:\\\\d)*\n" +
+            "\n" +
+            "7.No '_' in word Regex\n" +
+            "^(?!_)[a-zA-Z0-9\\\\W]+$\n" +
+            "\n" +
+            "8.No upper case in word Regex\n" +
+            "^(?![A-Z])[a-z0-9\\\\W_]+$\n" +
+            "\n" +
+            "9.No lower case in word Regex\n" +
+            "^(?![a-z])[A-Z0-9\\\\W_]+$\n" +
+            "\n" +
+            "10.'www' Url detect Regex\n" +
+            "^(?:http)(?:s)?(?:\\:\\/\\/)(?:www\\.)?(?:[^\\ ]*)$";
+
     /**
      * Template rendering
      *

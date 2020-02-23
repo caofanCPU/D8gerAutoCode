@@ -8,7 +8,8 @@
         Automatic code generation plug-in, single-table addition and deletion search + paging in one click.<br>
         自动生成代码插件, 单表增删查找+分页一键搞定.<br>
         <ul>
-        1.24
+        2.0
+        <li>Camel-Underline-Uppercase-Lowercase can be converted to each other by shortcut `alt` + `shift` + `ctrl` + `U`</li>
         <li>The comments of generated codes support English(Default) | Chinese Simplified(Optional) configuration</li>
         <li>JSON string auto formatting, default shortcut `alt`+`shift`+`cmd`+`J`</li>
         <li>Stripping whitespace and simplifying text into a single line, default shortcut `alt`+`shift`+`cmd`+`S`</li>
@@ -16,13 +17,15 @@
         <li>Combined with SwaggerApi, one-click generation of Vo and Controller with document definition, support Vo automatic sorting</li>
         <li>Generate files in one click, default shortcut `alt`+`shift`+`cmd`+`D`</li>
         <li>Support user-defined configuration, specify which files and file authors are generated, etc.</li>
-        <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'd8ger' to get the configuration file template. Other code Easter eggs will be added later</li>
+        <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'd8ger' to get the configuration file template.</li>
+        <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'regex' to get some commonly used regular expressions. Other code Easter eggs will be added later</li>
         <li>SwaggerVo field auto sorting, default shortcut `alt`+`shift`+`cmd`+`O`</li>
         </ul>
         By the way, these default shortcuts are used in Mac OS, if you use Windows just take `cmd` into `ctrl` <br>
         <br>
         <ul>
-        1.24
+        2.0
+        <li>驼峰下划线-大小写一键转换, 默认快捷键`alt` + `shift` + `ctrl` + `U`</li>
         <li>生成代码的注释支持英语|汉语配置</li>
         <li>JSON字符串格式化, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
         <li>去除空白字符, 简化为单行文本, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
@@ -30,7 +33,8 @@
         <li>结合SwaggerApi, 一键生成带文档定义Vo及Controller, 支持Vo自动排序</li>
         <li>一键生成文件, 默认快捷键`alt`+`shift`+`cmd`+`D`</li>
         <li>支持用户自定义配置, 指定生成哪些文件及文件author等</li>
-        <li>预留彩蛋, 在IDEA中编辑空白文件输入'd8ger'即可得到配置文件模板, 后期会增加其他代码彩蛋</li>
+        <li>预留彩蛋, 在IDEA中编辑空白文件输入'd8ger'即可得到配置文件模板</li>
+        <li>预留彩蛋, 在IDEA中编辑空白文件输入'regex'即可得到一些常用的有趣正则表达式, 后期会增加其他代码彩蛋</li>
         <li>SwaggerVo字段排序, 默认快捷键`alt`+`shift`+`cmd`+`O`</li>
         </ul>
         另外, 以上默认快捷键针对MacOS系统, 对于Windows用户将`cmd`看做`ctrl`即可<br>
@@ -74,6 +78,10 @@
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl S"/>
             </action>
 
+            <action id="CamelUnderlineConvertAction" class="com.xyz.caofancpu.d8ger.action.CamelUnderlineConvertAction" text="CamelUnderlineConvert" description="CamelUnderlineConvert" icon="/icons/iOS.png">
+                <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl U"/>
+            </action>
+
             <action id="D8gerMore" class="com.xyz.caofancpu.d8ger.action.D8gerMoreAction" text="D8gerMore" description="D8gerMore" icon="/icons/gitHub.png"/>
         </group>
     </actions>
@@ -87,7 +95,10 @@
         <li>2.0</li>
         <ul>
         <li>BugFix: Modify method name in Controller.java.</li>
-        <li>Addition: It's freely specify the directory of all generate files so that you don't need to move files manually.</li>
+        <ul>
+        <li>Addition: Camel-Underline-Uppercase-Lowercase can be converted to each other by shortcut `alt` + `shift` + `ctrl` + `U`.</li>
+        <li>Addition: Regex easter eggs, try to type 'regex' in the blank file in IDEA to find it.</li>
+        </ul>
         <li>Optimization: Optimize source code and improve performance.</li>
         <li>Attention: If the icon of plugin shows error(red square with a cross), try to upgrade wht version of Intellij util 2019.3.*(greater than 2019.2.*).</li>
         </ul>

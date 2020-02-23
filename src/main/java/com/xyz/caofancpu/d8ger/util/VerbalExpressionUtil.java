@@ -5,6 +5,8 @@ import org.apache.commons.lang3.StringUtils;
 import ru.lanwen.verbalregex.VerbalExpression;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,9 +23,69 @@ public class VerbalExpressionUtil {
     public static final Pattern HUMP_TO_UNDERLINE = Pattern.compile("[A-Z]");
 
     /**
+     * No '_' regex, it will trigger to execute CamelToUnderline when regex detect is true
+     */
+    public static final Pattern CAMEL_UNDERLINE_1_NO_UNDERLINE = Pattern.compile("^(?!_)[a-zA-Z0-9\\W]+$");
+
+    /**
+     * No upper case regex, it will trigger to execute LowerCaseToUpperCase when regex detect is true
+     */
+    public static final Pattern CAMEL_UNDERLINE_2_NO_UPPER_CASE = Pattern.compile("^(?![A-Z])[a-z0-9\\W_]+$");
+
+    /**
+     * No lower case, it will trigger to execute UpperCaseToCamel when regex detect is true
+     */
+    public static final Pattern CAMEL_UNDERLINE_3_NO_LOWER_CASE = Pattern.compile("^(?![a-z])[A-Z0-9\\W_]+$");
+
+    /**
      * Swagger field position order regular match expression
      */
     public static final Pattern SWAGGER_POSITION_PATTERN = Pattern.compile("((?:position)(?:\\s)*(?:\\=)(?:\\s)*(?:\\d)*)");
+
+    /**
+     * CaoFAn -->(CamelToUnderline) cao_f_an -->(LowerCaseToUpperCase) CAO_F_AN -->(UpperCaseToCamel) CaoFAn
+     *
+     * @param originName
+     * @return
+     */
+    public static String camelUnderLineNameConverter(@NonNull String originName) {
+        int matchNo = 0;
+        if (CAMEL_UNDERLINE_1_NO_UNDERLINE.matcher(originName).matches()) {
+            matchNo = 1;
+        }
+        if (CAMEL_UNDERLINE_2_NO_UPPER_CASE.matcher(originName).matches()) {
+            matchNo = 2;
+        }
+        if (CAMEL_UNDERLINE_3_NO_LOWER_CASE.matcher(originName).matches()) {
+            matchNo = 3;
+        }
+        if (matchNo == 0) {
+            return originName;
+        }
+        String result = originName;
+        switch (matchNo) {
+            case 1:
+                // CamelToUnderline
+                result = StringUtils.lowerCase(StringUtils.uncapitalize(originName).replaceAll(HUMP_TO_UNDERLINE.pattern(), ConstantUtil.UNDERLINE + "$0"));
+                break;
+            case 2:
+                // LowerCaseToUpperCase
+                result = StringUtils.upperCase(originName);
+                break;
+            case 3:
+                // UpperCaseToCamel
+                String[] words = originName.split(ConstantUtil.UNDERLINE);
+                List<String> resultItemWordList = new ArrayList<>(words.length);
+                for (String word : words) {
+                    resultItemWordList.add(StringUtils.capitalize(StringUtils.lowerCase(word)));
+                }
+                result = CollectionUtil.join(resultItemWordList, ConstantUtil.EMPTY);
+                break;
+            default:
+                break;
+        }
+        return result;
+    }
 
     /**
      * Swagger field position order regular replacement

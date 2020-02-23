@@ -1,3 +1,37 @@
 [阿里icon](https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=991968)
 
 [图片压缩](https://tinypng.com/)
+
+0.About details, please refer https://github.com/caofanCPU/JavaVerbalExpressions
+Usage, static pattern can improve performance in regex searching:
+    public static final Pattern XXX_REGEX = Pattern.compile("...Regex string...");
+
+1.Whitespace Regex
+(?:(?:(?:((?:\s)+)|(?:(?:\\n)+)|(?:(?:\\r\\n)+)|(?:(?:\\t)+))))
+
+2.One or more newlines Regex
+(?:\\n|(?:\\r\\n))+
+
+3.Phone validate Regex
+^1[0-9]{10}$
+
+4.Email validate Regex
+^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$
+
+5.Password validate, rules: digital, uppercase, lowercase, special character >= 3 species
+^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\\W_]+$)(?![a-z0-9]+$)(?![a-z\\W_]+$)(?![0-9\\W_]+$)[a-zA-Z0-9\\W_]{8,30}$
+
+6.Keyword detect Regex, for example, position[may be have space]=[may be have space][may be have digital]
+(?:position)(?:\\s)*(?:\\=)(?:\\s)*(?:\\d)*
+
+7.No '_' in word Regex
+^(?!_)[a-zA-Z0-9\\W]+$
+
+8.No upper case in word Regex
+^(?![A-Z])[a-z0-9\\W_]+$
+
+9.No lower case in word Regex
+^(?![a-z])[A-Z0-9\\W_]+$
+
+10.'www' Url detect Regex
+^(?:http)(?:s)?(?:\:\/\/)(?:www\.)?(?:[^\ ]*)$
