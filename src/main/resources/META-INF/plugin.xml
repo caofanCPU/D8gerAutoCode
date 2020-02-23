@@ -8,20 +8,20 @@
         Automatic code generation plug-in, single-table addition and deletion search + paging in one click.<br>
         自动生成代码插件, 单表增删查找+分页一键搞定.<br>
         <ul>
-        2.0
-        <li>Camel-Underline-Uppercase-Lowercase can be converted to each other by shortcut `alt` + `shift` + `ctrl` + `U`</li>
+        <h1>2.0</h1>
+        <li>Camel-Underline-Uppercase-Lowercase can be converted to each other<br> by shortcut `alt` + `shift` + `ctrl` + `U`</li>
         <li>The comments of generated codes support English(Default) | Chinese Simplified(Optional) configuration</li>
         <li>JSON string auto formatting, default shortcut `alt`+`shift`+`cmd`+`J`</li>
-        <li>Stripping whitespace and simplifying text into a single line, default shortcut `alt`+`shift`+`cmd`+`S`</li>
-        <li>One-click generation of data table definition SQL / Mapper / Service / Controller, single table addition, deletion, modification and search + paging in one click</li>
-        <li>Combined with SwaggerApi, one-click generation of Vo and Controller with document definition, support Vo automatic sorting</li>
+        <li>Stripping whitespace and simplifying text into a single line,<br> default shortcut `alt`+`shift`+`cmd`+`S`</li>
+        <li>One-click generation of data table definition SQL / Mapper / Service / Controller,<br> single table addition, deletion, modification and search + paging in one click</li>
+        <li>Combined with SwaggerApi, one-click generation of Vo and Controller with document definition,<br> support Vo automatic sorting</li>
         <li>Generate files in one click, default shortcut `alt`+`shift`+`cmd`+`D`</li>
         <li>Support user-defined configuration, specify which files and file authors are generated, etc.</li>
-        <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'd8ger' to get the configuration file template.</li>
-        <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'regex' to get some commonly used regular expressions. Other code Easter eggs will be added later</li>
+        <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'd8ger'<br> to get the configuration file template.</li>
+        <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'regex'<br> to get some commonly used regular expressions. Other code Easter eggs will be added later</li>
         <li>SwaggerVo field auto sorting, default shortcut `alt`+`shift`+`cmd`+`O`</li>
         </ul>
-        By the way, these default shortcuts are used in Mac OS, if you use Windows just take `cmd` into `ctrl` <br>
+        By the way, these default shortcuts are used in Mac OS,<br> if you use Windows just take `cmd` into `ctrl` <br>
         <br>
         <ul>
         2.0
@@ -92,7 +92,7 @@
 
     <change-notes>
         <![CDATA[
-        <li>2.0</li>
+        <li><h1>2.0</h1></li>
         <ul>
         <li>BugFix: Modify method name in Controller.java.</li>
         <ul>
@@ -103,35 +103,35 @@
         <li>Attention: If the icon of plugin shows error(red square with a cross), try to upgrade wht version of Intellij util 2019.3.*(greater than 2019.2.*).</li>
         </ul>
         </br>
-        <li>1.24</li>
+        <li><h1>1.24</h1></li>
         <ul>
         <li>BugFix: Update method named'updateBatchByPrimaryKeySelective' in mapper.xml.</li>
         <li>Addition: Set default language English and you can config it as Chinese Simplified, as before, typing 'd8ger' for the latest configuration template.</li>
         <li>Attention: You should configure you database connection like 'allowMultiQueries=true' for supporting batchUpdate operation.</li>
         </ul>
         </br>
-        <li>1.23</li>
+        <li><h1>1.23</h1></li>
         <ul>
         <li>BugFix: Fix required dependencies by Jetbrains's suggestion for some known compatibility issues.</li>
         <li>Addition: Add JSON-formatter and WhiteChar-cleaner.</li>
         <li>Attention: Can you star the project on the github?</li>
         </ul>
         </br>
-        <li>1.22</li>
+        <li><h1>1.22</h1></li>
         <ul>
         <li>BugFix: Fix README of style, description, picture problems.</li>
         <li>Enhance: Enhance profile for generating codes by using regex to replace the circle of matching string.</li>
         <li>Attention: Can you star the project on the github?</li>
         </ul>
         </br>
-        <li>1.21</li>
+        <li><h1>1.21</h1></li>
         <ul>
         <li>BugFix: Fix README of style, description, picture problems.</li>
         <li>Addition: Add MoExample autoCoding for supporting simple sql.</li>
         <li>Attention: Can you star the project on the github?</li>
         </ul>
         </br>
-        <li>1.20</li>
+        <li><h1>1.20</h1></li>
         <ul>
         <li>Completion: Auto coding for Mo/Example/Mapper/Xml/SQL/Service is completed, wow!</li>
         <li>Attention: Can you star the project on the github?</li>

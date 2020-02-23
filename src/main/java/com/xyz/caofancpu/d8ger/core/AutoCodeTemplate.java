@@ -42,7 +42,7 @@ public class AutoCodeTemplate {
             "\n" +
             "}");
     /**
-     * SwaggerMO template string
+     * Swagger VO template string
      */
     public static final StringBuilder ZN_TEMPLATE_SWAGGER_VO = new StringBuilder("package @package@;\n" +
             "\n" +
@@ -1683,7 +1683,7 @@ public class AutoCodeTemplate {
             "    @PostMapping(value = \"@apiUrlPrefix@/batchUpdate\")\n" +
             "    @ApiOperationSupport(order = 5)\n" +
             "    @ApiOperation(value = \"@MoName@Mo-BatchUpdateRecords\")\n" +
-            "    public Object update(@NotEmpty @RequestBody List<@MoName@Vo> @uncapitallizeMoName@VoList) {\n" +
+            "    public Object batchUpdate(@NotEmpty @RequestBody List<@MoName@Vo> @uncapitallizeMoName@VoList) {\n" +
             "        // convert Vo to Mo\n" +
             "        List<@MoName@Mo> @uncapitallizeMoName@List = new ArrayList<>(@uncapitallizeMoName@VoList.size());\n" +
             "        @uncapitallizeMoName@VoList.forEach(item -> @uncapitallizeMoName@List.add(JSONObject.parseObject(JSONObject.toJSONString(item), @MoName@Mo.class)));\n" +
