@@ -175,7 +175,7 @@ public class D8gerAutoCoding {
         keyWordMatchMap.put(TemplateKeyWordEnum.MO_FIELD_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toString), ConstantUtil.DOUBLE_NEXT_LINE)));
         keyWordMatchMap.put(TemplateKeyWordEnum.SWAGGER_MO_FIELD_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toSwaggerString), ConstantUtil.DOUBLE_NEXT_LINE)).append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE).append(wrapSwaggerPage()));
         keyWordMatchMap.put(TemplateKeyWordEnum.MO_EXAMPLE_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toMoExampleDefinitionMethodString), ConstantUtil.EMPTY)));
-        keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_TABLE_KEY.getName(), new StringBuilder(VerbalExpressionUtil.camelToUnderLineName(this.getMoName())));
+        keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_TABLE_KEY.getName(), new StringBuilder(VerbalExpressionUtil.sqlUnderLineName(this.getMoName())));
         keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_COLUMN_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toSqlColumnDefinitionString), ConstantUtil.NEXT_LINE)));
         if (Objects.isNull(CollectionUtil.findFirst(moFieldList, item -> item.getName().equals(ConstantUtil.SQL_ID)))) {
             keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_ID_KEY.getName(), new StringBuilder(ConstantUtil.SQL_ID_DEFAULT_DEFINITION));
@@ -342,7 +342,7 @@ public class D8gerAutoCoding {
      */
     private StringBuilder getXMLBaseColumnList() {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList,
-                item -> ConstantUtil.TRIPLE_TAB + "`" + VerbalExpressionUtil.camelToUnderLineName(item.getName()) + "`"
+                item -> ConstantUtil.TRIPLE_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`"
         ), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE));
     }
 
@@ -357,7 +357,7 @@ public class D8gerAutoCoding {
      */
     private StringBuilder getXMLSelectBaseColumnList() {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList,
-                item -> ConstantUtil.TRIPLE_TAB + "`" + VerbalExpressionUtil.camelToUnderLineName(item.getName()) + "` AS " + item.getName()
+                item -> ConstantUtil.TRIPLE_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "` AS " + item.getName()
         ), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE));
     }
 
@@ -370,7 +370,7 @@ public class D8gerAutoCoding {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
                 item -> item.getName().equals(ConstantUtil.SQL_ID),
                 item -> ConstantUtil.QUATERNARY_TAB + "<if test=\"item." + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
-                        + ConstantUtil.PENTA_TAB + "`" + VerbalExpressionUtil.camelToUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + "=" + ConstantUtil.SPACE + "#{item." + item.getName() + "}," + ConstantUtil.NEXT_LINE
+                        + ConstantUtil.PENTA_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + "=" + ConstantUtil.SPACE + "#{item." + item.getName() + "}," + ConstantUtil.NEXT_LINE
                         + ConstantUtil.QUATERNARY_TAB + "</if>"
         ), ConstantUtil.NEXT_LINE));
     }
@@ -383,7 +383,7 @@ public class D8gerAutoCoding {
     private StringBuilder getXMLUpdateNonNullFieldByExample() {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList,
                 item -> ConstantUtil.TRIPLE_TAB + "<if test=\"record." + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
-                        + ConstantUtil.QUATERNARY_TAB + "`" + VerbalExpressionUtil.camelToUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + "=" + ConstantUtil.SPACE + "#{record." + item.getName() + "}," + ConstantUtil.NEXT_LINE
+                        + ConstantUtil.QUATERNARY_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + "=" + ConstantUtil.SPACE + "#{record." + item.getName() + "}," + ConstantUtil.NEXT_LINE
                         + ConstantUtil.TRIPLE_TAB + "</if>"
         ), ConstantUtil.NEXT_LINE));
     }
@@ -419,7 +419,7 @@ public class D8gerAutoCoding {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
                 item -> item.getName().equals(ConstantUtil.SQL_ID),
                 item -> ConstantUtil.TRIPLE_TAB + "<if test=\"" + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
-                        + ConstantUtil.QUATERNARY_TAB + "`" + VerbalExpressionUtil.camelToUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + "=" + ConstantUtil.SPACE + "#{" + item.getName() + "}," + ConstantUtil.NEXT_LINE
+                        + ConstantUtil.QUATERNARY_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + "=" + ConstantUtil.SPACE + "#{" + item.getName() + "}," + ConstantUtil.NEXT_LINE
                         + ConstantUtil.TRIPLE_TAB + "</if>"
         ), ConstantUtil.NEXT_LINE));
     }
@@ -439,7 +439,7 @@ public class D8gerAutoCoding {
                         tmp = "=" + ConstantUtil.SPACE + "#{" + item.getName() + "}";
                     }
                     return ConstantUtil.TRIPLE_TAB + "<if test=\"" + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
-                            + ConstantUtil.QUATERNARY_TAB + "AND `" + VerbalExpressionUtil.camelToUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + tmp + ConstantUtil.NEXT_LINE
+                            + ConstantUtil.QUATERNARY_TAB + "AND `" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + tmp + ConstantUtil.NEXT_LINE
                             + ConstantUtil.TRIPLE_TAB + "</if>";
                 }
         ), ConstantUtil.NEXT_LINE));

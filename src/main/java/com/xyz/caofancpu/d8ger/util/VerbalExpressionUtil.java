@@ -99,7 +99,7 @@ public class VerbalExpressionUtil {
      * @param originName
      * @return
      */
-    public static String camelToUnderLineName(String originName) {
+    public static String sqlUnderLineName(String originName) {
         return StringUtils.lowerCase(StringUtils.uncapitalize(originName).replaceAll(HUMP_TO_UNDERLINE.pattern(), "_$0"));
     }
 
