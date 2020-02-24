@@ -123,12 +123,12 @@ public class D8gerAutoCoding {
                 .configOriginPsiClass()
                 // Set field list
                 .initMoFieldList()
-                // Config file Map
-                .initFileMap()
                 // Config custom directory Map
                 .initCustomConfigAutoCodeDirMap()
                 // Config keyword Map
-                .initKeyWordMap();
+                .initKeyWordMap()
+                // Config file Map
+                .initFileMap();
     }
 
     /**
@@ -206,7 +206,7 @@ public class D8gerAutoCoding {
             apiUrlPrefix = VerbalExpressionUtil.correctUrl(properties.getProperty(ConstantUtil.CONFIG_API_URL_PREFIX_KEY));
         }
         // Language configuration
-        if (StringUtils.isNotBlank(properties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY)) && StringUtils.upperCase(properties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY)).equals(ConstantUtil.OPTIONAL_CONFIG_LANGUAGE)) {
+        if (ConstantUtil.OPTIONAL_CONFIG_LANGUAGE.equals(properties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY))) {
             // Annotation Chinese Culture
             AutoCodeTemplate.TEMPLATE_MO = AutoCodeTemplate.ZN_TEMPLATE_MO;
             AutoCodeTemplate.TEMPLATE_SWAGGER_VO = AutoCodeTemplate.ZN_TEMPLATE_SWAGGER_VO;
