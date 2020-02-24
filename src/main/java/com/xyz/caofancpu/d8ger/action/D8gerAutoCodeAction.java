@@ -68,6 +68,7 @@ public class D8gerAutoCodeAction extends AnAction {
         });
 
         // 2.Replace keyword data
+        handleCustomPackageKeyWordMap(d8gerAutoCoding);
 
         // 3.Just force file
         d8gerAutoCoding.getFileMap().forEach((key, pair) -> {
