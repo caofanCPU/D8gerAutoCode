@@ -1705,9 +1705,11 @@ public class AutoCodeTemplate {
     public static String TEMPLATE_D8GER = "# The default author called 'D8ger', but it's highly recommended to modify\n" +
             "author=D8ger\n" +
             "\n" +
+            "\n" +
             "#### Basic generate, support two item configs such as:\n" +
             "#### autoCreateMo=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Mo\n" +
             "#### ATTENTION: if you config directory path, you should make sure it exists first\n" +
+            "#### WARNING: if you config error, the auto code file will put into the origin directory named 'D8AutoCode'\n" +
             "#### THEN plugin will create Mo.java file\n" +
             "#### AND put the file into 'com.xyz.caofancpu.d8ger.test.Mo' directory\n" +
             "#### UNDER current project source directory which include '/src/main/java'\n" +
@@ -1717,20 +1719,24 @@ public class AutoCodeTemplate {
             "autoCreateXML=true, /template\n" +
             "autoCreateDefinitionSQL=true, /doc\n" +
             "\n" +
+            "\n" +
             "#### Enhance generate, also support two item configs, please refer Basic generate\n" +
             "autoCreateSwaggerMo=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Vo\n" +
             "autoCreateServiceInterface=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Service\n" +
             "autoCreateServiceImpl=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Service/Impl\n" +
             "autoCreateController=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Controller\n" +
             "\n" +
+            "\n" +
             "#### Other normal binary config\n" +
             "autoFormatStyle=true\n" +
             "\n" +
+            "\n" +
             "#### Api path prefix\n" +
-            "# apiUrlPrefix=\n" +
+            "# apiUrlPrefix=/D8ger\n" +
+            "\n" +
             "\n" +
             "#### Language just for EN(English) and ZN(Chinese Simplified)\n" +
-            "# locale=";
+            "# locale=EN";
 
     public static String TEMPLATE_REGEX = "0.About details, please refer https://github.com/caofanCPU/JavaVerbalExpressions\n" +
             "Usage, static pattern can improve performance in regex searching:\n" +
