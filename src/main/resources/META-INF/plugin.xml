@@ -21,7 +21,7 @@
          single table addition, deletion, modification and search + paging in one click</li>
         <li>Combined with SwaggerApi, one-click generation of Vo<br>
          and Controller with document definition, support Vo automatic sorting</li>
-        <li>Generate files in one click, default shortcut `alt`+`shift`+`cmd`+`D`</li>
+        <li>For smart coding, default shortcut `alt`+`shift`+`cmd`+`D`</li>
         <li>Support user-defined configuration,<br>
          specify which files and file authors are generated, etc.</li>
         <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'd8ger'<br>
@@ -43,7 +43,7 @@
         <li>去除空白字符, 简化为单行文本, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
         <li>一键生成数据表定义SQL/Mapper/Service/Controller, 单表增删改查+分页一键搞定</li>
         <li>结合SwaggerApi, 一键生成带文档定义Vo及Controller, 支持Vo自动排序</li>
-        <li>一键生成文件, 默认快捷键`alt`+`shift`+`cmd`+`D`</li>
+        <li>一键智能编程, 默认快捷键`alt`+`shift`+`cmd`+`D`</li>
         <li>支持用户自定义配置, 指定生成哪些文件及文件author等</li>
         <li>预留彩蛋, 在IDEA中编辑空白文件输入'd8ger'即可得到配置文件模板</li>
         <li>预留彩蛋, 在IDEA中编辑空白文件输入'regex'即可得到一些常用的有趣正则表达式,<br>
@@ -110,6 +110,7 @@
         <li>BugFix: Modify method name in Controller.java.</li>
         <li>Addition:<br>
             <ul>
+            <li>Remove repeat work of moving file into directories for smart coding.</li>
             <li>Camel-Underline-Uppercase-Lowercase can be converted to each other by shortcut `alt` + `shift` + `ctrl` + `U`.</li>
             <li>Regex easter eggs, try to type 'regex' in the blank file in IDEA to find it.</li>
             </ul>

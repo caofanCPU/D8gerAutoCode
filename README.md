@@ -10,7 +10,7 @@
 ### Original design intention
 - Remove the fixed duplication coding for improving efficiency in development  
 - Provide available code templates that can be used without modification  
-- After the code is automatically generated, you just need `cmd`+`C` | `V` for moving these files to related directory in the project and importing package  
+- Support code directory configuration, only by self-guided package intelligent programming can be done in one-click  
 - Support user-defined configuration, you can specify which file to be generated  
 
 ### Features
@@ -19,7 +19,7 @@
 - JSON formatting and single line text conversion, default shortcut `alt`+`shift`+`cmd`+`J` | `S`
 - Generating `data table definition SQL` | `Mo` | `Mapper` | `Service`, single table addition, deletion, modification and search with paging in one click  
 - Under the help of SwaggerApi generating `Vo` | `Controller` with friendly document description, in addition to this, supporting `Vo` field automatic sorting  
-- For automatic generating files, you just need one shortcut and the default is `alt`+`shift`+`cmd`+`D`  
+- For smart coding, you just need one shortcut and the default is `alt`+`shift`+`cmd`+`D`  
 - Supporting customer configuration, for example, specify the author who you are  
 - Reserving easter eggs, you can try to edit the blank file in IDEA and type `d8ger` to get the default configuration template  
 - Reserve Easter eggs, edit the blank file in IDEA and enter 'regex' to get some commonly used regular expressions. Other code Easter eggs will be added later  

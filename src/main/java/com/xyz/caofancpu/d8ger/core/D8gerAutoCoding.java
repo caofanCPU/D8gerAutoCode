@@ -333,6 +333,7 @@ public class D8gerAutoCoding {
                 break;
             case MO_SERVICE_IMPL:
                 keyWordEnumList.add(TemplateKeyWordEnum.SERVICE_IMPLEMENT_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.SERVICE_INTERFACE_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MAPPER_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);

@@ -134,7 +134,13 @@ public class IdeaPlatformFileTreeUtil {
         if (Objects.isNull(fileByIoFileDir) || !fileByIoFileDir.exists()) {
             return null;
         }
-        return IdeaPlatformFileTreeUtil.getOrCreateSubDir(currentProject, fileByIoFileDir);
+        PsiDirectory result = null;
+        try {
+            result = IdeaPlatformFileTreeUtil.getOrCreateSubDir(currentProject, fileByIoFileDir);
+        } catch (Throwable e) {
+            // this exception means the directory of directoryRelativePath does't exist! so just ignore it
+        }
+        return result;
     }
 
     /**
