@@ -170,8 +170,10 @@ public class D8gerAutoCoding {
             String directoryPath = PropertiesUtil.detectConfigDirectoryPath(properties, keyEnum.getKey());
             if (StringUtils.isNotBlank(directoryPath)) {
                 PsiDirectory targetDir = IdeaPlatformFileTreeUtil.getOrCreateSubDirByPath(currentProject, directoryPath);
-                String targetPackage = VerbalExpressionUtil.convertPathToPackage(directoryPath);
-                customConfigAutoCodeDirMap.put(keyEnum, Pair.of(targetDir, targetPackage));
+                if (Objects.nonNull(targetDir)) {
+                    String targetPackage = VerbalExpressionUtil.convertPathToPackage(directoryPath);
+                    customConfigAutoCodeDirMap.put(keyEnum, Pair.of(targetDir, targetPackage));
+                }
             }
         });
         return this;
@@ -204,7 +206,7 @@ public class D8gerAutoCoding {
             apiUrlPrefix = VerbalExpressionUtil.correctUrl(properties.getProperty(ConstantUtil.CONFIG_API_URL_PREFIX_KEY));
         }
         // Language configuration
-        if (StringUtils.isNotBlank(properties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY)) && StringUtils.capitalize(properties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY)).equals(ConstantUtil.OPTIONAL_CONFIG_LANGUAGE)) {
+        if (StringUtils.isNotBlank(properties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY)) && StringUtils.upperCase(properties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY)).equals(ConstantUtil.OPTIONAL_CONFIG_LANGUAGE)) {
             // Annotation Chinese Culture
             AutoCodeTemplate.TEMPLATE_MO = AutoCodeTemplate.ZN_TEMPLATE_MO;
             AutoCodeTemplate.TEMPLATE_SWAGGER_VO = AutoCodeTemplate.ZN_TEMPLATE_SWAGGER_VO;

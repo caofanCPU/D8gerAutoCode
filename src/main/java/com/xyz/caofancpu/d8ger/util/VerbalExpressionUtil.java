@@ -189,7 +189,7 @@ public class VerbalExpressionUtil {
 
     /**
      * Convert path string to package,
-     * for example: /src/main/java/com/xyz/caofancpu/d8ger/test --> com.xyz.caofancpu.d8ger.test
+     * for example: /ModuleName/src/main/java/com/xyz/caofancpu/d8ger/test --> com.xyz.caofancpu.d8ger.test
      *
      * @param originPath
      * @return
@@ -197,7 +197,9 @@ public class VerbalExpressionUtil {
     public static String convertPathToPackage(String originPath) {
         VerbalExpression regex1 = VerbalExpression.regex()
                 .capt()
-                .find("/").zeroOrMore()
+                .startOfLine()
+                .anything()
+                .find(File.separator).zeroOrMore()
                 .then("src").then(File.separator).zeroOrMore()
                 .then("main").then(File.separator).zeroOrMore()
                 .then("java")
