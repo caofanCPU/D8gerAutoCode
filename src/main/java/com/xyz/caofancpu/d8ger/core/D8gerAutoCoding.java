@@ -9,6 +9,7 @@ import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiJavaFile;
 import com.xyz.caofancpu.d8ger.util.CollectionUtil;
 import com.xyz.caofancpu.d8ger.util.ConstantUtil;
+import com.xyz.caofancpu.d8ger.util.IdeaPlatformFileTreeUtil;
 import com.xyz.caofancpu.d8ger.util.PropertiesUtil;
 import com.xyz.caofancpu.d8ger.util.VerbalExpressionUtil;
 import lombok.Data;
@@ -87,6 +88,11 @@ public class D8gerAutoCoding {
     private Map<String, StringBuilder> keyWordMatchMap = new HashMap<>(32, 0.75f);
 
     /**
+     * Storage custom config directories that auto code files put into
+     */
+    private Map<KeyEnum, PsiDirectory> customConfigAutoCodeDirMap = new HashMap<>(16, 0.75f);
+
+    /**
      * Construction methods exposed to the outside world,
      * pay attention to the method execution order
      *
@@ -114,6 +120,8 @@ public class D8gerAutoCoding {
                 .initMoFieldList()
                 // Config file Map
                 .initFileMap()
+                // Config custom directory Map
+                .initCustomConfigAutoCodeDirMap()
                 // Config keyword Map
                 .initKeyWordMap();
     }
@@ -136,6 +144,37 @@ public class D8gerAutoCoding {
         return this;
     }
 
+    /**
+     * Init custom config directories that auto code files put into
+     *
+     * @return
+     */
+    private D8gerAutoCoding initCustomConfigAutoCodeDirMap() {
+        Properties properties = loadPropertiesFromRootResource();
+        List<KeyEnum> keyEnumList = new ArrayList<>();
+        keyEnumList.add(KeyEnum.MO);
+        keyEnumList.add(KeyEnum.SWAGGER_MO);
+        keyEnumList.add(KeyEnum.MO_EXAMPLE);
+        keyEnumList.add(KeyEnum.MO_MAPPER);
+        keyEnumList.add(KeyEnum.MO_SERVICE_INTERFACE);
+        keyEnumList.add(KeyEnum.MO_SERVICE_IMPL);
+        keyEnumList.add(KeyEnum.MO_CONTROLLER);
+        keyEnumList.add(KeyEnum.MO_MAPPER_XML);
+        keyEnumList.add(KeyEnum.MO_SQL);
+        keyEnumList.forEach(keyEnum -> {
+            String directoryPath = PropertiesUtil.detectConfigDirectoryPath(properties, keyEnum.getKey());
+            if (StringUtils.isNotBlank(directoryPath)) {
+                customConfigAutoCodeDirMap.put(keyEnum, IdeaPlatformFileTreeUtil.getOrCreateSubDirByPath(currentProject, directoryPath));
+            }
+        });
+        return this;
+    }
+
+    /**
+     * Load custom config properties
+     *
+     * @return
+     */
     public Properties loadPropertiesFromRootResource() {
         return PropertiesUtil.loadPropertiesFromRootResource(rootResource.getPath() + File.separator + ConstantUtil.D8GER_CONFIG_FILE_NAME);
     }

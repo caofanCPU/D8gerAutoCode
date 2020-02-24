@@ -1703,21 +1703,32 @@ public class AutoCodeTemplate {
      * Config template string
      */
     public static String TEMPLATE_D8GER = "# The default author called 'D8ger', but it's highly recommended to modify\n" +
-            "author=d8ger\n" +
-            "#### Basic generate\n" +
-            "autoCreateMo=true\n" +
-            "autoCreateMapper=true\n" +
-            "autoCreateExample=true\n" +
-            "autoCreateXML=true\n" +
-            "autoCreateDefinitionSQL=true\n" +
-            "#### Enhance generate\n" +
-            "autoCreateSwaggerMo=true\n" +
-            "autoCreateServiceInterface=true\n" +
-            "autoCreateServiceImpl=true\n" +
-            "autoCreateController=true\n" +
+            "author=D8ger\n" +
+            "\n" +
+            "#### Basic generate, support two item configs such as:\n" +
+            "#### autoCreateMo=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Mo\n" +
+            "#### ATTENTION: if you config directory path, you should make sure it exists first\n" +
+            "#### THEN plugin will create Mo.java file\n" +
+            "#### AND put the file into 'com.xyz.caofancpu.d8ger.test.Mo' directory\n" +
+            "#### UNDER current project source directory which include '/src/main/java'\n" +
+            "autoCreateMo=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Mo\n" +
+            "autoCreateMapper=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Mapper\n" +
+            "autoCreateExample=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Mapper/Example\n" +
+            "autoCreateXML=true, /template\n" +
+            "autoCreateDefinitionSQL=true, /doc\n" +
+            "\n" +
+            "#### Enhance generate, also support two item configs, please refer Basic generate\n" +
+            "autoCreateSwaggerMo=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Vo\n" +
+            "autoCreateServiceInterface=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Service\n" +
+            "autoCreateServiceImpl=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Service/Impl\n" +
+            "autoCreateController=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Controller\n" +
+            "\n" +
+            "#### Other normal binary config\n" +
             "autoFormatStyle=true\n" +
+            "\n" +
             "#### Api path prefix\n" +
             "# apiUrlPrefix=\n" +
+            "\n" +
             "#### Language just for EN(English) and ZN(Chinese Simplified)\n" +
             "# locale=";
 

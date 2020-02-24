@@ -16,6 +16,7 @@ import com.xyz.caofancpu.d8ger.core.ProjectEnvHandler;
 import com.xyz.caofancpu.d8ger.util.CollectionUtil;
 import com.xyz.caofancpu.d8ger.util.ConstantUtil;
 import com.xyz.caofancpu.d8ger.util.IdeaPlatformFileTreeUtil;
+import com.xyz.caofancpu.d8ger.util.PropertiesUtil;
 import lombok.NonNull;
 
 import java.util.ArrayList;
@@ -59,8 +60,12 @@ public class D8gerAutoCodeAction extends AnAction {
                 // don't create file
                 return;
             }
+            PsiDirectory targetDirectory = d8gerAutoCoding.getCustomConfigAutoCodeDirMap().get(key);
+            if (Objects.isNull(targetDirectory)) {
+                targetDirectory = d8gerAutoCodeDir;
+            }
             PsiJavaFile autoCodeFile = IdeaPlatformFileTreeUtil.forceCreateJavaFile(
-                    d8gerAutoCodeDir,
+                    targetDirectory,
                     d8gerAutoCoding.getCurrentProject(),
                     pair.getLeft(),
                     AutoCodeTemplate.render(pair.getRight(), d8gerAutoCoding.loadEnhanceKeyWordMap(key))
@@ -86,8 +91,15 @@ public class D8gerAutoCodeAction extends AnAction {
         );
     }
 
+    /**
+     * Skip current operation or not
+     *
+     * @param d8gerAutoCoding
+     * @param keyEnum
+     * @return
+     */
     private boolean skipCurrentOperation(D8gerAutoCoding d8gerAutoCoding, KeyEnum keyEnum) {
-        return !Boolean.parseBoolean(d8gerAutoCoding.loadPropertiesFromRootResource().getProperty(keyEnum.getKey()));
+        return !PropertiesUtil.checkConfigTakEffect(d8gerAutoCoding.loadPropertiesFromRootResource(), keyEnum.getKey());
     }
 
 }

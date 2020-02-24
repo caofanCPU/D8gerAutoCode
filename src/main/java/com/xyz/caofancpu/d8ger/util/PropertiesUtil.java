@@ -1,5 +1,7 @@
 package com.xyz.caofancpu.d8ger.util;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -26,6 +28,47 @@ public class PropertiesUtil {
             // do nothing
         }
         return customerProperties;
+    }
+
+    /**
+     * Check if the configuration item is configured as 'true' or 'TRUE'
+     *
+     * @param properties
+     * @param propertyKey
+     * @return
+     */
+    public static boolean checkConfigTakEffect(Properties properties, String propertyKey) {
+        String property = properties.getProperty(propertyKey);
+        if (StringUtils.isBlank(property)) {
+            // if no config, just ignore
+            return false;
+        }
+        String noWhiteCharProperty = VerbalExpressionUtil.cleanWhiteChar(property);
+        String[] itemConfigs = noWhiteCharProperty.split(ConstantUtil.ENGLISH_COMMA);
+        if (itemConfigs.length == 1) {
+            // if there is just one item config, ignore too
+            return false;
+        }
+        return Boolean.parseBoolean(itemConfigs[0]);
+    }
+
+    /**
+     * Detect if a configuration item contains a directory relative path,
+     * if true then return it, otherwise return null.
+     *
+     * @param properties
+     * @param propertyKey
+     * @return
+     */
+    public static String detectConfigDirectoryPath(Properties properties, String propertyKey) {
+        if (!checkConfigTakEffect(properties, propertyKey)) {
+            return null;
+        }
+        String property = properties.getProperty(propertyKey);
+        String noWhiteCharProperty = VerbalExpressionUtil.cleanWhiteChar(property);
+        String[] itemConfigs = noWhiteCharProperty.split(ConstantUtil.ENGLISH_COMMA);
+        // here, need to create file, so we should check need put it into custom directory or not
+        return StringUtils.isBlank(itemConfigs[1]) ? null : itemConfigs[1];
     }
 
 }

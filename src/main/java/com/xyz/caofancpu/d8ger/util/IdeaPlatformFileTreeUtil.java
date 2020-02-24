@@ -2,6 +2,7 @@ package com.xyz.caofancpu.d8ger.util;
 
 import com.intellij.ide.highlighter.JavaFileType;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiDirectory;
@@ -15,6 +16,7 @@ import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.PsiShortNamesCache;
 import lombok.NonNull;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,7 +34,7 @@ public class IdeaPlatformFileTreeUtil {
      *
      * @param psiDirectory
      * @param project
-     * @param dotFileName  removed '.java' suffix of a Java file name
+     * @param dotFileName  for example: a.java | b.xml | c.sql | d.txt | e.mp3
      * @param content
      * @return
      */
@@ -116,6 +118,23 @@ public class IdeaPlatformFileTreeUtil {
      */
     public static PsiDirectory getOrCreateSubDir(@NonNull Project project, @NonNull VirtualFile subDirVirtualFile) {
         return PsiDirectoryFactory.getInstance(project).createDirectory(subDirVirtualFile);
+    }
+
+    /**
+     * Get or create a subdirectory
+     *
+     * @param currentProject        current project
+     * @param directoryRelativePath directoryRelativePath refer project's root path, see: Project.getBasePath()
+     * @return
+     */
+    public static PsiDirectory getOrCreateSubDirByPath(@NonNull Project currentProject, @NonNull String directoryRelativePath) {
+        String projectRootPath = currentProject.getBasePath();
+        String fileDirAbsolutePath = VerbalExpressionUtil.correctUrl(projectRootPath + File.separator + directoryRelativePath);
+        VirtualFile fileByIoFileDir = LocalFileSystem.getInstance().findFileByIoFile(new File(fileDirAbsolutePath));
+        if (Objects.isNull(fileByIoFileDir) || !fileByIoFileDir.exists()) {
+            return null;
+        }
+        return IdeaPlatformFileTreeUtil.getOrCreateSubDir(currentProject, fileByIoFileDir);
     }
 
     /**
