@@ -659,6 +659,7 @@ public class AutoCodeTemplate {
      */
     public static final StringBuilder ZN_TEMPLATE_SERVICE_IMPL = new StringBuilder("package @serviceImplPackage@;\n" +
             "\n" +
+            "import @serviceInterfacePackage@.@MoName@Service;\n" +
             "import @mapperPackage@.@MoName@Mapper;\n" +
             "import @moPackage@.@MoName@Mo;\n" +
             "import com.github.pagehelper.PageHelper;\n" +
@@ -1507,6 +1508,7 @@ public class AutoCodeTemplate {
      */
     public static StringBuilder TEMPLATE_SERVICE_IMPL = new StringBuilder("package @serviceImplPackage@;\n" +
             "\n" +
+            "import @serviceInterfacePackage@.@MoName@Service;\n" +
             "import @mapperPackage@.@MoName@Mapper;\n" +
             "import @moPackage@.@MoName@Mo;\n" +
             "import com.github.pagehelper.PageHelper;\n" +

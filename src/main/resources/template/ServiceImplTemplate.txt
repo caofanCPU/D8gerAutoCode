@@ -1,5 +1,6 @@
 package @serviceImplPackage@;
 
+import @serviceInterfacePackage@.@MoName@Service;
 import @mapperPackage@.@MoName@Mapper;
 import @moPackage@.@MoName@Mo;
 import com.github.pagehelper.PageHelper;
