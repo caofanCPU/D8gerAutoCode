@@ -1,5 +1,6 @@
-package @package@;
+package @serviceInterfacePackage@;
 
+import @moPackage@.@MoName@Mo;
 import java.util.List;
 
 /**

@@ -28,6 +28,13 @@ public enum TemplateKeyWordEnum {
     XML_MO_LIST_QUERY_KEY("@MoListQuery@"),
     API_URL_PREFIX_KEY("@apiUrlPrefix@"),
 
+    MO_PACKAGE_NAME_KEY("@moPackage@"),
+    MAPPER_PACKAGE_NAME_KEY("@mapperPackage@"),
+    MO_EXAMPLE_PACKAGE_NAME_KEY("@moExamplePackage@"),
+    SWAGGER_MO_PACKAGE_NAME_KEY("@swaggerMoPackage@"),
+    SERVICE_INTERFACE_PACKAGE_NAME_KEY("@serviceInterfacePackage@"),
+    SERVICE_IMPLEMENT_PACKAGE_NAME_KEY("@serviceImplPackage@"),
+    CONTROLLER_PACKAGE_NAME_KEY("@controllerPackage@"),
 
     ;
 

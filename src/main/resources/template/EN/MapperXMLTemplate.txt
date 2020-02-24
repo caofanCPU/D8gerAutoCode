@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="@package@.@MoName@Mapper">
+<mapper namespace="@mapperPackage@.@MoName@Mapper">
 
     <!-- Conditions during query operation -->
     <sql id="Example_Where_Clause">
@@ -65,7 +65,7 @@
     </sql>
 
     <!-- 1.Query list by criteria -->
-    <select id="selectByExample" parameterType="@package@.@MoName@Example" resultType="@package@.@MoName@Mo">
+    <select id="selectByExample" parameterType="@moExamplePackage@.@MoName@Example" resultType="@moPackage@.@MoName@Mo">
         SELECT
         <if test="distinct">
             DISTINCT
@@ -103,7 +103,7 @@
     </update>
 
     <!-- 4.Delete a single record by condition -->
-    <delete id="deleteByExample" parameterType="@package@.@MoName@Example">
+    <delete id="deleteByExample" parameterType="@moExamplePackage@.@MoName@Example">
         DELETE FROM `@mo_table_name@`
         <if test="_parameter != null">
             <include refid="Example_Where_Clause"/>
@@ -111,7 +111,7 @@
     </delete>
 
     <!-- 5.Statistical records by query conditions -->
-    <select id="countByExample" parameterType="@package@.@MoName@Example">
+    <select id="countByExample" parameterType="@moExamplePackage@.@MoName@Example">
         SELECT
             COUNT(*)
         FROM `@mo_table_name@`
@@ -121,7 +121,7 @@
     </select>
 
     <!-- 6.Add a single record, and return the ID -->
-    <insert id="insertWithId" parameterType="@package@.@MoName@Mo" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insertWithId" parameterType="@moPackage@.@MoName@Mo" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO `@mo_table_name@` (
 @BaseColumnList@
         )
@@ -142,7 +142,7 @@
     </insert>
 
     <!-- 8.@MoName@ query list -->
-    <select id="query@MoName@MoList" parameterType="@package@.@MoName@Mo"  resultType="@package@.@MoName@Mo">
+    <select id="query@MoName@MoList" parameterType="@moPackage@.@MoName@Mo"  resultType="@moPackage@.@MoName@Mo">
         SELECT
 @SelectBaseColumnList@
         FROM `@mo_table_name@`
@@ -151,7 +151,7 @@
     </select>
 
     <!-- 9.Query just one record by ID -->
-    <select id="selectByPrimaryKey" resultType="@package@.@MoName@Mo">
+    <select id="selectByPrimaryKey" resultType="@moPackage@.@MoName@Mo">
         SELECT
 @SelectBaseColumnList@
         FROM `@mo_table_name@`
@@ -159,7 +159,7 @@
     </select>
 
     <!-- 10.Update non-null fields by ID for a single record -->
-    <update id="updateByPrimaryKeySelective" parameterType="@package@.@MoName@Mo">
+    <update id="updateByPrimaryKeySelective" parameterType="@moPackage@.@MoName@Mo">
         UPDATE `@mo_table_name@`
         <set>
 @UpdateNonNullFieldByID@

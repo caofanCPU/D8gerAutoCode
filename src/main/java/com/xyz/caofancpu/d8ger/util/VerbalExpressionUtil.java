@@ -188,6 +188,31 @@ public class VerbalExpressionUtil {
     }
 
     /**
+     * Convert path string to package,
+     * for example: /src/main/java/com/xyz/caofancpu/d8ger/test --> com.xyz.caofancpu.d8ger.test
+     *
+     * @param originPath
+     * @return
+     */
+    public static String convertPathToPackage(String originPath) {
+        VerbalExpression regex1 = VerbalExpression.regex()
+                .capt()
+                .find("/").zeroOrMore()
+                .then("src").then(File.separator).zeroOrMore()
+                .then("main").then(File.separator).zeroOrMore()
+                .then("java")
+                .endCapt()
+                .build();
+        String first = executePatternRex(regex1, originPath, ConstantUtil.EMPTY);
+        VerbalExpression regex2 = VerbalExpression.regex()
+                .startOfLine()
+                .then(File.separator).oneOrMore()
+                .build();
+        String second = executePatternRex(regex2, first, ConstantUtil.EMPTY);
+        return second.replaceAll(File.separator, ConstantUtil.ENGLISH_STOP);
+    }
+
+    /**
      * Beautify multiple newlines
      *
      * @param source

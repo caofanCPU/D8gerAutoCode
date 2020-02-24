@@ -95,7 +95,7 @@ public class D8gerAutoCoding {
     /**
      * Storage custom config directories that auto code files put into
      */
-    private Map<KeyEnum, PsiDirectory> customConfigAutoCodeDirMap = new HashMap<>(16, 0.75f);
+    private Map<KeyEnum, Pair<PsiDirectory, String>> customConfigAutoCodeDirMap = new HashMap<>(16, 0.75f);
 
     /**
      * Construction methods exposed to the outside world,
@@ -169,7 +169,9 @@ public class D8gerAutoCoding {
         keyEnumList.forEach(keyEnum -> {
             String directoryPath = PropertiesUtil.detectConfigDirectoryPath(properties, keyEnum.getKey());
             if (StringUtils.isNotBlank(directoryPath)) {
-                customConfigAutoCodeDirMap.put(keyEnum, IdeaPlatformFileTreeUtil.getOrCreateSubDirByPath(currentProject, directoryPath));
+                PsiDirectory targetDir = IdeaPlatformFileTreeUtil.getOrCreateSubDirByPath(currentProject, directoryPath);
+                String targetPackage = VerbalExpressionUtil.convertPathToPackage(directoryPath);
+                customConfigAutoCodeDirMap.put(keyEnum, Pair.of(targetDir, targetPackage));
             }
         });
         return this;
@@ -273,25 +275,27 @@ public class D8gerAutoCoding {
         List<TemplateKeyWordEnum> keyWordEnumList = new ArrayList<>(TemplateKeyWordEnum.values().length);
         switch (key) {
             case MO:
-                keyWordEnumList.add(TemplateKeyWordEnum.PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_FIELD_KEY);
                 break;
             case SWAGGER_MO:
-                keyWordEnumList.add(TemplateKeyWordEnum.PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.SWAGGER_MO_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.SWAGGER_MO_FIELD_KEY);
                 break;
             case MO_EXAMPLE:
-                keyWordEnumList.add(TemplateKeyWordEnum.PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_EXAMPLE_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_EXAMPLE_KEY);
                 break;
             case MO_MAPPER_XML:
-                keyWordEnumList.add(TemplateKeyWordEnum.PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MAPPER_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_EXAMPLE_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.XML_SELECT_BASE_COLUMN_LIST_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.SQL_MO_TABLE_KEY);
@@ -313,15 +317,33 @@ public class D8gerAutoCoding {
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
                 break;
             case MO_MAPPER:
+                keyWordEnumList.add(TemplateKeyWordEnum.MAPPER_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_EXAMPLE_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.UNCAPITALLIZE_MO_NAME_KEY);
+                break;
             case MO_SERVICE_INTERFACE:
+                keyWordEnumList.add(TemplateKeyWordEnum.SERVICE_INTERFACE_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.UNCAPITALLIZE_MO_NAME_KEY);
+                break;
             case MO_SERVICE_IMPL:
-                keyWordEnumList.add(TemplateKeyWordEnum.PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.SERVICE_IMPLEMENT_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MAPPER_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.UNCAPITALLIZE_MO_NAME_KEY);
                 break;
             case MO_CONTROLLER:
-                keyWordEnumList.add(TemplateKeyWordEnum.PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.CONTROLLER_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.SERVICE_INTERFACE_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MO_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.SWAGGER_MO_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.UNCAPITALLIZE_MO_NAME_KEY);

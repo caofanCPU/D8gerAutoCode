@@ -1,5 +1,7 @@
-package @package@;
+package @serviceImplPackage@;
 
+import @mapperPackage@.@MoName@Mapper;
+import @moPackage@.@MoName@Mo;
 import com.github.pagehelper.PageHelper;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;

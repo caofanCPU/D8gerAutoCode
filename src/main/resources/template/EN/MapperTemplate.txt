@@ -1,7 +1,7 @@
-package @package@;
+package @mapperPackage@;
 
-import @package@.@MoName@Example;
-import @package@.@MoName@Mo;
+import @moExamplePackage@.@MoName@Example;
+import @moPackage@.@MoName@Mo;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Mapper;
 

@@ -16,7 +16,7 @@ public class AutoCodeTemplate {
     /**
      * MO template string
      */
-    public static final StringBuilder ZN_TEMPLATE_MO = new StringBuilder("package @package@;\n" +
+    public static final StringBuilder ZN_TEMPLATE_MO = new StringBuilder("package @moPackage@;\n" +
             "\n" +
             "import lombok.AllArgsConstructor;\n" +
             "import lombok.Data;\n" +
@@ -44,7 +44,7 @@ public class AutoCodeTemplate {
     /**
      * Swagger VO template string
      */
-    public static final StringBuilder ZN_TEMPLATE_SWAGGER_VO = new StringBuilder("package @package@;\n" +
+    public static final StringBuilder ZN_TEMPLATE_SWAGGER_VO = new StringBuilder("package @swaggerMoPackage@;\n" +
             "\n" +
             "import io.swagger.annotations.ApiModel;\n" +
             "import io.swagger.annotations.ApiModelProperty;\n" +
@@ -93,10 +93,10 @@ public class AutoCodeTemplate {
     /**
      * Mapper template string
      */
-    public static final StringBuilder ZN_TEMPLATE_MAPPER = new StringBuilder("package @package@;\n" +
+    public static final StringBuilder ZN_TEMPLATE_MAPPER = new StringBuilder("package @mapperPackage@;\n" +
             "\n" +
-            "import @package@.@MoName@Example;\n" +
-            "import @package@.@MoName@Mo;\n" +
+            "import @moExamplePackage@.@MoName@Example;\n" +
+            "import @moPackage@.@MoName@Mo;\n" +
             "import org.apache.ibatis.annotations.Param;\n" +
             "import org.apache.ibatis.annotations.Mapper;\n" +
             "\n" +
@@ -202,7 +202,7 @@ public class AutoCodeTemplate {
     /**
      * MoExample template string
      */
-    public static final StringBuilder ZN_TEMPLATE_MO_EXAMPLE = new StringBuilder("package @package@;\n" +
+    public static final StringBuilder ZN_TEMPLATE_MO_EXAMPLE = new StringBuilder("package @moExamplePackage@;\n" +
             "\n" +
             "import java.math.BigDecimal;\n" +
             "import java.time.LocalDateTime;\n" +
@@ -416,7 +416,7 @@ public class AutoCodeTemplate {
      */
     public static final StringBuilder ZN_TEMPLATE_MAPPER_XML = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
             "<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\n" +
-            "<mapper namespace=\"@package@.@MoName@Mapper\">\n" +
+            "<mapper namespace=\"@mapperPackage@.@MoName@Mapper\">\n" +
             "\n" +
             "    <!-- 查询操作时条件 -->\n" +
             "    <sql id=\"Example_Where_Clause\">\n" +
@@ -481,7 +481,7 @@ public class AutoCodeTemplate {
             "    </sql>\n" +
             "\n" +
             "    <!-- 1.根据条件查询列表 -->\n" +
-            "    <select id=\"selectByExample\" parameterType=\"@package@.@MoName@Example\" resultType=\"@package@.@MoName@Mo\">\n" +
+            "    <select id=\"selectByExample\" parameterType=\"@moExamplePackage@.@MoName@Example\" resultType=\"@moPackage@.@MoName@Mo\">\n" +
             "        SELECT\n" +
             "        <if test=\"distinct\">\n" +
             "            DISTINCT\n" +
@@ -519,7 +519,7 @@ public class AutoCodeTemplate {
             "    </update>\n" +
             "\n" +
             "    <!-- 4.根据条件删除记录 -->\n" +
-            "    <delete id=\"deleteByExample\" parameterType=\"@package@.@MoName@Example\">\n" +
+            "    <delete id=\"deleteByExample\" parameterType=\"@moExamplePackage@.@MoName@Example\">\n" +
             "        DELETE FROM `@mo_table_name@`\n" +
             "        <if test=\"_parameter != null\">\n" +
             "            <include refid=\"Example_Where_Clause\"/>\n" +
@@ -527,7 +527,7 @@ public class AutoCodeTemplate {
             "    </delete>\n" +
             "\n" +
             "    <!-- 5.根据条件统计记录 -->\n" +
-            "    <select id=\"countByExample\" parameterType=\"@package@.@MoName@Example\">\n" +
+            "    <select id=\"countByExample\" parameterType=\"@moExamplePackage@.@MoName@Example\">\n" +
             "        SELECT\n" +
             "            COUNT(*)\n" +
             "        FROM `@mo_table_name@`\n" +
@@ -537,7 +537,7 @@ public class AutoCodeTemplate {
             "    </select>\n" +
             "\n" +
             "    <!-- 6.增加单条记录, 返回主键 -->\n" +
-            "    <insert id=\"insertWithId\" parameterType=\"@package@.@MoName@Mo\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
+            "    <insert id=\"insertWithId\" parameterType=\"@moPackage@.@MoName@Mo\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
             "        INSERT INTO `@mo_table_name@` (\n" +
             "@BaseColumnList@\n" +
             "        )\n" +
@@ -558,7 +558,7 @@ public class AutoCodeTemplate {
             "    </insert>\n" +
             "\n" +
             "    <!-- 8.@MoName@列表查询 -->\n" +
-            "    <select id=\"query@MoName@MoList\" parameterType=\"@package@.@MoName@Mo\"  resultType=\"@package@.@MoName@Mo\">\n" +
+            "    <select id=\"query@MoName@MoList\" parameterType=\"@moPackage@.@MoName@Mo\"  resultType=\"@moPackage@.@MoName@Mo\">\n" +
             "        SELECT\n" +
             "@SelectBaseColumnList@\n" +
             "        FROM `@mo_table_name@`\n" +
@@ -567,7 +567,7 @@ public class AutoCodeTemplate {
             "    </select>\n" +
             "\n" +
             "    <!-- 9.根据ID查询对象 -->\n" +
-            "    <select id=\"selectByPrimaryKey\" resultType=\"@package@.@MoName@Mo\">\n" +
+            "    <select id=\"selectByPrimaryKey\" resultType=\"@moPackage@.@MoName@Mo\">\n" +
             "        SELECT\n" +
             "@SelectBaseColumnList@\n" +
             "        FROM `@mo_table_name@`\n" +
@@ -575,7 +575,7 @@ public class AutoCodeTemplate {
             "    </select>\n" +
             "\n" +
             "    <!-- 10.根据主键只更新非null字段 -->\n" +
-            "    <update id=\"updateByPrimaryKeySelective\" parameterType=\"@package@.@MoName@Mo\">\n" +
+            "    <update id=\"updateByPrimaryKeySelective\" parameterType=\"@moPackage@.@MoName@Mo\">\n" +
             "        UPDATE `@mo_table_name@`\n" +
             "        <set>\n" +
             "@UpdateNonNullFieldByID@\n" +
@@ -583,7 +583,7 @@ public class AutoCodeTemplate {
             "        WHERE `id` = #{id}\n" +
             "    </update>\n" +
             "\n" +
-            "    <!-- 11.根据条件删除记录 -->\n" +
+            "    <!-- 11.根据ID删除记录 -->\n" +
             "    <delete id=\"deleteByPrimaryKey\">\n" +
             "        DELETE FROM `@mo_table_name@` WHERE `id` = #{id}\n" +
             "    </delete>\n" +
@@ -592,8 +592,9 @@ public class AutoCodeTemplate {
     /**
      * Service interface template string
      */
-    public static final StringBuilder ZN_TEMPLATE_SERVICE_INTERFACE = new StringBuilder("package @package@;\n" +
+    public static final StringBuilder ZN_TEMPLATE_SERVICE_INTERFACE = new StringBuilder("package @serviceInterfacePackage@;\n" +
             "\n" +
+            "import @moPackage@.@MoName@Mo;\n" +
             "import java.util.List;\n" +
             "\n" +
             "/**\n" +
@@ -656,8 +657,10 @@ public class AutoCodeTemplate {
     /**
      * Service implement template string
      */
-    public static final StringBuilder ZN_TEMPLATE_SERVICE_IMPL = new StringBuilder("package @package@;\n" +
+    public static final StringBuilder ZN_TEMPLATE_SERVICE_IMPL = new StringBuilder("package @serviceImplPackage@;\n" +
             "\n" +
+            "import @mapperPackage@.@MoName@Mapper;\n" +
+            "import @moPackage@.@MoName@Mo;\n" +
             "import com.github.pagehelper.PageHelper;\n" +
             "import org.springframework.stereotype.Service;\n" +
             "import lombok.extern.slf4j.Slf4j;\n" +
@@ -756,8 +759,11 @@ public class AutoCodeTemplate {
     /**
      * Controller template string
      */
-    public static final StringBuilder ZN_TEMPLATE_CONTROLLER = new StringBuilder("package @package@;\n" +
+    public static final StringBuilder ZN_TEMPLATE_CONTROLLER = new StringBuilder("package @controllerPackage@;\n" +
             "\n" +
+            "import @serviceInterfacePackage@.@MoName@Service;\n" +
+            "import @moPackage@.@MoName@Mo;\n" +
+            "import @swaggerMoPackage@.@MoName@Vo;\n" +
             "import com.alibaba.fastjson.JSONObject;\n" +
             "import com.github.pagehelper.PageInfo;\n" +
             "import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;\n" +
@@ -860,7 +866,7 @@ public class AutoCodeTemplate {
     /**
      * Mo template string
      */
-    public static StringBuilder TEMPLATE_MO = new StringBuilder("package @package@;\n" +
+    public static StringBuilder TEMPLATE_MO = new StringBuilder("package @moPackage@;\n" +
             "\n" +
             "import lombok.AllArgsConstructor;\n" +
             "import lombok.Data;\n" +
@@ -888,7 +894,7 @@ public class AutoCodeTemplate {
     /**
      * Swagger enhance VO template string
      */
-    public static StringBuilder TEMPLATE_SWAGGER_VO = new StringBuilder("package @package@;\n" +
+    public static StringBuilder TEMPLATE_SWAGGER_VO = new StringBuilder("package @swaggerMoPackage@;\n" +
             "\n" +
             "import io.swagger.annotations.ApiModel;\n" +
             "import io.swagger.annotations.ApiModelProperty;\n" +
@@ -935,10 +941,10 @@ public class AutoCodeTemplate {
     /**
      * Mapper template string
      */
-    public static StringBuilder TEMPLATE_MAPPER = new StringBuilder("package @package@;\n" +
+    public static StringBuilder TEMPLATE_MAPPER = new StringBuilder("package @mapperPackage@;\n" +
             "\n" +
-            "import @package@.@MoName@Example;\n" +
-            "import @package@.@MoName@Mo;\n" +
+            "import @moExamplePackage@.@MoName@Example;\n" +
+            "import @moPackage@.@MoName@Mo;\n" +
             "import org.apache.ibatis.annotations.Param;\n" +
             "import org.apache.ibatis.annotations.Mapper;\n" +
             "\n" +
@@ -1044,7 +1050,7 @@ public class AutoCodeTemplate {
     /**
      * Example template string
      */
-    public static StringBuilder TEMPLATE_MO_EXAMPLE = new StringBuilder("package @package@;\n" +
+    public static StringBuilder TEMPLATE_MO_EXAMPLE = new StringBuilder("package @moExamplePackage@;\n" +
             "\n" +
             "import java.math.BigDecimal;\n" +
             "import java.time.LocalDateTime;\n" +
@@ -1258,7 +1264,7 @@ public class AutoCodeTemplate {
      */
     public static StringBuilder TEMPLATE_MAPPER_XML = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
             "<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\n" +
-            "<mapper namespace=\"@package@.@MoName@Mapper\">\n" +
+            "<mapper namespace=\"@mapperPackage@.@MoName@Mapper\">\n" +
             "\n" +
             "    <!-- Conditions during query operation -->\n" +
             "    <sql id=\"Example_Where_Clause\">\n" +
@@ -1323,7 +1329,7 @@ public class AutoCodeTemplate {
             "    </sql>\n" +
             "\n" +
             "    <!-- 1.Query list by criteria -->\n" +
-            "    <select id=\"selectByExample\" parameterType=\"@package@.@MoName@Example\" resultType=\"@package@.@MoName@Mo\">\n" +
+            "    <select id=\"selectByExample\" parameterType=\"@moExamplePackage@.@MoName@Example\" resultType=\"@moPackage@.@MoName@Mo\">\n" +
             "        SELECT\n" +
             "        <if test=\"distinct\">\n" +
             "            DISTINCT\n" +
@@ -1361,7 +1367,7 @@ public class AutoCodeTemplate {
             "    </update>\n" +
             "\n" +
             "    <!-- 4.Delete a single record by condition -->\n" +
-            "    <delete id=\"deleteByExample\" parameterType=\"@package@.@MoName@Example\">\n" +
+            "    <delete id=\"deleteByExample\" parameterType=\"@moExamplePackage@.@MoName@Example\">\n" +
             "        DELETE FROM `@mo_table_name@`\n" +
             "        <if test=\"_parameter != null\">\n" +
             "            <include refid=\"Example_Where_Clause\"/>\n" +
@@ -1369,7 +1375,7 @@ public class AutoCodeTemplate {
             "    </delete>\n" +
             "\n" +
             "    <!-- 5.Statistical records by query conditions -->\n" +
-            "    <select id=\"countByExample\" parameterType=\"@package@.@MoName@Example\">\n" +
+            "    <select id=\"countByExample\" parameterType=\"@moExamplePackage@.@MoName@Example\">\n" +
             "        SELECT\n" +
             "            COUNT(*)\n" +
             "        FROM `@mo_table_name@`\n" +
@@ -1379,7 +1385,7 @@ public class AutoCodeTemplate {
             "    </select>\n" +
             "\n" +
             "    <!-- 6.Add a single record, and return the ID -->\n" +
-            "    <insert id=\"insertWithId\" parameterType=\"@package@.@MoName@Mo\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
+            "    <insert id=\"insertWithId\" parameterType=\"@moPackage@.@MoName@Mo\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
             "        INSERT INTO `@mo_table_name@` (\n" +
             "@BaseColumnList@\n" +
             "        )\n" +
@@ -1400,7 +1406,7 @@ public class AutoCodeTemplate {
             "    </insert>\n" +
             "\n" +
             "    <!-- 8.@MoName@ query list -->\n" +
-            "    <select id=\"query@MoName@MoList\" parameterType=\"@package@.@MoName@Mo\"  resultType=\"@package@.@MoName@Mo\">\n" +
+            "    <select id=\"query@MoName@MoList\" parameterType=\"@moPackage@.@MoName@Mo\"  resultType=\"@moPackage@.@MoName@Mo\">\n" +
             "        SELECT\n" +
             "@SelectBaseColumnList@\n" +
             "        FROM `@mo_table_name@`\n" +
@@ -1409,7 +1415,7 @@ public class AutoCodeTemplate {
             "    </select>\n" +
             "\n" +
             "    <!-- 9.Query just one record by ID -->\n" +
-            "    <select id=\"selectByPrimaryKey\" resultType=\"@package@.@MoName@Mo\">\n" +
+            "    <select id=\"selectByPrimaryKey\" resultType=\"@moPackage@.@MoName@Mo\">\n" +
             "        SELECT\n" +
             "@SelectBaseColumnList@\n" +
             "        FROM `@mo_table_name@`\n" +
@@ -1417,7 +1423,7 @@ public class AutoCodeTemplate {
             "    </select>\n" +
             "\n" +
             "    <!-- 10.Update non-null fields by ID for a single record -->\n" +
-            "    <update id=\"updateByPrimaryKeySelective\" parameterType=\"@package@.@MoName@Mo\">\n" +
+            "    <update id=\"updateByPrimaryKeySelective\" parameterType=\"@moPackage@.@MoName@Mo\">\n" +
             "        UPDATE `@mo_table_name@`\n" +
             "        <set>\n" +
             "@UpdateNonNullFieldByID@\n" +
@@ -1434,8 +1440,9 @@ public class AutoCodeTemplate {
     /**
      * Service interface template string
      */
-    public static StringBuilder TEMPLATE_SERVICE_INTERFACE = new StringBuilder("package @package@;\n" +
+    public static StringBuilder TEMPLATE_SERVICE_INTERFACE = new StringBuilder("package @serviceInterfacePackage@;\n" +
             "\n" +
+            "import @moPackage@.@MoName@Mo;\n" +
             "import java.util.List;\n" +
             "\n" +
             "/**\n" +
@@ -1498,8 +1505,10 @@ public class AutoCodeTemplate {
     /**
      * Service implement template string
      */
-    public static StringBuilder TEMPLATE_SERVICE_IMPL = new StringBuilder("package @package@;\n" +
+    public static StringBuilder TEMPLATE_SERVICE_IMPL = new StringBuilder("package @serviceImplPackage@;\n" +
             "\n" +
+            "import @mapperPackage@.@MoName@Mapper;\n" +
+            "import @moPackage@.@MoName@Mo;\n" +
             "import com.github.pagehelper.PageHelper;\n" +
             "import org.springframework.stereotype.Service;\n" +
             "import lombok.extern.slf4j.Slf4j;\n" +
@@ -1598,8 +1607,11 @@ public class AutoCodeTemplate {
     /**
      * Controller template string
      */
-    public static StringBuilder TEMPLATE_CONTROLLER = new StringBuilder("package @package@;\n" +
+    public static StringBuilder TEMPLATE_CONTROLLER = new StringBuilder("package @controllerPackage@;\n" +
             "\n" +
+            "import @serviceInterfacePackage@.@MoName@Service;\n" +
+            "import @moPackage@.@MoName@Mo;\n" +
+            "import @swaggerMoPackage@.@MoName@Vo;\n" +
             "import com.alibaba.fastjson.JSONObject;\n" +
             "import com.github.pagehelper.PageInfo;\n" +
             "import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;\n" +

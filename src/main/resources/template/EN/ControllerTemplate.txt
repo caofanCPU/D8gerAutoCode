@@ -1,5 +1,8 @@
-package @package@;
+package @controllerPackage@;
 
+import @serviceInterfacePackage@.@MoName@Service;
+import @moPackage@.@MoName@Mo;
+import @swaggerMoPackage@.@MoName@Vo;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageInfo;
 import com.github.xiaoymin.knife4j.annotations.ApiOperationSupport;
