@@ -1,309 +1,52 @@
-{
-    "id":167947209,
-    "node_id":"MDEwOlJlcG9zaXRvcnkxNjc5NDcyMDk=",
-    "name":"JavaVerbalExpressions",
-    "full_name":"caofanCPU/JavaVerbalExpressions",
-    "private":false,
-    "owner":{
-        "login":"caofanCPU",
-        "id":26968137,
-        "node_id":"MDQ6VXNlcjI2OTY4MTM3",
-        "avatar_url":"https://avatars3.githubusercontent.com/u/26968137?v=4",
-        "gravatar_id":"",
-        "url":"https://api.github.com/users/caofanCPU",
-        "html_url":"https://github.com/caofanCPU",
-        "followers_url":"https://api.github.com/users/caofanCPU/followers",
-        "following_url":"https://api.github.com/users/caofanCPU/following{/other_user}",
-        "gists_url":"https://api.github.com/users/caofanCPU/gists{/gist_id}",
-        "starred_url":"https://api.github.com/users/caofanCPU/starred{/owner}{/repo}",
-        "subscriptions_url":"https://api.github.com/users/caofanCPU/subscriptions",
-        "organizations_url":"https://api.github.com/users/caofanCPU/orgs",
-        "repos_url":"https://api.github.com/users/caofanCPU/repos",
-        "events_url":"https://api.github.com/users/caofanCPU/events{/privacy}",
-        "received_events_url":"https://api.github.com/users/caofanCPU/received_events",
-        "type":"User",
-        "site_admin":false
-    },
-    "html_url":"https://github.com/caofanCPU/JavaVerbalExpressions",
-    "description":"Javaregularexpressionsmadeeasy.",
-    "fork":true,
-    "url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions",
-    "forks_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/forks",
-    "keys_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/keys{/key_id}",
-    "collaborators_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/collaborators{/collaborator}",
-    "teams_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/teams",
-    "hooks_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/hooks",
-    "issue_events_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/issues/events{/number}",
-    "events_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/events",
-    "assignees_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/assignees{/user}",
-    "branches_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/branches{/branch}",
-    "tags_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/tags",
-    "blobs_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/git/blobs{/sha}",
-    "git_tags_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/git/tags{/sha}",
-    "git_refs_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/git/refs{/sha}",
-    "trees_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/git/trees{/sha}",
-    "statuses_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/statuses/{sha}",
-    "languages_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/languages",
-    "stargazers_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/stargazers",
-    "contributors_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/contributors",
-    "subscribers_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/subscribers",
-    "subscription_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/subscription",
-    "commits_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/commits{/sha}",
-    "git_commits_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/git/commits{/sha}",
-    "comments_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/comments{/number}",
-    "issue_comment_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/issues/comments{/number}",
-    "contents_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/contents/{+path}",
-    "compare_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/compare/{base}...{head}",
-    "merges_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/merges",
-    "archive_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/{archive_format}{/ref}",
-    "downloads_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/downloads",
-    "issues_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/issues{/number}",
-    "pulls_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/pulls{/number}",
-    "milestones_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/milestones{/number}",
-    "notifications_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/notifications{?since,
-    all,
-    participating}",
-    "labels_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/labels{/name}",
-    "releases_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/releases{/id}",
-    "deployments_url":"https://api.github.com/repos/caofanCPU/JavaVerbalExpressions/deployments",
-    "created_at":"2019-01-28T10:57:39Z",
-    "updated_at":"2019-12-18T02:40:17Z",
-    "pushed_at":"2019-12-18T02:40:12Z",
-    "git_url":"git://github.com/caofanCPU/JavaVerbalExpressions.git",
-    "ssh_url":"git@github.com:caofanCPU/JavaVerbalExpressions.git",
-    "clone_url":"https://github.com/caofanCPU/JavaVerbalExpressions.git",
-    "svn_url":"https://github.com/caofanCPU/JavaVerbalExpressions",
-    "homepage":"",
-    "size":130,
-    "stargazers_count":1,
-    "watchers_count":1,
-    "language":"Java",
-    "has_issues":false,
-    "has_projects":true,
-    "has_downloads":true,
-    "has_wiki":true,
-    "has_pages":false,
-    "forks_count":0,
-    "mirror_url":null,
-    "archived":false,
-    "disabled":false,
-    "open_issues_count":0,
-    "license":{
-        "key":"mit",
-        "name":"MITLicense",
-        "spdx_id":"MIT",
-        "url":"https://api.github.com/licenses/mit",
-        "node_id":"MDc6TGljZW5zZTEz"
-    },
-    "forks":0,
-    "open_issues":0,
-    "watchers":1,
-    "default_branch":"master",
-    "temp_clone_token":null,
-    "parent":{
-        "id":11665119,
-        "node_id":"MDEwOlJlcG9zaXRvcnkxMTY2NTExOQ==",
-        "name":"JavaVerbalExpressions",
-        "full_name":"VerbalExpressions/JavaVerbalExpressions",
-        "private":false,
-        "owner":{
-            "login":"VerbalExpressions",
-            "id":5083777,
-            "node_id":"MDEyOk9yZ2FuaXphdGlvbjUwODM3Nzc=",
-            "avatar_url":"https://avatars0.githubusercontent.com/u/5083777?v=4",
-            "gravatar_id":"",
-            "url":"https://api.github.com/users/VerbalExpressions",
-            "html_url":"https://github.com/VerbalExpressions",
-            "followers_url":"https://api.github.com/users/VerbalExpressions/followers",
-            "following_url":"https://api.github.com/users/VerbalExpressions/following{/other_user}",
-            "gists_url":"https://api.github.com/users/VerbalExpressions/gists{/gist_id}",
-            "starred_url":"https://api.github.com/users/VerbalExpressions/starred{/owner}{/repo}",
-            "subscriptions_url":"https://api.github.com/users/VerbalExpressions/subscriptions",
-            "organizations_url":"https://api.github.com/users/VerbalExpressions/orgs",
-            "repos_url":"https://api.github.com/users/VerbalExpressions/repos",
-            "events_url":"https://api.github.com/users/VerbalExpressions/events{/privacy}",
-            "received_events_url":"https://api.github.com/users/VerbalExpressions/received_events",
-            "type":"Organization",
-            "site_admin":false
-        },
-        "html_url":"https://github.com/VerbalExpressions/JavaVerbalExpressions",
-        "description":"Javaregularexpressionsmadeeasy.",
-        "fork":false,
-        "url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions",
-        "forks_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/forks",
-        "keys_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/keys{/key_id}",
-        "collaborators_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/collaborators{/collaborator}",
-        "teams_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/teams",
-        "hooks_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/hooks",
-        "issue_events_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/issues/events{/number}",
-        "events_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/events",
-        "assignees_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/assignees{/user}",
-        "branches_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/branches{/branch}",
-        "tags_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/tags",
-        "blobs_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/git/blobs{/sha}",
-        "git_tags_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/git/tags{/sha}",
-        "git_refs_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/git/refs{/sha}",
-        "trees_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/git/trees{/sha}",
-        "statuses_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/statuses/{sha}",
-        "languages_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/languages",
-        "stargazers_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/stargazers",
-        "contributors_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/contributors",
-        "subscribers_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/subscribers",
-        "subscription_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/subscription",
-        "commits_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/commits{/sha}",
-        "git_commits_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/git/commits{/sha}",
-        "comments_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/comments{/number}",
-        "issue_comment_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/issues/comments{/number}",
-        "contents_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/contents/{+path}",
-        "compare_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/compare/{base}...{head}",
-        "merges_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/merges",
-        "archive_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/{archive_format}{/ref}",
-        "downloads_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/downloads",
-        "issues_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/issues{/number}",
-        "pulls_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/pulls{/number}",
-        "milestones_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/milestones{/number}",
-        "notifications_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/notifications{?since,
-        all,
-        participating}",
-        "labels_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/labels{/name}",
-        "releases_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/releases{/id}",
-        "deployments_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/deployments",
-        "created_at":"2013-07-25T16:15:26Z",
-        "updated_at":"2020-01-06T21:38:34Z",
-        "pushed_at":"2019-08-03T11:02:09Z",
-        "git_url":"git://github.com/VerbalExpressions/JavaVerbalExpressions.git",
-        "ssh_url":"git@github.com:VerbalExpressions/JavaVerbalExpressions.git",
-        "clone_url":"https://github.com/VerbalExpressions/JavaVerbalExpressions.git",
-        "svn_url":"https://github.com/VerbalExpressions/JavaVerbalExpressions",
-        "homepage":"",
-        "size":129,
-        "stargazers_count":1812,
-        "watchers_count":1812,
-        "language":"Java",
-        "has_issues":true,
-        "has_projects":true,
-        "has_downloads":true,
-        "has_wiki":true,
-        "has_pages":false,
-        "forks_count":212,
-        "mirror_url":null,
-        "archived":false,
-        "disabled":false,
-        "open_issues_count":15,
-        "license":{
-            "key":"mit",
-            "name":"MITLicense",
-            "spdx_id":"MIT",
-            "url":"https://api.github.com/licenses/mit",
-            "node_id":"MDc6TGljZW5zZTEz"
-        },
-        "forks":212,
-        "open_issues":15,
-        "watchers":1812,
-        "default_branch":"master"
-    },
-    "source":{
-        "id":11665119,
-        "node_id":"MDEwOlJlcG9zaXRvcnkxMTY2NTExOQ==",
-        "name":"JavaVerbalExpressions",
-        "full_name":"VerbalExpressions/JavaVerbalExpressions",
-        "private":false,
-        "owner":{
-            "login":"VerbalExpressions",
-            "id":5083777,
-            "node_id":"MDEyOk9yZ2FuaXphdGlvbjUwODM3Nzc=",
-            "avatar_url":"https://avatars0.githubusercontent.com/u/5083777?v=4",
-            "gravatar_id":"",
-            "url":"https://api.github.com/users/VerbalExpressions",
-            "html_url":"https://github.com/VerbalExpressions",
-            "followers_url":"https://api.github.com/users/VerbalExpressions/followers",
-            "following_url":"https://api.github.com/users/VerbalExpressions/following{/other_user}",
-            "gists_url":"https://api.github.com/users/VerbalExpressions/gists{/gist_id}",
-            "starred_url":"https://api.github.com/users/VerbalExpressions/starred{/owner}{/repo}",
-            "subscriptions_url":"https://api.github.com/users/VerbalExpressions/subscriptions",
-            "organizations_url":"https://api.github.com/users/VerbalExpressions/orgs",
-            "repos_url":"https://api.github.com/users/VerbalExpressions/repos",
-            "events_url":"https://api.github.com/users/VerbalExpressions/events{/privacy}",
-            "received_events_url":"https://api.github.com/users/VerbalExpressions/received_events",
-            "type":"Organization",
-            "site_admin":false
-        },
-        "html_url":"https://github.com/VerbalExpressions/JavaVerbalExpressions",
-        "description":"Javaregularexpressionsmadeeasy.",
-        "fork":false,
-        "url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions",
-        "forks_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/forks",
-        "keys_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/keys{/key_id}",
-        "collaborators_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/collaborators{/collaborator}",
-        "teams_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/teams",
-        "hooks_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/hooks",
-        "issue_events_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/issues/events{/number}",
-        "events_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/events",
-        "assignees_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/assignees{/user}",
-        "branches_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/branches{/branch}",
-        "tags_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/tags",
-        "blobs_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/git/blobs{/sha}",
-        "git_tags_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/git/tags{/sha}",
-        "git_refs_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/git/refs{/sha}",
-        "trees_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/git/trees{/sha}",
-        "statuses_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/statuses/{sha}",
-        "languages_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/languages",
-        "stargazers_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/stargazers",
-        "contributors_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/contributors",
-        "subscribers_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/subscribers",
-        "subscription_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/subscription",
-        "commits_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/commits{/sha}",
-        "git_commits_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/git/commits{/sha}",
-        "comments_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/comments{/number}",
-        "issue_comment_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/issues/comments{/number}",
-        "contents_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/contents/{+path}",
-        "compare_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/compare/{base}...{head}",
-        "merges_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/merges",
-        "archive_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/{archive_format}{/ref}",
-        "downloads_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/downloads",
-        "issues_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/issues{/number}",
-        "pulls_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/pulls{/number}",
-        "milestones_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/milestones{/number}",
-        "notifications_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/notifications{?since,
-        all,
-        participating}",
-        "labels_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/labels{/name}",
-        "releases_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/releases{/id}",
-        "deployments_url":"https://api.github.com/repos/VerbalExpressions/JavaVerbalExpressions/deployments",
-        "created_at":"2013-07-25T16:15:26Z",
-        "updated_at":"2020-01-06T21:38:34Z",
-        "pushed_at":"2019-08-03T11:02:09Z",
-        "git_url":"git://github.com/VerbalExpressions/JavaVerbalExpressions.git",
-        "ssh_url":"git@github.com:VerbalExpressions/JavaVerbalExpressions.git",
-        "clone_url":"https://github.com/VerbalExpressions/JavaVerbalExpressions.git",
-        "svn_url":"https://github.com/VerbalExpressions/JavaVerbalExpressions",
-        "homepage":"",
-        "size":129,
-        "stargazers_count":1812,
-        "watchers_count":1812,
-        "language":"Java",
-        "has_issues":true,
-        "has_projects":true,
-        "has_downloads":true,
-        "has_wiki":true,
-        "has_pages":false,
-        "forks_count":212,
-        "mirror_url":null,
-        "archived":false,
-        "disabled":false,
-        "open_issues_count":15,
-        "license":{
-            "key":"mit",
-            "name":"MITLicense",
-            "spdx_id":"MIT",
-            "url":"https://api.github.com/licenses/mit",
-            "node_id":"MDc6TGljZW5zZTEz"
-        },
-        "forks":212,
-        "open_issues":15,
-        "watchers":1812,
-        "default_branch":"master"
-    },
-    "network_count":212,
-    "subscribers_count":0
-}
+# The default author called 'D8ger', but it's highly recommended to modify
+author=d8ger
+#### Basic generate
+autoCreateMo=true
+autoCreateMapper=true
+autoCreateExample=true
+autoCreateXML=true
+autoCreateDefinitionSQL=true
+#### Enhance generate
+autoCreateSwaggerMo=true
+autoCreateServiceInterface=true
+autoCreateServiceImpl=true
+autoCreateController=true
+autoFormatStyle=true
+#### Api path prefix
+# apiUrlPrefix=
+#### Language just for EN(English) and ZN(Chinese Simplified)
+# locale=
+
+0.About details, please refer https://github.com/caofanCPU/JavaVerbalExpressions
+Usage, static pattern can improve performance in regex searching:
+    public static final Pattern XXX_REGEX = Pattern.compile("...Regex string...");
+
+1.Whitespace Regex
+(?:(?:(?:((?:\s)+)|(?:(?:\\n)+)|(?:(?:\\r\\n)+)|(?:(?:\\t)+))))
+
+2.One or more newlines Regex
+(?:\\n|(?:\\r\\n))+
+
+3.Phone validate Regex
+^1[0-9]{10}$
+
+4.Email validate Regex
+^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$
+
+5.Password validate, rules: digital, uppercase, lowercase, special character >= 3 species
+^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\\W_]+$)(?![a-z0-9]+$)(?![a-z\\W_]+$)(?![0-9\\W_]+$)[a-zA-Z0-9\\W_]{8,30}$
+
+6.Keyword detect Regex, for example, position[may be have space]=[may be have space][may be have digital]
+(?:position)(?:\\s)*(?:\\=)(?:\\s)*(?:\\d)*
+
+7.No '_' in word Regex
+^(?!_)[a-zA-Z0-9\\W]+$
+
+8.No upper case in word Regex
+^(?![A-Z])[a-z0-9\\W_]+$
+
+9.No lower case in word Regex
+^(?![a-z])[A-Z0-9\\W_]+$
+
+10.'www' Url detect Regex
+^(?:http)(?:s)?(?:\:\/\/)(?:www\.)?(?:[^\ ]*)$

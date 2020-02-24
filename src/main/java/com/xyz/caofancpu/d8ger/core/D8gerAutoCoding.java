@@ -58,6 +58,11 @@ public class D8gerAutoCoding {
     private PsiDirectory d8AutoCodeDir;
 
     /**
+     * Flag of using D8AutoCode directory or not
+     */
+    private boolean useDefaultDirectory;
+
+    /**
      * Original model file object
      */
     private PsiJavaFile originMoJavaFile;

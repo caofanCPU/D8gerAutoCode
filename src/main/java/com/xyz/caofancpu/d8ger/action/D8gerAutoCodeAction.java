@@ -49,12 +49,6 @@ public class D8gerAutoCodeAction extends AnAction {
      */
     public void generateAutoCodeFile(D8gerAutoCoding d8gerAutoCoding) {
         List<String> fileNameList = new ArrayList<>();
-        // Create D8AutoCode directory
-        PsiDirectory d8gerAutoCodeDir = IdeaPlatformFileTreeUtil.getOrCreateSubDir(d8gerAutoCoding.getD8AutoCodeDir(), ConstantUtil.GENERATE_DIR);
-
-        d8gerAutoCoding.setD8AutoCodeDir(d8gerAutoCodeDir);
-        fileNameList.add(d8gerAutoCodeDir.getName());
-
         d8gerAutoCoding.getFileMap().forEach((key, pair) -> {
             if (skipCurrentOperation(d8gerAutoCoding, key)) {
                 // don't create file
@@ -62,7 +56,16 @@ public class D8gerAutoCodeAction extends AnAction {
             }
             PsiDirectory targetDirectory = d8gerAutoCoding.getCustomConfigAutoCodeDirMap().get(key);
             if (Objects.isNull(targetDirectory)) {
-                targetDirectory = d8gerAutoCodeDir;
+                if (!d8gerAutoCoding.isUseDefaultDirectory()) {
+                    // Create D8AutoCode directory
+                    PsiDirectory d8gerAutoCodeDir = IdeaPlatformFileTreeUtil.getOrCreateSubDir(d8gerAutoCoding.getD8AutoCodeDir(), ConstantUtil.GENERATE_DIR);
+                    d8gerAutoCoding.setD8AutoCodeDir(d8gerAutoCodeDir);
+                    d8gerAutoCoding.setUseDefaultDirectory(true);
+                }
+                if (fileNameList.contains(d8gerAutoCoding.getD8AutoCodeDir().getName())) {
+                    fileNameList.add(d8gerAutoCoding.getD8AutoCodeDir().getName());
+                }
+                targetDirectory = d8gerAutoCoding.getD8AutoCodeDir();
             }
             PsiJavaFile autoCodeFile = IdeaPlatformFileTreeUtil.forceCreateJavaFile(
                     targetDirectory,
@@ -82,7 +85,7 @@ public class D8gerAutoCodeAction extends AnAction {
                 });
             }
 
-            d8gerAutoCoding.getD8AutoCodeDir().add(autoCodeFile);
+            targetDirectory.add(autoCodeFile);
             fileNameList.add(autoCodeFile.getName());
         });
 
