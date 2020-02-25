@@ -67,8 +67,8 @@
 ```
 Solution
 1. Because the IDEA file uses the VFS mechanism, as a plug-in to use the monitoring file I think it is not cost-effective  
-2. In addition, the `D8gerAutoCode` directory is an auxiliary. When we generate and modify the code, this directory should come and go.  
-3. So, delete the `D8gerAutoCode` directory and you can solve it.
+2. I also found a reason aboub editing .properties file, sometimes it will take one or two minutes to refresh after you finished  
+3. So, press 'cmd' + 's' to force refreshing .properties file and you can solve it.
 ```
 
 > The icon of plugin shows error like this: red square with a cross
