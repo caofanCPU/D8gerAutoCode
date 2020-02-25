@@ -797,7 +797,7 @@ public class AutoCodeTemplate {
             "    @Resource\n" +
             "    private @MoName@Service @uncapitallizeMoName@Service;\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/add\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/add\")\n" +
             "    @ApiOperationSupport(order = 1)\n" +
             "    @ApiOperation(value = \"@MoName@Mo新增记录\")\n" +
             "    public Object add(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
@@ -807,7 +807,7 @@ public class AutoCodeTemplate {
             "        return @uncapitallizeMoName@Mo.getId();\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/batchAdd\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/batchAdd\")\n" +
             "    @ApiOperationSupport(order = 2)\n" +
             "    @ApiOperation(value = \"@MoName@Mo批量新增\")\n" +
             "    public Object batchAdd(@Valid @RequestBody List<@MoName@Vo> @uncapitallizeMoName@VoList) {\n" +
@@ -818,7 +818,7 @@ public class AutoCodeTemplate {
             "        return @uncapitallizeMoName@Service.batchAdd(@uncapitallizeMoName@MoList);\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/query@MoName@MoList\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/query@MoName@MoList\")\n" +
             "    @ApiOperationSupport(order = 3)\n" +
             "    @ApiOperation(value = \"@MoName@Mo列表查询\")\n" +
             "    public Object query@MoName@MoList(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
@@ -827,7 +827,7 @@ public class AutoCodeTemplate {
             "        return @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/query@MoName@MoPage\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/query@MoName@MoPage\")\n" +
             "    @ApiOperationSupport(order = 4)\n" +
             "    @ApiOperation(value = \"@MoName@Mo分页查询\")\n" +
             "    public Object query@MoName@MoPage(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
@@ -837,7 +837,7 @@ public class AutoCodeTemplate {
             "        return PageInfo.of(result@MoName@MoList);\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/update\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/update\")\n" +
             "    @ApiOperationSupport(order = 5)\n" +
             "    @ApiOperation(value = \"@MoName@Mo修改记录\")\n" +
             "    public Object update(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
@@ -846,7 +846,7 @@ public class AutoCodeTemplate {
             "        return @uncapitallizeMoName@Service.updateSelectiveById(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/batchUpdate\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/batchUpdate\")\n" +
             "    @ApiOperationSupport(order = 5)\n" +
             "    @ApiOperation(value = \"@MoName@Mo批量修改记录\")\n" +
             "    public Object batchUpdate(@NotEmpty @RequestBody List<@MoName@Vo> @uncapitallizeMoName@VoList) {\n" +
@@ -856,7 +856,7 @@ public class AutoCodeTemplate {
             "        return @uncapitallizeMoName@Service.batchUpdateSelectiveById(@uncapitallizeMoName@List);\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/delete\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/delete\")\n" +
             "    @ApiOperationSupport(order = 6)\n" +
             "    @ApiOperation(value = \"@MoName@Mo删除记录\")\n" +
             "    public Object delete(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
@@ -1646,7 +1646,7 @@ public class AutoCodeTemplate {
             "    @Resource\n" +
             "    private @MoName@Service @uncapitallizeMoName@Service;\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/add\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/add\")\n" +
             "    @ApiOperationSupport(order = 1)\n" +
             "    @ApiOperation(value = \"@MoName@Mo-AddRecord\")\n" +
             "    public Object add(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
@@ -1656,7 +1656,7 @@ public class AutoCodeTemplate {
             "        return @uncapitallizeMoName@Mo.getId();\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/batchAdd\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/batchAdd\")\n" +
             "    @ApiOperationSupport(order = 2)\n" +
             "    @ApiOperation(value = \"@MoName@Mo-BatchAddRecords\")\n" +
             "    public Object batchAdd(@Valid @RequestBody List<@MoName@Vo> @uncapitallizeMoName@VoList) {\n" +
@@ -1667,7 +1667,7 @@ public class AutoCodeTemplate {
             "        return @uncapitallizeMoName@Service.batchAdd(@uncapitallizeMoName@MoList);\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/query@MoName@MoList\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/query@MoName@MoList\")\n" +
             "    @ApiOperationSupport(order = 3)\n" +
             "    @ApiOperation(value = \"@MoName@Mo-QueryList\")\n" +
             "    public Object query@MoName@MoList(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
@@ -1676,7 +1676,7 @@ public class AutoCodeTemplate {
             "        return @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/query@MoName@MoPage\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/query@MoName@MoPage\")\n" +
             "    @ApiOperationSupport(order = 4)\n" +
             "    @ApiOperation(value = \"@MoName@Mo-QueryListWithPaging\")\n" +
             "    public Object query@MoName@MoPage(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
@@ -1686,7 +1686,7 @@ public class AutoCodeTemplate {
             "        return PageInfo.of(result@MoName@MoList);\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/update\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/update\")\n" +
             "    @ApiOperationSupport(order = 5)\n" +
             "    @ApiOperation(value = \"@MoName@Mo-UpdateRecord\")\n" +
             "    public Object update(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
@@ -1695,7 +1695,7 @@ public class AutoCodeTemplate {
             "        return @uncapitallizeMoName@Service.updateSelectiveById(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/batchUpdate\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/batchUpdate\")\n" +
             "    @ApiOperationSupport(order = 5)\n" +
             "    @ApiOperation(value = \"@MoName@Mo-BatchUpdateRecords\")\n" +
             "    public Object batchUpdate(@NotEmpty @RequestBody List<@MoName@Vo> @uncapitallizeMoName@VoList) {\n" +
@@ -1705,7 +1705,7 @@ public class AutoCodeTemplate {
             "        return @uncapitallizeMoName@Service.batchUpdateSelectiveById(@uncapitallizeMoName@List);\n" +
             "    }\n" +
             "\n" +
-            "    @PostMapping(value = \"@apiUrlPrefix@/delete\")\n" +
+            "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/delete\")\n" +
             "    @ApiOperationSupport(order = 6)\n" +
             "    @ApiOperation(value = \"@MoName@Mo-DeleteRecord\")\n" +
             "    public Object delete(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +

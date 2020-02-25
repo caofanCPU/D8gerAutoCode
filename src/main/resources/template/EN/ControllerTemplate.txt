@@ -34,7 +34,7 @@ public class @MoName@Controller {
     @Resource
     private @MoName@Service @uncapitallizeMoName@Service;
 
-    @PostMapping(value = "@apiUrlPrefix@/add")
+    @PostMapping(value = "@apiUrlPrefix@/@uncapitallizeMoName@Mo/add")
     @ApiOperationSupport(order = 1)
     @ApiOperation(value = "@MoName@Mo-AddRecord")
     public Object add(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {
@@ -44,7 +44,7 @@ public class @MoName@Controller {
         return @uncapitallizeMoName@Mo.getId();
     }
 
-    @PostMapping(value = "@apiUrlPrefix@/batchAdd")
+    @PostMapping(value = "@apiUrlPrefix@/@uncapitallizeMoName@Mo/batchAdd")
     @ApiOperationSupport(order = 2)
     @ApiOperation(value = "@MoName@Mo-BatchAddRecords")
     public Object batchAdd(@Valid @RequestBody List<@MoName@Vo> @uncapitallizeMoName@VoList) {
@@ -55,7 +55,7 @@ public class @MoName@Controller {
         return @uncapitallizeMoName@Service.batchAdd(@uncapitallizeMoName@MoList);
     }
 
-    @PostMapping(value = "@apiUrlPrefix@/query@MoName@MoList")
+    @PostMapping(value = "@apiUrlPrefix@/@uncapitallizeMoName@Mo/query@MoName@MoList")
     @ApiOperationSupport(order = 3)
     @ApiOperation(value = "@MoName@Mo-QueryList")
     public Object query@MoName@MoList(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {
@@ -64,7 +64,7 @@ public class @MoName@Controller {
         return @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo);
     }
 
-    @PostMapping(value = "@apiUrlPrefix@/query@MoName@MoPage")
+    @PostMapping(value = "@apiUrlPrefix@/@uncapitallizeMoName@Mo/query@MoName@MoPage")
     @ApiOperationSupport(order = 4)
     @ApiOperation(value = "@MoName@Mo-QueryListWithPaging")
     public Object query@MoName@MoPage(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {
@@ -74,7 +74,7 @@ public class @MoName@Controller {
         return PageInfo.of(result@MoName@MoList);
     }
 
-    @PostMapping(value = "@apiUrlPrefix@/update")
+    @PostMapping(value = "@apiUrlPrefix@/@uncapitallizeMoName@Mo/update")
     @ApiOperationSupport(order = 5)
     @ApiOperation(value = "@MoName@Mo-UpdateRecord")
     public Object update(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {
@@ -83,7 +83,7 @@ public class @MoName@Controller {
         return @uncapitallizeMoName@Service.updateSelectiveById(@uncapitallizeMoName@Mo);
     }
 
-    @PostMapping(value = "@apiUrlPrefix@/batchUpdate")
+    @PostMapping(value = "@apiUrlPrefix@/@uncapitallizeMoName@Mo/batchUpdate")
     @ApiOperationSupport(order = 5)
     @ApiOperation(value = "@MoName@Mo-BatchUpdateRecords")
     public Object batchUpdate(@NotEmpty @RequestBody List<@MoName@Vo> @uncapitallizeMoName@VoList) {
@@ -93,7 +93,7 @@ public class @MoName@Controller {
         return @uncapitallizeMoName@Service.batchUpdateSelectiveById(@uncapitallizeMoName@List);
     }
 
-    @PostMapping(value = "@apiUrlPrefix@/delete")
+    @PostMapping(value = "@apiUrlPrefix@/@uncapitallizeMoName@Mo/delete")
     @ApiOperationSupport(order = 6)
     @ApiOperation(value = "@MoName@Mo-DeleteRecord")
     public Object delete(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {
