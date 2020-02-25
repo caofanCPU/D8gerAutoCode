@@ -45,10 +45,6 @@ public class PropertiesUtil {
         }
         String noWhiteCharProperty = VerbalExpressionUtil.cleanWhiteChar(property);
         String[] itemConfigs = noWhiteCharProperty.split(ConstantUtil.ENGLISH_COMMA);
-        if (itemConfigs.length == 1) {
-            // if there is just one item config, ignore too
-            return false;
-        }
         return Boolean.parseBoolean(itemConfigs[0]);
     }
 
@@ -67,6 +63,10 @@ public class PropertiesUtil {
         String property = properties.getProperty(propertyKey);
         String noWhiteCharProperty = VerbalExpressionUtil.cleanWhiteChar(property);
         String[] itemConfigs = noWhiteCharProperty.split(ConstantUtil.ENGLISH_COMMA);
+        if (itemConfigs.length == 1) {
+            // if there is just one item config, ignore too
+            return null;
+        }
         // here, need to create file, so we should check need put it into custom directory or not
         return StringUtils.isBlank(itemConfigs[1]) ? null : itemConfigs[1];
     }
