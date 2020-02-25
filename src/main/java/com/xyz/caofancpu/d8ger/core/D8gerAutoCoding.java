@@ -137,15 +137,15 @@ public class D8gerAutoCoding {
      * @return
      */
     private D8gerAutoCoding initFileMap() {
-        fileMap.put(KeyEnum.MO, Pair.of(this.getMoName().concat(ConstantUtil.MO_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_MO));
-        fileMap.put(KeyEnum.SWAGGER_MO, Pair.of(this.getMoName().concat(ConstantUtil.SWAGGER_MO_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_SWAGGER_VO));
-        fileMap.put(KeyEnum.MO_EXAMPLE, Pair.of(this.getMoName().concat(ConstantUtil.MO_EXAMPLE_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_MO_EXAMPLE));
-        fileMap.put(KeyEnum.MO_MAPPER, Pair.of(this.getMoName().concat(ConstantUtil.MO_MAPPER_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_MAPPER));
-        fileMap.put(KeyEnum.MO_SERVICE_INTERFACE, Pair.of(this.getMoName().concat(ConstantUtil.MO_SERVICE_INTERFACE_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_SERVICE_INTERFACE));
-        fileMap.put(KeyEnum.MO_SERVICE_IMPL, Pair.of(this.getMoName().concat(ConstantUtil.MO_SERVICE_IMPL_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_SERVICE_IMPL));
-        fileMap.put(KeyEnum.MO_CONTROLLER, Pair.of(this.getMoName().concat(ConstantUtil.MO_CONTROLLER_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_CONTROLLER));
-        fileMap.put(KeyEnum.MO_MAPPER_XML, Pair.of(this.getMoName().concat(ConstantUtil.MO_MAPPER_NAME_SUFFIX).concat(ConstantUtil.XML_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_MAPPER_XML));
-        fileMap.put(KeyEnum.MO_SQL, Pair.of(this.getMoName().concat(ConstantUtil.SQL_FILE_SUFFIX), AutoCodeTemplate.TEMPLATE_MO_SQL));
+        fileMap.put(KeyEnum.MO, Pair.of(this.getMoName().concat(ConstantUtil.MO_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_MO : AutoCodeTemplate.ZN_TEMPLATE_MO));
+        fileMap.put(KeyEnum.SWAGGER_MO, Pair.of(this.getMoName().concat(ConstantUtil.SWAGGER_MO_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_SWAGGER_VO : AutoCodeTemplate.ZN_TEMPLATE_SWAGGER_VO));
+        fileMap.put(KeyEnum.MO_EXAMPLE, Pair.of(this.getMoName().concat(ConstantUtil.MO_EXAMPLE_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_MO_EXAMPLE : AutoCodeTemplate.ZN_TEMPLATE_MO_EXAMPLE));
+        fileMap.put(KeyEnum.MO_MAPPER, Pair.of(this.getMoName().concat(ConstantUtil.MO_MAPPER_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_MAPPER : AutoCodeTemplate.ZN_TEMPLATE_MAPPER));
+        fileMap.put(KeyEnum.MO_SERVICE_INTERFACE, Pair.of(this.getMoName().concat(ConstantUtil.MO_SERVICE_INTERFACE_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_SERVICE_INTERFACE : AutoCodeTemplate.ZN_TEMPLATE_SERVICE_INTERFACE));
+        fileMap.put(KeyEnum.MO_SERVICE_IMPL, Pair.of(this.getMoName().concat(ConstantUtil.MO_SERVICE_IMPL_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_SERVICE_IMPL : AutoCodeTemplate.ZN_TEMPLATE_SERVICE_IMPL));
+        fileMap.put(KeyEnum.MO_CONTROLLER, Pair.of(this.getMoName().concat(ConstantUtil.MO_CONTROLLER_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_CONTROLLER : AutoCodeTemplate.ZN_TEMPLATE_CONTROLLER));
+        fileMap.put(KeyEnum.MO_MAPPER_XML, Pair.of(this.getMoName().concat(ConstantUtil.MO_MAPPER_NAME_SUFFIX).concat(ConstantUtil.XML_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_MAPPER_XML : AutoCodeTemplate.ZN_TEMPLATE_MAPPER_XML));
+        fileMap.put(KeyEnum.MO_SQL, Pair.of(this.getMoName().concat(ConstantUtil.SQL_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_MO_SQL : AutoCodeTemplate.ZN_TEMPLATE_MO_SQL));
         return this;
     }
 
@@ -208,15 +208,9 @@ public class D8gerAutoCoding {
         // Language configuration
         if (ConstantUtil.OPTIONAL_CONFIG_LANGUAGE.equals(properties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY))) {
             // Annotation Chinese Culture
-            AutoCodeTemplate.TEMPLATE_MO = AutoCodeTemplate.ZN_TEMPLATE_MO;
-            AutoCodeTemplate.TEMPLATE_SWAGGER_VO = AutoCodeTemplate.ZN_TEMPLATE_SWAGGER_VO;
-            AutoCodeTemplate.TEMPLATE_MO_SQL = AutoCodeTemplate.ZN_TEMPLATE_MO_SQL;
-            AutoCodeTemplate.TEMPLATE_MAPPER = AutoCodeTemplate.ZN_TEMPLATE_MAPPER;
-            AutoCodeTemplate.TEMPLATE_MO_EXAMPLE = AutoCodeTemplate.ZN_TEMPLATE_MO_EXAMPLE;
-            AutoCodeTemplate.TEMPLATE_MAPPER_XML = AutoCodeTemplate.ZN_TEMPLATE_MAPPER_XML;
-            AutoCodeTemplate.TEMPLATE_SERVICE_INTERFACE = AutoCodeTemplate.ZN_TEMPLATE_SERVICE_INTERFACE;
-            AutoCodeTemplate.TEMPLATE_SERVICE_IMPL = AutoCodeTemplate.ZN_TEMPLATE_SERVICE_IMPL;
-            AutoCodeTemplate.TEMPLATE_CONTROLLER = AutoCodeTemplate.ZN_TEMPLATE_CONTROLLER;
+            AutoCodeTemplate.IS_EN_LOCALE = Boolean.FALSE;
+        } else {
+            AutoCodeTemplate.IS_EN_LOCALE = Boolean.TRUE;
         }
 
         keyWordMatchMap.put(TemplateKeyWordEnum.API_URL_PREFIX_KEY.getName(), new StringBuilder(apiUrlPrefix));

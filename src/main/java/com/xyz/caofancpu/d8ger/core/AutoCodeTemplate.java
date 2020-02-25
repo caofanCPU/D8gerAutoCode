@@ -12,11 +12,12 @@ import java.util.Map;
  * @author caofanCPU
  */
 public class AutoCodeTemplate {
+    public static Boolean IS_EN_LOCALE = Boolean.TRUE;
 
     /**
      * MO template string
      */
-    public static final StringBuilder ZN_TEMPLATE_MO = new StringBuilder("package @moPackage@;\n" +
+    public static StringBuilder ZN_TEMPLATE_MO = new StringBuilder("package @moPackage@;\n" +
             "\n" +
             "import lombok.AllArgsConstructor;\n" +
             "import lombok.Data;\n" +
@@ -44,7 +45,7 @@ public class AutoCodeTemplate {
     /**
      * Swagger VO template string
      */
-    public static final StringBuilder ZN_TEMPLATE_SWAGGER_VO = new StringBuilder("package @swaggerMoPackage@;\n" +
+    public static StringBuilder ZN_TEMPLATE_SWAGGER_VO = new StringBuilder("package @swaggerMoPackage@;\n" +
             "\n" +
             "import io.swagger.annotations.ApiModel;\n" +
             "import io.swagger.annotations.ApiModelProperty;\n" +
@@ -75,7 +76,7 @@ public class AutoCodeTemplate {
     /**
      * Sql template string
      */
-    public static final StringBuilder ZN_TEMPLATE_MO_SQL = new StringBuilder("\n" +
+    public static StringBuilder ZN_TEMPLATE_MO_SQL = new StringBuilder("\n" +
             "-- ----------------------------\n" +
             "-- D8ger-Sql-Auto-Generated\n" +
             "-- Table structure for `@mo_table_name@`\n" +
@@ -93,7 +94,7 @@ public class AutoCodeTemplate {
     /**
      * Mapper template string
      */
-    public static final StringBuilder ZN_TEMPLATE_MAPPER = new StringBuilder("package @mapperPackage@;\n" +
+    public static StringBuilder ZN_TEMPLATE_MAPPER = new StringBuilder("package @mapperPackage@;\n" +
             "\n" +
             "import @moExamplePackage@.@MoName@Example;\n" +
             "import @moPackage@.@MoName@Mo;\n" +
@@ -202,7 +203,7 @@ public class AutoCodeTemplate {
     /**
      * MoExample template string
      */
-    public static final StringBuilder ZN_TEMPLATE_MO_EXAMPLE = new StringBuilder("package @moExamplePackage@;\n" +
+    public static StringBuilder ZN_TEMPLATE_MO_EXAMPLE = new StringBuilder("package @moExamplePackage@;\n" +
             "\n" +
             "import java.math.BigDecimal;\n" +
             "import java.time.LocalDateTime;\n" +
@@ -414,7 +415,7 @@ public class AutoCodeTemplate {
     /**
      * Mapper.xml template string
      */
-    public static final StringBuilder ZN_TEMPLATE_MAPPER_XML = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+    public static StringBuilder ZN_TEMPLATE_MAPPER_XML = new StringBuilder("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
             "<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\n" +
             "<mapper namespace=\"@mapperPackage@.@MoName@Mapper\">\n" +
             "\n" +
@@ -592,7 +593,7 @@ public class AutoCodeTemplate {
     /**
      * Service interface template string
      */
-    public static final StringBuilder ZN_TEMPLATE_SERVICE_INTERFACE = new StringBuilder("package @serviceInterfacePackage@;\n" +
+    public static StringBuilder ZN_TEMPLATE_SERVICE_INTERFACE = new StringBuilder("package @serviceInterfacePackage@;\n" +
             "\n" +
             "import @moPackage@.@MoName@Mo;\n" +
             "import java.util.List;\n" +
@@ -657,7 +658,7 @@ public class AutoCodeTemplate {
     /**
      * Service implement template string
      */
-    public static final StringBuilder ZN_TEMPLATE_SERVICE_IMPL = new StringBuilder("package @serviceImplPackage@;\n" +
+    public static StringBuilder ZN_TEMPLATE_SERVICE_IMPL = new StringBuilder("package @serviceImplPackage@;\n" +
             "\n" +
             "import @serviceInterfacePackage@.@MoName@Service;\n" +
             "import @mapperPackage@.@MoName@Mapper;\n" +
@@ -760,7 +761,7 @@ public class AutoCodeTemplate {
     /**
      * Controller template string
      */
-    public static final StringBuilder ZN_TEMPLATE_CONTROLLER = new StringBuilder("package @controllerPackage@;\n" +
+    public static StringBuilder ZN_TEMPLATE_CONTROLLER = new StringBuilder("package @controllerPackage@;\n" +
             "\n" +
             "import @serviceInterfacePackage@.@MoName@Service;\n" +
             "import @moPackage@.@MoName@Mo;\n" +
