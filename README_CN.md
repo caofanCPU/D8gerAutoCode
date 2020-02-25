@@ -30,7 +30,7 @@
 2.选中类名, 按下(默认)快捷键 `alt`+`shift`+`cmd`+`D`  
 3.默认配置下, 会生成`D8gerAutoCode`目录及数据表SQL定义和Web代码, 共10个  
 4.你需要做的:
-- 移动文件到项目对应的目录下, 例如**`Mo.java`**放到`model`目录  
+- 多模块工程下, 配置生成文件输出目录, 例如**`Mo.java`**配置`model`目录  
 - 根据需求对**`xx.sql`**增加非空约束  
 - 如果你生成了**`Controller.java`**文件, ***请注意接口返回对象类型***, 应修改为项目统一的返回类型  
 - 在上述步骤中, 代码文件会飘红报错, 别慌, 这需要你自行导包解决  
@@ -41,18 +41,19 @@
     - 推荐你更改的配置项  
         - `author`(你挖的坑可不许署我的名!)  
         - `apiUrlPrefix`(接口url前缀应配置为项目接口统一Url前缀)  
-    - 其他`boolean`配置项, 是让你选择需要生成哪些文件  
+        - 多模块工程下, 生成文件输出目录
+    - 其他`boolean`配置项, 是让你选择需要生成哪些文件, 可选指定输出目录  
 
 >以上默认快捷键针对MacOS系统, 对于Windows用户将`cmd`看做`ctrl`即可
 
 ### 使用操作截图
 <div align="center">
-	<img width="100%" height="100%" src="http://file.debuggerpowerzcy.top/power/2020-Tina-D8gerAutoCode.jpg" /> 
+	<img width="100%" height="100%" src="http://file.debuggerpowerzcy.top/power/2020-660X466-D8gerAutoCode.jpeg" /> 
 </div>
 
 ##### 如何安装
 - IDEA官方插件库安装  
-- [下载插件包](http://file.debuggerpowerzcy.top/power/D8gerAutoCode-1.23.zip)  
+- [下载插件包](http://file.debuggerpowerzcy.top/power/D8gerAutoCode-2.0.zip)  
 - 源码安装, 这需要你熟悉Gradle, 后期我会详细补充如何使用Gradle开发一个插件  
 
 ##### Bug&问题

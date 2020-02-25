@@ -33,7 +33,7 @@
 3. Under the default configuration, `D8gerAutoCode` directory and `data table SQL definitions` and **Web codes** will be generated
 
 4. So, What you need to do:
-- Move files to directory corresponding to the project, for example, **`Mo.java`** should be moved into the `model` directory  
+- Under a multi-module project, configure the generated file output directory, for example, **`Mo.java`** should be moved into the `model` directory  
 - Add non-null constraints to **`xx.sql`** as required  
 - If you generated the **Controller.java** file, please note the interface returns type of **`Object`**, it should be modified to the project's uniform return type  
 - In the above steps the `xx.java` file will report some errors, ***don't worry***, these just require you to import packages
@@ -46,18 +46,19 @@
     - It is recommended that you change the configuration items  
         - `author` (you can't sign my name for the pits you dug!)  
         - `apiUrlPrefix` (the interface url prefix should be configured as the project interface unified URL prefix)  
-    - As for `boolean` configuration items, let you choose which files need to be generated  
+        - generate file output directory under a multi-module project  
+    - As for `boolean` configuration items, let you choose which files need to be generated, and specify output directory is optional  
 
 > By the way, these default shortcuts are used in Mac OS, if you use Windows just take `cmd` into `ctrl`.
 
 ### User Operate Snapshot
 <div align="center">
-	<img width="100%" height="100%" src="http://file.debuggerpowerzcy.top/power/2020-Tina-D8gerAutoCode.jpg" /> 
+	<img width="100%" height="100%" src="http://file.debuggerpowerzcy.top/power/2020-660X466-D8gerAutoCode.jpeg" /> 
 </div>
 
 ### How to install
 - IDEA official plugin library installation  
-- [Download plugin package](http://file.debuggerpowerzcy.top/power/D8gerAutoCode-1.23.zip)  
+- [Download plugin package](http://file.debuggerpowerzcy.top/power/D8gerAutoCode-2.0.zip)  
 - As for `Source installation` requires you're familiar with Gradle, I will add more details about how to develop a plugin by ***Gradle*** later
 
 ### Bug & Question
