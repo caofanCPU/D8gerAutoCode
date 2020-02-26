@@ -1,5 +1,8 @@
 # D8gerAutoCode
 ## IDEA Code Automatically Generate Plug-ins • `For Java Web Developer` Version
+<div align="center">
+    <img src="http://file.debuggerpowerzcy.top/power/R-D8ger.png" /> 
+</div>
 
 > [中文说明](./README_CN.md)
 
@@ -53,7 +56,7 @@
 
 ### User Operate Snapshot
 <div align="center">
-	<img width="100%" height="100%" src="http://file.debuggerpowerzcy.top/power/2020-660X466-D8gerAutoCode.jpeg" /> 
+    <img src="http://file.debuggerpowerzcy.top/power/2020-660X466-D8gerAutoCode.jpeg" /> 
 </div>
 
 ### How to install
@@ -69,10 +72,13 @@
 Solution
 1. Because the IDEA file uses the VFS mechanism, as a plug-in to use the monitoring file I think it is not cost-effective  
 2. I also found a reason aboub editing .properties file, sometimes it will take one or two minutes to refresh after you finished  
-3. So, press 'cmd' + 's' to force refreshing .properties file and you can solve it.
+3. So, press 'cmd' + 's' to force refreshing .properties file and you will solve it.
 ```
 
 > The icon of plugin shows error like this: red square with a cross
+<div align="center">
+    <img src="http://file.debuggerpowerzcy.top/power/W-D8ger.png" /> 
+</div>
 
 ```
 Solution

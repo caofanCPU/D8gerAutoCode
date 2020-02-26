@@ -1,5 +1,8 @@
 # D8gerAutoCode
 ##### IDEA代码自动生成插件•`For Java Web Developer`版本
+<div align="center">
+    <img src="http://file.debuggerpowerzcy.top/power/R-D8ger.png" /> 
+</div>
 
 ##### 约定
 - 通用问题提供规范解法
@@ -48,7 +51,7 @@
 
 ### 使用操作截图
 <div align="center">
-	<img width="100%" height="100%" src="http://file.debuggerpowerzcy.top/power/2020-660X466-D8gerAutoCode.jpeg" /> 
+    <img src="http://file.debuggerpowerzcy.top/power/2020-660X466-D8gerAutoCode.jpeg" /> 
 </div>
 
 ##### 如何安装
@@ -68,6 +71,9 @@
 ```
 
 > 插件图标显示异常，图标内只出现相交的红叉
+<div align="center">
+    <img src="http://file.debuggerpowerzcy.top/power/W-D8ger.png" /> 
+</div>
 
 ```
 1.这是Intelij IDEA新版本特性遗留的兼容性小BUG
@@ -75,4 +81,3 @@
 ```
 
 [其他问题, 欢迎前来查房](https://github.com/caofanCPU/D8gerAutoCode/issues)
-

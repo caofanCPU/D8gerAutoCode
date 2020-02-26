@@ -123,7 +123,7 @@
         <ul>
         <li>BugFix: Update method named'updateBatchByPrimaryKeySelective' in mapper.xml.</li>
         <li>Addition: Set default language English and you can config it as Chinese Simplified, as before, typing 'd8ger' for the latest configuration template.</li>
-        <li>Attention: You should configure you database connection like 'allowMultiQueries=true' for supporting batchUpdate operation.</li>
+        <li>Attention: You should configure your database connection like 'allowMultiQueries=true' for supporting batchUpdate operation.</li>
         </ul>
         </br>
         <li><h1>1.23</h1></li>
