@@ -5,6 +5,7 @@
 
     <description>
         <![CDATA[
+        <p>
         Automatic code generation plugin.<br>
         Single-table add, delete, update, search with paging and batch operate in one click.<br>
         自动生成代码插件, 单表增删改查+分页一键搞定.<br>
@@ -34,8 +35,9 @@
         By the way, these default shortcuts are used in Mac OS,<br>
          if you use Windows just take `cmd` into `ctrl` <br>
         <br>
-        <ul>
+        </p>
 
+        <ul>
         <h1>2.0</h1>
         <li>驼峰下划线-大小写一键转换, 默认快捷键`alt` + `shift` + `ctrl` + `U`</li>
         <li>生成代码的注释支持英语|汉语配置</li>
