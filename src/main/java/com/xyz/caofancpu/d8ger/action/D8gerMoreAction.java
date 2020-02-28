@@ -131,7 +131,7 @@ public class D8gerMoreAction extends AnAction {
         }
         String wantedText = split[1];
         String result = StringAlignUtil.formatSQLColumn(wantedText, alignStyle, prefix, suffix, formatSQL, formatAsCamel);
-        return config + ConstantUtil.DOUBLE_NEXT_LINE + ConstantUtil.DOUBLE_NEXT_LINE + result;
+        return config + ConstantUtil.DOUBLE_NEXT_LINE + result;
     }
 
     private enum NASAEnum {

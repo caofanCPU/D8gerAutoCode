@@ -1817,7 +1817,7 @@ public class AutoCodeTemplate {
             " III.Watch out whether need to clear the rare character ',' at the last line\n" +
             "\n";
 
-    public static String TEMPLATE_NASA = "========================================================================\n" +
+    public static String TEMPLATE_NASA = "=========================================NASA=========================================\n" +
             "Note: 1.D8ger-ALIGN(included by character '@') is the config keyword of this text,\n" +
             "      which these context included will be ignored;\n" +
             "      2.Multi-lines to be handled must include ','\n" +
@@ -1834,16 +1834,14 @@ public class AutoCodeTemplate {
             "      blog_url,         --> D8(blog_url)          AS  blogUrl,\n" +
             "      graduated_school, --> D8(graduated_school)  AS  graduatedSchool,\n" +
             "      total_assets      --> D8(total_assets)      AS  totalAssets\n" +
-            "========================================================================\n" +
+            "=========================================NASA=========================================\n" +
             "@D8ger-ALIGN@\n" +
             "\n" +
             "first_name,\n" +
             "current_age,\n" +
             "blog_url,\n" +
             "graduated_school,\n" +
-            "total_assets\n" +
-            "\n" +
-            "\n";
+            "total_assets\n";
 
     /**
      * Template rendering

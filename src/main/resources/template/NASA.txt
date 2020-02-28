@@ -1,4 +1,4 @@
-========================================================================
+=========================================NASA=========================================
 Note: 1.D8ger-ALIGN(included by character '@') is the config keyword of this text,
       which these context included will be ignored;
       2.Multi-lines to be handled must include ','
@@ -15,7 +15,7 @@ Note: 1.D8ger-ALIGN(included by character '@') is the config keyword of this tex
       blog_url,         --> D8(blog_url)          AS  blogUrl,
       graduated_school, --> D8(graduated_school)  AS  graduatedSchool,
       total_assets      --> D8(total_assets)      AS  totalAssets
-========================================================================
+=========================================NASA=========================================
 @D8ger-ALIGN@
 
 first_name,
