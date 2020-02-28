@@ -46,7 +46,7 @@ Usage, static pattern can improve performance in regex searching:
   ReplaceString@   [EMPTY]
  II.Batch replace
   ResearchRegex@   ((?:\w+)+)
-  ReplaceString@   WE'RE($0) AS $0
+  ReplaceString@   WE'RE($0) AS $0,
  III.Clear the rare character ',' at the last line
 
 - 11.3 For multi-lines, especially for SQL batch reduce-replacing, such as:
@@ -54,7 +54,7 @@ Usage, static pattern can improve performance in regex searching:
     - WE'RE(cf_zcy) AS cf_zcy   --> cf_zcy
     - note: WE'RE is just a function
  I.Handle prefix
-  ResearchRegex@   (?:sum\()+)
+  ResearchRegex@   (?:WE'RE\()+
   ReplaceString@   [EMPTY]
  II.Handle suffix
   ResearchRegex@   (?:\))(?:[^\,]*)

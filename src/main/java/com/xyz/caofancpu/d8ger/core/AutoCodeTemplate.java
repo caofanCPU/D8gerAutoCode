@@ -1761,28 +1761,28 @@ public class AutoCodeTemplate {
             "((?:\\s)+)\n" +
             "\n" +
             "2.One or more newlines Regex\n" +
-            "(?:\\n|(?:\\r\\n))+\n" +
+            "(?:\\\\n|(?:\\\\r\\\\n))+\n" +
             "\n" +
             "3.Phone validate Regex\n" +
             "^1[0-9]{10}$\n" +
             "\n" +
             "4.Email validate Regex\n" +
-            "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$\n" +
+            "^([a-z0-9A-Z]+[-|\\\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\\\.)+[a-zA-Z]{2,}$\n" +
             "\n" +
             "5.Password validate, rules: digital, uppercase, lowercase, special character >= 3 species\n" +
-            "^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\\W_]+$)(?![a-z0-9]+$)(?![a-z\\W_]+$)(?![0-9\\W_]+$)[a-zA-Z0-9\\W_]{8,30}$\n" +
+            "^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\\\\W_]+$)(?![a-z0-9]+$)(?![a-z\\\\W_]+$)(?![0-9\\\\W_]+$)[a-zA-Z0-9\\\\W_]{8,30}$\n" +
             "\n" +
             "6.Keyword detect Regex, for example, position[may be have space]=[may be have space][may be have digital]\n" +
-            "(?:position)(?:\\s)*(?:\\=)(?:\\s)*(?:\\d)*\n" +
+            "(?:position)(?:\\\\s)*(?:\\\\=)(?:\\\\s)*(?:\\\\d)*\n" +
             "\n" +
             "7.No '_' and begin with [A-Z] in word Regex\n" +
-            "^(?!_)(?:[A-Z])[a-zA-Z0-9\\W]+$\n" +
+            "^(?!_)(?:[A-Z])[a-zA-Z0-9\\\\W]+$\n" +
             "\n" +
             "8.No upper case in word Regex\n" +
-            "^(?![A-Z])[a-z0-9\\W_]+$\n" +
+            "^(?![A-Z])[a-z0-9\\\\W_]+$\n" +
             "\n" +
             "9.No lower case in word Regex\n" +
-            "^(?![a-z])[A-Z0-9\\W_]+$\n" +
+            "^(?![a-z])[A-Z0-9\\\\W_]+$\n" +
             "\n" +
             "10.'www' Url detect Regex\n" +
             "^(?:http)(?:s)?(?:\\:\\/\\/)(?:www\\.)?(?:[^\\ ]*)$\n" +
@@ -1801,7 +1801,7 @@ public class AutoCodeTemplate {
             "  ReplaceString@   [EMPTY]\n" +
             " II.Batch replace\n" +
             "  ResearchRegex@   ((?:\\w+)+)\n" +
-            "  ReplaceString@   WE'RE($0) AS $0\n" +
+            "  ReplaceString@   WE'RE($0) AS $0,\n" +
             " III.Clear the rare character ',' at the last line\n" +
             "\n" +
             "- 11.3 For multi-lines, especially for SQL batch reduce-replacing, such as:\n" +
@@ -1809,12 +1809,13 @@ public class AutoCodeTemplate {
             "    - WE'RE(cf_zcy) AS cf_zcy   --> cf_zcy\n" +
             "    - note: WE'RE is just a function\n" +
             " I.Handle prefix\n" +
-            "  ResearchRegex@   (?:sum\\()+)\n" +
+            "  ResearchRegex@   (?:WE'RE\\()+\n" +
             "  ReplaceString@   [EMPTY]\n" +
             " II.Handle suffix\n" +
             "  ResearchRegex@   (?:\\))(?:[^\\,]*)\n" +
             "  ReplaceString@   [EMPTY]\n" +
             " III.Watch out whether need to clear the rare character ',' at the last line\n" +
+            "\n" +
             "\n";
 
     public static String TEMPLATE_NASA = "=========================================NASA=========================================\n" +
