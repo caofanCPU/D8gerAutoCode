@@ -1,0 +1,64 @@
+0.About details, please refer https://github.com/caofanCPU/JavaVerbalExpressions
+Usage, static pattern can improve performance in regex searching:
+    public static final Pattern XXX_REGEX = Pattern.compile("...Regex string...");
+
+1.Whitespace Regex
+((?:\s)+)
+
+2.One or more newlines Regex
+(?:\\n|(?:\\r\\n))+
+
+3.Phone validate Regex
+^1[0-9]{10}$
+
+4.Email validate Regex
+^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$
+
+5.Password validate, rules: digital, uppercase, lowercase, special character >= 3 species
+^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\\W_]+$)(?![a-z0-9]+$)(?![a-z\\W_]+$)(?![0-9\\W_]+$)[a-zA-Z0-9\\W_]{8,30}$
+
+6.Keyword detect Regex, for example, position[may be have space]=[may be have space][may be have digital]
+(?:position)(?:\\s)*(?:\\=)(?:\\s)*(?:\\d)*
+
+7.No '_' and begin with [A-Z] in word Regex
+^(?!_)(?:[A-Z])[a-zA-Z0-9\\W]+$
+
+8.No upper case in word Regex
+^(?![A-Z])[a-z0-9\\W_]+$
+
+9.No lower case in word Regex
+^(?![a-z])[A-Z0-9\\W_]+$
+
+10.'www' Url detect Regex
+^(?:http)(?:s)?(?:\:\/\/)(?:www\.)?(?:[^\ ]*)$
+
+11.IDEA Skills
+- 11.1 For multi-lines, how to add some same fix characters?
+ ResearchRegex@   (?:\n|(?:\r\n))+
+ ReplaceString@   ,\r\n
+
+- 11.2 For multi-lines, especially for SQL batch replacing, such as:
+    - zcy_cf,  --> WE'RE(zcy_cf) AS zcy_cf,
+    - cf_zcy   --> WE'RE(cf_zcy) AS cf_zcy
+    - note: WE'RE is just a function
+ I.Clear the character ','
+  ResearchRegex@   (?:,)+
+  ReplaceString@   [EMPTY]
+ II.Batch replace
+  ResearchRegex@   ((?:\w+)+)
+  ReplaceString@   WE'RE($0) AS $0
+ III.Clear the rare character ',' at the last line
+
+- 11.3 For multi-lines, especially for SQL batch reduce-replacing, such as:
+    - WE'RE(zcy_cf) AS zcy_cf,  --> zcy_cf,
+    - WE'RE(cf_zcy) AS cf_zcy   --> cf_zcy
+    - note: WE'RE is just a function
+ I.Handle prefix
+  ResearchRegex@   (?:sum\()+)
+  ReplaceString@   [EMPTY]
+ II.Handle suffix
+  ResearchRegex@   (?:\))(?:[^\,]*)
+  ReplaceString@   [EMPTY]
+ III.Watch out whether need to clear the rare character ',' at the last line
+
+

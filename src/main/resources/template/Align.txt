@@ -1,0 +1,27 @@
+========================================================================
+Note: 1.D8ger-ALIGN(included by character '@') is the config keyword of this text,
+      which these context included will be ignored;
+      2.Multi-lines to be handled must include ','
+      as the split keyword
+      3.config example:
+      - @<prefix=D8(>@         , add 'D8(' before the start of each line
+      - @<suffix=)>@           , add ')' after the end of each line
+      - @<alignStyle=LEFT>@    , you can config CENTER, RIGHT too
+      - @<formatSQL=false>@    , if config SQL then it will append 'AS' alias name
+      - @<formatAsCamel=false>@ , special for SQL column alias camel name
+      4.As example below, one handled what you will find like this:
+      first_name,       --> D8(first_name)        AS  firstName,
+      current_age,      --> D8(current_age)       AS  currentAge,
+      blog_url,         --> D8(blog_url)          AS  blogUrl,
+      graduated_school, --> D8(graduated_school)  AS  graduatedSchool,
+      total_assets      --> D8(total_assets)      AS  totalAssets
+========================================================================
+@D8ger-ALIGN@
+
+first_name,
+current_age,
+blog_url,
+graduated_school,
+total_assets
+
+

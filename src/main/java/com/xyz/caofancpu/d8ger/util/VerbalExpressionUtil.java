@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * FileName: VerbalExpressionUtil
+ * Regex common util
  *
  * @author caofanCPU
  */
@@ -23,19 +23,24 @@ public class VerbalExpressionUtil {
     public static final Pattern HUMP_TO_UNDERLINE = Pattern.compile("[A-Z]");
 
     /**
-     * No '_' regex, it will trigger to execute CamelToUnderline when regex detect is true
+     * No '_' and begin with [A-Z] regex, it will trigger to execute CamelToUnderline when regex detect is true
      */
-    public static final Pattern CAMEL_UNDERLINE_1_NO_UNDERLINE = Pattern.compile("^(?!_)[a-zA-Z0-9\\W]+$");
+    public static final Pattern CAMEL_UNDERLINE_1_NO_UNDERLINE_CAPITALIZE = Pattern.compile("^(?!_)(?:[A-Z])[a-zA-Z0-9\\W]+$");
+
+    /**
+     * No '_' and begin with [a-z] regex, it will trigger to execute CamelToUnderline when regex detect is true
+     */
+    public static final Pattern CAMEL_UNDERLINE_2_NO_UNDERLINE_UNCAPITALIZE = Pattern.compile("^(?!_)(?:[a-z])[a-zA-Z0-9\\W]+$");
 
     /**
      * No upper case regex, it will trigger to execute LowerCaseToUpperCase when regex detect is true
      */
-    public static final Pattern CAMEL_UNDERLINE_2_NO_UPPER_CASE = Pattern.compile("^(?![A-Z])[a-z0-9\\W_]+$");
+    public static final Pattern CAMEL_UNDERLINE_3_NO_UPPER_CASE = Pattern.compile("^(?![A-Z])[a-z0-9\\W_]+$");
 
     /**
      * No lower case, it will trigger to execute UpperCaseToCamel when regex detect is true
      */
-    public static final Pattern CAMEL_UNDERLINE_3_NO_LOWER_CASE = Pattern.compile("^(?![a-z])[A-Z0-9\\W_]+$");
+    public static final Pattern CAMEL_UNDERLINE_4_NO_LOWER_CASE = Pattern.compile("^(?![a-z])[A-Z0-9\\W_]+$");
 
     /**
      * Swagger field position order regular match expression
@@ -43,21 +48,24 @@ public class VerbalExpressionUtil {
     public static final Pattern SWAGGER_POSITION_PATTERN = Pattern.compile("((?:position)(?:\\s)*(?:\\=)(?:\\s)*(?:\\d)*)");
 
     /**
-     * CaoFAn -->(CamelToUnderline) cao_f_an -->(LowerCaseToUpperCase) CAO_F_AN -->(UpperCaseToCamel) CaoFAn
+     * CaoFAn -->(Uncapitalize) caoFAn -->(CamelToUnderline) cao_f_an -->(LowerCaseToUpperCase) CAO_F_AN -->(UpperCaseToCamel) CaoFAn
      *
      * @param originName
      * @return
      */
     public static String camelUnderLineNameConverter(@NonNull String originName) {
         int matchNo = 0;
-        if (CAMEL_UNDERLINE_1_NO_UNDERLINE.matcher(originName).matches()) {
+        if (CAMEL_UNDERLINE_1_NO_UNDERLINE_CAPITALIZE.matcher(originName).matches()) {
             matchNo = 1;
         }
-        if (CAMEL_UNDERLINE_2_NO_UPPER_CASE.matcher(originName).matches()) {
+        if (CAMEL_UNDERLINE_2_NO_UNDERLINE_UNCAPITALIZE.matcher(originName).matches()) {
             matchNo = 2;
         }
-        if (CAMEL_UNDERLINE_3_NO_LOWER_CASE.matcher(originName).matches()) {
+        if (CAMEL_UNDERLINE_3_NO_UPPER_CASE.matcher(originName).matches()) {
             matchNo = 3;
+        }
+        if (CAMEL_UNDERLINE_4_NO_LOWER_CASE.matcher(originName).matches()) {
+            matchNo = 4;
         }
         if (matchNo == 0) {
             return originName;
@@ -65,16 +73,20 @@ public class VerbalExpressionUtil {
         String result = originName;
         switch (matchNo) {
             case 1:
-                // CamelToUnderline
-                result = StringUtils.lowerCase(StringUtils.uncapitalize(originName).replaceAll(HUMP_TO_UNDERLINE.pattern(), ConstantUtil.UNDERLINE + "$0"));
+                // Uncapitalize
+                result = StringUtils.uncapitalize(originName);
                 break;
             case 2:
+                // CamelToUnderline
+                result = StringUtils.lowerCase(originName.replaceAll(HUMP_TO_UNDERLINE.pattern(), "_$0"));
+                break;
+            case 3:
                 // LowerCaseToUpperCase
                 result = StringUtils.upperCase(originName);
                 break;
-            case 3:
+            case 4:
                 // UpperCaseToCamel
-                String[] words = originName.split(ConstantUtil.UNDERLINE);
+                String[] words = originName.split("_");
                 List<String> resultItemWordList = new ArrayList<>(words.length);
                 for (String word : words) {
                     resultItemWordList.add(StringUtils.capitalize(StringUtils.lowerCase(word)));
@@ -97,6 +109,23 @@ public class VerbalExpressionUtil {
     public static String regexHandlePositionProperty(String originString, final String replaceString) {
         Matcher matcher = SWAGGER_POSITION_PATTERN.matcher(originString);
         return matcher.replaceAll(replaceString);
+    }
+
+    /**
+     * Extract matched content list by pattern
+     *
+     * @param originContext
+     * @param pattern
+     * @return
+     */
+    public static List<String> extractMatchContent(@NonNull String originContext, Pattern pattern) {
+        List<String> resultList = new ArrayList<>();
+        Matcher matcher = pattern.matcher(originContext);
+        while (matcher.find()) {
+            // add current matched group value
+            resultList.add(matcher.group());
+        }
+        return resultList;
     }
 
     /**
@@ -216,6 +245,7 @@ public class VerbalExpressionUtil {
 
     /**
      * Beautify multiple newlines
+     * (?:\\n|(?:\\r\\n))+
      *
      * @param source
      * @return
@@ -229,18 +259,14 @@ public class VerbalExpressionUtil {
 
     /**
      * Clear whitespace
+     * ((?:\s)+)
      *
      * @param source
      * @return
      */
     public static String cleanWhiteChar(@NonNull String source) {
         VerbalExpression regex = VerbalExpression.regex()
-                .capt()
                 .space().oneOrMore()
-                .or("\\n").oneOrMore()
-                .or("\\r\\n").oneOrMore()
-                .or("\\t").oneOrMore()
-                .endCapt()
                 .build();
         return executePatternRex(regex, source, ConstantUtil.EMPTY);
     }

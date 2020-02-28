@@ -1758,7 +1758,7 @@ public class AutoCodeTemplate {
             "    public static final Pattern XXX_REGEX = Pattern.compile(\"...Regex string...\");\n" +
             "\n" +
             "1.Whitespace Regex\n" +
-            "(?:(?:(?:((?:\\s)+)|(?:(?:\\\\n)+)|(?:(?:\\\\r\\\\n)+)|(?:(?:\\\\t)+))))\n" +
+            "((?:\\s)+)\n" +
             "\n" +
             "2.One or more newlines Regex\n" +
             "(?:\\\\n|(?:\\\\r\\\\n))+\n" +
@@ -1775,8 +1775,8 @@ public class AutoCodeTemplate {
             "6.Keyword detect Regex, for example, position[may be have space]=[may be have space][may be have digital]\n" +
             "(?:position)(?:\\\\s)*(?:\\\\=)(?:\\\\s)*(?:\\\\d)*\n" +
             "\n" +
-            "7.No '_' in word Regex\n" +
-            "^(?!_)[a-zA-Z0-9\\\\W]+$\n" +
+            "7.No '_' and begin with [A-Z] in word Regex\n" +
+            "^(?!_)(?:[A-Z])[a-zA-Z0-9\\\\W]+$\n" +
             "\n" +
             "8.No upper case in word Regex\n" +
             "^(?![A-Z])[a-z0-9\\\\W_]+$\n" +
@@ -1785,7 +1785,65 @@ public class AutoCodeTemplate {
             "^(?![a-z])[A-Z0-9\\\\W_]+$\n" +
             "\n" +
             "10.'www' Url detect Regex\n" +
-            "^(?:http)(?:s)?(?:\\:\\/\\/)(?:www\\.)?(?:[^\\ ]*)$";
+            "^(?:http)(?:s)?(?:\\:\\/\\/)(?:www\\.)?(?:[^\\ ]*)$\n" +
+            "\n" +
+            "11.IDEA Skills\n" +
+            "- 11.1 For multi-lines, how to add some same fix characters?\n" +
+            " ResearchRegex@   (?:\\n|(?:\\r\\n))+\n" +
+            " ReplaceString@   ,\\r\\n\n" +
+            "\n" +
+            "- 11.2 For multi-lines, especially for SQL batch replacing, such as:\n" +
+            "    - zcy_cf,  --> WE'RE(zcy_cf) AS zcy_cf,\n" +
+            "    - cf_zcy   --> WE'RE(cf_zcy) AS cf_zcy\n" +
+            "    - note: WE'RE is just a function\n" +
+            " I.Clear the character ','\n" +
+            "  ResearchRegex@   (?:,)+\n" +
+            "  ReplaceString@   [EMPTY]\n" +
+            " II.Batch replace\n" +
+            "  ResearchRegex@   ((?:\\w+)+)\n" +
+            "  ReplaceString@   WE'RE($0) AS $0\n" +
+            " III.Clear the rare character ',' at the last line\n" +
+            "\n" +
+            "- 11.3 For multi-lines, especially for SQL batch reduce-replacing, such as:\n" +
+            "    - WE'RE(zcy_cf) AS zcy_cf,  --> zcy_cf,\n" +
+            "    - WE'RE(cf_zcy) AS cf_zcy   --> cf_zcy\n" +
+            "    - note: WE'RE is just a function\n" +
+            " I.Handle prefix\n" +
+            "  ResearchRegex@   (?:sum\\()+)\n" +
+            "  ReplaceString@   [EMPTY]\n" +
+            " II.Handle suffix\n" +
+            "  ResearchRegex@   (?:\\))(?:[^\\,]*)\n" +
+            "  ReplaceString@   [EMPTY]\n" +
+            " III.Watch out whether need to clear the rare character ',' at the last line\n" +
+            "\n";
+
+    public static String TEMPLATE_ALIGN = "========================================================================\n" +
+            "Note: 1.D8ger-ALIGN(included by character '@') is the config keyword of this text,\n" +
+            "      which these context included will be ignored;\n" +
+            "      2.Multi-lines to be handled must include ','\n" +
+            "      as the split keyword\n" +
+            "      3.config example:\n" +
+            "      - @<prefix=D8(>@         , add 'D8(' before the start of each line\n" +
+            "      - @<suffix=)>@           , add ')' after the end of each line\n" +
+            "      - @<alignStyle=LEFT>@    , you can config CENTER, RIGHT too\n" +
+            "      - @<formatSQL=false>@    , if config SQL then it will append 'AS' alias name\n" +
+            "      - @<formatAsCamel=false>@ , special for SQL column alias camel name\n" +
+            "      4.As example below, one handled what you will find like this:\n" +
+            "      first_name,       --> D8(first_name)        AS  firstName,\n" +
+            "      current_age,      --> D8(current_age)       AS  currentAge,\n" +
+            "      blog_url,         --> D8(blog_url)          AS  blogUrl,\n" +
+            "      graduated_school, --> D8(graduated_school)  AS  graduatedSchool,\n" +
+            "      total_assets      --> D8(total_assets)      AS  totalAssets\n" +
+            "========================================================================\n" +
+            "@D8ger-ALIGN@\n" +
+            "\n" +
+            "first_name,\n" +
+            "current_age,\n" +
+            "blog_url,\n" +
+            "graduated_school,\n" +
+            "total_assets\n" +
+            "\n" +
+            "\n";
 
     /**
      * Template rendering

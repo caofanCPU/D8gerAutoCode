@@ -202,12 +202,12 @@ public class CollectionUtil extends CollectionUtils {
      *
      * @param source
      * @param splitSymbol
-     * @param numberTypeMapper
+     * @param mapper
      * @param <T>
      * @return
      */
-    public static <T extends Number> List<T> splitDelimitedStringToList(@NonNull String source, @NonNull String splitSymbol, Function<String, T> numberTypeMapper) {
-        return transToList(Arrays.asList(source.split(splitSymbol)), numberTypeMapper);
+    public static <T> List<T> splitDelimitedStringToList(@NonNull String source, @NonNull String splitSymbol, Function<String, T> mapper) {
+        return transToList(Arrays.asList(source.split(splitSymbol)), mapper);
     }
 
     /**

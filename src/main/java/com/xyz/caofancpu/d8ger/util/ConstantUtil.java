@@ -22,6 +22,11 @@ public class ConstantUtil {
     public static final String ENGLISH_COMMA = ",";
 
     /**
+     * Chinese Comma
+     */
+    public static final String CHINESE_COMMA = "，";
+
+    /**
      * Period
      */
     public static final String ENGLISH_STOP = ".";
