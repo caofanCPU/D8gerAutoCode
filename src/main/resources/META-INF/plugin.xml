@@ -102,7 +102,9 @@
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl U"/>
             </action>
 
-            <action id="D8gerMore" class="com.xyz.caofancpu.d8ger.action.D8gerMoreAction" text="D8gerMore" description="D8gerMore" icon="/icons/gitHub.png"/>
+            <action id="D8gerMore" class="com.xyz.caofancpu.d8ger.action.D8gerMoreAction" text="D8gerMore" description="D8gerMore" icon="/icons/gitHub.png">
+                <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl N"/>
+            </action>
         </group>
     </actions>
 

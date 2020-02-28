@@ -68,7 +68,7 @@ public class D8gerMoreAction extends AnAction {
         // Attention: put this statement in the last
         if (StringUtils.containsIgnoreCase(text, EasterEggCodeTemplateEnum.NASA_CONFIG_FILE_KEY.getCodeKey())) {
             contentEnumList.clear();
-            contentEnumList.add(EasterEggCodeTemplateEnum.REGEX_CONFIG_FILE_KEY);
+            contentEnumList.add(EasterEggCodeTemplateEnum.NASA_CONFIG_FILE_KEY);
         }
         return contentEnumList;
     }

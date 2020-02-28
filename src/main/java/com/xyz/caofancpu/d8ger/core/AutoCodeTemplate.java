@@ -1817,7 +1817,7 @@ public class AutoCodeTemplate {
             " III.Watch out whether need to clear the rare character ',' at the last line\n" +
             "\n";
 
-    public static String TEMPLATE_ALIGN = "========================================================================\n" +
+    public static String TEMPLATE_NASA = "========================================================================\n" +
             "Note: 1.D8ger-ALIGN(included by character '@') is the config keyword of this text,\n" +
             "      which these context included will be ignored;\n" +
             "      2.Multi-lines to be handled must include ','\n" +
