@@ -17,15 +17,16 @@
 - Support user-defined configuration, you can specify which file to be generated  
 
 ### Features
-- Camel-Underline-Uppercase-Lowercase can be converted to each other by shortcut `alt` + `shift` + `ctrl` + `U`
+- Camel-Underline-Uppercase-Uncapitalize-Lowercase can be converted to each other by shortcut `alt` + `shift` + `cmd` + `U`
 - The comments of generated codes support English(Default) | Chinese Simplified(Optional) configuration
 - JSON formatting and single line text conversion, default shortcut `alt`+`shift`+`cmd`+`J` | `S`
 - Generating `data table definition SQL` | `Mo` | `Mapper` | `Service`, single table addition, deletion, modification and search with paging in one click  
 - Under the help of SwaggerApi generating `Vo` | `Controller` with friendly document description, in addition to this, supporting `Vo` field automatic sorting  
 - For smart coding, you just need one shortcut and the default is `alt`+`shift`+`cmd`+`D`  
 - Supporting customer configuration, for example, specify the author who you are  
-- Reserving easter eggs, you can try to edit the blank file in IDEA and type `d8ger` to get the default configuration template  
-- Reserve Easter eggs, edit the blank file in IDEA and enter 'regex' to get some commonly used regular expressions. Other code Easter eggs will be added later  
+- Reserve easter eggs, you can try to edit the blank file in IDEA and type `d8ger` to get the default configuration template  
+- Reserve easter eggs, edit the blank file in IDEA and enter 'nasa' to get the NASA configuration file template. This is very useful and efficient for handling multi-lines, especially SQL field naming processing.
+- Reserve easter eggs, edit the blank file in IDEA and enter 'regex' to get some commonly used regular expressions. Other code Easter eggs will be added later  
 - For automatic sorting `Vo` field , you just need one shortcut and the default is `alt`+`shift`+`cmd`+`O`  
 
 ### Using screenshots
@@ -41,11 +42,22 @@
 - If you generated the **Controller.java** file, please note the interface returns type of **`Object`**, it should be modified to the project's uniform return type  
 - In the above steps the `xx.java` file will report some errors, ***don't worry***, these just require you to import packages
 
-5.Default configuration file template for easter egg:  
+5.1 Default configuration file template for easter egg:  
     - In the ***`resource`*** root directory of the module where the `Model class` is located, create `d8ger.properties` property configuration file  
-    - Type `d8ger` and click on` Tools`-> `D8ger`->` D8gerMore`, and yo will find some surprise
+    - Type `d8ger` and click on` Tools`-> `D8ger`->` D8gerMore`, and you will find some surprise
 
-6.You will get the following default configuration information  
+5.2 Regex template for easter egg:
+    - Choose any blank file, Type `regex` and click on` Tools`-> `D8ger`->` D8gerMore`, and you will find some surprise
+
+5.2 NASA template for easter egg:
+    - Choose any blank file, Type `nasa` and click on` Tools`-> `D8ger`->` D8gerMore`, and yo will get the NASA manual
+    - Follow the manual, custom your config and write your own multi-lines need to be batch handled, then you will find some surprise
+
+5.3 Camel-Underline-Uppercase-Uncapitalize-Lowercase circle convert by one-click
+    - Choose word text in any editing file, press `alt` + `shift` + `cmd` + `U`, you'll find the changed word
+    - If not satisfied just press the shortcut again and again util you are.
+
+6. You will get the following default configuration information  
     - It is recommended that you change the configuration items  
         - `author` (you can't sign my name for the pits you dug!)  
         - `apiUrlPrefix` (the interface url prefix should be configured as the project interface unified URL prefix)  

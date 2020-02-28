@@ -10,9 +10,9 @@
         Single-table add, delete, update, search with paging and batch operate in one click.<br>
         自动生成代码插件, 单表增删改查+分页一键搞定.<br>
         <ul>
-        <h1>2.0</h1>
-        <li>Camel-Underline-Uppercase-Lowercase can be converted to each other<br>
-         by shortcut `alt` + `shift` + `ctrl` + `U`</li>
+        <h1>2.1</h1>
+        <li>Camel-Underline-Uppercase-Uncapitalize-Lowercase can be converted to each other<br>
+         by shortcut `alt` + `shift` + `cmd` + `U`</li>
         <li>The comments of generated codes support<br>
          English(Default) | Chinese Simplified(Optional) configuration</li>
         <li>JSON string auto formatting, default shortcut `alt`+`shift`+`cmd`+`J`</li>
@@ -25,9 +25,13 @@
         <li>For smart coding, default shortcut `alt`+`shift`+`cmd`+`D`</li>
         <li>Support user-defined configuration,<br>
          specify which files and file authors are generated, etc.</li>
-        <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'd8ger'<br>
+        <li>Reserve easter eggs, edit the blank file in IDEA and enter 'd8ger'<br>
          to get the configuration file template.</li>
-        <li>Reserve Easter eggs, edit the blank file in IDEA and enter 'regex'<br>
+         <li>Reserve easter eggs, edit the blank file in IDEA and enter 'nasa'<br>
+         to get the NASA configuration file template.<br>
+         This is very useful and efficient for handling multi-lines,<br>
+         especially SQL field naming processing.</li>
+        <li>Reserve easter eggs, edit the blank file in IDEA and enter 'regex'<br>
          to get some commonly used regular expressions.<br>
           Other code Easter eggs will be added later</li>
         <li>SwaggerVo field auto sorting, default shortcut `alt`+`shift`+`cmd`+`O`</li>
@@ -38,8 +42,8 @@
         </p>
 
         <ul>
-        <h1>2.0</h1>
-        <li>驼峰下划线-大小写一键转换, 默认快捷键`alt` + `shift` + `ctrl` + `U`</li>
+        <h1>2.1</h1>
+        <li>驼峰-下划线-大写-首字母小写-小写, 一键转换, 默认快捷键`alt` + `shift` + `cmd` + `U`</li>
         <li>生成代码的注释支持英语|汉语配置</li>
         <li>JSON字符串格式化, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
         <li>去除空白字符, 简化为单行文本, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
@@ -48,6 +52,7 @@
         <li>一键智能编程, 默认快捷键`alt`+`shift`+`cmd`+`D`</li>
         <li>支持用户自定义配置, 指定生成哪些文件及文件author等</li>
         <li>预留彩蛋, 在IDEA中编辑空白文件输入'd8ger'即可得到配置文件模板</li>
+        <li>预留彩蛋, 在IDEA中编辑空白文件输入'nasa'即可得到NASA模板, 针对多行字符串批量处理, 尤其是SQL字段命名处理</li>
         <li>预留彩蛋, 在IDEA中编辑空白文件输入'regex'即可得到一些常用的有趣正则表达式,<br>
          后期会增加其他代码彩蛋</li>
         <li>SwaggerVo字段排序, 默认快捷键`alt`+`shift`+`cmd`+`O`</li>
@@ -107,13 +112,26 @@
 
     <change-notes>
         <![CDATA[
+        <li><h1>2.1</h1></li>
+        <ul>
+        <li>BugFix: add Uncapitalize, and the circle is Camel-Underline-Uppercase-Uncapitalize-Lowercase.</li>
+        <li>Addition:<br>
+            <ul>
+            <li>NASA easter eggs, try to type 'nasa' in the blank file in IDEA to get the nasa-template.</li>
+            <li>NASA easter eggs, multi-lines can be batch handled with the nasa-template, special for sql columns.</li>
+            </ul>
+        </li>
+        <li>Optimization: Optimize some regex performance.</li>
+        <li>Attention: Regex easter eggs add some very useful regex search-replace skills hidden in JetBrains' IDE products. Try to learn and you will save much time at working.</li>
+        </ul>
+        </br>
         <li><h1>2.0</h1></li>
         <ul>
         <li>BugFix: Modify method name in Controller.java.</li>
         <li>Addition:<br>
             <ul>
             <li>Remove repeat work of moving file into directories for smart coding.</li>
-            <li>Camel-Underline-Uppercase-Lowercase can be converted to each other by shortcut `alt` + `shift` + `ctrl` + `U`.</li>
+            <li>Camel-Underline-Uppercase-Lowercase can be converted to each other by shortcut `alt` + `shift` + `cmd` + `U`.</li>
             <li>Regex easter eggs, try to type 'regex' in the blank file in IDEA to find it.</li>
             </ul>
         </li>
