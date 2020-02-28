@@ -83,7 +83,7 @@ public class D8gerMoreAction extends AnAction {
         String[] split = originText.split(NASAEnum.NASA_KEY.getKey());
 
         if (split.length < 2) {
-            return EasterEggCodeTemplateEnum.REGEX_CONFIG_FILE_KEY.getTemplateCode();
+            return EasterEggCodeTemplateEnum.NASA_CONFIG_FILE_KEY.getTemplateCode();
         }
 
         String config = split[0];
@@ -99,7 +99,7 @@ public class D8gerMoreAction extends AnAction {
                     .replaceAll(NASAEnum.CONFIG_SUFFIX_KEY.getKey(), ConstantUtil.EMPTY)
                     .split(NASAEnum.CONFIG_EQUAL_KEY.getKey());
             if (configDetail.length != 2) {
-                return EasterEggCodeTemplateEnum.REGEX_CONFIG_FILE_KEY.getTemplateCode();
+                return EasterEggCodeTemplateEnum.NASA_CONFIG_FILE_KEY.getTemplateCode();
             }
             if (configDetail[0].equalsIgnoreCase(NASAEnum.CONFIG_ITEM_PREFIX_KEY.getKey())) {
                 prefix = configDetail[1];
