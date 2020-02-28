@@ -109,7 +109,7 @@ public class D8gerMoreAction extends AnAction {
                 suffix = configDetail[1];
                 continue;
             }
-            if (configDetail[0].equalsIgnoreCase(NASAEnum.CONFIG_ITEM_FORMAT_AS_CAMEL_KEY.getKey())) {
+            if (configDetail[0].equalsIgnoreCase(NASAEnum.CONFIG_ITEM_ALIGN_STYLE_KEY.getKey())) {
                 alignStyle = StringAlignUtil.Alignment.fromName(configDetail[1]);
                 if (Objects.isNull(alignStyle)) {
                     alignStyle = StringAlignUtil.Alignment.LEFT;
