@@ -29,7 +29,7 @@
 - Reserve easter eggs, edit the blank file in IDEA and enter 'regex' to get some commonly used regular expressions. Other code Easter eggs will be added later  
 - For automatic sorting `Vo` field , you just need one shortcut and the default is `alt`+`shift`+`cmd`+`O`  
 
-### Using screenshots
+### Using manual
 1. Create Model Class
 
 2. Select the class name and press the (default) shortcut `alt`+`shift`+`cmd`+`D`
@@ -44,13 +44,13 @@
 
 5.1 Default configuration file template for easter egg:  
     - In the ***`resource`*** root directory of the module where the `Model class` is located, create `d8ger.properties` property configuration file  
-    - Type `d8ger` and click on` Tools`-> `D8ger`->` D8gerMore`, and you will find some surprise
+    - Type `d8ger` and click on `Tools`-> `D8ger`-> `D8gerMore`, and you will find some surprise
 
 5.2 Regex template for easter egg:
-    - Choose any blank file, Type `regex` and click on` Tools`-> `D8ger`->` D8gerMore`, and you will find some surprise
+    - Choose any blank file, Type `regex` and click on `Tools`-> `D8ger`-> `D8gerMore`, and you will find some surprise
 
 5.2 NASA template for easter egg:
-    - Choose any blank file, Type `nasa` and click on` Tools`-> `D8ger`->` D8gerMore`, and yo will get the NASA manual
+    - Choose any blank file, Type `nasa` and click on` Tools`-> `D8ger`-> `D8gerMore`, and you will get the NASA manual
     - Follow the manual, custom your config and write your own multi-lines need to be batch handled, then you will find some surprise
 
 5.3 Camel-Underline-Uppercase-Uncapitalize-Lowercase circle convert by one-click
@@ -66,7 +66,7 @@
 
 > By the way, these default shortcuts are used in Mac OS, if you use Windows just take `cmd` into `ctrl`.
 
-### User Operate Snapshot
+### Contribute (What I wish you help me for now)
 <div align="center">
     <img src="http://file.debuggerpowerzcy.top/power/2020-660X466-D8gerAutoCode.jpeg" /> 
 </div>
