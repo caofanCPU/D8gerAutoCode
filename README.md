@@ -1,5 +1,5 @@
 # D8gerAutoCode
-## IDEA Code Automatically Generate Plug-ins • `For Java Web Developer` Version
+## IDEA Code Automatically Generate Plugin • `For Java Version`  
 <div align="center">
     <img src="http://file.debuggerpowerzcy.top/power/R-D8ger.png" /> 
 </div>
