@@ -42,8 +42,11 @@ public class JSONUtil {
                     }
                     break;
                 case ',':
+                    resultBuilder.append(piece);
                     // If the character is ',' then break line
-                    resultBuilder.append(piece).append(ConstantUtil.NEXT_LINE);
+                    if (doubleQuoteCount % 2 == 0) {
+                        resultBuilder.append(ConstantUtil.NEXT_LINE);
+                    }
                     break;
                 case '}':
                 case ']':
