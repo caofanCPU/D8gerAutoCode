@@ -1,52 +1,38 @@
-# The default author called 'D8ger', but it's highly recommended to modify
-author=d8ger
-#### Basic generate
-autoCreateMo=true
-autoCreateMapper=true
-autoCreateExample=true
-autoCreateXML=true
-autoCreateDefinitionSQL=true
-#### Enhance generate
-autoCreateSwaggerMo=true
-autoCreateServiceInterface=true
-autoCreateServiceImpl=true
-autoCreateController=true
-autoFormatStyle=true
-#### Api path prefix
-# apiUrlPrefix=
-#### Language just for EN(English) and ZN(Chinese Simplified)
-# locale=
+=========================================END=========================================
+Note: 1.D8ger-ALIGN(included by character '@') is the config keyword of this text,
+      which these context included will be ignored;
+      2.Multi-lines to be handled must include ','
+      as the split keyword
+      3.config example:
+      - @<alignStyle=LEFT>@    , LEFT(default) and you can config CENTER, RIGHT too
+      - @<algorithmType=1>@    , 1(default) as 'AES' and 2 as 'PinYin'
+      - @<operateType=0>@      , 1 as encrypt, 2 as decrypt
+                                 and 0(default) is encrypt + decrypt for complete
+      4.As example below, one handled what you will find like this:
+      first_name,       --> D8(first_name)        AS  firstName,
+      current_age,      --> D8(current_age)       AS  currentAge,
+      blog_url,         --> D8(blog_url)          AS  blogUrl,
+      graduated_school, --> D8(graduated_school)  AS  graduatedSchool,
+      total_assets      --> D8(total_assets)      AS  totalAssets
+=========================================END=========================================
+@D8ger-END@
 
-0.About details, please refer https://github.com/caofanCPU/JavaVerbalExpressions
-Usage, static pattern can improve performance in regex searching:
-    public static final Pattern XXX_REGEX = Pattern.compile("...Regex string...");
+first_name,
+current_age,
+blog_url,
+graduated_school,
+total_assets
 
-1.Whitespace Regex
-(?:(?:(?:((?:\s)+)|(?:(?:\\n)+)|(?:(?:\\r\\n)+)|(?:(?:\\t)+))))
 
-2.One or more newlines Regex
-(?:\\n|(?:\\r\\n))+
+曹繁-->(拼音)caofan-->(拼音加密)acx}u-->(解密拼音)caofan
 
-3.Phone validate Regex
-^1[0-9]{10}$
+曹繁-->(AES加密)ymauXy== -->(AES解密)曹繁
+16620995912-->(AES加密)KmauXy==-->(AES解密)16620995912
 
-4.Email validate Regex
-^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$
-
-5.Password validate, rules: digital, uppercase, lowercase, special character >= 3 species
-^(?![a-zA-Z]+$)(?![A-Z0-9]+$)(?![A-Z\\W_]+$)(?![a-z0-9]+$)(?![a-z\\W_]+$)(?![0-9\\W_]+$)[a-zA-Z0-9\\W_]{8,30}$
-
-6.Keyword detect Regex, for example, position[may be have space]=[may be have space][may be have digital]
-(?:position)(?:\\s)*(?:\\=)(?:\\s)*(?:\\d)*
-
-7.No '_' in word Regex
-^(?!_)[a-zA-Z0-9\\W]+$
-
-8.No upper case in word Regex
-^(?![A-Z])[a-z0-9\\W_]+$
-
-9.No lower case in word Regex
-^(?![a-z])[A-Z0-9\\W_]+$
-
-10.'www' Url detect Regex
-^(?:http)(?:s)?(?:\:\/\/)(?:www\.)?(?:[^\ ]*)$
+算法类型
+    - 拼音移位
+    - AES
+操作类型
+    - 加密
+    - 解密
+    - 完整链路, 先加密再解密 | 先取拼音再加密最后解密

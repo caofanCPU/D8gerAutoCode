@@ -28,6 +28,7 @@ dependencies {
     compile group: 'commons-io', name: 'commons-io', version: '1.3.2'
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2.2'
     compile group: 'ru.lanwen.verbalregex', name: 'java-verbal-expressions', version: '1.4'
+    compile group: 'com.belerweb', name: 'pinyin4j', version: '2.5.0'
 
 }
 
