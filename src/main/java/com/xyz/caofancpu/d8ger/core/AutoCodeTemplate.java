@@ -1836,7 +1836,9 @@ public class AutoCodeTemplate {
             "      graduated_school, --> D8(graduated_school)  AS  graduatedSchool,\n" +
             "      total_assets      --> D8(total_assets)      AS  totalAssets\n" +
             "=========================================NASA=========================================\n" +
+            "The next line is very import below, do not modify anything or you'll get nothing\n" +
             "@D8ger-ALIGN@\n" +
+            "\n" +
             "\n" +
             "first_name,\n" +
             "current_age,\n" +
@@ -1852,7 +1854,7 @@ public class AutoCodeTemplate {
             "      3.config example:\n" +
             "      - @<alignStyle=LEFT>@    , LEFT(default) and you can config CENTER, RIGHT too\n" +
             "      - @<algorithmType=1>@    , 1(default) as 'AES' and 2 as 'PinYin'\n" +
-            "      - @<operateType=0>@      , 1 as encrypt, 2 as decrypt\n" +
+            "      - @<operateType=2>@      , 1 as encrypt, 2 as decrypt\n" +
             "                                 and 0(default) is encrypt + decrypt for complete\n" +
             "      4.As example below, one handled what you will find like this:\n" +
             "      When algorithmType=1 && operateType = 0\n" +
@@ -1864,7 +1866,9 @@ public class AutoCodeTemplate {
             "               -->(last PinYin decryption)     dibage\n" +
             "      Other case, just refer the two above.\n" +
             "=========================================END=========================================\n" +
+            "The next line is very import below, do not modify anything or you'll get nothing\n" +
             "@D8ger-END@\n" +
+            "\n" +
             "\n" +
             "AName";
 

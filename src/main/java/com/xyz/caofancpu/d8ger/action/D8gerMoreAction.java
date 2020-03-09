@@ -139,7 +139,7 @@ public class D8gerMoreAction extends AnAction {
         }
         String wantedText = split[1];
         String result = StringAlignUtil.formatSQLColumn(wantedText, alignStyle, prefix, suffix, formatSQL, formatAsCamel);
-        return config + ConstantUtil.NEXT_LINE + NASAEnum.NASA_KEY.getKey() + ConstantUtil.DOUBLE_NEXT_LINE + result;
+        return config + NASAEnum.NASA_KEY.getKey() + ConstantUtil.NEXT_LINE + ConstantUtil.DOUBLE_NEXT_LINE + result;
     }
 
     /**
@@ -176,23 +176,23 @@ public class D8gerMoreAction extends AnAction {
                 }
                 continue;
             }
-            if (configDetail[0].equalsIgnoreCase(ENDEnum.CONFIG_ITEM_ALGORITHM_TYPE_KEY.getKey()) && Boolean.parseBoolean(configDetail[1])) {
+            if (configDetail[0].equalsIgnoreCase(ENDEnum.CONFIG_ITEM_ALGORITHM_TYPE_KEY.getKey())) {
                 StringAlignUtil.Algorithm tmpAlgorithm = CollectionUtil.findAnyInArrays(StringAlignUtil.Algorithm.values(), StringAlignUtil.Algorithm::getValue, configDetail[1]);
                 if (Objects.nonNull(tmpAlgorithm)) {
                     algorithm = tmpAlgorithm;
                 }
                 continue;
             }
-            if (configDetail[0].equalsIgnoreCase(ENDEnum.CONFIG_ITEM_OPERATE_TYPE_KEY.getKey()) && Boolean.parseBoolean(configDetail[1])) {
+            if (configDetail[0].equalsIgnoreCase(ENDEnum.CONFIG_ITEM_OPERATE_TYPE_KEY.getKey())) {
                 StringAlignUtil.ENDOperate tmpEndOperate = CollectionUtil.findAnyInArrays(StringAlignUtil.ENDOperate.values(), StringAlignUtil.ENDOperate::getValue, configDetail[1]);
-                if (Objects.nonNull(tmpEndOperate) && StringAlignUtil.ENDOperate.PINYIN != tmpEndOperate) {
+                if (Objects.nonNull(tmpEndOperate) && StringAlignUtil.ENDOperate.PINYIN != tmpEndOperate && StringAlignUtil.ENDOperate.ORIGIN != tmpEndOperate) {
                     endOperate = tmpEndOperate;
                 }
             }
         }
         String wantedText = split[1];
         String result = StringAlignUtil.formatEND(wantedText, alignStyle, algorithm, endOperate);
-        return config + ConstantUtil.NEXT_LINE + ENDEnum.END_KEY.getKey() + ConstantUtil.DOUBLE_NEXT_LINE + result;
+        return config + ENDEnum.END_KEY.getKey() + ConstantUtil.NEXT_LINE + ConstantUtil.DOUBLE_NEXT_LINE + result;
     }
 
     private enum NASAEnum {

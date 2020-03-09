@@ -163,23 +163,31 @@ public class StringAlignUtil {
             result.append(originStringList.get(i));
             if (i != originStringList.size() - 1) {
                 result.append(ConstantUtil.ENGLISH_COMMA);
+            } else {
+                result.append(ConstantUtil.SPACE);
             }
             if (CollectionUtil.isNotEmpty(pinyinList)) {
                 result.append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append("-->(PinYin Result)").append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append(pinyinList.get(i));
                 if (i != originStringList.size() - 1) {
                     result.append(ConstantUtil.ENGLISH_COMMA);
+                } else {
+                    result.append(ConstantUtil.SPACE);
                 }
             }
             if (CollectionUtil.isNotEmpty(encryptionList)) {
                 result.append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append("-->(Encryption Result)").append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append(encryptionList.get(i));
                 if (i != originStringList.size() - 1) {
                     result.append(ConstantUtil.ENGLISH_COMMA);
+                } else {
+                    result.append(ConstantUtil.SPACE);
                 }
             }
             if (CollectionUtil.isNotEmpty(decryptionList)) {
                 result.append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append("-->(Decryption Result)").append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append(decryptionList.get(i));
                 if (i != originStringList.size() - 1) {
                     result.append(ConstantUtil.ENGLISH_COMMA);
+                } else {
+                    result.append(ConstantUtil.SPACE);
                 }
             }
             result.append(ConstantUtil.NEXT_LINE);
