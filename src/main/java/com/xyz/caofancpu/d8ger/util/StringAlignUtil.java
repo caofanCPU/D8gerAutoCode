@@ -1,10 +1,12 @@
 package com.xyz.caofancpu.d8ger.util;
 
+import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -21,12 +23,36 @@ public class StringAlignUtil {
     /**
      * White char regex
      */
-    public static final Pattern WHITE_CHAR_PATTERN = Pattern.compile("((?:\\s)+)");
+    public static final Pattern WHITE_CHAR_PATTERN = Pattern.compile("(?:\\s)+");
 
     /**
-     * NASA config key parser regex
+     * Compatibility separator pattern, support one or more lineBreak | English comma as ',' | Chinese comma as '，'
      */
-    public static final Pattern NASA_CONFIG_PATTERN = Pattern.compile("(?:@<)(?:.*)(?:>@)");
+    public static final Pattern ORIGIN_COMPATIBILITY_SEPARATOR = Pattern.compile("((?:\\n|(?:\\r\\n))|(?:,)|(?:，))+");
+
+    /**
+     * Line begins with English comma
+     */
+    public static final Pattern START_WITH_ENGLISH_COMMA_PATTERN = Pattern.compile("^(?:,)+");
+
+    /**
+     * Config key parser regex
+     */
+    public static final Pattern CONFIG_PARSER_PATTERN = Pattern.compile("(?:@<)(?:.*)(?:>@)");
+
+    /**
+     * Handling multi lines by conventional separator
+     *
+     * @param originText
+     * @return
+     */
+    public static List<String> handleSplitMultiLines(@NonNull String originText) {
+        String legalText = originText.replaceAll(ORIGIN_COMPATIBILITY_SEPARATOR.pattern(), ConstantUtil.ENGLISH_COMMA)
+                .replaceAll(WHITE_CHAR_PATTERN.pattern(), ConstantUtil.EMPTY)
+                .replaceAll(START_WITH_ENGLISH_COMMA_PATTERN.pattern(), ConstantUtil.EMPTY);
+        String splitSymbol = ConstantUtil.ENGLISH_COMMA;
+        return CollectionUtil.splitDelimitedStringToList(legalText, splitSymbol, String::toString);
+    }
 
     /**
      * Format SQL columns, for example, add function or rename by using 'AS'
@@ -40,9 +66,7 @@ public class StringAlignUtil {
      * @return
      */
     public static String formatSQLColumn(@NonNull String originText, Alignment formatAlignment, @NonNull String prefix, @NonNull String suffix, boolean formatSQL, boolean formatAsCamel) {
-        String legalText = WHITE_CHAR_PATTERN.matcher(originText.replaceAll(ConstantUtil.CHINESE_COMMA, ConstantUtil.ENGLISH_COMMA)).replaceAll(ConstantUtil.EMPTY);
-        String splitSymbol = ConstantUtil.ENGLISH_COMMA;
-        List<String> stringList = CollectionUtil.splitDelimitedStringToList(legalText, splitSymbol, String::toString);
+        List<String> stringList = handleSplitMultiLines(originText);
         List<String> completeFixList = CollectionUtil.transToList(stringList, item -> prefix + item + suffix);
         int singleLineMaxChars = CollectionUtil.max(completeFixList, String::length).intValue();
         if (Objects.isNull(formatAlignment)) {
@@ -63,6 +87,104 @@ public class StringAlignUtil {
             result.append(ConstantUtil.ENGLISH_COMMA).append(ConstantUtil.NEXT_LINE);
         }
         return StringUtils.isEmpty(result) ? result.toString() : result.deleteCharAt(result.lastIndexOf(ConstantUtil.ENGLISH_COMMA)).toString();
+    }
+
+    /**
+     * format multi-lines and handling encryption | decryption
+     *
+     * @param originText
+     * @param alignStyle
+     * @param algorithm
+     * @param endOperate
+     * @return
+     */
+    public static String formatEND(@NonNull String originText, Alignment alignStyle, Algorithm algorithm, ENDOperate endOperate) {
+        List<String> originStringList = handleSplitMultiLines(originText);
+        // init param
+        if (Objects.isNull(alignStyle)) {
+            alignStyle = Alignment.LEFT;
+        }
+        if (Objects.isNull(algorithm)) {
+            algorithm = Algorithm.AES;
+        }
+        if (Objects.isNull(endOperate)) {
+            endOperate = ENDOperate.ENCRYPTION_AND_DECRYPTION;
+        }
+
+        // calculate operate
+        List<ENDOperate> operateList = new ArrayList<>(4);
+        if (ENDOperate.ENCRYPTION_AND_DECRYPTION == endOperate) {
+            operateList.add(ENDOperate.ENCRYPTION);
+            operateList.add(ENDOperate.DECRYPTION);
+            if (Algorithm.PINYIN == algorithm) {
+                operateList.add(ENDOperate.PINYIN);
+            }
+        } else {
+            operateList.add(endOperate);
+        }
+
+        Map<ENDOperate, List<String>> handleResultMap = new HashMap<>(8, 0.75f);
+        handleResultMap.put(ENDOperate.ORIGIN, originStringList);
+        if (operateList.contains(ENDOperate.PINYIN)) {
+            // calculate pinyin
+            handleResultMap.put(ENDOperate.PINYIN, CollectionUtil.transToList(originStringList, DBAESUtil::fetchPinYin));
+        }
+        if (operateList.contains(ENDOperate.ENCRYPTION)) {
+            if (Algorithm.AES == algorithm) {
+                // AES encryption
+                handleResultMap.put(ENDOperate.ENCRYPTION, CollectionUtil.transToList(originStringList, DBAESUtil::encryptDataWithoutException));
+            } else {
+                // PINYIN encryption
+                handleResultMap.put(ENDOperate.ENCRYPTION, CollectionUtil.transToList(originStringList, DBAESUtil::encryptionNamePinYin));
+            }
+        }
+        if (operateList.contains(ENDOperate.DECRYPTION)) {
+            if (Algorithm.AES == algorithm) {
+                // AES decryption
+                handleResultMap.put(ENDOperate.DECRYPTION, CollectionUtil.transToList(originStringList, DBAESUtil::decryptDataWithoutException));
+            } else {
+                // PINYIN decryption
+                handleResultMap.put(ENDOperate.DECRYPTION, CollectionUtil.transToList(originStringList, DBAESUtil::decryptionNamePinYin));
+            }
+        }
+
+        // align string
+        for (ENDOperate key : handleResultMap.keySet()) {
+            List<String> itemList = handleResultMap.get(key);
+            int maxCharLength = CollectionUtil.max(itemList, String::length).intValue();
+            handleResultMap.put(key, formatSQLColumn(maxCharLength, alignStyle, itemList));
+        }
+
+        StringBuilder result = new StringBuilder();
+        List<String> pinyinList = handleResultMap.get(ENDOperate.PINYIN);
+        List<String> encryptionList = handleResultMap.get(ENDOperate.ENCRYPTION);
+        List<String> decryptionList = handleResultMap.get(ENDOperate.DECRYPTION);
+        for (int i = 0; i < originStringList.size(); i++) {
+            result.append(originStringList.get(i));
+            if (i != originStringList.size() - 1) {
+                result.append(ConstantUtil.ENGLISH_COMMA);
+            }
+            if (CollectionUtil.isNotEmpty(pinyinList)) {
+                result.append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append("-->(PinYin Result)").append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append(pinyinList.get(i));
+                if (i != originStringList.size() - 1) {
+                    result.append(ConstantUtil.ENGLISH_COMMA);
+                }
+            }
+            if (CollectionUtil.isNotEmpty(encryptionList)) {
+                result.append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append("-->(Encryption Result)").append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append(encryptionList.get(i));
+                if (i != originStringList.size() - 1) {
+                    result.append(ConstantUtil.ENGLISH_COMMA);
+                }
+            }
+            if (CollectionUtil.isNotEmpty(decryptionList)) {
+                result.append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append("-->(Decryption Result)").append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append(decryptionList.get(i));
+                if (i != originStringList.size() - 1) {
+                    result.append(ConstantUtil.ENGLISH_COMMA);
+                }
+            }
+        }
+
+        return result.toString();
     }
 
     public static String cleanUnderLineForSQLAliasName(@NonNull String columnName) {
@@ -213,15 +335,38 @@ public class StringAlignUtil {
         CENTER,
         RIGHT,
         ;
+    }
 
-        public static Alignment fromName(String name) {
-            Alignment[] values = Alignment.values();
-            for (int i = 0; i < values.length; i++) {
-                if (values[i].name().equalsIgnoreCase(name)) {
-                    return values[i];
-                }
-            }
-            return null;
+    public enum Algorithm {
+        AES("1"),
+        PINYIN("2");
+        @Getter
+        private String value;
+
+        Algorithm(String value) {
+            this.value = value;
+        }
+    }
+
+    public enum ENDOperate {
+        /**
+         * Fast sqrt magic number in 64 bit.
+         */
+        ORIGIN("0x5fe6ec85e7de30da"),
+        /**
+         * Fast sqrt magic number, haha, can you guess it?
+         */
+        PINYIN("0x5f3759df"),
+        ENCRYPTION_AND_DECRYPTION("0"),
+        ENCRYPTION("1"),
+        DECRYPTION("2"),
+
+        ;
+        @Getter
+        private String value;
+
+        ENDOperate(String value) {
+            this.value = value;
         }
     }
 }

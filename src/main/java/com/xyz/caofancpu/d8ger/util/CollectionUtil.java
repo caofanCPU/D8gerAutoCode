@@ -623,6 +623,20 @@ public class CollectionUtil extends CollectionUtils {
     }
 
     /**
+     * Find a value in a array, normally used in Enum class
+     *
+     * @param source
+     * @param function
+     * @param value
+     * @param <T>
+     * @param <F>
+     * @return
+     */
+    public static <T, F> T findAnyInArrays(T[] source, Function<? super T, ? extends F> function, @NonNull F value) {
+        return findAny(Arrays.asList(source), function, value);
+    }
+
+    /**
      * Find elements in a list according to a custom field function,
      * return the first element found or null if not found
      *

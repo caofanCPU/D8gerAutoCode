@@ -161,6 +161,16 @@ public class DBAESUtil {
     }
 
     /**
+     * 解析拼音
+     *
+     * @param name
+     * @return
+     */
+    public static String fetchPinYin(String name) {
+        return PinyinUtil.getStringPinYin(name);
+    }
+
+    /**
      * 加密字符串全拼
      *
      * @param name
@@ -170,7 +180,7 @@ public class DBAESUtil {
         if (StringUtils.isEmpty(name)) {
             return name;
         }
-        String pinYin = PinyinUtil.getStringPinYin(name);
+        String pinYin = fetchPinYin(name);
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < pinYin.length(); i++) {
             char c = pinYin.charAt(i);

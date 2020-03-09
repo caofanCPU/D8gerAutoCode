@@ -43,9 +43,13 @@ public class D8gerMoreAction extends AnAction {
         WriteCommandAction.runWriteCommandAction(currentProject, () -> {
             if (contentEnumList.contains(EasterEggCodeTemplateEnum.NASA_CONFIG_FILE_KEY)) {
                 currentDocument.setText(extractNASAContent(currentDocument.getText()));
-            } else {
-                currentDocument.setText(CollectionUtil.join(CollectionUtil.transToList(contentEnumList, EasterEggCodeTemplateEnum::getTemplateCode), ConstantUtil.DOUBLE_NEXT_LINE));
+                return;
             }
+            if (contentEnumList.contains(EasterEggCodeTemplateEnum.END_CONFIG_FILE_KEY)) {
+                currentDocument.setText(extractENDContent(currentDocument.getText()));
+                return;
+            }
+            currentDocument.setText(CollectionUtil.join(CollectionUtil.transToList(contentEnumList, EasterEggCodeTemplateEnum::getTemplateCode), ConstantUtil.DOUBLE_NEXT_LINE));
         });
     }
 
@@ -63,6 +67,9 @@ public class D8gerMoreAction extends AnAction {
         }
         if (StringUtils.containsIgnoreCase(text, EasterEggCodeTemplateEnum.REGEX_CONFIG_FILE_KEY.getCodeKey())) {
             contentEnumList.add(EasterEggCodeTemplateEnum.REGEX_CONFIG_FILE_KEY);
+        }
+        if (StringUtils.containsIgnoreCase(text, EasterEggCodeTemplateEnum.END_CONFIG_FILE_KEY.getCodeKey())) {
+            contentEnumList.add(EasterEggCodeTemplateEnum.END_CONFIG_FILE_KEY);
         }
 
         // Attention: put this statement in the last
@@ -87,7 +94,7 @@ public class D8gerMoreAction extends AnAction {
         }
 
         String config = split[0];
-        List<String> configStringList = VerbalExpressionUtil.extractMatchContent(config, StringAlignUtil.NASA_CONFIG_PATTERN);
+        List<String> configStringList = VerbalExpressionUtil.extractMatchContent(config, StringAlignUtil.CONFIG_PARSER_PATTERN);
         String prefix = ConstantUtil.EMPTY;
         String suffix = ConstantUtil.EMPTY;
         StringAlignUtil.Alignment alignStyle = StringAlignUtil.Alignment.LEFT;
@@ -110,12 +117,13 @@ public class D8gerMoreAction extends AnAction {
                 continue;
             }
             if (configDetail[0].equalsIgnoreCase(NASAEnum.CONFIG_ITEM_ALIGN_STYLE_KEY.getKey())) {
-                alignStyle = StringAlignUtil.Alignment.fromName(configDetail[1]);
-                if (Objects.isNull(alignStyle)) {
-                    alignStyle = StringAlignUtil.Alignment.LEFT;
+                StringAlignUtil.Alignment tmpAlignStyle = CollectionUtil.findAnyInArrays(StringAlignUtil.Alignment.values(), StringAlignUtil.Alignment::name, configDetail[1]);
+                if (Objects.nonNull(tmpAlignStyle)) {
+                    alignStyle = tmpAlignStyle;
                 }
                 continue;
             }
+
             if (configDetail[0].equalsIgnoreCase(NASAEnum.CONFIG_ITEM_FORMAT_SQL_KEY.getKey()) && Boolean.parseBoolean(configDetail[1])) {
                 formatSQL = true;
                 continue;
@@ -134,6 +142,59 @@ public class D8gerMoreAction extends AnAction {
         return config + ConstantUtil.NEXT_LINE + NASAEnum.NASA_KEY.getKey() + ConstantUtil.DOUBLE_NEXT_LINE + result;
     }
 
+    /**
+     * Handle multi-lines align and encryption | decryption, like END (HaHa...)
+     *
+     * @param originText
+     * @return
+     */
+    private String extractENDContent(String originText) {
+        String[] split = originText.split(ENDEnum.END_KEY.getKey());
+
+        if (split.length < 2) {
+            return EasterEggCodeTemplateEnum.END_CONFIG_FILE_KEY.getTemplateCode();
+        }
+
+        String config = split[0];
+        List<String> configStringList = VerbalExpressionUtil.extractMatchContent(config, StringAlignUtil.CONFIG_PARSER_PATTERN);
+        StringAlignUtil.Alignment alignStyle = StringAlignUtil.Alignment.LEFT;
+        StringAlignUtil.Algorithm algorithm = StringAlignUtil.Algorithm.AES;
+        StringAlignUtil.ENDOperate endOperate = StringAlignUtil.ENDOperate.ENCRYPTION_AND_DECRYPTION;
+        for (String item : configStringList) {
+            String[] configDetail = VerbalExpressionUtil.cleanWhiteChar(item)
+                    .replaceAll(ENDEnum.CONFIG_PREFIX_KEY.getKey(), ConstantUtil.EMPTY)
+                    .replaceAll(ENDEnum.CONFIG_SUFFIX_KEY.getKey(), ConstantUtil.EMPTY)
+                    .split(ENDEnum.CONFIG_EQUAL_KEY.getKey());
+            if (configDetail.length != 2) {
+                return EasterEggCodeTemplateEnum.END_CONFIG_FILE_KEY.getTemplateCode();
+            }
+
+            if (configDetail[0].equalsIgnoreCase(ENDEnum.CONFIG_ITEM_ALIGN_STYLE_KEY.getKey())) {
+                StringAlignUtil.Alignment tmpAlignStyle = CollectionUtil.findAnyInArrays(StringAlignUtil.Alignment.values(), StringAlignUtil.Alignment::name, configDetail[1]);
+                if (Objects.nonNull(tmpAlignStyle)) {
+                    alignStyle = tmpAlignStyle;
+                }
+                continue;
+            }
+            if (configDetail[0].equalsIgnoreCase(ENDEnum.CONFIG_ITEM_ALGORITHM_TYPE_KEY.getKey()) && Boolean.parseBoolean(configDetail[1])) {
+                StringAlignUtil.Algorithm tmpAlgorithm = CollectionUtil.findAnyInArrays(StringAlignUtil.Algorithm.values(), StringAlignUtil.Algorithm::getValue, configDetail[1]);
+                if (Objects.nonNull(tmpAlgorithm)) {
+                    algorithm = tmpAlgorithm;
+                }
+                continue;
+            }
+            if (configDetail[0].equalsIgnoreCase(ENDEnum.CONFIG_ITEM_OPERATE_TYPE_KEY.getKey()) && Boolean.parseBoolean(configDetail[1])) {
+                StringAlignUtil.ENDOperate tmpEndOperate = CollectionUtil.findAnyInArrays(StringAlignUtil.ENDOperate.values(), StringAlignUtil.ENDOperate::getValue, configDetail[1]);
+                if (Objects.nonNull(tmpEndOperate) && StringAlignUtil.ENDOperate.PINYIN != tmpEndOperate) {
+                    endOperate = tmpEndOperate;
+                }
+            }
+        }
+        String wantedText = split[1];
+        String result = StringAlignUtil.formatEND(wantedText, alignStyle, algorithm, endOperate);
+        return config + ConstantUtil.NEXT_LINE + ENDEnum.END_KEY.getKey() + ConstantUtil.DOUBLE_NEXT_LINE + result;
+    }
+
     private enum NASAEnum {
         NASA_KEY("@D8ger-ALIGN@"),
         CONFIG_PREFIX_KEY("@<"),
@@ -149,6 +210,27 @@ public class D8gerMoreAction extends AnAction {
         private String key;
 
         NASAEnum(String key) {
+            this.key = key;
+        }
+
+        public String getKey() {
+            return key;
+        }
+    }
+
+    private enum ENDEnum {
+        END_KEY("@D8ger-END@"),
+        CONFIG_PREFIX_KEY("@<"),
+        CONFIG_SUFFIX_KEY(">@"),
+        CONFIG_EQUAL_KEY("="),
+        CONFIG_ITEM_ALIGN_STYLE_KEY("alignStyle"),
+        CONFIG_ITEM_ALGORITHM_TYPE_KEY("algorithmType"),
+        CONFIG_ITEM_OPERATE_TYPE_KEY("operateType"),
+
+        ;
+        private String key;
+
+        ENDEnum(String key) {
             this.key = key;
         }
 
