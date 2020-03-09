@@ -121,6 +121,9 @@ public class StringAlignUtil {
             }
         } else {
             operateList.add(endOperate);
+            if (ENDOperate.ENCRYPTION == endOperate && Algorithm.PINYIN == algorithm) {
+                operateList.add(ENDOperate.PINYIN);
+            }
         }
 
         Map<ENDOperate, List<String>> handleResultMap = new HashMap<>(8, 0.75f);
@@ -130,21 +133,34 @@ public class StringAlignUtil {
             handleResultMap.put(ENDOperate.PINYIN, CollectionUtil.transToList(originStringList, DBAESUtil::fetchPinYin));
         }
         if (operateList.contains(ENDOperate.ENCRYPTION)) {
-            if (Algorithm.AES == algorithm) {
-                // AES encryption
-                handleResultMap.put(ENDOperate.ENCRYPTION, CollectionUtil.transToList(originStringList, DBAESUtil::encryptDataWithoutException));
+            List<String> targetList;
+
+            if (operateList.contains(ENDOperate.PINYIN)) {
+                targetList = handleResultMap.get(ENDOperate.PINYIN);
             } else {
+                targetList = originStringList;
+            }
+            if (Algorithm.PINYIN == algorithm) {
                 // PINYIN encryption
-                handleResultMap.put(ENDOperate.ENCRYPTION, CollectionUtil.transToList(originStringList, DBAESUtil::encryptionNamePinYin));
+                handleResultMap.put(ENDOperate.ENCRYPTION, CollectionUtil.transToList(targetList, DBAESUtil::encryptionNamePinYin));
+            } else {
+                // AES encryption
+                handleResultMap.put(ENDOperate.ENCRYPTION, CollectionUtil.transToList(targetList, DBAESUtil::encryptDataWithoutException));
             }
         }
         if (operateList.contains(ENDOperate.DECRYPTION)) {
-            if (Algorithm.AES == algorithm) {
-                // AES decryption
-                handleResultMap.put(ENDOperate.DECRYPTION, CollectionUtil.transToList(originStringList, DBAESUtil::decryptDataWithoutException));
+            List<String> targetList;
+            if (operateList.contains(ENDOperate.ENCRYPTION)) {
+                targetList = handleResultMap.get(ENDOperate.ENCRYPTION);
             } else {
+                targetList = originStringList;
+            }
+            if (Algorithm.PINYIN == algorithm) {
                 // PINYIN decryption
-                handleResultMap.put(ENDOperate.DECRYPTION, CollectionUtil.transToList(originStringList, DBAESUtil::decryptionNamePinYin));
+                handleResultMap.put(ENDOperate.DECRYPTION, CollectionUtil.transToList(targetList, DBAESUtil::decryptionNamePinYin));
+            } else {
+                // AES decryption
+                handleResultMap.put(ENDOperate.DECRYPTION, CollectionUtil.transToList(targetList, DBAESUtil::decryptDataWithoutException));
             }
         }
 

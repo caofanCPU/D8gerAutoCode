@@ -112,7 +112,7 @@ public class DBAESUtil {
      * @throws Exception
      */
     public static String encryptData(String data)
-            throws Exception {
+            throws Throwable {
         if (StringUtils.isEmpty(data)) {
             return data;
         }
@@ -123,9 +123,9 @@ public class DBAESUtil {
     public static String encryptDataWithoutException(String data) {
         try {
             return encryptData(data);
-        } catch (Exception e) {
+        } catch (Throwable e) {
             log.error("解密异常", e);
-            return null;
+            return "[空-配置错误]";
         }
     }
 
@@ -137,26 +137,22 @@ public class DBAESUtil {
      *
      * @param base64Data
      * @return
-     * @throws Exception
+     * @throws Throwable
      */
     public static String decryptData(String base64Data)
-            throws Exception {
+            throws Throwable {
         if (StringUtils.isEmpty(base64Data)) {
             return base64Data;
         }
-        try {
-            return new String(decryptionCipher.get().doFinal(Base64Util.decode(base64Data)));
-        } catch (Exception e) {
-            throw e;
-        }
+        return new String(decryptionCipher.get().doFinal(Base64Util.decode(base64Data)));
     }
 
     public static String decryptDataWithoutException(String base64Data) {
         try {
             return decryptData(base64Data);
-        } catch (Exception e) {
+        } catch (Throwable e) {
             log.error("解密异常", e);
-            return null;
+            return "[空-配置错误]";
         }
     }
 
