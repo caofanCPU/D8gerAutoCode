@@ -172,19 +172,20 @@ public class StringAlignUtil {
         }
 
         StringBuilder result = new StringBuilder();
+        List<String> formattedOriginList = handleResultMap.get(ENDOperate.ORIGIN);
         List<String> pinyinList = handleResultMap.get(ENDOperate.PINYIN);
         List<String> encryptionList = handleResultMap.get(ENDOperate.ENCRYPTION);
         List<String> decryptionList = handleResultMap.get(ENDOperate.DECRYPTION);
-        for (int i = 0; i < originStringList.size(); i++) {
-            result.append(originStringList.get(i));
-            if (i != originStringList.size() - 1) {
+        for (int i = 0; i < formattedOriginList.size(); i++) {
+            result.append(formattedOriginList.get(i));
+            if (i != formattedOriginList.size() - 1) {
                 result.append(ConstantUtil.ENGLISH_COMMA);
             } else {
                 result.append(ConstantUtil.SPACE);
             }
             if (CollectionUtil.isNotEmpty(pinyinList)) {
                 result.append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append("-->(PinYin Result)").append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append(pinyinList.get(i));
-                if (i != originStringList.size() - 1) {
+                if (i != formattedOriginList.size() - 1) {
                     result.append(ConstantUtil.ENGLISH_COMMA);
                 } else {
                     result.append(ConstantUtil.SPACE);
@@ -192,7 +193,7 @@ public class StringAlignUtil {
             }
             if (CollectionUtil.isNotEmpty(encryptionList)) {
                 result.append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append("-->(Encryption Result)").append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append(encryptionList.get(i));
-                if (i != originStringList.size() - 1) {
+                if (i != formattedOriginList.size() - 1) {
                     result.append(ConstantUtil.ENGLISH_COMMA);
                 } else {
                     result.append(ConstantUtil.SPACE);
@@ -200,7 +201,7 @@ public class StringAlignUtil {
             }
             if (CollectionUtil.isNotEmpty(decryptionList)) {
                 result.append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append("-->(Decryption Result)").append(ConstantUtil.SPACE).append(ConstantUtil.SPACE).append(decryptionList.get(i));
-                if (i != originStringList.size() - 1) {
+                if (i != formattedOriginList.size() - 1) {
                     result.append(ConstantUtil.ENGLISH_COMMA);
                 } else {
                     result.append(ConstantUtil.SPACE);

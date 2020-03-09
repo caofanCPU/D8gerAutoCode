@@ -124,7 +124,6 @@ public class DBAESUtil {
         try {
             return encryptData(data);
         } catch (Throwable e) {
-            log.error("解密异常", e);
             return "[空-配置错误]";
         }
     }
@@ -151,7 +150,6 @@ public class DBAESUtil {
         try {
             return decryptData(base64Data);
         } catch (Throwable e) {
-            log.error("解密异常", e);
             return "[空-配置错误]";
         }
     }

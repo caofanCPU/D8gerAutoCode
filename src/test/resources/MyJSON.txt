@@ -20,4 +20,10 @@ Note: 1.D8ger-ALIGN(included by character '@') is the config keyword of this tex
 =========================================END=========================================
 @D8ger-END@
 
-AName
+AES 加密
+AES 解密
+AES 先加密再解密
+
+拼音 加密
+拼音 解密
+拼音 先加密再解密

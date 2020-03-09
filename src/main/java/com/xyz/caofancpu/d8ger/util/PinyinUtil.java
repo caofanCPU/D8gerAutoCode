@@ -44,7 +44,6 @@ public class PinyinUtil {
             // 执行转换
             pinyin = PinyinHelper.toHanyuPinyinStringArray(pinYinStr, format);
         } catch (BadHanyuPinyinOutputFormatCombination e) {
-            log.error("拼音转化失败", e);
             return null;
         }
 
