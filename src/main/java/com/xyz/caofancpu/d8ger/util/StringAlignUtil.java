@@ -182,6 +182,7 @@ public class StringAlignUtil {
                     result.append(ConstantUtil.ENGLISH_COMMA);
                 }
             }
+            result.append(ConstantUtil.NEXT_LINE);
         }
 
         return result.toString();
