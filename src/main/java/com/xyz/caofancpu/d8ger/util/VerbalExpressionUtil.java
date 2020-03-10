@@ -45,7 +45,7 @@ public class VerbalExpressionUtil {
     /**
      * Swagger field position order regular match expression
      */
-    public static final Pattern SWAGGER_POSITION_PATTERN = Pattern.compile("((?:position)(?:\\s)*(?:\\=)(?:\\s)*(?:\\d)*)");
+    public static final Pattern SWAGGER_MODEL_PATTERN = Pattern.compile("(((?:position)|(?:order))(?:\\s)*(?:=)(?:\\s)*(?:\\d)*)");
 
     /**
      * CaoFAn -->(Uncapitalize) caoFAn -->(CamelToUnderline) cao_f_an -->(LowerCaseToUpperCase) CAO_F_AN -->(UpperCaseToCamel) CaoFAn
@@ -106,8 +106,8 @@ public class VerbalExpressionUtil {
      * @param replaceString
      * @return
      */
-    public static String regexHandlePositionProperty(String originString, final String replaceString) {
-        Matcher matcher = SWAGGER_POSITION_PATTERN.matcher(originString);
+    public static String regexHandleSwaggerModelProperty(String originString, final String replaceString) {
+        Matcher matcher = SWAGGER_MODEL_PATTERN.matcher(originString);
         return matcher.replaceAll(replaceString);
     }
 
