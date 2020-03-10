@@ -10,7 +10,7 @@
         Single-table add, delete, update, search with paging and batch operate in one click.<br>
         自动生成代码插件, 单表增删改查+分页一键搞定.<br>
         <ul>
-        <h1>2.1</h1>
+        <h1>2.3</h1>
         <li>Camel-Underline-Uppercase-Uncapitalize-Lowercase can be converted to each other<br>
          by shortcut `alt` + `shift` + `cmd` + `U`</li>
         <li>The comments of generated codes support<br>
@@ -21,7 +21,7 @@
         <li>One-click generation of data table definition SQL / Mapper / Service / Controller,<br>
          single table addition, deletion, modification and search + paging in one click</li>
         <li>Combined with SwaggerApi, one-click generation of Vo<br>
-         and Controller with document definition, support Vo automatic sorting</li>
+         and Controller with document definition, support Vo and Controller automatic sorting</li>
         <li>For smart coding, default shortcut `alt`+`shift`+`cmd`+`D`</li>
         <li>Support user-defined configuration,<br>
          specify which files and file authors are generated, etc.</li>
@@ -42,13 +42,13 @@
         </p>
 
         <ul>
-        <h1>2.1</h1>
+        <h1>2.3</h1>
         <li>驼峰-下划线-大写-首字母小写-小写, 一键转换, 默认快捷键`alt` + `shift` + `cmd` + `U`</li>
         <li>生成代码的注释支持英语|汉语配置</li>
         <li>JSON字符串格式化, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
         <li>去除空白字符, 简化为单行文本, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
         <li>一键生成数据表定义SQL/Mapper/Service/Controller, 单表增删改查+分页一键搞定</li>
-        <li>结合SwaggerApi, 一键生成带文档定义Vo及Controller, 支持Vo自动排序</li>
+        <li>结合SwaggerApi, 一键生成带文档定义Vo及Controller, 支持Vo和Controller自动排序</li>
         <li>一键智能编程, 默认快捷键`alt`+`shift`+`cmd`+`D`</li>
         <li>支持用户自定义配置, 指定生成哪些文件及文件author等</li>
         <li>预留彩蛋, 在IDEA中编辑空白文件输入'd8ger'即可得到配置文件模板</li>
@@ -114,6 +114,42 @@
 
     <change-notes>
         <![CDATA[
+        <li><h1>2.3</h1></li>
+        <ul>
+        <li>BugFix: Json format bug.</li>
+        <li>Addition:<br>
+            <ul>
+            <li>NASA easter eggs, try to type 'nasa' in the blank file in IDEA to get the nasa-template.</li>
+            <li>NASA easter eggs, multi-lines can be batch handled with the nasa-template, special for sql columns.</li>
+            </ul>
+        </li>
+        <li>Optimization: <br>
+            <ul>
+            <li>Optimize some regex performance.</li>
+            <li>Support linebreak or comma as the delimiter.</li>
+            <li>Support windows linebreak when rendering origin code.</li>
+            </ul>
+        </li>
+        <li>Attention: <br>
+            <ul>
+            <li>Regex easter eggs add some very useful regex search-replace skills hidden in JetBrains' IDE products. Try to learn and you will save much time at working.</li>
+            <li>When execute auto-coding, you should be careful at the linebreak, it maybe different from your project config.</li>
+            </ul>
+        </li>
+        </ul>
+        </br>
+        <li><h1>2.2(private)</h1></li>
+        <ul>
+        <li>Addition:<br>
+            <ul>
+            <li>END easter eggs, try to type 'end' in the blank file in IDEA to get the end-template(encryption and decryption).</li>
+            <li>END easter eggs, multi-lines can be batch handled with the end-template, it's very useful for encryption and decryption.</li>
+            </ul>
+        </li>
+        <li>Optimization: Support linebreak or comma as the delimiter.</li>
+        <li>Attention: This version is private, you can <a href="">send me a email</a> and clarify your needs, such as what algorithm you'll take.</li>
+        </ul>
+        </br>
         <li><h1>2.1</h1></li>
         <ul>
         <li>BugFix: add Uncapitalize, and the circle is Camel-Underline-Uppercase-Uncapitalize-Lowercase.</li>

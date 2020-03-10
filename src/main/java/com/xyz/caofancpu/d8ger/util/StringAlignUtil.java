@@ -130,7 +130,7 @@ public class StringAlignUtil {
         handleResultMap.put(ENDOperate.ORIGIN, originStringList);
         if (operateList.contains(ENDOperate.PINYIN)) {
             // calculate pinyin
-            handleResultMap.put(ENDOperate.PINYIN, CollectionUtil.transToList(originStringList, DBAESUtil::fetchPinYin));
+            handleResultMap.put(ENDOperate.PINYIN, CollectionUtil.transToList(originStringList, String::toString));
         }
         if (operateList.contains(ENDOperate.ENCRYPTION)) {
             List<String> targetList;
@@ -141,11 +141,11 @@ public class StringAlignUtil {
                 targetList = originStringList;
             }
             if (Algorithm.PINYIN == algorithm) {
-                // PINYIN encryption
-                handleResultMap.put(ENDOperate.ENCRYPTION, CollectionUtil.transToList(targetList, DBAESUtil::encryptionNamePinYin));
+                // PINYIN encryption TODO
+                handleResultMap.put(ENDOperate.ENCRYPTION, CollectionUtil.transToList(targetList, String::toUpperCase));
             } else {
-                // AES encryption
-                handleResultMap.put(ENDOperate.ENCRYPTION, CollectionUtil.transToList(targetList, DBAESUtil::encryptDataWithoutException));
+                // AES encryption TODO
+                handleResultMap.put(ENDOperate.ENCRYPTION, CollectionUtil.transToList(targetList, String::toLowerCase));
             }
         }
         if (operateList.contains(ENDOperate.DECRYPTION)) {
@@ -156,11 +156,11 @@ public class StringAlignUtil {
                 targetList = originStringList;
             }
             if (Algorithm.PINYIN == algorithm) {
-                // PINYIN decryption
-                handleResultMap.put(ENDOperate.DECRYPTION, CollectionUtil.transToList(targetList, DBAESUtil::decryptionNamePinYin));
+                // PINYIN decryption TODO
+                handleResultMap.put(ENDOperate.DECRYPTION, CollectionUtil.transToList(targetList, String::toLowerCase));
             } else {
-                // AES decryption
-                handleResultMap.put(ENDOperate.DECRYPTION, CollectionUtil.transToList(targetList, DBAESUtil::decryptDataWithoutException));
+                // AES decryption TODO
+                handleResultMap.put(ENDOperate.DECRYPTION, CollectionUtil.transToList(targetList, String::toUpperCase));
             }
         }
 
