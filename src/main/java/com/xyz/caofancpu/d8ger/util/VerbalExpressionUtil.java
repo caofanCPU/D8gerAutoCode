@@ -43,7 +43,7 @@ public class VerbalExpressionUtil {
     public static final Pattern CAMEL_UNDERLINE_4_NO_LOWER_CASE = Pattern.compile("^(?![a-z])[A-Z0-9\\W_]+$");
 
     /**
-     * Swagger field position order regular match expression
+     * Swagger field | interface position order regular match expression
      */
     public static final Pattern SWAGGER_MODEL_PATTERN = Pattern.compile("(((?:position)|(?:order))(?:\\s)*(?:=)(?:\\s)*(?:\\d)*)");
 
@@ -100,7 +100,7 @@ public class VerbalExpressionUtil {
     }
 
     /**
-     * Swagger field position order regular replacement
+     * Swagger field | interface position order regular replacement
      *
      * @param originString
      * @param replaceString
