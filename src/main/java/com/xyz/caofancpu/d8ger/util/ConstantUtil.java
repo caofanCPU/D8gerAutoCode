@@ -72,6 +72,11 @@ public class ConstantUtil {
     public static final String PENTA_TAB = QUATERNARY_TAB + TAB;
 
     /**
+     * Windows OS linebreak character
+     */
+    public static final String WINDOWS_NEXT_LINE = "\r\n";
+
+    /**
      * Newline character
      */
     public static final String NEXT_LINE = "\n";

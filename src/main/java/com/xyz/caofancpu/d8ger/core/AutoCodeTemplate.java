@@ -1836,13 +1836,41 @@ public class AutoCodeTemplate {
             "      graduated_school, --> D8(graduated_school)  AS  graduatedSchool,\n" +
             "      total_assets      --> D8(total_assets)      AS  totalAssets\n" +
             "=========================================NASA=========================================\n" +
+            "The next line is very import below, do not modify anything or you'll get nothing\n" +
             "@D8ger-ALIGN@\n" +
+            "\n" +
             "\n" +
             "first_name,\n" +
             "current_age,\n" +
             "blog_url,\n" +
             "graduated_school,\n" +
             "total_assets\n";
+
+    public static String TEMPLATE_END = "=========================================END=========================================\n" +
+            "Note: 1.D8ger-ALIGN(included by character '@') is the config keyword of this text,\n" +
+            "      which these context included will be ignored;\n" +
+            "      2.Considering compatibility separator, Multi-lines to be handled\n" +
+            "      must include ',' or line break or '，' as the split keyword.\n" +
+            "      3.config example:\n" +
+            "      - @<alignStyle=LEFT>@    , LEFT(default) and you can config CENTER, RIGHT too\n" +
+            "      - @<algorithmType=1>@    , 1(default) as 'AES' and 2 as 'PinYin'\n" +
+            "      - @<operateType=0>@      , 1 as encrypt, 2 as decrypt\n" +
+            "                                 and 0(default) is encrypt + decrypt for complete\n" +
+            "      4.As example below, one handled what you will find like this:\n" +
+            "      When algorithmType=1 && operateType = 0\n" +
+            "        MyName -->(first AES encryption) d8gerX==\n" +
+            "               -->(then AES decryption)  MyName\n" +
+            "      When algorithmType=2 && operateType = 0\n" +
+            "        帝八哥  -->(first Fetch Chinese PinYin) dibage\n" +
+            "               -->(then PinYin encryption)     d8gerY==\n" +
+            "               -->(last PinYin decryption)     dibage\n" +
+            "      Other case, just refer the two above.\n" +
+            "=========================================END=========================================\n" +
+            "The next line is very import below, do not modify anything or you'll get nothing\n" +
+            "@D8ger-END@\n" +
+            "\n" +
+            "\n" +
+            "AName";
 
     /**
      * Template rendering

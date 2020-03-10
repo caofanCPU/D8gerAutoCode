@@ -8,9 +8,10 @@ package com.xyz.caofancpu.d8ger.core;
 public enum EasterEggCodeTemplateEnum {
     D8GER_CONFIG_FILE_KEY("D8GER", AutoCodeTemplate.TEMPLATE_D8GER),
     REGEX_CONFIG_FILE_KEY("REGEX", AutoCodeTemplate.TEMPLATE_REGEX),
+    END_CONFIG_FILE_KEY("END", AutoCodeTemplate.TEMPLATE_END),
+
+
     NASA_CONFIG_FILE_KEY("NASA", AutoCodeTemplate.TEMPLATE_NASA),
-
-
     ;
 
 

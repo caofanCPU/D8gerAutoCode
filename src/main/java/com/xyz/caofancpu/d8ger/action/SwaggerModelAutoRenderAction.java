@@ -37,20 +37,35 @@ public class SwaggerModelAutoRenderAction extends AnAction {
      * @param currentDocument
      */
     public void executeSwaggerRender(@NonNull Document currentDocument) {
-        String[] codeLines = currentDocument.getText().split(ConstantUtil.NEXT_LINE);
+        // split lines by \n | \r\n
+        String[] codeLines = currentDocument.getText().split("(?:\\n|(?:\\r\\n))");
         List<String> wrapLineList = new ArrayList<>(codeLines.length);
-        int i = 0;
+        int apiModelPropertyCounter = 0;
+        int apiOperationSupportCounter = 0;
         for (String item : codeLines) {
+            // case 1
             if (item.contains("@ApiModelProperty(")) {
                 if (!item.contains("position")) {
-                    item = item.replace(")", ", position = " + (i++) + ")");
+                    String replacer = (item.contains("()") ? "order = " : ", order = ") + (++apiModelPropertyCounter) + ")";
+                    item = item.replace(")", replacer);
                 } else {
-                    item = VerbalExpressionUtil.regexHandlePositionProperty(item, "position = " + i++);
+                    item = VerbalExpressionUtil.regexHandleSwaggerModelProperty(item, "position = " + (++apiModelPropertyCounter));
+                }
+            }
+
+            // case 2
+            if (item.contains("@ApiOperationSupport(")) {
+                if (!item.contains("order")) {
+                    String replacer = (item.contains("()") ? "order = " : ", order = ") + (++apiOperationSupportCounter) + ")";
+                    item = item.replace(")", replacer);
+                } else {
+                    item = VerbalExpressionUtil.regexHandleSwaggerModelProperty(item, "order = " + (++apiOperationSupportCounter));
                 }
             }
             wrapLineList.add(item);
         }
-        currentDocument.setText(CollectionUtil.join(wrapLineList, ConstantUtil.NEXT_LINE));
+        boolean isWindowsLinebreak = currentDocument.getText().contains(ConstantUtil.WINDOWS_NEXT_LINE);
+        currentDocument.setText(CollectionUtil.join(wrapLineList, isWindowsLinebreak ? ConstantUtil.WINDOWS_NEXT_LINE : ConstantUtil.NEXT_LINE));
     }
 
 }

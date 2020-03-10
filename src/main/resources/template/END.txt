@@ -6,7 +6,7 @@ Note: 1.D8ger-ALIGN(included by character '@') is the config keyword of this tex
       3.config example:
       - @<alignStyle=LEFT>@    , LEFT(default) and you can config CENTER, RIGHT too
       - @<algorithmType=1>@    , 1(default) as 'AES' and 2 as 'PinYin'
-      - @<operateType=0>@      , 1 as encrypt, 2 as decrypt
+      - @<operateType=2>@      , 1 as encrypt, 2 as decrypt
                                  and 0(default) is encrypt + decrypt for complete
       4.As example below, one handled what you will find like this:
       When algorithmType=1 && operateType = 0
@@ -18,12 +18,8 @@ Note: 1.D8ger-ALIGN(included by character '@') is the config keyword of this tex
                -->(last PinYin decryption)     dibage
       Other case, just refer the two above.
 =========================================END=========================================
+The next line is very import below, do not modify anything or you'll get nothing
 @D8ger-END@
 
-AES 加密
-AES 解密
-AES 先加密再解密
 
-拼音 加密
-拼音 解密
-拼音 先加密再解密
+AName
