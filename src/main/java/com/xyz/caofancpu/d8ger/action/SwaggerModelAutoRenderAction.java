@@ -46,20 +46,20 @@ public class SwaggerModelAutoRenderAction extends AnAction {
             // case 1
             if (item.contains("@ApiModelProperty(")) {
                 if (!item.contains("position")) {
-                    String replacer = (item.contains("()") ? "order = " : ", order = ") + (apiModelPropertyCounter++) + ")";
+                    String replacer = (item.contains("()") ? "order = " : ", order = ") + (++apiModelPropertyCounter) + ")";
                     item = item.replace(")", replacer);
                 } else {
-                    item = VerbalExpressionUtil.regexHandleSwaggerModelProperty(item, "position = " + apiModelPropertyCounter++);
+                    item = VerbalExpressionUtil.regexHandleSwaggerModelProperty(item, "position = " + (++apiModelPropertyCounter));
                 }
             }
 
             // case 2
             if (item.contains("@ApiOperationSupport(")) {
                 if (!item.contains("order")) {
-                    String replacer = (item.contains("()") ? "order = " : ", order = ") + (apiOperationSupportCounter++) + ")";
+                    String replacer = (item.contains("()") ? "order = " : ", order = ") + (++apiOperationSupportCounter) + ")";
                     item = item.replace(")", replacer);
                 } else {
-                    item = VerbalExpressionUtil.regexHandleSwaggerModelProperty(item, "order = " + apiOperationSupportCounter++);
+                    item = VerbalExpressionUtil.regexHandleSwaggerModelProperty(item, "order = " + (++apiOperationSupportCounter));
                 }
             }
             wrapLineList.add(item);
