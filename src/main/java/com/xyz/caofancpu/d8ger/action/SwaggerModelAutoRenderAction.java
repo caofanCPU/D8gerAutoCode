@@ -46,7 +46,7 @@ public class SwaggerModelAutoRenderAction extends AnAction {
             // case 1
             if (item.contains("@ApiModelProperty(")) {
                 if (!item.contains("position")) {
-                    String replacer = (item.contains("()") ? "order = " : ", order = ") + (++apiModelPropertyCounter) + ")";
+                    String replacer = (item.contains("()") ? "position = " : ", position = ") + (++apiModelPropertyCounter) + ")";
                     item = item.replace(")", replacer);
                 } else {
                     item = VerbalExpressionUtil.regexHandleSwaggerModelProperty(item, "position = " + (++apiModelPropertyCounter));
