@@ -48,6 +48,21 @@ public class VerbalExpressionUtil {
     public static final Pattern SWAGGER_MODEL_PATTERN = Pattern.compile("(((?:position)|(?:order))(?:\\s)*(?:=)(?:\\s)*(?:\\d)*)");
 
     /**
+     * When we clear white chars, considering spaces can be part of data we should except spaces in JSON string
+     */
+    public static final Pattern WHITE_CHAR_IN_JSON_REGEX_0 = Pattern.compile("(?:[\\t\\n\\x0B\\f\\r])+");
+
+    /**
+     * Beauty JSON view regex
+     */
+    public static final Pattern WHITE_CHAR_IN_JSON_REGEX_1 = Pattern.compile("(?:\")+[ ]*[:：]+[ ]*");
+
+    /**
+     * JSON string definition regex
+     */
+    public static final Pattern JSON_STRING_JUDGE_REGEX = Pattern.compile("^(?:\\{).*(?:})$");
+
+    /**
      * CaoFAn -->(Uncapitalize) caoFAn -->(CamelToUnderline) cao_f_an -->(LowerCaseToUpperCase) CAO_F_AN -->(UpperCaseToCamel) CaoFAn
      *
      * @param originName
@@ -259,7 +274,7 @@ public class VerbalExpressionUtil {
 
     /**
      * Clear whitespace
-     * ((?:\s)+)
+     * (?:\\s)+
      *
      * @param source
      * @return
@@ -271,4 +286,15 @@ public class VerbalExpressionUtil {
         return executePatternRex(regex, source, ConstantUtil.EMPTY);
     }
 
+
+    /**
+     * Clear whitespace in JSON string
+     *
+     * @param source
+     * @return
+     */
+    public static String cleanJSONWhiteChar(@NonNull String source) {
+        return source.replaceAll(WHITE_CHAR_IN_JSON_REGEX_0.pattern(), ConstantUtil.EMPTY)
+                .replaceAll(WHITE_CHAR_IN_JSON_REGEX_1.pattern(), ConstantUtil.ENGLISH_DOUBLE_QUOTES + ConstantUtil.ENGLISH_COLON);
+    }
 }

@@ -27,6 +27,16 @@ public class ConstantUtil {
     public static final String CHINESE_COMMA = "，";
 
     /**
+     * English colon
+     */
+    public static final String ENGLISH_COLON = ":";
+
+    /**
+     * English double quotes
+     */
+    public static final String ENGLISH_DOUBLE_QUOTES = "\"";
+
+    /**
      * Period
      */
     public static final String ENGLISH_STOP = ".";

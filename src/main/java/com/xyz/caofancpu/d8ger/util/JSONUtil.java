@@ -10,7 +10,7 @@ import lombok.NonNull;
 public class JSONUtil {
 
     public static String formatStandardJSON(@NonNull String source) {
-        String nonWhiteCharStr = VerbalExpressionUtil.cleanWhiteChar(source);
+        String nonWhiteCharStr = VerbalExpressionUtil.cleanJSONWhiteChar(source);
         int level = 0;
         StringBuilder resultBuilder = new StringBuilder();
         // Loop through each character
@@ -59,6 +59,10 @@ public class JSONUtil {
                         }
                     }
                     resultBuilder.append(piece);
+                    break;
+                case ':':
+                    // add a space to beauty view
+                    resultBuilder.append(piece).append(ConstantUtil.SPACE);
                     break;
                 default:
                     resultBuilder.append(piece);

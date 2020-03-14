@@ -34,6 +34,8 @@ public class SimplifyOneLineAction extends AnAction {
      * @param currentDocument
      */
     private void executeBeautyJSONRender(@NonNull Document currentDocument) {
-        currentDocument.setText(VerbalExpressionUtil.cleanWhiteChar(currentDocument.getText()));
+        String text = currentDocument.getText();
+        boolean isJSON = VerbalExpressionUtil.JSON_STRING_JUDGE_REGEX.matcher(text).matches();
+        currentDocument.setText(isJSON ? VerbalExpressionUtil.cleanJSONWhiteChar(text) : VerbalExpressionUtil.cleanWhiteChar(text));
     }
 }
