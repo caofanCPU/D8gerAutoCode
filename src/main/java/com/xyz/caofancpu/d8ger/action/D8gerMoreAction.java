@@ -36,7 +36,9 @@ public class D8gerMoreAction extends AnAction {
         final Document currentDocument = currentEditor.getDocument();
         List<EasterEggCodeTemplateEnum> contentEnumList = judgeContent(currentDocument);
         if (CollectionUtil.isEmpty(contentEnumList)) {
-            WriteCommandAction.runWriteCommandAction(currentProject, () -> currentDocument.setText(currentDocument.getText() + "Welcome to my github!"));
+            if (!currentDocument.getText().contains("Welcome to my github!")) {
+                WriteCommandAction.runWriteCommandAction(currentProject, () -> currentDocument.setText(currentDocument.getText() + ConstantUtil.DOUBLE_NEXT_LINE + "Welcome to my github!"));
+            }
             BrowserLauncher.getInstance().browse("https://github.com/caofanCPU", WebBrowserManager.getInstance().getFirstActiveBrowser());
             return;
         }
@@ -45,10 +47,11 @@ public class D8gerMoreAction extends AnAction {
                 currentDocument.setText(extractNASAContent(currentDocument.getText()));
                 return;
             }
-            if (contentEnumList.contains(EasterEggCodeTemplateEnum.END_CONFIG_FILE_KEY)) {
-                currentDocument.setText(extractENDContent(currentDocument.getText()));
-                return;
-            }
+            // TODO: do this for a common version later
+//            if (contentEnumList.contains(EasterEggCodeTemplateEnum.END_CONFIG_FILE_KEY)) {
+//                currentDocument.setText(extractENDContent(currentDocument.getText()));
+//                return;
+//            }
             currentDocument.setText(CollectionUtil.join(CollectionUtil.transToList(contentEnumList, EasterEggCodeTemplateEnum::getTemplateCode), ConstantUtil.DOUBLE_NEXT_LINE));
         });
     }
