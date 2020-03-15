@@ -76,33 +76,35 @@
     </extensions>
 
     <actions>
+        <!-- refer https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=991968
+                download 16.png as icon, 32.svg as plugin logo-->
         <!-- Add your customer group here -->
-        <group id="D8ger" text="D8ger" description="D8gerAutoCode" popup="true" icon="/icons/codeDog.png">
+        <group id="D8ger" text="D8ger" description="D8gerAutoCode" popup="true" icon="/icons/D8Main.png">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
             <separator/>
 
             <!-- Add your actions here -->
-            <action id="D8gerAutoCode" class="com.xyz.caofancpu.d8ger.action.D8gerAutoCodeAction" text="D8gerAutoCode" description="D8gerAutoCode" icon="/icons/gsBank.png">
+            <action id="D8gerAutoCode" class="com.xyz.caofancpu.d8ger.action.D8gerAutoCodeAction" text="D8gerAutoCode" description="D8gerAutoCode" icon="/icons/D8Oxygen.png">
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl D"/>
             </action>
 
-            <action id="SwaggerModelAutoRender" class="com.xyz.caofancpu.d8ger.action.SwaggerModelAutoRenderAction" text="SwaggerModelAutoRender" description="SwaggerModelAutoRender" icon="/icons/bjBank.png">
+            <action id="SwaggerModelAutoRender" class="com.xyz.caofancpu.d8ger.action.SwaggerModelAutoRenderAction" text="SwaggerModelAutoRender" description="SwaggerModelAutoRender" icon="/icons/Ocket.png">
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl O"/>
             </action>
 
-            <action id="BeautifulJSONAction" class="com.xyz.caofancpu.d8ger.action.BeautifulJSONAction" text="BeautifulJSON" description="BeautifulJSON" icon="/icons/wx.png">
+            <action id="BeautifulJSONAction" class="com.xyz.caofancpu.d8ger.action.BeautifulJSONAction" text="BeautifulJSON" description="BeautifulJSON" icon="/icons/JetBeFaker.png">
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl J"/>
             </action>
 
-            <action id="SimplifyOneLineAction" class="com.xyz.caofancpu.d8ger.action.SimplifyOneLineAction" text="SimplifyOneLine" description="SimplifyOneLine" icon="/icons/qq-blue.png">
+            <action id="SimplifyOneLineAction" class="com.xyz.caofancpu.d8ger.action.SimplifyOneLineAction" text="SimplifyOneLine" description="SimplifyOneLine" icon="/icons/Simplify.png">
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl S"/>
             </action>
 
-            <action id="CamelUnderlineConvertAction" class="com.xyz.caofancpu.d8ger.action.CamelUnderlineConvertAction" text="CamelUnderlineConvert" description="CamelUnderlineConvert" icon="/icons/iOS.png">
+            <action id="CamelUnderlineConvertAction" class="com.xyz.caofancpu.d8ger.action.CamelUnderlineConvertAction" text="CamelUnderlineConvert" description="CamelUnderlineConvert" icon="/icons/UTime.png">
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl U"/>
             </action>
 
-            <action id="D8gerMore" class="com.xyz.caofancpu.d8ger.action.D8gerMoreAction" text="D8gerMore" description="D8gerMore" icon="/icons/gitHub.png">
+            <action id="D8gerMore" class="com.xyz.caofancpu.d8ger.action.D8gerNoteAction" text="D8gerNote" description="D8gerNote" icon="/icons/gitHub-cool.png">
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl N"/>
             </action>
         </group>

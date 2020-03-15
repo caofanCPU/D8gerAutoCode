@@ -27,7 +27,7 @@ import java.util.Objects;
  *
  * @author caofanCPU
  */
-public class D8gerMoreAction extends AnAction {
+public class D8gerNoteAction extends AnAction {
 
     @Override
     public void actionPerformed(AnActionEvent e) {
