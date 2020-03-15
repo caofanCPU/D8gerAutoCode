@@ -251,9 +251,9 @@ public class D8gerAutoCoding {
      * @return
      */
     public String wrapSwaggerPage() {
-        return ConstantUtil.TAB + "@ApiModelProperty(value = \"" + "pageNum" + "\", required = false, example = \"1\", position = " + moFieldList.size() + ")" + ConstantUtil.NEXT_LINE
+        return ConstantUtil.TAB + "@ApiModelProperty(value = \"" + "pageNum" + "\", required = false, example = \"1\", position = " + (moFieldList.size() + 1) + ")" + ConstantUtil.NEXT_LINE
                 + ConstantUtil.TAB + ConstantUtil.DEFAULT_ACCESS_MODIFIER + ConstantUtil.SPACE + SupportFieldTypeEnum.INTEGER.getShortName() + ConstantUtil.SPACE + ConstantUtil.PAGE_NUM_NAME + ConstantUtil.ENGLISH_SEMICOLON + ConstantUtil.NEXT_LINE + ConstantUtil.NEXT_LINE
-                + ConstantUtil.TAB + "@ApiModelProperty(value = \"" + "pageSize" + "\", required = false, example = \"10\", position = " + (moFieldList.size() + 1) + ")" + ConstantUtil.NEXT_LINE
+                + ConstantUtil.TAB + "@ApiModelProperty(value = \"" + "pageSize" + "\", required = false, example = \"10\", position = " + (moFieldList.size() + 2) + ")" + ConstantUtil.NEXT_LINE
                 + ConstantUtil.TAB + ConstantUtil.DEFAULT_ACCESS_MODIFIER + ConstantUtil.SPACE + SupportFieldTypeEnum.INTEGER.getShortName() + ConstantUtil.SPACE + ConstantUtil.PAGE_SIZE_NAME + ConstantUtil.ENGLISH_SEMICOLON;
     }
 
