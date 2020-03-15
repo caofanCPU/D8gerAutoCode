@@ -6,61 +6,27 @@
     <description>
         <![CDATA[
         <p>
-        Automatic code generation plugin.<br>
-        Single-table add, delete, update, search with paging and batch operate in one click.<br>
-        自动生成代码插件, 单表增删改查+分页一键搞定.<br>
+        重复编码老瞎忙,️
+        写来写去那几行.
+        不知工具在何方?
+        八哥智能一键帮!
+        -_-;
+        Always busy with repeated coding on working,
+        Same lines again and again like loop writing.
+        Don't know how to solve and where tools being?
+        Just press these shortcuts for helping!
+        ^o^;
+        Java自动代码生成利器, 字符串批处理, 正则表达式奇淫巧技;
+        Automatic coding and Multi-lines wrapping and Regex skill are integrated by one plugin.<br>
         <ul>
-        <h1>2.3</h1>
-        <li>Camel-Underline-Uppercase-Uncapitalize-Lowercase can be converted to each other<br>
-         by shortcut `alt` + `shift` + `cmd` + `U`</li>
-        <li>The comments of generated codes support<br>
-         English(Default) | Chinese Simplified(Optional) configuration</li>
-        <li>JSON string auto formatting, default shortcut `alt`+`shift`+`cmd`+`J`</li>
-        <li>Stripping whitespace and simplifying text into a single line,<br>
-         default shortcut `alt`+`shift`+`cmd`+`S`</li>
-        <li>One-click generation of data table definition SQL / Mapper / Service / Controller,<br>
-         single table addition, deletion, modification and search + paging in one click</li>
-        <li>Combined with SwaggerApi, one-click generation of Vo<br>
-         and Controller with document definition, support Vo and Controller automatic sorting</li>
-        <li>For smart coding, default shortcut `alt`+`shift`+`cmd`+`D`</li>
-        <li>Support user-defined configuration,<br>
-         specify which files and file authors are generated, etc.</li>
-        <li>Reserve easter eggs, edit the blank file in IDEA and enter 'd8ger'<br>
-         to get the configuration file template.</li>
-         <li>Reserve easter eggs, edit the blank file in IDEA and enter 'nasa'<br>
-         to get the NASA configuration file template.<br>
-         This is very useful and efficient for handling multi-lines,<br>
-         especially SQL field naming processing.</li>
-        <li>Reserve easter eggs, edit the blank file in IDEA and enter 'regex'<br>
-         to get some commonly used regular expressions.<br>
-          Other code Easter eggs will be added later</li>
-        <li>SwaggerVo field auto sorting, default shortcut `alt`+`shift`+`cmd`+`O`</li>
+            <li><a href="https://github.com/caofanCPU/D8gerAutoCode">项目|Project</a><br></li>
+            <li><a href="http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">博客指南|Blog guide</a><br></li>
+            <li><a href="https://youtu.be/mrRaGSeDNOU">视频教程|Video Manual</a><br></li>
+            <li><a href="https://github.com/caofanCPU/D8gerAutoCode/blob/master/README.md">新手教程</a>||||||
+                <a href="https://github.com/caofanCPU/D8gerAutoCode/blob/master/README_CN.md">Tutorial</a><br>
+            </li>
         </ul>
-        By the way, these default shortcuts are used in Mac OS,<br>
-         if you use Windows just take `cmd` into `ctrl` <br>
-        <br>
         </p>
-
-        <ul>
-        <h1>2.3</h1>
-        <li>驼峰-下划线-大写-首字母小写-小写, 一键转换, 默认快捷键`alt` + `shift` + `cmd` + `U`</li>
-        <li>生成代码的注释支持英语|汉语配置</li>
-        <li>JSON字符串格式化, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
-        <li>去除空白字符, 简化为单行文本, 默认快捷键`alt`+`shift`+`cmd`+`J`</li>
-        <li>一键生成数据表定义SQL/Mapper/Service/Controller, 单表增删改查+分页一键搞定</li>
-        <li>结合SwaggerApi, 一键生成带文档定义Vo及Controller, 支持Vo和Controller自动排序</li>
-        <li>一键智能编程, 默认快捷键`alt`+`shift`+`cmd`+`D`</li>
-        <li>支持用户自定义配置, 指定生成哪些文件及文件author等</li>
-        <li>预留彩蛋, 在IDEA中编辑空白文件输入'd8ger'即可得到配置文件模板</li>
-        <li>预留彩蛋, 在IDEA中编辑空白文件输入'nasa'即可得到NASA模板, 针对多行字符串批量处理, 尤其是SQL字段命名处理</li>
-        <li>预留彩蛋, 在IDEA中编辑空白文件输入'regex'即可得到一些常用的有趣正则表达式,<br>
-         后期会增加其他代码彩蛋</li>
-        <li>SwaggerVo字段排序, 默认快捷键`alt`+`shift`+`cmd`+`O`</li>
-        </ul>
-        另外, 以上默认快捷键针对MacOS系统, 对于Windows用户将`cmd`看做`ctrl`即可<br>
-
-        So, How To Use? Please access <a href="https://github.com/caofanCPU/D8gerAutoCode">homepage of this project</a><br>
-        <br>
         <img src="http://file.debuggerpowerzcy.top/power/SpaceLaunch.png" /><br>
         ]]>
     </description>
