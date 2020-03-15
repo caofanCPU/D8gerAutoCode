@@ -133,7 +133,7 @@ public class MoField {
      * @return
      */
     public String toSwaggerString() {
-        return ConstantUtil.TAB + "@ApiModelProperty(value = \"" + comment + "\", required = false, example = \"\", position = " + index + ")" + ConstantUtil.NEXT_LINE
+        return ConstantUtil.TAB + "@ApiModelProperty(value = \"" + comment + "\", required = false, example = \"\", position = " + (index + 1) + ")" + ConstantUtil.NEXT_LINE
                 + ConstantUtil.TAB + accessModifier + ConstantUtil.SPACE + fieldTypeShortName + ConstantUtil.SPACE + name + ConstantUtil.ENGLISH_SEMICOLON;
     }
 
