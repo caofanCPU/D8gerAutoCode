@@ -97,6 +97,7 @@ Google 拥有专门设计的系统，可以自动捕获不适当的预测结果�
 </center>
 
 ```
+Next generation plan
 (backup: autoCode -> {
     var1: insertWithIdSelective
           selectByExampleWithBLOBs
