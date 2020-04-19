@@ -87,6 +87,7 @@ Google 拥有专门设计的系统，可以自动捕获不适当的预测结果�
 - [刷掉 90% 候选人的互联网大厂海量数据面试题（附题解 + 方法总结）](https://mp.weixin.qq.com/s/rjGqxUvrEqJNlo09GrT1Dw)
 - [好用！期待已久的文本块功能究竟如何在 Java 13 中发挥作用？](https://mp.weixin.qq.com/s/kalGv5T8AZGxTnLHr2wDsA)
 - [2019 GitHub 开源贡献排行榜新鲜出炉！微软谷歌领头，阿里跻身前 12！](https://mp.weixin.qq.com/s/_q812aGD1b9QvZ2WFI0Qgw)
+- [哈哈](http://file.debuggerpowerzcy.top/power/)
 ---
 
 欢迎关注我的公众号“**Doocs开源社区**”，原创技术文章第一时间推送。
@@ -95,3 +96,22 @@ Google 拥有专门设计的系统，可以自动捕获不适当的预测结果�
     <img src="https://imgkr.cn-bj.ufileos.com/1092dc45-e817-4bb0-82b0-2b2b4826ccf2.gif" style="width: 100px;">
 </center>
 
+```
+(backup: autoCode -> {
+    var1: insertWithIdSelective
+          selectByExampleWithBLOBs
+          updateByExampleWithBLOBs
+          updateByPrimaryKeyWithBLOBs
+          selectByPrimaryKey
+          deleteByPrimaryKey
+          updateByPrimaryKey
+    var2: @ID, @SECOND_MAIN_KEY
+          @UNIQ(group, order), @INDEX, @UNIQ_INDEX(group, order),
+          @NOTNULL, @DEFAULT,
+          @BLOB
+    var3: CreateTime | UpdateTime(, bug?) 禁用配置
+    var4: caofanCPU-branch, private
+    var5: digital automatic
+    var6: bug fix, d8gerDir?
+})
+```
