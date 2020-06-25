@@ -62,6 +62,11 @@ public class ConstantUtil {
     public static final String TAB = CollectionUtil.join(Collections.nCopies(4, SPACE), EMPTY);
 
     /**
+     * Origin Tab character
+     */
+    public static final String ORIGIN_TAB = "\t";
+
+    /**
      * Double Tabs
      */
     public static final String DOUBLE_TAB = TAB + TAB;

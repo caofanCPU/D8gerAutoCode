@@ -70,6 +70,10 @@
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl U"/>
             </action>
 
+            <action id="BeautifulMySQL" class="com.xyz.caofancpu.d8ger.action.BeautifulMySQLAction" text="BeautifulMySQL" description="BeautifulMySQL" icon="/icons/Beautiful.png">
+                <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl B"/>
+            </action>
+
             <action id="D8gerMore" class="com.xyz.caofancpu.d8ger.action.D8gerNoteAction" text="D8gerNote" description="D8gerNote" icon="/icons/gitHub-cool.png">
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl N"/>
             </action>

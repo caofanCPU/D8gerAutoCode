@@ -66,7 +66,7 @@
 
 >以上默认快捷键针对MacOS系统, 对于Windows用户将`cmd`看做`ctrl`即可
 
-### 参与贡献(现阶段恳请你的援助)
+### 参与贡献
 <div align="center">
     <img src="http://file.debuggerpowerzcy.top/power/2020-660X466-D8gerAutoCode.jpeg" /> 
 </div>

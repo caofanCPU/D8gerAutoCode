@@ -66,7 +66,7 @@
 
 > By the way, these default shortcuts are used in Mac OS, if you use Windows just take `cmd` into `ctrl`.
 
-### Contribute (What I wish you help me for now)
+### Contribute
 <div align="center">
     <img src="http://file.debuggerpowerzcy.top/power/2020-660X466-D8gerAutoCode.jpeg" /> 
 </div>

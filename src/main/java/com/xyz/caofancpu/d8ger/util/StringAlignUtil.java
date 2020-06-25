@@ -1,5 +1,9 @@
 package com.xyz.caofancpu.d8ger.util;
 
+import com.alibaba.druid.sql.SQLUtils;
+import com.alibaba.druid.sql.ast.SQLStatement;
+import com.alibaba.druid.sql.visitor.SQLASTOutputVisitor;
+import com.alibaba.druid.util.JdbcUtils;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
@@ -39,6 +43,33 @@ public class StringAlignUtil {
      * Config key parser regex
      */
     public static final Pattern CONFIG_PARSER_PATTERN = Pattern.compile("(?:@<)(?:.*)(?:>@)");
+
+    /**
+     * Format mysql
+     *
+     * @param sql
+     * @return
+     */
+    public static String formatMySQL(String sql) {
+        if (StringUtils.isBlank(sql)) {
+            return sql;
+        }
+        try {
+            String dbType = JdbcUtils.MYSQL;
+            List<SQLStatement> statementList = SQLUtils.toStatementList(sql, dbType);
+
+            StringBuilder out = new StringBuilder();
+            SQLASTOutputVisitor visitor = SQLUtils.createFormatOutputVisitor(out, statementList, dbType);
+            for (SQLStatement stmt : statementList) {
+                stmt.accept(visitor);
+            }
+
+            return out.toString().replaceAll(ConstantUtil.ORIGIN_TAB, ConstantUtil.TAB) + ConstantUtil.ENGLISH_SEMICOLON;
+        } catch (Throwable t) {
+            // any exception, give back the origin sql
+            return sql;
+        }
+    }
 
     /**
      * Handling multi lines by conventional separator
