@@ -6,10 +6,8 @@
     <description>
         <![CDATA[
         <p>
-        重复编码老瞎忙,️
-        写来写去那几行.
-        不知工具在何方?
-        八哥智能一键帮!
+        智能代码生成利器-流式工作内容去重
+        重复编码老瞎忙,️ 写来写去那几行. 不知工具在何方? 八哥智能一键帮!
         -_-;
         Always busy with repeated coding on working,
         Same lines again and again like loop writing.
@@ -86,6 +84,18 @@
 
     <change-notes>
         <![CDATA[
+        <li><h1>2.4</h1></li>
+        <ul>
+        <li>Addition: One-click to beauty MySQL, isn't fragrant?<br>
+        </li>
+        <li>Optimization: String parsing performance.<br>
+        </li>
+        <li>Attention: Select your MySQL text, ctrl + alt + shift + 'B' will back a surprise.<br>
+        </li>
+        <li>Adjustment: The manual of this plugin has been moved to my <a href="http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">website</a>.<br>
+        </li>
+        </ul>
+        </br>
         <li><h1>2.3</h1></li>
         <ul>
         <li>BugFix: Json format bug.</li>
