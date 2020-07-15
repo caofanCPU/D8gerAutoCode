@@ -71,6 +71,9 @@
     <img src="http://file.debuggerpowerzcy.top/power/2020-660X466-D8gerAutoCode.jpeg" /> 
 </div>
 
+### 致谢
+- 感谢 [JetBrains](https://www.jetbrains.com/) 团队的开源证书支持, 本项目将秉承开源精神持续开发
+
 ##### 如何安装
 - IDEA官方插件库安装  
 - [下载插件包](http://file.debuggerpowerzcy.top/power/D8gerAutoCode-2.0.zip)  

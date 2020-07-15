@@ -71,6 +71,9 @@
     <img src="http://file.debuggerpowerzcy.top/power/2020-660X466-D8gerAutoCode.jpeg" /> 
 </div>
 
+### Thanks
+- With [JetBrains](https://www.jetbrains.com/) team's open source certificate supporting, this project will continue to develop in the spirit of open source
+
 ### How to install
 - IDEA official plugin library installation  
 - [Download plugin package](http://file.debuggerpowerzcy.top/power/D8gerAutoCode-2.0.zip)  
