@@ -72,7 +72,7 @@
 </div>
 
 ### Thanks
-- With [JetBrains](https://www.jetbrains.com/) team's open source certificate supporting, this project will continue to develop in the spirit of open source
+- With [![JetBrains](http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg)](https://www.jetbrains.com/idea)  team's open source certificate supporting, this project will continue to develop in the spirit of open source
 
 ### How to install
 - IDEA official plugin library installation  

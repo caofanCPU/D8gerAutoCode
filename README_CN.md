@@ -72,7 +72,8 @@
 </div>
 
 ### 致谢
-- 感谢 [JetBrains](https://www.jetbrains.com/) 团队的开源证书支持, 本项目将秉承开源精神持续开发
+
+- 感谢 [![JetBrains](http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg)](https://www.jetbrains.com/idea) 团队的开源证书支持, 本项目将秉承开源精神持续开发
 
 ##### 如何安装
 - IDEA官方插件库安装  
