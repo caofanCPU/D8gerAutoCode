@@ -36,7 +36,8 @@ dependencies {
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
 //    version '2019.1.4'
-    localPath '/Applications/IntelliJ IDEA.app'
+//    Adjust when toolbox update IDEA app
+    localPath '/Users/D8GER/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/201.8743.1/IntelliJ IDEA.app'
     plugins = ['java'] //Bundled plugin dependencies
     pluginName 'D8gerAutoCode'
     updateSinceUntilBuild false
