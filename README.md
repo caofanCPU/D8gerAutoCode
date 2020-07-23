@@ -7,8 +7,8 @@
 > [中文说明](./README_CN.md)
 
 ### Convention
-- General problem provides standard solutions
-- personalized problem only provides example solutions
+- The general problem provides standard solutions
+- The personalized problem only provides example solutions
 
 ### Original design intention
 - Remove the fixed duplication coding for improving efficiency in development  
@@ -20,14 +20,14 @@
 - Camel-Underline-Uppercase-Uncapitalize-Lowercase can be converted to each other by shortcut `alt` + `shift` + `cmd` + `U`
 - The comments of generated codes support English(Default) | Chinese Simplified(Optional) configuration
 - JSON formatting and single line text conversion, default shortcut `alt`+`shift`+`cmd`+`J` | `S`
-- Generating `data table definition SQL` | `Mo` | `Mapper` | `Service`, single table addition, deletion, modification and search with paging in one click  
+- Generating `data table definition SQL` | `Mo` | `Mapper` | `Handler`, single table addition, deletion, modification and search with paging in one click  
 - Under the help of SwaggerApi generating `Vo` | `Controller` with friendly document description, in addition to this, supporting `Vo` field automatic sorting  
-- For smart coding, you just need one shortcut and the default is `alt`+`shift`+`cmd`+`D`  
+- For smart coding, you just need one shortcut default as `alt`+`shift`+`cmd`+`D`  
 - Supporting customer configuration, for example, specify the author who you are  
 - Reserve easter eggs, you can try to edit the blank file in IDEA and type `d8ger` to get the default configuration template  
 - Reserve easter eggs, edit the blank file in IDEA and enter 'nasa' to get the NASA configuration file template. This is very useful and efficient for handling multi-lines, especially SQL field naming processing.
-- Reserve easter eggs, edit the blank file in IDEA and enter 'regex' to get some commonly used regular expressions. Other code Easter eggs will be added later  
-- For automatic sorting `Vo` field , you just need one shortcut and the default is `alt`+`shift`+`cmd`+`O`  
+- Reserve easter eggs, edit the blank file in IDEA and enter 'regex' to get some commonly used regular expressions. Other code Easter eggs will be added later.  
+- For automatic sorting `Vo` field , you just need one shortcut default as `alt`+`shift`+`cmd`+`O`  
 
 ### Using manual
 1. Create Model Class
@@ -58,13 +58,13 @@
     - If not satisfied just press the shortcut again and again util you are.
 
 6. You will get the following default configuration information  
-    - It is recommended that you change the configuration items  
+    - It's recommended that you change the configuration items  
         - `author` (you can't sign my name for the pits you dug!)  
         - `apiUrlPrefix` (the interface url prefix should be configured as the project interface unified URL prefix)  
-        - generate file output directory under a multi-module project  
+        - generate file output directory under a multi-module project  
     - As for `boolean` configuration items, let you choose which files need to be generated, and specify output directory is optional  
 
-> By the way, these default shortcuts are used in Mac OS, if you use Windows just take `cmd` into `ctrl`.
+> By the way, these default shortcuts used in Mac OS, if you use Windows just take `cmd` into `ctrl`.
 
 ### Contribute
 <div align="center">
@@ -72,7 +72,7 @@
 </div>
 
 ### Thanks
-- With [![JetBrains](http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg)](https://www.jetbrains.com/idea)  team's open source certificate supporting, this project will continue to develop in the spirit of open source
+- With [![JetBrains](http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg)](https://www.jetbrains.com/idea) team's open source certificate supporting, this project will continue to develop in the spirit of open source
 
 ### How to install
 - IDEA official plugin library installation  

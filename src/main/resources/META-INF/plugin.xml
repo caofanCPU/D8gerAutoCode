@@ -6,8 +6,7 @@
     <description>
         <![CDATA[
         <p>
-        智能代码生成利器-流式工作内容去重
-        重复编码老瞎忙,️ 写来写去那几行. 不知工具在何方? 八哥智能一键帮!
+        Java智能代码生成利器. 重复编码老瞎忙,️ 写来写去那几行. 不知工具在何方? 八哥智能一键帮!
         -_-;
         Always busy with repeated coding on working,
         Same lines again and again like loop writing.
@@ -84,6 +83,25 @@
 
     <change-notes>
         <![CDATA[
+        <li><h1>2.5</h1></li>
+        <ul>
+        <li>Addition:<br>
+            <ul>
+            <li>Add 'autoDetectSQLTimeColumn' configuration for supporting disable default generating 'create_time' and 'update_time' column definition in SQL.</li>
+            <li>Add 'mapperBatterThenRepository' configuration for supporting custom mapper annotation in both SpringMVC and SpringBoot.</li>
+            <li>Add 'selectOneByExample' in Mapper.java for supporting query one record.</li>
+            <li>Add 'insertSelectiveWithId' in Mapper.java for supporting insert non null field and the null field will be filled with the database default value.</li>
+            </ul>
+        </li>
+        </li>
+        <li>Optimization: 'cause 'id' is the primary key, all insert operations should exclude 'id' column.<br>
+        </li>
+        <li>BugFix: Generation 'update_time' column definition remove the rare comma.<br>
+        </li>
+        <li>Adjustment: Remove 'ServiceInterface' and 'ServiceImpl', 'cause I think 'Handler' is more suitable.<br>
+        </li>
+        </ul>
+        </br>
         <li><h1>2.4</h1></li>
         <ul>
         <li>Addition: One-click to beauty MySQL, isn't fragrant?<br>
