@@ -3,7 +3,7 @@ package @mapperPackage@;
 import @moExamplePackage@.@MoName@Example;
 import @moPackage@.@MoName@Mo;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Mapper;
+import @MapperAnnotationPackage@;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author @d8Author@
  */
-@Mapper
+@MapperAnnotation@
 public interface @MoName@Mapper {
 
     /**

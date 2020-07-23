@@ -36,8 +36,7 @@ public enum TemplateKeyWordEnum {
     MAPPER_ANNOTATION_PACKAGE_KEY("@MapperAnnotationPackage@"),
     MO_EXAMPLE_PACKAGE_NAME_KEY("@moExamplePackage@"),
     SWAGGER_MO_PACKAGE_NAME_KEY("@swaggerMoPackage@"),
-    SERVICE_INTERFACE_PACKAGE_NAME_KEY("@serviceInterfacePackage@"),
-    SERVICE_IMPLEMENT_PACKAGE_NAME_KEY("@serviceImplPackage@"),
+    HANDLER_PACKAGE_NAME_KEY("@handlerPackage@"),
     CONTROLLER_PACKAGE_NAME_KEY("@controllerPackage@"),
     ;
 

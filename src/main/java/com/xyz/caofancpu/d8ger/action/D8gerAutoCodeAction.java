@@ -135,11 +135,8 @@ public class D8gerAutoCodeAction extends AnAction {
                 case SWAGGER_MO:
                     targetPackageKey = TemplateKeyWordEnum.SWAGGER_MO_PACKAGE_NAME_KEY;
                     break;
-                case MO_SERVICE_INTERFACE:
-                    targetPackageKey = TemplateKeyWordEnum.SERVICE_INTERFACE_PACKAGE_NAME_KEY;
-                    break;
-                case MO_SERVICE_IMPL:
-                    targetPackageKey = TemplateKeyWordEnum.SERVICE_IMPLEMENT_PACKAGE_NAME_KEY;
+                case MO_HANDLER:
+                    targetPackageKey = TemplateKeyWordEnum.HANDLER_PACKAGE_NAME_KEY;
                     break;
                 case MO_CONTROLLER:
                     targetPackageKey = TemplateKeyWordEnum.CONTROLLER_PACKAGE_NAME_KEY;

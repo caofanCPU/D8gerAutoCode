@@ -141,8 +141,7 @@ public class D8gerAutoCoding {
         fileMap.put(KeyEnum.SWAGGER_MO, Pair.of(this.getMoName().concat(ConstantUtil.SWAGGER_MO_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_SWAGGER_VO : AutoCodeTemplate.ZN_TEMPLATE_SWAGGER_VO));
         fileMap.put(KeyEnum.MO_EXAMPLE, Pair.of(this.getMoName().concat(ConstantUtil.MO_EXAMPLE_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_MO_EXAMPLE : AutoCodeTemplate.ZN_TEMPLATE_MO_EXAMPLE));
         fileMap.put(KeyEnum.MO_MAPPER, Pair.of(this.getMoName().concat(ConstantUtil.MO_MAPPER_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_MAPPER : AutoCodeTemplate.ZN_TEMPLATE_MAPPER));
-        fileMap.put(KeyEnum.MO_SERVICE_INTERFACE, Pair.of(this.getMoName().concat(ConstantUtil.MO_SERVICE_INTERFACE_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_SERVICE_INTERFACE : AutoCodeTemplate.ZN_TEMPLATE_SERVICE_INTERFACE));
-        fileMap.put(KeyEnum.MO_SERVICE_IMPL, Pair.of(this.getMoName().concat(ConstantUtil.MO_SERVICE_IMPL_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_SERVICE_IMPL : AutoCodeTemplate.ZN_TEMPLATE_SERVICE_IMPL));
+        fileMap.put(KeyEnum.MO_HANDLER, Pair.of(this.getMoName().concat(ConstantUtil.MO_SERVICE_IMPL_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_HANDLER : AutoCodeTemplate.ZN_TEMPLATE_HANDLER));
         fileMap.put(KeyEnum.MO_CONTROLLER, Pair.of(this.getMoName().concat(ConstantUtil.MO_CONTROLLER_NAME_SUFFIX).concat(ConstantUtil.JAVA_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_CONTROLLER : AutoCodeTemplate.ZN_TEMPLATE_CONTROLLER));
         fileMap.put(KeyEnum.MO_MAPPER_XML, Pair.of(this.getMoName().concat(ConstantUtil.MO_MAPPER_NAME_SUFFIX).concat(ConstantUtil.XML_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_MAPPER_XML : AutoCodeTemplate.ZN_TEMPLATE_MAPPER_XML));
         fileMap.put(KeyEnum.MO_SQL, Pair.of(this.getMoName().concat(ConstantUtil.SQL_FILE_SUFFIX), AutoCodeTemplate.IS_EN_LOCALE ? AutoCodeTemplate.TEMPLATE_MO_SQL : AutoCodeTemplate.ZN_TEMPLATE_MO_SQL));
@@ -161,8 +160,7 @@ public class D8gerAutoCoding {
         keyEnumList.add(KeyEnum.SWAGGER_MO);
         keyEnumList.add(KeyEnum.MO_EXAMPLE);
         keyEnumList.add(KeyEnum.MO_MAPPER);
-        keyEnumList.add(KeyEnum.MO_SERVICE_INTERFACE);
-        keyEnumList.add(KeyEnum.MO_SERVICE_IMPL);
+        keyEnumList.add(KeyEnum.MO_HANDLER);
         keyEnumList.add(KeyEnum.MO_CONTROLLER);
         keyEnumList.add(KeyEnum.MO_MAPPER_XML);
         keyEnumList.add(KeyEnum.MO_SQL);
@@ -335,16 +333,8 @@ public class D8gerAutoCoding {
                 keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.UNCAPITALLIZE_MO_NAME_KEY);
                 break;
-            case MO_SERVICE_INTERFACE:
-                keyWordEnumList.add(TemplateKeyWordEnum.SERVICE_INTERFACE_PACKAGE_NAME_KEY);
-                keyWordEnumList.add(TemplateKeyWordEnum.MO_PACKAGE_NAME_KEY);
-                keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
-                keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
-                keyWordEnumList.add(TemplateKeyWordEnum.UNCAPITALLIZE_MO_NAME_KEY);
-                break;
-            case MO_SERVICE_IMPL:
-                keyWordEnumList.add(TemplateKeyWordEnum.SERVICE_IMPLEMENT_PACKAGE_NAME_KEY);
-                keyWordEnumList.add(TemplateKeyWordEnum.SERVICE_INTERFACE_PACKAGE_NAME_KEY);
+            case MO_HANDLER:
+                keyWordEnumList.add(TemplateKeyWordEnum.HANDLER_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MAPPER_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
@@ -353,7 +343,7 @@ public class D8gerAutoCoding {
                 break;
             case MO_CONTROLLER:
                 keyWordEnumList.add(TemplateKeyWordEnum.CONTROLLER_PACKAGE_NAME_KEY);
-                keyWordEnumList.add(TemplateKeyWordEnum.SERVICE_INTERFACE_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.HANDLER_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.SWAGGER_MO_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);

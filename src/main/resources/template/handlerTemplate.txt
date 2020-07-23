@@ -1,6 +1,5 @@
-package @serviceImplPackage@;
+package @handlerPackage@;
 
-import @serviceInterfacePackage@.@MoName@Service;
 import @mapperPackage@.@MoName@Mapper;
 import @moPackage@.@MoName@Mo;
 import com.github.pagehelper.PageHelper;
@@ -12,13 +11,13 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * @MoName@Mo对应的ServiceImpl
+ * @MoName@Mo对应的Handler
  *
  * @author @d8Author@
  */
 @Service
 @Slf4j
-public class @MoName@ServiceImpl implements @MoName@Service {
+public class @MoName@Handler {
 
     @Resource
     private @MoName@Mapper @uncapitallizeMoName@Mapper;
@@ -29,7 +28,6 @@ public class @MoName@ServiceImpl implements @MoName@Service {
      * @param @uncapitallizeMoName@Mo
      * @return
      */
-    @Override
     public int add(@MoName@Mo @uncapitallizeMoName@Mo) {
         return @uncapitallizeMoName@Mapper.insertSelectiveWithId(@uncapitallizeMoName@Mo);
     }
@@ -40,7 +38,6 @@ public class @MoName@ServiceImpl implements @MoName@Service {
      * @param @uncapitallizeMoName@MoList
      * @return
      */
-    @Override
     public int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList) {
         @uncapitallizeMoName@MoList.forEach(item -> item.setId(null));
         return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@MoList);
@@ -53,7 +50,6 @@ public class @MoName@ServiceImpl implements @MoName@Service {
      * @param pageParams 可选分页参数
      * @return
      */
-    @Override
     public List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo, Integer... pageParams) {
         if (Objects.nonNull(pageParams) && pageParams.length > 0) {
             int pageNum = pageParams[0];
@@ -69,7 +65,6 @@ public class @MoName@ServiceImpl implements @MoName@Service {
      * @param @uncapitallizeMoName@Mo
      * @return
      */
-    @Override
     public int updateSelectiveById(@MoName@Mo @uncapitallizeMoName@Mo) {
         return @uncapitallizeMoName@Mapper.updateByPrimaryKeySelective(@uncapitallizeMoName@Mo);
     }
@@ -80,7 +75,6 @@ public class @MoName@ServiceImpl implements @MoName@Service {
      * @param @uncapitallizeMoName@MoList
      * @return
      */
-    @Override
     public int batchUpdateSelectiveById(List<@MoName@Mo> @uncapitallizeMoName@MoList) {
         return @uncapitallizeMoName@Mapper.updateBatchByPrimaryKeySelective(@uncapitallizeMoName@MoList);
     }
@@ -91,9 +85,18 @@ public class @MoName@ServiceImpl implements @MoName@Service {
      * @param id
      * @return
      */
-    @Override
     public <T extends Number> int delete(T id) {
         return @uncapitallizeMoName@Mapper.deleteByPrimaryKey(id);
+    }
+
+    /**
+     * 根据id查询单条记录
+     *
+     * @param id
+     * @return
+     */
+    public <T extends Number> int selectByPrimaryKey(T id) {
+        return @uncapitallizeMoName@Mapper.selectByPrimaryKey(id);
     }
 
 }

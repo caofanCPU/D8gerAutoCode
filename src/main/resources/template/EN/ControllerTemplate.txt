@@ -1,6 +1,6 @@
 package @controllerPackage@;
 
-import @serviceInterfacePackage@.@MoName@Service;
+import @handlerPackage@.@MoName@Handler;
 import @moPackage@.@MoName@Mo;
 import @swaggerMoPackage@.@MoName@Vo;
 import com.alibaba.fastjson.JSONObject;
@@ -32,7 +32,7 @@ import java.util.List;
 public class @MoName@Controller {
 
     @Resource
-    private @MoName@Service @uncapitallizeMoName@Service;
+    private @MoName@Handler @uncapitallizeMoName@Handler;
 
     @PostMapping(value = "@apiUrlPrefix@/@uncapitallizeMoName@Mo/add")
     @ApiOperationSupport(order = 1)
@@ -40,7 +40,7 @@ public class @MoName@Controller {
     public Object add(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {
         // convert Vo to Mo
         @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);
-        @uncapitallizeMoName@Service.add(@uncapitallizeMoName@Mo);
+        @uncapitallizeMoName@Handler.add(@uncapitallizeMoName@Mo);
         return @uncapitallizeMoName@Mo.getId();
     }
 
@@ -52,7 +52,7 @@ public class @MoName@Controller {
         for (@MoName@Vo @uncapitallizeMoName@Vo : @uncapitallizeMoName@VoList) {
             @uncapitallizeMoName@MoList.add(JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class));
         }
-        return @uncapitallizeMoName@Service.batchAdd(@uncapitallizeMoName@MoList);
+        return @uncapitallizeMoName@Handler.batchAdd(@uncapitallizeMoName@MoList);
     }
 
     @PostMapping(value = "@apiUrlPrefix@/@uncapitallizeMoName@Mo/query@MoName@MoList")
@@ -61,7 +61,7 @@ public class @MoName@Controller {
     public Object query@MoName@MoList(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {
         // convert Vo to Mo
         @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);
-        return @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo);
+        return @uncapitallizeMoName@Handler.query@MoName@MoList(@uncapitallizeMoName@Mo);
     }
 
     @PostMapping(value = "@apiUrlPrefix@/@uncapitallizeMoName@Mo/query@MoName@MoPage")
@@ -70,7 +70,7 @@ public class @MoName@Controller {
     public Object query@MoName@MoPage(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {
         // convert Vo to Mo
         @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);
-        List<@MoName@Mo> result@MoName@MoList = @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo, @uncapitallizeMoName@Vo.getPageNum(), @uncapitallizeMoName@Vo.getPageSize());
+        List<@MoName@Mo> result@MoName@MoList = @uncapitallizeMoName@Handler.query@MoName@MoList(@uncapitallizeMoName@Mo, @uncapitallizeMoName@Vo.getPageNum(), @uncapitallizeMoName@Vo.getPageSize());
         return PageInfo.of(result@MoName@MoList);
     }
 
@@ -80,7 +80,7 @@ public class @MoName@Controller {
     public Object update(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {
         // convert Vo to Mo
         @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);
-        return @uncapitallizeMoName@Service.updateSelectiveById(@uncapitallizeMoName@Mo);
+        return @uncapitallizeMoName@Handler.updateSelectiveById(@uncapitallizeMoName@Mo);
     }
 
     @PostMapping(value = "@apiUrlPrefix@/@uncapitallizeMoName@Mo/batchUpdate")
@@ -90,14 +90,14 @@ public class @MoName@Controller {
         // convert Vo to Mo
         List<@MoName@Mo> @uncapitallizeMoName@List = new ArrayList<>(@uncapitallizeMoName@VoList.size());
         @uncapitallizeMoName@VoList.forEach(item -> @uncapitallizeMoName@List.add(JSONObject.parseObject(JSONObject.toJSONString(item), @MoName@Mo.class)));
-        return @uncapitallizeMoName@Service.batchUpdateSelectiveById(@uncapitallizeMoName@List);
+        return @uncapitallizeMoName@Handler.batchUpdateSelectiveById(@uncapitallizeMoName@List);
     }
 
     @PostMapping(value = "@apiUrlPrefix@/@uncapitallizeMoName@Mo/delete")
     @ApiOperationSupport(order = 6)
     @ApiOperation(value = "@MoName@Mo-DeleteRecord")
     public Object delete(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {
-        return @uncapitallizeMoName@Service.delete(@uncapitallizeMoName@Vo.getId());
+        return @uncapitallizeMoName@Handler.delete(@uncapitallizeMoName@Vo.getId());
     }
 
 

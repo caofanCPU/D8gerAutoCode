@@ -102,7 +102,7 @@ public class AutoCodeTemplate {
             "import @moExamplePackage@.@MoName@Example;\n" +
             "import @moPackage@.@MoName@Mo;\n" +
             "import org.apache.ibatis.annotations.Param;\n" +
-            "import org.apache.ibatis.annotations.Mapper;\n" +
+            "import @MapperAnnotationPackage@;\n" +
             "\n" +
             "import java.util.List;\n" +
             "\n" +
@@ -111,7 +111,7 @@ public class AutoCodeTemplate {
             " *\n" +
             " * @author @d8Author@\n" +
             " */\n" +
-            "@Mapper\n" +
+            "@MapperAnnotation@\n" +
             "public interface @MoName@Mapper {\n" +
             "\n" +
             "    /**\n" +
@@ -656,77 +656,10 @@ public class AutoCodeTemplate {
             "</mapper>");
 
     /**
-     * Service interface template string
-     */
-    public static StringBuilder ZN_TEMPLATE_SERVICE_INTERFACE = new StringBuilder("package @serviceInterfacePackage@;\n" +
-            "\n" +
-            "import @moPackage@.@MoName@Mo;\n" +
-            "import java.util.List;\n" +
-            "\n" +
-            "/**\n" +
-            " * @MoName@Mo对应的Service接口定义\n" +
-            " *\n" +
-            " * @author @d8Author@\n" +
-            " */\n" +
-            "public interface @MoName@Service {\n" +
-            "\n" +
-            "    /**\n" +
-            "     * 插入单条记录\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@Mo\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    int add(@MoName@Mo @uncapitallizeMoName@Mo);\n" +
-            "\n" +
-            "    /**\n" +
-            "     * 批量插入\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@MoList\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList);\n" +
-            "\n" +
-            "    /**\n" +
-            "     * 查询列表, 如果携带分页参数则返回分页后的列表\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@Mo\n" +
-            "     * @param pageParams 可选分页参数\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo, Integer... pageParams);\n" +
-            "\n" +
-            "    /**\n" +
-            "     * 根据id更新非null字段\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@Mo\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    int updateSelectiveById(@MoName@Mo @uncapitallizeMoName@Mo);\n" +
-            "\n" +
-            "    /**\n" +
-            "     * 批量根据id更新非null字段\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@MoList\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    int batchUpdateSelectiveById(List<@MoName@Mo> @uncapitallizeMoName@MoList);\n" +
-            "\n" +
-            "    /**\n" +
-            "     * 根据id物理删除\n" +
-            "     *\n" +
-            "     * @param id\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    <T extends Number> int delete(T id);\n" +
-            "\n" +
-            "}");
-
-    /**
      * Service implement template string
      */
-    public static StringBuilder ZN_TEMPLATE_SERVICE_IMPL = new StringBuilder("package @serviceImplPackage@;\n" +
+    public static StringBuilder ZN_TEMPLATE_HANDLER = new StringBuilder("package @handlerPackage@;\n" +
             "\n" +
-            "import @serviceInterfacePackage@.@MoName@Service;\n" +
             "import @mapperPackage@.@MoName@Mapper;\n" +
             "import @moPackage@.@MoName@Mo;\n" +
             "import com.github.pagehelper.PageHelper;\n" +
@@ -738,13 +671,13 @@ public class AutoCodeTemplate {
             "import java.util.Objects;\n" +
             "\n" +
             "/**\n" +
-            " * @MoName@Mo对应的ServiceImpl\n" +
+            " * @MoName@Mo对应的Handler\n" +
             " *\n" +
             " * @author @d8Author@\n" +
             " */\n" +
             "@Service\n" +
             "@Slf4j\n" +
-            "public class @MoName@ServiceImpl implements @MoName@Service {\n" +
+            "public class @MoName@Handler {\n" +
             "\n" +
             "    @Resource\n" +
             "    private @MoName@Mapper @uncapitallizeMoName@Mapper;\n" +
@@ -755,7 +688,6 @@ public class AutoCodeTemplate {
             "     * @param @uncapitallizeMoName@Mo\n" +
             "     * @return\n" +
             "     */\n" +
-            "    @Override\n" +
             "    public int add(@MoName@Mo @uncapitallizeMoName@Mo) {\n" +
             "        return @uncapitallizeMoName@Mapper.insertSelectiveWithId(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
@@ -766,7 +698,6 @@ public class AutoCodeTemplate {
             "     * @param @uncapitallizeMoName@MoList\n" +
             "     * @return\n" +
             "     */\n" +
-            "    @Override\n" +
             "    public int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList) {\n" +
             "        @uncapitallizeMoName@MoList.forEach(item -> item.setId(null));\n" +
             "        return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@MoList);\n" +
@@ -779,7 +710,6 @@ public class AutoCodeTemplate {
             "     * @param pageParams 可选分页参数\n" +
             "     * @return\n" +
             "     */\n" +
-            "    @Override\n" +
             "    public List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo, Integer... pageParams) {\n" +
             "        if (Objects.nonNull(pageParams) && pageParams.length > 0) {\n" +
             "            int pageNum = pageParams[0];\n" +
@@ -795,7 +725,6 @@ public class AutoCodeTemplate {
             "     * @param @uncapitallizeMoName@Mo\n" +
             "     * @return\n" +
             "     */\n" +
-            "    @Override\n" +
             "    public int updateSelectiveById(@MoName@Mo @uncapitallizeMoName@Mo) {\n" +
             "        return @uncapitallizeMoName@Mapper.updateByPrimaryKeySelective(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
@@ -806,7 +735,6 @@ public class AutoCodeTemplate {
             "     * @param @uncapitallizeMoName@MoList\n" +
             "     * @return\n" +
             "     */\n" +
-            "    @Override\n" +
             "    public int batchUpdateSelectiveById(List<@MoName@Mo> @uncapitallizeMoName@MoList) {\n" +
             "        return @uncapitallizeMoName@Mapper.updateBatchByPrimaryKeySelective(@uncapitallizeMoName@MoList);\n" +
             "    }\n" +
@@ -817,9 +745,18 @@ public class AutoCodeTemplate {
             "     * @param id\n" +
             "     * @return\n" +
             "     */\n" +
-            "    @Override\n" +
             "    public <T extends Number> int delete(T id) {\n" +
             "        return @uncapitallizeMoName@Mapper.deleteByPrimaryKey(id);\n" +
+            "    }\n" +
+            "\n" +
+            "    /**\n" +
+            "     * 根据id查询单条记录\n" +
+            "     *\n" +
+            "     * @param id\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    public <T extends Number> int selectByPrimaryKey(T id) {\n" +
+            "        return @uncapitallizeMoName@Mapper.selectByPrimaryKey(id);\n" +
             "    }\n" +
             "\n" +
             "}");
@@ -829,7 +766,7 @@ public class AutoCodeTemplate {
      */
     public static StringBuilder ZN_TEMPLATE_CONTROLLER = new StringBuilder("package @controllerPackage@;\n" +
             "\n" +
-            "import @serviceInterfacePackage@.@MoName@Service;\n" +
+            "import @handlerPackage@.@MoName@Handler;\n" +
             "import @moPackage@.@MoName@Mo;\n" +
             "import @swaggerMoPackage@.@MoName@Vo;\n" +
             "import com.alibaba.fastjson.JSONObject;\n" +
@@ -861,7 +798,7 @@ public class AutoCodeTemplate {
             "public class @MoName@Controller {\n" +
             "\n" +
             "    @Resource\n" +
-            "    private @MoName@Service @uncapitallizeMoName@Service;\n" +
+            "    private @MoName@Handler @uncapitallizeMoName@Handler;\n" +
             "\n" +
             "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/add\")\n" +
             "    @ApiOperationSupport(order = 1)\n" +
@@ -869,7 +806,7 @@ public class AutoCodeTemplate {
             "    public Object add(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
             "        // 转换数据\n" +
             "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
-            "        @uncapitallizeMoName@Service.add(@uncapitallizeMoName@Mo);\n" +
+            "        @uncapitallizeMoName@Handler.add(@uncapitallizeMoName@Mo);\n" +
             "        return @uncapitallizeMoName@Mo.getId();\n" +
             "    }\n" +
             "\n" +
@@ -881,7 +818,7 @@ public class AutoCodeTemplate {
             "        for (@MoName@Vo @uncapitallizeMoName@Vo : @uncapitallizeMoName@VoList) {\n" +
             "            @uncapitallizeMoName@MoList.add(JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class));\n" +
             "        }\n" +
-            "        return @uncapitallizeMoName@Service.batchAdd(@uncapitallizeMoName@MoList);\n" +
+            "        return @uncapitallizeMoName@Handler.batchAdd(@uncapitallizeMoName@MoList);\n" +
             "    }\n" +
             "\n" +
             "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/query@MoName@MoList\")\n" +
@@ -890,7 +827,7 @@ public class AutoCodeTemplate {
             "    public Object query@MoName@MoList(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
             "        // 转换数据\n" +
             "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
-            "        return @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo);\n" +
+            "        return @uncapitallizeMoName@Handler.query@MoName@MoList(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
             "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/query@MoName@MoPage\")\n" +
@@ -899,7 +836,7 @@ public class AutoCodeTemplate {
             "    public Object query@MoName@MoPage(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
             "        // 转换数据\n" +
             "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
-            "        List<@MoName@Mo> result@MoName@MoList = @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo, @uncapitallizeMoName@Vo.getPageNum(), @uncapitallizeMoName@Vo.getPageSize());\n" +
+            "        List<@MoName@Mo> result@MoName@MoList = @uncapitallizeMoName@Handler.query@MoName@MoList(@uncapitallizeMoName@Mo, @uncapitallizeMoName@Vo.getPageNum(), @uncapitallizeMoName@Vo.getPageSize());\n" +
             "        return PageInfo.of(result@MoName@MoList);\n" +
             "    }\n" +
             "\n" +
@@ -909,7 +846,7 @@ public class AutoCodeTemplate {
             "    public Object update(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
             "        // 转换数据\n" +
             "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
-            "        return @uncapitallizeMoName@Service.updateSelectiveById(@uncapitallizeMoName@Mo);\n" +
+            "        return @uncapitallizeMoName@Handler.updateSelectiveById(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
             "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/batchUpdate\")\n" +
@@ -919,14 +856,14 @@ public class AutoCodeTemplate {
             "        // 转换数据\n" +
             "        List<@MoName@Mo> @uncapitallizeMoName@List = new ArrayList<>(@uncapitallizeMoName@VoList.size());\n" +
             "        @uncapitallizeMoName@VoList.forEach(item -> @uncapitallizeMoName@List.add(JSONObject.parseObject(JSONObject.toJSONString(item), @MoName@Mo.class)));\n" +
-            "        return @uncapitallizeMoName@Service.batchUpdateSelectiveById(@uncapitallizeMoName@List);\n" +
+            "        return @uncapitallizeMoName@Handler.batchUpdateSelectiveById(@uncapitallizeMoName@List);\n" +
             "    }\n" +
             "\n" +
             "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/delete\")\n" +
             "    @ApiOperationSupport(order = 6)\n" +
             "    @ApiOperation(value = \"@MoName@Mo删除记录\")\n" +
             "    public Object delete(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
-            "        return @uncapitallizeMoName@Service.delete(@uncapitallizeMoName@Vo.getId());\n" +
+            "        return @uncapitallizeMoName@Handler.delete(@uncapitallizeMoName@Vo.getId());\n" +
             "    }\n" +
             "\n" +
             "\n" +
@@ -1014,7 +951,7 @@ public class AutoCodeTemplate {
             "import @moExamplePackage@.@MoName@Example;\n" +
             "import @moPackage@.@MoName@Mo;\n" +
             "import org.apache.ibatis.annotations.Param;\n" +
-            "import org.apache.ibatis.annotations.Mapper;\n" +
+            "import @MapperAnnotationPackage@;\n" +
             "\n" +
             "import java.util.List;\n" +
             "\n" +
@@ -1023,7 +960,7 @@ public class AutoCodeTemplate {
             " *\n" +
             " * @author @d8Author@\n" +
             " */\n" +
-            "@Mapper\n" +
+            "@MapperAnnotation@\n" +
             "public interface @MoName@Mapper {\n" +
             "\n" +
             "    /**\n" +
@@ -1114,6 +1051,23 @@ public class AutoCodeTemplate {
             "     * @return\n" +
             "     */\n" +
             "    <T extends Number> int deleteByPrimaryKey(T id);\n" +
+            "\n" +
+            "    /**\n" +
+            "     * Query just one record by criteria, supporting all conditions for querying a single table\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@Example\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    @MoName@Mo selectOneByExample(@MoName@Example @uncapitallizeMoName@Example);\n" +
+            "\n" +
+            "    /**\n" +
+            "     * Add a single record with nonNull field, and set the ID for the input Mo parameter\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@Mo\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    int insertSelectiveWithId(@MoName@Mo @uncapitallizeMoName@Mo);\n" +
+            "\n" +
             "}");
     /**
      * Example template string
@@ -1135,12 +1089,14 @@ public class AutoCodeTemplate {
             "\n" +
             "    protected String orderByClause;\n" +
             "\n" +
+            "    protected Integer limit;\n" +
+            "\n" +
             "    protected boolean distinct;\n" +
             "\n" +
-            "    protected List<Criteria> oredCriteria;\n" +
+            "    protected List<Criteria> conditionCriteria;\n" +
             "\n" +
             "    public @MoName@Example() {\n" +
-            "        oredCriteria = new ArrayList<>();\n" +
+            "        conditionCriteria = new ArrayList<>();\n" +
             "    }\n" +
             "\n" +
             "    public void setOrderByClause(String orderByClause) {\n" +
@@ -1151,6 +1107,16 @@ public class AutoCodeTemplate {
             "        return orderByClause;\n" +
             "    }\n" +
             "\n" +
+            "    public Integer getLimit() {\n" +
+            "        return limit;\n" +
+            "    }\n" +
+            "\n" +
+            "    public void setLimit(Integer limit) {\n" +
+            "        if (limit != null && limit > 0) {\n" +
+            "            this.limit = limit;\n" +
+            "        }\n" +
+            "    }\n" +
+            "\n" +
             "    public void setDistinct(boolean distinct) {\n" +
             "        this.distinct = distinct;\n" +
             "    }\n" +
@@ -1159,24 +1125,24 @@ public class AutoCodeTemplate {
             "        return distinct;\n" +
             "    }\n" +
             "\n" +
-            "    public List<Criteria> getOredCriteria() {\n" +
-            "        return oredCriteria;\n" +
+            "    public List<Criteria> getConditionCriteria() {\n" +
+            "        return conditionCriteria;\n" +
             "    }\n" +
             "\n" +
             "    public void or(Criteria criteria) {\n" +
-            "        oredCriteria.add(criteria);\n" +
+            "        conditionCriteria.add(criteria);\n" +
             "    }\n" +
             "\n" +
             "    public Criteria or() {\n" +
             "        Criteria criteria = createCriteriaInternal();\n" +
-            "        oredCriteria.add(criteria);\n" +
+            "        conditionCriteria.add(criteria);\n" +
             "        return criteria;\n" +
             "    }\n" +
             "\n" +
             "    public Criteria createCriteria() {\n" +
             "        Criteria criteria = createCriteriaInternal();\n" +
-            "        if (oredCriteria.size() == 0) {\n" +
-            "            oredCriteria.add(criteria);\n" +
+            "        if (conditionCriteria.size() == 0) {\n" +
+            "            conditionCriteria.add(criteria);\n" +
             "        }\n" +
             "        return criteria;\n" +
             "    }\n" +
@@ -1186,7 +1152,7 @@ public class AutoCodeTemplate {
             "    }\n" +
             "\n" +
             "    public void clear() {\n" +
-            "        oredCriteria.clear();\n" +
+            "        conditionCriteria.clear();\n" +
             "        orderByClause = null;\n" +
             "        distinct = false;\n" +
             "    }\n" +
@@ -1337,22 +1303,22 @@ public class AutoCodeTemplate {
             "    <!-- Conditions during query operation -->\n" +
             "    <sql id=\"Example_Where_Clause\">\n" +
             "        <where>\n" +
-            "            <foreach collection=\"oredCriteria\" item=\"criteria\" separator=\"or\">\n" +
+            "            <foreach collection=\"conditionCriteria\" item=\"criteria\" separator=\"or\">\n" +
             "                <if test=\"criteria.valid\">\n" +
             "                    <trim prefix=\"(\" prefixOverrides=\"and\" suffix=\")\">\n" +
             "                        <foreach collection=\"criteria.criteria\" item=\"criterion\">\n" +
             "                            <choose>\n" +
             "                                <when test=\"criterion.noValue\">\n" +
-            "                                    AND ${criterion.condition}\n" +
+            "                                    AND #{criterion.condition}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.singleValue\">\n" +
-            "                                    AND ${criterion.condition} #{criterion.value}\n" +
+            "                                    AND #{criterion.condition} #{criterion.value}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.betweenValue\">\n" +
-            "                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
+            "                                    AND #{criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.listValue\">\n" +
-            "                                    AND ${criterion.condition}\n" +
+            "                                    AND #{criterion.condition}\n" +
             "                                    <foreach close=\")\" collection=\"criterion.value\" item=\"listItem\" open=\"(\" separator=\",\">\n" +
             "                                        #{listItem}\n" +
             "                                    </foreach>\n" +
@@ -1368,22 +1334,22 @@ public class AutoCodeTemplate {
             "    <!-- Conditions during update operation -->\n" +
             "    <sql id=\"Update_By_Example_Where_Clause\">\n" +
             "        <where>\n" +
-            "            <foreach collection=\"example.oredCriteria\" item=\"criteria\" separator=\"or\">\n" +
+            "            <foreach collection=\"example.conditionCriteria\" item=\"criteria\" separator=\"or\">\n" +
             "                <if test=\"criteria.valid\">\n" +
             "                    <trim prefix=\"(\" prefixOverrides=\"and\" suffix=\")\">\n" +
             "                        <foreach collection=\"criteria.criteria\" item=\"criterion\">\n" +
             "                            <choose>\n" +
             "                                <when test=\"criterion.noValue\">\n" +
-            "                                    AND ${criterion.condition}\n" +
+            "                                    AND #{criterion.condition}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.singleValue\">\n" +
-            "                                    AND ${criterion.condition} #{criterion.value}\n" +
+            "                                    AND #{criterion.condition} #{criterion.value}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.betweenValue\">\n" +
-            "                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
+            "                                    AND #{criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.listValue\">\n" +
-            "                                    AND ${criterion.condition}\n" +
+            "                                    AND #{criterion.condition}\n" +
             "                                    <foreach close=\")\" collection=\"criterion.value\" item=\"listItem\" open=\"(\" separator=\",\">\n" +
             "                                        #{listItem}\n" +
             "                                    </foreach>\n" +
@@ -1408,7 +1374,10 @@ public class AutoCodeTemplate {
             "            <include refid=\"Example_Where_Clause\"/>\n" +
             "        </if>\n" +
             "        <if test=\"orderByClause != null\">\n" +
-            "            ORDER BY ${orderByClause}\n" +
+            "            ORDER BY #{orderByClause}\n" +
+            "        </if>\n" +
+            "        <if test=\"limit != null\">\n" +
+            "            LIMIT #{limit}\n" +
             "        </if>\n" +
             "    </select>\n" +
             "\n" +
@@ -1504,78 +1473,40 @@ public class AutoCodeTemplate {
             "        DELETE FROM `@mo_table_name@` WHERE `id` = #{id}\n" +
             "    </delete>\n" +
             "\n" +
+            "    <!-- 12.Query just one record by criteria -->\n" +
+            "    <select id=\"selectOneByExample\" parameterType=\"@moExamplePackage@.@MoName@Example\" resultType=\"@moPackage@.@MoName@Mo\">\n" +
+            "        SELECT\n" +
+            "        <if test=\"distinct\">\n" +
+            "            DISTINCT\n" +
+            "        </if>\n" +
+            "@SelectBaseColumnList@\n" +
+            "        FROM `@mo_table_name@`\n" +
+            "        <if test=\"_parameter != null\">\n" +
+            "            <include refid=\"Example_Where_Clause\"/>\n" +
+            "        </if>\n" +
+            "        <if test=\"orderByClause != null\">\n" +
+            "            ORDER BY #{orderByClause}\n" +
+            "        </if>\n" +
+            "        LIMIT 1\n" +
+            "    </select>\n" +
+            "\n" +
+            "    <!-- 13.Add a single record with nonNull field, and return the ID -->\n" +
+            "    <insert id=\"insertSelectiveWithId\" parameterType=\"@moPackage@.@MoName@Mo\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
+            "        INSERT INTO `@mo_table_name@`\n" +
+            "        <trim prefix=\"(\" suffix=\")\" suffixOverrides=\",\">\n" +
+            "@NonNullColumnList@\n" +
+            "        </trim>\n" +
+            "        <trim prefix=\"VALUES (\" suffix=\")\" suffixOverrides=\",\">\n" +
+            "@NonNullInsertField@\n" +
+            "        </trim>\n" +
+            "    </insert>\n" +
             "</mapper>");
-    /**
-     * Service interface template string
-     */
-    public static StringBuilder TEMPLATE_SERVICE_INTERFACE = new StringBuilder("package @serviceInterfacePackage@;\n" +
-            "\n" +
-            "import @moPackage@.@MoName@Mo;\n" +
-            "import java.util.List;\n" +
-            "\n" +
-            "/**\n" +
-            " * @MoName@MoService Interface Definition\n" +
-            " *\n" +
-            " * @author @d8Author@\n" +
-            " */\n" +
-            "public interface @MoName@Service {\n" +
-            "\n" +
-            "    /**\n" +
-            "     * Insert a record\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@Mo\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    int add(@MoName@Mo @uncapitallizeMoName@Mo);\n" +
-            "\n" +
-            "    /**\n" +
-            "     * Batch insert records\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@MoList\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList);\n" +
-            "\n" +
-            "    /**\n" +
-            "     * Query list, if the paging parameter is carried, return the list after paging\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@Mo\n" +
-            "     * @param pageParams Optional paging parameters\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo, Integer... pageParams);\n" +
-            "\n" +
-            "    /**\n" +
-            "     * Update non-null fields by ID for a record\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@Mo\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    int updateSelectiveById(@MoName@Mo @uncapitallizeMoName@Mo);\n" +
-            "\n" +
-            "    /**\n" +
-            "     * Batch Update non-nulls field by ID for multi-records\n" +
-            "     *\n" +
-            "     * @param @uncapitallizeMoName@MoList\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    int batchUpdateSelectiveById(List<@MoName@Mo> @uncapitallizeMoName@MoList);\n" +
-            "\n" +
-            "    /**\n" +
-            "     * Delete a record by ID\n" +
-            "     *\n" +
-            "     * @param id\n" +
-            "     * @return\n" +
-            "     */\n" +
-            "    <T extends Number> int delete(T id);\n" +
-            "\n" +
-            "}");
+
     /**
      * Service implement template string
      */
-    public static StringBuilder TEMPLATE_SERVICE_IMPL = new StringBuilder("package @serviceImplPackage@;\n" +
+    public static StringBuilder TEMPLATE_HANDLER = new StringBuilder("package @handlerPackage@;\n" +
             "\n" +
-            "import @serviceInterfacePackage@.@MoName@Service;\n" +
             "import @mapperPackage@.@MoName@Mapper;\n" +
             "import @moPackage@.@MoName@Mo;\n" +
             "import com.github.pagehelper.PageHelper;\n" +
@@ -1587,13 +1518,13 @@ public class AutoCodeTemplate {
             "import java.util.Objects;\n" +
             "\n" +
             "/**\n" +
-            " * @MoName@MoService Implement Class\n" +
+            " * @MoName@Handler\n" +
             " *\n" +
             " * @author @d8Author@\n" +
             " */\n" +
             "@Service\n" +
             "@Slf4j\n" +
-            "public class @MoName@ServiceImpl implements @MoName@Service {\n" +
+            "public class @MoName@Handler {\n" +
             "\n" +
             "    @Resource\n" +
             "    private @MoName@Mapper @uncapitallizeMoName@Mapper;\n" +
@@ -1604,10 +1535,8 @@ public class AutoCodeTemplate {
             "     * @param @uncapitallizeMoName@Mo\n" +
             "     * @return\n" +
             "     */\n" +
-            "    @Override\n" +
             "    public int add(@MoName@Mo @uncapitallizeMoName@Mo) {\n" +
-            "        @uncapitallizeMoName@Mo.setId(null);\n" +
-            "        return @uncapitallizeMoName@Mapper.insertWithId(@uncapitallizeMoName@Mo);\n" +
+            "        return @uncapitallizeMoName@Mapper.insertSelectiveWithId(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
             "    /**\n" +
@@ -1616,7 +1545,6 @@ public class AutoCodeTemplate {
             "     * @param @uncapitallizeMoName@MoList\n" +
             "     * @return\n" +
             "     */\n" +
-            "    @Override\n" +
             "    public int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList) {\n" +
             "        @uncapitallizeMoName@MoList.forEach(item -> item.setId(null));\n" +
             "        return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@MoList);\n" +
@@ -1629,7 +1557,6 @@ public class AutoCodeTemplate {
             "     * @param pageParams Optional paging parameters\n" +
             "     * @return\n" +
             "     */\n" +
-            "    @Override\n" +
             "    public List<@MoName@Mo> query@MoName@MoList(@MoName@Mo @uncapitallizeMoName@Mo, Integer... pageParams) {\n" +
             "        if (Objects.nonNull(pageParams) && pageParams.length > 0) {\n" +
             "            int pageNum = pageParams[0];\n" +
@@ -1645,7 +1572,6 @@ public class AutoCodeTemplate {
             "     * @param @uncapitallizeMoName@Mo\n" +
             "     * @return\n" +
             "     */\n" +
-            "    @Override\n" +
             "    public int updateSelectiveById(@MoName@Mo @uncapitallizeMoName@Mo) {\n" +
             "        return @uncapitallizeMoName@Mapper.updateByPrimaryKeySelective(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
@@ -1656,7 +1582,6 @@ public class AutoCodeTemplate {
             "     * @param @uncapitallizeMoName@MoList\n" +
             "     * @return\n" +
             "     */\n" +
-            "    @Override\n" +
             "    public int batchUpdateSelectiveById(List<@MoName@Mo> @uncapitallizeMoName@MoList) {\n" +
             "        return @uncapitallizeMoName@Mapper.updateBatchByPrimaryKeySelective(@uncapitallizeMoName@MoList);\n" +
             "    }\n" +
@@ -1667,9 +1592,18 @@ public class AutoCodeTemplate {
             "     * @param id\n" +
             "     * @return\n" +
             "     */\n" +
-            "    @Override\n" +
             "    public <T extends Number> int delete(T id) {\n" +
             "        return @uncapitallizeMoName@Mapper.deleteByPrimaryKey(id);\n" +
+            "    }\n" +
+            "\n" +
+            "    /**\n" +
+            "     * Select a record by ID\n" +
+            "     *\n" +
+            "     * @param id\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    public <T extends Number> int selectByPrimaryKey(T id) {\n" +
+            "        return @uncapitallizeMoName@Mapper.selectByPrimaryKey(id);\n" +
             "    }\n" +
             "\n" +
             "}");
@@ -1678,7 +1612,7 @@ public class AutoCodeTemplate {
      */
     public static StringBuilder TEMPLATE_CONTROLLER = new StringBuilder("package @controllerPackage@;\n" +
             "\n" +
-            "import @serviceInterfacePackage@.@MoName@Service;\n" +
+            "import @handlerPackage@.@MoName@Handler;\n" +
             "import @moPackage@.@MoName@Mo;\n" +
             "import @swaggerMoPackage@.@MoName@Vo;\n" +
             "import com.alibaba.fastjson.JSONObject;\n" +
@@ -1710,7 +1644,7 @@ public class AutoCodeTemplate {
             "public class @MoName@Controller {\n" +
             "\n" +
             "    @Resource\n" +
-            "    private @MoName@Service @uncapitallizeMoName@Service;\n" +
+            "    private @MoName@Handler @uncapitallizeMoName@Handler;\n" +
             "\n" +
             "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/add\")\n" +
             "    @ApiOperationSupport(order = 1)\n" +
@@ -1718,7 +1652,7 @@ public class AutoCodeTemplate {
             "    public Object add(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
             "        // convert Vo to Mo\n" +
             "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
-            "        @uncapitallizeMoName@Service.add(@uncapitallizeMoName@Mo);\n" +
+            "        @uncapitallizeMoName@Handler.add(@uncapitallizeMoName@Mo);\n" +
             "        return @uncapitallizeMoName@Mo.getId();\n" +
             "    }\n" +
             "\n" +
@@ -1730,7 +1664,7 @@ public class AutoCodeTemplate {
             "        for (@MoName@Vo @uncapitallizeMoName@Vo : @uncapitallizeMoName@VoList) {\n" +
             "            @uncapitallizeMoName@MoList.add(JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class));\n" +
             "        }\n" +
-            "        return @uncapitallizeMoName@Service.batchAdd(@uncapitallizeMoName@MoList);\n" +
+            "        return @uncapitallizeMoName@Handler.batchAdd(@uncapitallizeMoName@MoList);\n" +
             "    }\n" +
             "\n" +
             "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/query@MoName@MoList\")\n" +
@@ -1739,7 +1673,7 @@ public class AutoCodeTemplate {
             "    public Object query@MoName@MoList(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
             "        // convert Vo to Mo\n" +
             "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
-            "        return @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo);\n" +
+            "        return @uncapitallizeMoName@Handler.query@MoName@MoList(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
             "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/query@MoName@MoPage\")\n" +
@@ -1748,7 +1682,7 @@ public class AutoCodeTemplate {
             "    public Object query@MoName@MoPage(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
             "        // convert Vo to Mo\n" +
             "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
-            "        List<@MoName@Mo> result@MoName@MoList = @uncapitallizeMoName@Service.query@MoName@MoList(@uncapitallizeMoName@Mo, @uncapitallizeMoName@Vo.getPageNum(), @uncapitallizeMoName@Vo.getPageSize());\n" +
+            "        List<@MoName@Mo> result@MoName@MoList = @uncapitallizeMoName@Handler.query@MoName@MoList(@uncapitallizeMoName@Mo, @uncapitallizeMoName@Vo.getPageNum(), @uncapitallizeMoName@Vo.getPageSize());\n" +
             "        return PageInfo.of(result@MoName@MoList);\n" +
             "    }\n" +
             "\n" +
@@ -1758,7 +1692,7 @@ public class AutoCodeTemplate {
             "    public Object update(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
             "        // convert Vo to Mo\n" +
             "        @MoName@Mo @uncapitallizeMoName@Mo = JSONObject.parseObject(JSONObject.toJSONString(@uncapitallizeMoName@Vo), @MoName@Mo.class);\n" +
-            "        return @uncapitallizeMoName@Service.updateSelectiveById(@uncapitallizeMoName@Mo);\n" +
+            "        return @uncapitallizeMoName@Handler.updateSelectiveById(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
             "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/batchUpdate\")\n" +
@@ -1768,14 +1702,14 @@ public class AutoCodeTemplate {
             "        // convert Vo to Mo\n" +
             "        List<@MoName@Mo> @uncapitallizeMoName@List = new ArrayList<>(@uncapitallizeMoName@VoList.size());\n" +
             "        @uncapitallizeMoName@VoList.forEach(item -> @uncapitallizeMoName@List.add(JSONObject.parseObject(JSONObject.toJSONString(item), @MoName@Mo.class)));\n" +
-            "        return @uncapitallizeMoName@Service.batchUpdateSelectiveById(@uncapitallizeMoName@List);\n" +
+            "        return @uncapitallizeMoName@Handler.batchUpdateSelectiveById(@uncapitallizeMoName@List);\n" +
             "    }\n" +
             "\n" +
             "    @PostMapping(value = \"@apiUrlPrefix@/@uncapitallizeMoName@Mo/delete\")\n" +
             "    @ApiOperationSupport(order = 6)\n" +
             "    @ApiOperation(value = \"@MoName@Mo-DeleteRecord\")\n" +
             "    public Object delete(@Valid @RequestBody @MoName@Vo @uncapitallizeMoName@Vo) {\n" +
-            "        return @uncapitallizeMoName@Service.delete(@uncapitallizeMoName@Vo.getId());\n" +
+            "        return @uncapitallizeMoName@Handler.delete(@uncapitallizeMoName@Vo.getId());\n" +
             "    }\n" +
             "\n" +
             "\n" +
@@ -1803,8 +1737,7 @@ public class AutoCodeTemplate {
             "\n" +
             "#### Enhance generate, also support two item configs, please refer Basic generate\n" +
             "autoCreateSwaggerMo=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Vo\n" +
-            "autoCreateServiceInterface=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Service\n" +
-            "autoCreateServiceImpl=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Service/Impl\n" +
+            "autoCreateHandler=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Service/Impl\n" +
             "autoCreateController=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Controller\n" +
             "\n" +
             "\n" +
