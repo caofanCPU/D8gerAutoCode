@@ -11,16 +11,16 @@
                         <foreach collection="criteria.criteria" item="criterion">
                             <choose>
                                 <when test="criterion.noValue">
-                                    AND #{criterion.condition}
+                                    AND ${criterion.condition}
                                 </when>
                                 <when test="criterion.singleValue">
-                                    AND #{criterion.condition} #{criterion.value}
+                                    AND ${criterion.condition} #{criterion.value}
                                 </when>
                                 <when test="criterion.betweenValue">
-                                    AND #{criterion.condition} #{criterion.value} AND #{criterion.secondValue}
+                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}
                                 </when>
                                 <when test="criterion.listValue">
-                                    AND #{criterion.condition}
+                                    AND ${criterion.condition}
                                     <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                                         #{listItem}
                                     </foreach>
@@ -42,16 +42,16 @@
                         <foreach collection="criteria.criteria" item="criterion">
                             <choose>
                                 <when test="criterion.noValue">
-                                    AND #{criterion.condition}
+                                    AND ${criterion.condition}
                                 </when>
                                 <when test="criterion.singleValue">
-                                    AND #{criterion.condition} #{criterion.value}
+                                    AND ${criterion.condition} #{criterion.value}
                                 </when>
                                 <when test="criterion.betweenValue">
-                                    AND #{criterion.condition} #{criterion.value} AND #{criterion.secondValue}
+                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}
                                 </when>
                                 <when test="criterion.listValue">
-                                    AND #{criterion.condition}
+                                    AND ${criterion.condition}
                                     <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                                         #{listItem}
                                     </foreach>
@@ -76,10 +76,10 @@
             <include refid="Example_Where_Clause"/>
         </if>
         <if test="orderByClause != null">
-            ORDER BY #{orderByClause}
+            ORDER BY ${orderByClause}
         </if>
         <if test="limit != null">
-            LIMIT #{limit}
+            LIMIT ${limit}
         </if>
     </select>
 
@@ -187,7 +187,7 @@
             <include refid="Example_Where_Clause"/>
         </if>
         <if test="orderByClause != null">
-            ORDER BY #{orderByClause}
+            ORDER BY ${orderByClause}
         </if>
         LIMIT 1
     </select>

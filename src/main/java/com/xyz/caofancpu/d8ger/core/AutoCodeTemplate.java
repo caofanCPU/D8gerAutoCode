@@ -251,26 +251,29 @@ public class AutoCodeTemplate {
             "        conditionCriteria = new ArrayList<>();\n" +
             "    }\n" +
             "\n" +
-            "    public void setOrderByClause(String orderByClause) {\n" +
+            "    public @MoName@Example andOrderByClause(String orderByClause) {\n" +
             "        this.orderByClause = orderByClause;\n" +
+            "        return this;\n" +
             "    }\n" +
             "\n" +
             "    public String getOrderByClause() {\n" +
             "        return orderByClause;\n" +
             "    }\n" +
             "\n" +
+            "    public @MoName@Example andLimit(Integer limit) {\n" +
+            "        if (limit != null && limit > 0) {\n" +
+            "            this.limit = limit;\n" +
+            "        }\n" +
+            "        return this;\n" +
+            "    }\n" +
+            "\n" +
             "    public Integer getLimit() {\n" +
             "        return limit;\n" +
             "    }\n" +
             "\n" +
-            "    public void setLimit(Integer limit) {\n" +
-            "        if (limit != null && limit > 0) {\n" +
-            "            this.limit = limit;\n" +
-            "        }\n" +
-            "    }\n" +
-            "\n" +
-            "    public void setDistinct(boolean distinct) {\n" +
+            "    public @MoName@Example andDistinct(boolean distinct) {\n" +
             "        this.distinct = distinct;\n" +
+            "        return this;\n" +
             "    }\n" +
             "\n" +
             "    public boolean isDistinct() {\n" +
@@ -462,16 +465,16 @@ public class AutoCodeTemplate {
             "                        <foreach collection=\"criteria.criteria\" item=\"criterion\">\n" +
             "                            <choose>\n" +
             "                                <when test=\"criterion.noValue\">\n" +
-            "                                    AND #{criterion.condition}\n" +
+            "                                    AND ${criterion.condition}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.singleValue\">\n" +
-            "                                    AND #{criterion.condition} #{criterion.value}\n" +
+            "                                    AND ${criterion.condition} #{criterion.value}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.betweenValue\">\n" +
-            "                                    AND #{criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
+            "                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.listValue\">\n" +
-            "                                    AND #{criterion.condition}\n" +
+            "                                    AND ${criterion.condition}\n" +
             "                                    <foreach close=\")\" collection=\"criterion.value\" item=\"listItem\" open=\"(\" separator=\",\">\n" +
             "                                        #{listItem}\n" +
             "                                    </foreach>\n" +
@@ -493,16 +496,16 @@ public class AutoCodeTemplate {
             "                        <foreach collection=\"criteria.criteria\" item=\"criterion\">\n" +
             "                            <choose>\n" +
             "                                <when test=\"criterion.noValue\">\n" +
-            "                                    AND #{criterion.condition}\n" +
+            "                                    AND ${criterion.condition}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.singleValue\">\n" +
-            "                                    AND #{criterion.condition} #{criterion.value}\n" +
+            "                                    AND ${criterion.condition} #{criterion.value}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.betweenValue\">\n" +
-            "                                    AND #{criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
+            "                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.listValue\">\n" +
-            "                                    AND #{criterion.condition}\n" +
+            "                                    AND ${criterion.condition}\n" +
             "                                    <foreach close=\")\" collection=\"criterion.value\" item=\"listItem\" open=\"(\" separator=\",\">\n" +
             "                                        #{listItem}\n" +
             "                                    </foreach>\n" +
@@ -527,10 +530,10 @@ public class AutoCodeTemplate {
             "            <include refid=\"Example_Where_Clause\"/>\n" +
             "        </if>\n" +
             "        <if test=\"orderByClause != null\">\n" +
-            "            ORDER BY #{orderByClause}\n" +
+            "            ORDER BY ${orderByClause}\n" +
             "        </if>\n" +
             "        <if test=\"limit != null\">\n" +
-            "            LIMIT #{limit}\n" +
+            "            LIMIT ${limit}\n" +
             "        </if>\n" +
             "    </select>\n" +
             "\n" +
@@ -638,7 +641,7 @@ public class AutoCodeTemplate {
             "            <include refid=\"Example_Where_Clause\"/>\n" +
             "        </if>\n" +
             "        <if test=\"orderByClause != null\">\n" +
-            "            ORDER BY #{orderByClause}\n" +
+            "            ORDER BY ${orderByClause}\n" +
             "        </if>\n" +
             "        LIMIT 1\n" +
             "    </select>\n" +
@@ -1099,26 +1102,29 @@ public class AutoCodeTemplate {
             "        conditionCriteria = new ArrayList<>();\n" +
             "    }\n" +
             "\n" +
-            "    public void setOrderByClause(String orderByClause) {\n" +
+            "    public @MoName@Example andOrderByClause(String orderByClause) {\n" +
             "        this.orderByClause = orderByClause;\n" +
+            "        return this;\n" +
             "    }\n" +
             "\n" +
             "    public String getOrderByClause() {\n" +
             "        return orderByClause;\n" +
             "    }\n" +
             "\n" +
+            "    public @MoName@Example andLimit(Integer limit) {\n" +
+            "        if (limit != null && limit > 0) {\n" +
+            "            this.limit = limit;\n" +
+            "        }\n" +
+            "        return this;\n" +
+            "    }\n" +
+            "\n" +
             "    public Integer getLimit() {\n" +
             "        return limit;\n" +
             "    }\n" +
             "\n" +
-            "    public void setLimit(Integer limit) {\n" +
-            "        if (limit != null && limit > 0) {\n" +
-            "            this.limit = limit;\n" +
-            "        }\n" +
-            "    }\n" +
-            "\n" +
-            "    public void setDistinct(boolean distinct) {\n" +
+            "    public @MoName@Example andDistinct(boolean distinct) {\n" +
             "        this.distinct = distinct;\n" +
+            "        return this;\n" +
             "    }\n" +
             "\n" +
             "    public boolean isDistinct() {\n" +
@@ -1309,16 +1315,16 @@ public class AutoCodeTemplate {
             "                        <foreach collection=\"criteria.criteria\" item=\"criterion\">\n" +
             "                            <choose>\n" +
             "                                <when test=\"criterion.noValue\">\n" +
-            "                                    AND #{criterion.condition}\n" +
+            "                                    AND ${criterion.condition}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.singleValue\">\n" +
-            "                                    AND #{criterion.condition} #{criterion.value}\n" +
+            "                                    AND ${criterion.condition} #{criterion.value}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.betweenValue\">\n" +
-            "                                    AND #{criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
+            "                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.listValue\">\n" +
-            "                                    AND #{criterion.condition}\n" +
+            "                                    AND ${criterion.condition}\n" +
             "                                    <foreach close=\")\" collection=\"criterion.value\" item=\"listItem\" open=\"(\" separator=\",\">\n" +
             "                                        #{listItem}\n" +
             "                                    </foreach>\n" +
@@ -1340,16 +1346,16 @@ public class AutoCodeTemplate {
             "                        <foreach collection=\"criteria.criteria\" item=\"criterion\">\n" +
             "                            <choose>\n" +
             "                                <when test=\"criterion.noValue\">\n" +
-            "                                    AND #{criterion.condition}\n" +
+            "                                    AND ${criterion.condition}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.singleValue\">\n" +
-            "                                    AND #{criterion.condition} #{criterion.value}\n" +
+            "                                    AND ${criterion.condition} #{criterion.value}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.betweenValue\">\n" +
-            "                                    AND #{criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
+            "                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.listValue\">\n" +
-            "                                    AND #{criterion.condition}\n" +
+            "                                    AND ${criterion.condition}\n" +
             "                                    <foreach close=\")\" collection=\"criterion.value\" item=\"listItem\" open=\"(\" separator=\",\">\n" +
             "                                        #{listItem}\n" +
             "                                    </foreach>\n" +
@@ -1374,10 +1380,10 @@ public class AutoCodeTemplate {
             "            <include refid=\"Example_Where_Clause\"/>\n" +
             "        </if>\n" +
             "        <if test=\"orderByClause != null\">\n" +
-            "            ORDER BY #{orderByClause}\n" +
+            "            ORDER BY ${orderByClause}\n" +
             "        </if>\n" +
             "        <if test=\"limit != null\">\n" +
-            "            LIMIT #{limit}\n" +
+            "            LIMIT ${limit}\n" +
             "        </if>\n" +
             "    </select>\n" +
             "\n" +
@@ -1485,7 +1491,7 @@ public class AutoCodeTemplate {
             "            <include refid=\"Example_Where_Clause\"/>\n" +
             "        </if>\n" +
             "        <if test=\"orderByClause != null\">\n" +
-            "            ORDER BY #{orderByClause}\n" +
+            "            ORDER BY ${orderByClause}\n" +
             "        </if>\n" +
             "        LIMIT 1\n" +
             "    </select>\n" +

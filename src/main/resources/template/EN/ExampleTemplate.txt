@@ -25,26 +25,29 @@ public class @MoName@Example {
         conditionCriteria = new ArrayList<>();
     }
 
-    public void setOrderByClause(String orderByClause) {
+    public @MoName@Example andOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
+        return this;
     }
 
     public String getOrderByClause() {
         return orderByClause;
     }
 
+    public @MoName@Example andLimit(Integer limit) {
+        if (limit != null && limit > 0) {
+            this.limit = limit;
+        }
+        return this;
+    }
+
     public Integer getLimit() {
         return limit;
     }
 
-    public void setLimit(Integer limit) {
-        if (limit != null && limit > 0) {
-            this.limit = limit;
-        }
-    }
-
-    public void setDistinct(boolean distinct) {
+    public @MoName@Example andDistinct(boolean distinct) {
         this.distinct = distinct;
+        return this;
     }
 
     public boolean isDistinct() {
