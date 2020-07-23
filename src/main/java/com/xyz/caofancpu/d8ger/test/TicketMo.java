@@ -41,8 +41,8 @@ public class TicketMo {
      * deleted
      */
     private YesNoEnum deleted;
-    private Date updateTime;
-
-    private Date createTime;
+//    private Date updateTime;
+//
+//    private Date createTime;
 
 }

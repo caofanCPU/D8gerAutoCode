@@ -755,7 +755,7 @@ public class AutoCodeTemplate {
             "     * @param id\n" +
             "     * @return\n" +
             "     */\n" +
-            "    public <T extends Number> int selectByPrimaryKey(T id) {\n" +
+            "    public <T extends Number> @MoName@Mo selectByPrimaryKey(T id) {\n" +
             "        return @uncapitallizeMoName@Mapper.selectByPrimaryKey(id);\n" +
             "    }\n" +
             "\n" +
@@ -1602,7 +1602,7 @@ public class AutoCodeTemplate {
             "     * @param id\n" +
             "     * @return\n" +
             "     */\n" +
-            "    public <T extends Number> int selectByPrimaryKey(T id) {\n" +
+            "    public <T extends Number> @MoName@Mo selectByPrimaryKey(T id) {\n" +
             "        return @uncapitallizeMoName@Mapper.selectByPrimaryKey(id);\n" +
             "    }\n" +
             "\n" +

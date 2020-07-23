@@ -173,14 +173,9 @@ public class ConstantUtil {
     public static final String MO_EXAMPLE_NAME_SUFFIX = "Example";
 
     /**
-     * MoService interface name suffix
+     * MoHandler name suffix
      */
-    public static final String MO_SERVICE_INTERFACE_NAME_SUFFIX = "Service";
-
-    /**
-     * MoService implement name suffix
-     */
-    public static final String MO_SERVICE_IMPL_NAME_SUFFIX = "ServiceImpl";
+    public static final String MO_HANDLER_SUFFIX = "Handler";
 
     /**
      * MoController name suffix

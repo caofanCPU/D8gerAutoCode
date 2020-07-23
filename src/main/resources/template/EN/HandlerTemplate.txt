@@ -95,7 +95,7 @@ public class @MoName@Handler {
      * @param id
      * @return
      */
-    public <T extends Number> int selectByPrimaryKey(T id) {
+    public <T extends Number> @MoName@Mo selectByPrimaryKey(T id) {
         return @uncapitallizeMoName@Mapper.selectByPrimaryKey(id);
     }
 
