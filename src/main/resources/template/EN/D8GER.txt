@@ -13,17 +13,23 @@ autoCreateMapper=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Mapper
 autoCreateExample=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Mapper/Example
 autoCreateXML=true, /src/main/resources/mybatis
 autoCreateDefinitionSQL=true, /doc
+
 #### Enhance generate, also support two item configs, please refer Basic generate
 autoCreateSwaggerMo=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Vo
 autoCreateHandler=true, /src/main/java/com/xyz/caofancpu/d8ger/test/handler
 autoCreateController=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Controller
+
 #### Other normal binary config
 autoFormatStyle=true
+
 #### Api path prefix
 # apiUrlPrefix=/D8ger
+
 #### auto generating create_time and update_time SQL column definition
 autoDetectSQLTimeColumn=true
+
 #### if true then moMapper with annotation @Mapper, otherwise, with annotation @Repository
 mapperBatterThenRepository=true
+
 #### Language just for EN(English) and ZN(Chinese Simplified)
-locale=ZN
+# locale=ZN
