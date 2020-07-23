@@ -56,7 +56,7 @@ public class D8gerAutoCodeAction extends AnAction {
         d8gerAutoCoding.getFileMap().keySet().forEach(key -> {
             Pair<PsiDirectory, String> packagePair = d8gerAutoCoding.getCustomConfigAutoCodeDirMap().get(key);
             if (Objects.isNull(packagePair)) {
-                if (!d8gerAutoCoding.isUseDefaultDirectory()) {
+                if (d8gerAutoCoding.getRealNeedCreateFileKeyList().contains(key) && !d8gerAutoCoding.isUseDefaultDirectory()) {
                     // Create D8AutoCode directory
                     PsiDirectory d8gerAutoCodeDir = IdeaPlatformFileTreeUtil.getOrCreateSubDir(d8gerAutoCoding.getD8AutoCodeDir(), ConstantUtil.GENERATE_DIR);
                     d8gerAutoCoding.setD8AutoCodeDir(d8gerAutoCodeDir);

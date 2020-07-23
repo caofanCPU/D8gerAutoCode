@@ -57,9 +57,6 @@ public class PropertiesUtil {
      * @return
      */
     public static String detectConfigDirectoryPath(Properties properties, String propertyKey) {
-        if (!checkConfigTakeEffect(properties, propertyKey)) {
-            return null;
-        }
         String property = properties.getProperty(propertyKey);
         String noWhiteCharProperty = VerbalExpressionUtil.cleanWhiteChar(property);
         String[] itemConfigs = noWhiteCharProperty.split(ConstantUtil.ENGLISH_COMMA);
@@ -69,6 +66,21 @@ public class PropertiesUtil {
         }
         // here, need to create file, so we should check need put it into custom directory or not
         return StringUtils.isBlank(itemConfigs[1]) ? null : itemConfigs[1];
+    }
+
+    /**
+     * Check and detect if a configuration item contains a directory relative path,
+     * if true then return it, otherwise return null.
+     *
+     * @param properties
+     * @param propertyKey
+     * @return
+     */
+    public static String checkAndDetectConfigDirectoryPath(Properties properties, String propertyKey) {
+        if (!checkConfigTakeEffect(properties, propertyKey)) {
+            return null;
+        }
+        return detectConfigDirectoryPath(properties, propertyKey);
     }
 
 }

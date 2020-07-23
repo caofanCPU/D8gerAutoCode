@@ -6,7 +6,7 @@ author=D8ger
 #### ATTENTION: if you config directory path, you should make sure it exists first
 #### WARNING: if you config error, the auto code file will put into the origin directory named 'D8AutoCode'
 #### THEN plugin will create Mo.java file
-#### AND put the file into 'com.xyz.caofancpu.d8ger.test.Mo' directory
+#### AND put the file into 'com.xyz.caofancpu.d8ger.test.mo' directory
 #### UNDER current project source directory which include '/src/main/java'
 autoCreateMo=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Mo
 autoCreateMapper=true, /src/main/java/com/xyz/caofancpu/d8ger/test/Mapper

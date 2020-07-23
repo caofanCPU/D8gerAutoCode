@@ -98,6 +98,11 @@ public class D8gerAutoCoding {
     private Map<KeyEnum, Pair<PsiDirectory, String>> customConfigAutoCodeDirMap = new HashMap<>(16, 0.75f);
 
     /**
+     * Real need create file, just for marking
+     */
+    private List<KeyEnum> realNeedCreateFileKeyList = new ArrayList<>();
+
+    /**
      * Construction methods exposed to the outside world,
      * pay attention to the method execution order
      *
@@ -148,13 +153,7 @@ public class D8gerAutoCoding {
         return this;
     }
 
-    /**
-     * Init custom config directories that auto code files put into
-     *
-     * @return
-     */
-    private D8gerAutoCoding initCustomConfigAutoCodeDirMap() {
-        Properties properties = loadPropertiesFromRootResource();
+    private List<KeyEnum> getAllFileKeyList() {
         List<KeyEnum> keyEnumList = new ArrayList<>();
         keyEnumList.add(KeyEnum.MO);
         keyEnumList.add(KeyEnum.SWAGGER_MO);
@@ -164,7 +163,21 @@ public class D8gerAutoCoding {
         keyEnumList.add(KeyEnum.MO_CONTROLLER);
         keyEnumList.add(KeyEnum.MO_MAPPER_XML);
         keyEnumList.add(KeyEnum.MO_SQL);
+        return keyEnumList;
+    }
+
+    /**
+     * Init custom config directories that auto code files put into
+     *
+     * @return
+     */
+    private D8gerAutoCoding initCustomConfigAutoCodeDirMap() {
+        Properties properties = loadPropertiesFromRootResource();
+        List<KeyEnum> keyEnumList = getAllFileKeyList();
         keyEnumList.forEach(keyEnum -> {
+            if (PropertiesUtil.checkConfigTakeEffect(properties, keyEnum.getKey())) {
+                realNeedCreateFileKeyList.add(keyEnum);
+            }
             String directoryPath = PropertiesUtil.detectConfigDirectoryPath(properties, keyEnum.getKey());
             if (StringUtils.isNotBlank(directoryPath)) {
                 PsiDirectory targetDir = IdeaPlatformFileTreeUtil.getOrCreateSubDirByPath(currentProject, directoryPath);
