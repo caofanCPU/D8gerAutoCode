@@ -99,10 +99,12 @@ Google 拥有专门设计的系统，可以自动捕获不适当的预测结果�
 ```
 Next generation plan
 (backup: autoCode -> {
+(MAPPER + XML层)
     var1: insertWithIdSelective
           selectByExampleWithBLOBs
           updateByExampleWithBLOBs
           updateByPrimaryKeyWithBLOBs
+(SERVICE层)
           selectByPrimaryKey
           deleteByPrimaryKey
           updateByPrimaryKey
@@ -115,4 +117,22 @@ Next generation plan
     var5: digital automatic
     var6: bug fix, d8gerDir?
 })
+
+优先级
+1.XML insertWithIdSelective
+2.CreateTime | UpdateTime(, bug?) 禁用配置
+3.Example支持limit 1
+
+索引及其他标识, 交由用户自定义
+大文本后期再处理
+
+pid=`ps aux |grep newreport |grep -v grep| awk '{print }'`
+if [ -n "$pid" ];then
+    kill -9 $pid
+    sleep 5
+fi
+
+rm -rf newreport-*.jar
+scp
+
 ```

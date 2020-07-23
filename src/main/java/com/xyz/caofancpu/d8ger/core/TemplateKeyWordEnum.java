@@ -25,17 +25,20 @@ public enum TemplateKeyWordEnum {
     XML_UPDATE_NONNULL_FIELD_BY_EXAMPLE_KEY("@UpdateNonNullFieldByExample@"),
     XML_INSERT_COLUMN_LIST_KEY("@InsertField@"),
     XML_BATCH_INSERT_COLUMN_LIST_KEY("@BatchInsertField@"),
+    XML_INSERT_SELECTIVE_COLUMN_LIST_KEY("@NonNullColumnList@"),
+    XML_INSERT_SELECTIVE_FIELD_LIST_KEY("@NonNullInsertField@"),
     XML_MO_LIST_QUERY_KEY("@MoListQuery@"),
     API_URL_PREFIX_KEY("@apiUrlPrefix@"),
 
     MO_PACKAGE_NAME_KEY("@moPackage@"),
     MAPPER_PACKAGE_NAME_KEY("@mapperPackage@"),
+    MAPPER_ANNOTATION_KEY("@MapperAnnotation@"),
+    MAPPER_ANNOTATION_PACKAGE_KEY("@MapperAnnotationPackage@"),
     MO_EXAMPLE_PACKAGE_NAME_KEY("@moExamplePackage@"),
     SWAGGER_MO_PACKAGE_NAME_KEY("@swaggerMoPackage@"),
     SERVICE_INTERFACE_PACKAGE_NAME_KEY("@serviceInterfacePackage@"),
     SERVICE_IMPLEMENT_PACKAGE_NAME_KEY("@serviceImplPackage@"),
     CONTROLLER_PACKAGE_NAME_KEY("@controllerPackage@"),
-
     ;
 
 

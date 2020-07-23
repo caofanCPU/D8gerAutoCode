@@ -112,7 +112,7 @@ public class D8gerAutoCodeAction extends AnAction {
      * @return
      */
     private boolean skipCurrentOperation(D8gerAutoCoding d8gerAutoCoding, KeyEnum keyEnum) {
-        return !PropertiesUtil.checkConfigTakEffect(d8gerAutoCoding.loadPropertiesFromRootResource(), keyEnum.getKey());
+        return !PropertiesUtil.checkConfigTakeEffect(d8gerAutoCoding.loadPropertiesFromRootResource(), keyEnum.getKey());
     }
 
     /**

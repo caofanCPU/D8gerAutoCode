@@ -8,7 +8,7 @@ public class TicketMo {
     /**
      * ID
      */
-    private Integer id;
+    private Long id;
     /**
      * startStationName
      */
@@ -18,7 +18,7 @@ public class TicketMo {
      */
     private String endStationName;
     /**
-     * ticket's price
+     * ticket price
      */
     private BigDecimal money;
     /**
@@ -41,5 +41,8 @@ public class TicketMo {
      * deleted
      */
     private YesNoEnum deleted;
+    private Date updateTime;
+
+    private Date createTime;
 
 }

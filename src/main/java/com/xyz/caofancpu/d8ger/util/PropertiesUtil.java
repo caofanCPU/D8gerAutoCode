@@ -37,7 +37,7 @@ public class PropertiesUtil {
      * @param propertyKey
      * @return
      */
-    public static boolean checkConfigTakEffect(Properties properties, String propertyKey) {
+    public static boolean checkConfigTakeEffect(Properties properties, String propertyKey) {
         String property = properties.getProperty(propertyKey);
         if (StringUtils.isBlank(property)) {
             // if no config, just ignore
@@ -57,7 +57,7 @@ public class PropertiesUtil {
      * @return
      */
     public static String detectConfigDirectoryPath(Properties properties, String propertyKey) {
-        if (!checkConfigTakEffect(properties, propertyKey)) {
+        if (!checkConfigTakeEffect(properties, propertyKey)) {
             return null;
         }
         String property = properties.getProperty(propertyKey);

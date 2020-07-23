@@ -5,22 +5,22 @@
     <!-- Conditions during query operation -->
     <sql id="Example_Where_Clause">
         <where>
-            <foreach collection="oredCriteria" item="criteria" separator="or">
+            <foreach collection="conditionCriteria" item="criteria" separator="or">
                 <if test="criteria.valid">
                     <trim prefix="(" prefixOverrides="and" suffix=")">
                         <foreach collection="criteria.criteria" item="criterion">
                             <choose>
                                 <when test="criterion.noValue">
-                                    AND ${criterion.condition}
+                                    AND #{criterion.condition}
                                 </when>
                                 <when test="criterion.singleValue">
-                                    AND ${criterion.condition} #{criterion.value}
+                                    AND #{criterion.condition} #{criterion.value}
                                 </when>
                                 <when test="criterion.betweenValue">
-                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}
+                                    AND #{criterion.condition} #{criterion.value} AND #{criterion.secondValue}
                                 </when>
                                 <when test="criterion.listValue">
-                                    AND ${criterion.condition}
+                                    AND #{criterion.condition}
                                     <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                                         #{listItem}
                                     </foreach>
@@ -36,22 +36,22 @@
     <!-- Conditions during update operation -->
     <sql id="Update_By_Example_Where_Clause">
         <where>
-            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+            <foreach collection="example.conditionCriteria" item="criteria" separator="or">
                 <if test="criteria.valid">
                     <trim prefix="(" prefixOverrides="and" suffix=")">
                         <foreach collection="criteria.criteria" item="criterion">
                             <choose>
                                 <when test="criterion.noValue">
-                                    AND ${criterion.condition}
+                                    AND #{criterion.condition}
                                 </when>
                                 <when test="criterion.singleValue">
-                                    AND ${criterion.condition} #{criterion.value}
+                                    AND #{criterion.condition} #{criterion.value}
                                 </when>
                                 <when test="criterion.betweenValue">
-                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}
+                                    AND #{criterion.condition} #{criterion.value} AND #{criterion.secondValue}
                                 </when>
                                 <when test="criterion.listValue">
-                                    AND ${criterion.condition}
+                                    AND #{criterion.condition}
                                     <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
                                         #{listItem}
                                     </foreach>
@@ -76,7 +76,10 @@
             <include refid="Example_Where_Clause"/>
         </if>
         <if test="orderByClause != null">
-            ORDER BY ${orderByClause}
+            ORDER BY #{orderByClause}
+        </if>
+        <if test="limit != null">
+            LIMIT #{limit}
         </if>
     </select>
 
@@ -172,4 +175,31 @@
         DELETE FROM `@mo_table_name@` WHERE `id` = #{id}
     </delete>
 
+    <!-- 12.Query just one record by criteria -->
+    <select id="selectOneByExample" parameterType="@moExamplePackage@.@MoName@Example" resultType="@moPackage@.@MoName@Mo">
+        SELECT
+        <if test="distinct">
+            DISTINCT
+        </if>
+@SelectBaseColumnList@
+        FROM `@mo_table_name@`
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            ORDER BY #{orderByClause}
+        </if>
+        LIMIT 1
+    </select>
+
+    <!-- 13.Add a single record with nonNull field, and return the ID -->
+    <insert id="insertSelectiveWithId" parameterType="@moPackage@.@MoName@Mo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `@mo_table_name@`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+@NonNullColumnList@
+        </trim>
+        <trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+@NonNullInsertField@
+        </trim>
+    </insert>
 </mapper>

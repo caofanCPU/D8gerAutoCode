@@ -15,12 +15,14 @@ public class @MoName@Example {
 
     protected String orderByClause;
 
+    protected Integer limit;
+
     protected boolean distinct;
 
-    protected List<Criteria> oredCriteria;
+    protected List<Criteria> conditionCriteria;
 
     public @MoName@Example() {
-        oredCriteria = new ArrayList<>();
+        conditionCriteria = new ArrayList<>();
     }
 
     public void setOrderByClause(String orderByClause) {
@@ -31,6 +33,16 @@ public class @MoName@Example {
         return orderByClause;
     }
 
+    public Integer getLimit() {
+        return limit;
+    }
+
+    public void setLimit(Integer limit) {
+        if (limit != null && limit > 0) {
+            this.limit = limit;
+        }
+    }
+
     public void setDistinct(boolean distinct) {
         this.distinct = distinct;
     }
@@ -39,24 +51,24 @@ public class @MoName@Example {
         return distinct;
     }
 
-    public List<Criteria> getOredCriteria() {
-        return oredCriteria;
+    public List<Criteria> getConditionCriteria() {
+        return conditionCriteria;
     }
 
     public void or(Criteria criteria) {
-        oredCriteria.add(criteria);
+        conditionCriteria.add(criteria);
     }
 
     public Criteria or() {
         Criteria criteria = createCriteriaInternal();
-        oredCriteria.add(criteria);
+        conditionCriteria.add(criteria);
         return criteria;
     }
 
     public Criteria createCriteria() {
         Criteria criteria = createCriteriaInternal();
-        if (oredCriteria.size() == 0) {
-            oredCriteria.add(criteria);
+        if (conditionCriteria.size() == 0) {
+            conditionCriteria.add(criteria);
         }
         return criteria;
     }
@@ -66,7 +78,7 @@ public class @MoName@Example {
     }
 
     public void clear() {
-        oredCriteria.clear();
+        conditionCriteria.clear();
         orderByClause = null;
         distinct = false;
     }

@@ -213,23 +213,32 @@ public class D8gerAutoCoding {
             AutoCodeTemplate.IS_EN_LOCALE = Boolean.TRUE;
         }
 
+        // handle mapper's annotation
+        boolean isMapper = PropertiesUtil.checkConfigTakeEffect(properties, KeyEnum.MO_MAPPER_ANNOTATION.getKey());
+        Pair<String, String> mapperPair = isMapper ? ConstantUtil.BOOT_MAPPER : ConstantUtil.MVC_MAPPER;
+        keyWordMatchMap.put(TemplateKeyWordEnum.MAPPER_ANNOTATION_PACKAGE_KEY.getName(), new StringBuilder(mapperPair.getLeft()));
+        keyWordMatchMap.put(TemplateKeyWordEnum.MAPPER_ANNOTATION_KEY.getName(), new StringBuilder(mapperPair.getRight()));
+
         keyWordMatchMap.put(TemplateKeyWordEnum.API_URL_PREFIX_KEY.getName(), new StringBuilder(apiUrlPrefix));
         keyWordMatchMap.put(TemplateKeyWordEnum.MO_FIELD_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toString), ConstantUtil.DOUBLE_NEXT_LINE)));
         keyWordMatchMap.put(TemplateKeyWordEnum.SWAGGER_MO_FIELD_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toSwaggerString), ConstantUtil.DOUBLE_NEXT_LINE)).append(ConstantUtil.NEXT_LINE).append(ConstantUtil.NEXT_LINE).append(wrapSwaggerPage()));
         keyWordMatchMap.put(TemplateKeyWordEnum.MO_EXAMPLE_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toMoExampleDefinitionMethodString), ConstantUtil.EMPTY)));
         keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_TABLE_KEY.getName(), new StringBuilder(VerbalExpressionUtil.sqlUnderLineName(this.getMoName())));
-        keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_COLUMN_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toSqlColumnDefinitionString), ConstantUtil.NEXT_LINE)));
+        keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_COLUMN_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toSqlColumnDefinitionString), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE)));
         if (Objects.isNull(CollectionUtil.findFirst(moFieldList, item -> item.getName().equals(ConstantUtil.SQL_ID)))) {
             keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_ID_KEY.getName(), new StringBuilder(ConstantUtil.SQL_ID_DEFAULT_DEFINITION));
         } else {
             keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_ID_KEY.getName(), new StringBuilder());
         }
-        if (Objects.isNull(CollectionUtil.findFirst(moFieldList, item -> item.getName().equals(ConstantUtil.SQL_CREATE_TIME)))) {
+        // whether auto generate create_time and update_time column definition by custom config
+        boolean sqlDetectTimeColumn = PropertiesUtil.checkConfigTakeEffect(properties, KeyEnum.SQL_DETECT_TIME_COLUMN.getKey());
+
+        if (sqlDetectTimeColumn && Objects.isNull(CollectionUtil.findFirst(moFieldList, item -> item.getName().equals(ConstantUtil.SQL_CREATE_TIME)))) {
             keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_CREATE_TIME_KEY.getName(), new StringBuilder(ConstantUtil.SQL_CREATE_TIME_DEFAULT_DEFINITION));
         } else {
             keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_CREATE_TIME_KEY.getName(), new StringBuilder());
         }
-        if (Objects.isNull(CollectionUtil.findFirst(moFieldList, item -> item.getName().equals(ConstantUtil.SQL_UPDATE_TIME)))) {
+        if (sqlDetectTimeColumn && Objects.isNull(CollectionUtil.findFirst(moFieldList, item -> item.getName().equals(ConstantUtil.SQL_UPDATE_TIME)))) {
             keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_UPDATE_TIME_KEY.getName(), new StringBuilder(ConstantUtil.SQL_UPDATE_TIME_DEFAULT_DEFINITION));
         } else {
             keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_UPDATE_TIME_KEY.getName(), new StringBuilder());
@@ -237,6 +246,8 @@ public class D8gerAutoCoding {
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_BASE_COLUMN_LIST_KEY.getName(), this.getXMLBaseColumnList());
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_SELECT_BASE_COLUMN_LIST_KEY.getName(), this.getXMLSelectBaseColumnList());
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_BATCH_UPDATE_NONNULL_FIELD_BY_ID_KEY.getName(), this.getXMLBatchUpdateNonNullFieldByID());
+        keyWordMatchMap.put(TemplateKeyWordEnum.XML_INSERT_SELECTIVE_COLUMN_LIST_KEY.getName(), this.getXMLInsertSelectiveColumnList());
+        keyWordMatchMap.put(TemplateKeyWordEnum.XML_INSERT_SELECTIVE_FIELD_LIST_KEY.getName(), this.getXMLInsertSelectiveFieldList());
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_UPDATE_NONNULL_FIELD_BY_EXAMPLE_KEY.getName(), this.getXMLUpdateNonNullFieldByExample());
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_INSERT_COLUMN_LIST_KEY.getName(), this.getXMLInsertField());
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_BATCH_INSERT_COLUMN_LIST_KEY.getName(), this.getXMLBatchInsertField());
@@ -302,6 +313,8 @@ public class D8gerAutoCoding {
                 keyWordEnumList.add(TemplateKeyWordEnum.XML_BATCH_INSERT_COLUMN_LIST_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.XML_MO_LIST_QUERY_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.XML_INSERT_COLUMN_LIST_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.XML_INSERT_SELECTIVE_COLUMN_LIST_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.XML_INSERT_SELECTIVE_FIELD_LIST_KEY);
                 break;
             case MO_SQL:
                 keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
@@ -314,6 +327,8 @@ public class D8gerAutoCoding {
                 break;
             case MO_MAPPER:
                 keyWordEnumList.add(TemplateKeyWordEnum.MAPPER_PACKAGE_NAME_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MAPPER_ANNOTATION_PACKAGE_KEY);
+                keyWordEnumList.add(TemplateKeyWordEnum.MAPPER_ANNOTATION_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_EXAMPLE_PACKAGE_NAME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
@@ -395,7 +410,7 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * SQL-SelectBaseColumnList
+     * SQL-SelectBaseColumnList, exclude primary key column `id`
      * example:
      * `id`,
      * `name`,
@@ -404,7 +419,8 @@ public class D8gerAutoCoding {
      * @return
      */
     private StringBuilder getXMLBaseColumnList() {
-        return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList,
+        return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
+                item -> item.getName().equals(ConstantUtil.SQL_ID),
                 item -> ConstantUtil.TRIPLE_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`"
         ), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE));
     }
@@ -439,6 +455,34 @@ public class D8gerAutoCoding {
     }
 
     /**
+     * SQL-NonNullColumnList
+     *
+     * @return
+     */
+    private StringBuilder getXMLInsertSelectiveColumnList() {
+        return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
+                item -> item.getName().equals(ConstantUtil.SQL_ID),
+                item -> ConstantUtil.TRIPLE_TAB + "<if test=\"" + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
+                        + ConstantUtil.QUATERNARY_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`," + ConstantUtil.NEXT_LINE
+                        + ConstantUtil.TRIPLE_TAB + "</if>"
+        ), ConstantUtil.NEXT_LINE));
+    }
+
+    /**
+     * SQL-NonNullInsertField
+     *
+     * @return
+     */
+    private StringBuilder getXMLInsertSelectiveFieldList() {
+        return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
+                item -> item.getName().equals(ConstantUtil.SQL_ID),
+                item -> ConstantUtil.TRIPLE_TAB + "<if test=\"" + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
+                        + ConstantUtil.QUATERNARY_TAB + "#{" + item.getName() + "}," + ConstantUtil.NEXT_LINE
+                        + ConstantUtil.TRIPLE_TAB + "</if>"
+        ), ConstantUtil.NEXT_LINE));
+    }
+
+    /**
      * SQL-UpdateNonNullFieldByExample
      *
      * @return
@@ -452,24 +496,28 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * SQL-Insert
+     * SQL-Insert, exclude primary key column `id`
      *
      * @return
      */
     private StringBuilder getXMLInsertField() {
-        return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, item -> ConstantUtil.TRIPLE_TAB + "#{" + item.getName() + "}"),
-                ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE)
-        );
+        return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
+                item -> item.getName().equals(ConstantUtil.SQL_ID),
+                item -> ConstantUtil.TRIPLE_TAB + "#{" + item.getName() + "}"
+        ), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE));
     }
 
     /**
-     * SQL-BatchInsertField
+     * SQL-BatchInsertField, exclude primary key column `id`
      *
      * @return
      */
     private StringBuilder getXMLBatchInsertField() {
         return new StringBuilder(ConstantUtil.TRIPLE_TAB).append("(").append(ConstantUtil.NEXT_LINE)
-                .append(CollectionUtil.join(CollectionUtil.transToList(moFieldList, item -> ConstantUtil.QUATERNARY_TAB + "#{item." + item.getName() + "}"), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE))
+                .append(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
+                        item -> item.getName().equals(ConstantUtil.SQL_ID),
+                        item -> ConstantUtil.QUATERNARY_TAB + "#{item." + item.getName() + "}"
+                ), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE))
                 .append(ConstantUtil.NEXT_LINE).append(ConstantUtil.TRIPLE_TAB).append(")");
     }
 

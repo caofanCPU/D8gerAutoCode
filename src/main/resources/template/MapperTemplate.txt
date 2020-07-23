@@ -103,4 +103,21 @@ public interface @MoName@Mapper {
      * @return
      */
     <T extends Number> int deleteByPrimaryKey(T id);
+
+    /**
+     * 根据条件查询单个对象
+     *
+     * @param @uncapitallizeMoName@Example
+     * @return
+     */
+    @MoName@Mo selectOneByExample(@MoName@Example @uncapitallizeMoName@Example);
+
+    /**
+     * 增加单条非空字段记录, 并为入参设置ID
+     *
+     * @param @uncapitallizeMoName@Mo
+     * @return
+     */
+    int insertSelectiveWithId(@MoName@Mo @uncapitallizeMoName@Mo);
+
 }

@@ -31,8 +31,7 @@ public class @MoName@ServiceImpl implements @MoName@Service {
      */
     @Override
     public int add(@MoName@Mo @uncapitallizeMoName@Mo) {
-        @uncapitallizeMoName@Mo.setId(null);
-        return @uncapitallizeMoName@Mapper.insertWithId(@uncapitallizeMoName@Mo);
+        return @uncapitallizeMoName@Mapper.insertSelectiveWithId(@uncapitallizeMoName@Mo);
     }
 
     /**

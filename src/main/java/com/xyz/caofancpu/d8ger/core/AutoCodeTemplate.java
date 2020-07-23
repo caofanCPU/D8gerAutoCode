@@ -42,6 +42,7 @@ public class AutoCodeTemplate {
             "@field@\n" +
             "\n" +
             "}");
+
     /**
      * Swagger VO template string
      */
@@ -73,6 +74,7 @@ public class AutoCodeTemplate {
             "@swaggerField@\n" +
             "\n" +
             "}");
+
     /**
      * Sql template string
      */
@@ -91,6 +93,7 @@ public class AutoCodeTemplate {
             "@update_time@" +
             ")\n" +
             "    comment '@MoName@表' charset = utf8mb4;\n");
+
     /**
      * Mapper template string
      */
@@ -199,7 +202,25 @@ public class AutoCodeTemplate {
             "     * @return\n" +
             "     */\n" +
             "    <T extends Number> int deleteByPrimaryKey(T id);\n" +
+            "\n" +
+            "    /**\n" +
+            "     * 根据条件查询单个对象\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@Example\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    @MoName@Mo selectOneByExample(@MoName@Example @uncapitallizeMoName@Example);\n" +
+            "\n" +
+            "    /**\n" +
+            "     * 增加单条非空字段记录, 并为入参设置ID\n" +
+            "     *\n" +
+            "     * @param @uncapitallizeMoName@Mo\n" +
+            "     * @return\n" +
+            "     */\n" +
+            "    int insertSelectiveWithId(@MoName@Mo @uncapitallizeMoName@Mo);\n" +
+            "\n" +
             "}");
+
     /**
      * MoExample template string
      */
@@ -220,12 +241,14 @@ public class AutoCodeTemplate {
             "\n" +
             "    protected String orderByClause;\n" +
             "\n" +
+            "    protected Integer limit;\n" +
+            "\n" +
             "    protected boolean distinct;\n" +
             "\n" +
-            "    protected List<Criteria> oredCriteria;\n" +
+            "    protected List<Criteria> conditionCriteria;\n" +
             "\n" +
             "    public @MoName@Example() {\n" +
-            "        oredCriteria = new ArrayList<>();\n" +
+            "        conditionCriteria = new ArrayList<>();\n" +
             "    }\n" +
             "\n" +
             "    public void setOrderByClause(String orderByClause) {\n" +
@@ -236,6 +259,16 @@ public class AutoCodeTemplate {
             "        return orderByClause;\n" +
             "    }\n" +
             "\n" +
+            "    public Integer getLimit() {\n" +
+            "        return limit;\n" +
+            "    }\n" +
+            "\n" +
+            "    public void setLimit(Integer limit) {\n" +
+            "        if (limit != null && limit > 0) {\n" +
+            "            this.limit = limit;\n" +
+            "        }\n" +
+            "    }\n" +
+            "\n" +
             "    public void setDistinct(boolean distinct) {\n" +
             "        this.distinct = distinct;\n" +
             "    }\n" +
@@ -244,24 +277,24 @@ public class AutoCodeTemplate {
             "        return distinct;\n" +
             "    }\n" +
             "\n" +
-            "    public List<Criteria> getOredCriteria() {\n" +
-            "        return oredCriteria;\n" +
+            "    public List<Criteria> getConditionCriteria() {\n" +
+            "        return conditionCriteria;\n" +
             "    }\n" +
             "\n" +
             "    public void or(Criteria criteria) {\n" +
-            "        oredCriteria.add(criteria);\n" +
+            "        conditionCriteria.add(criteria);\n" +
             "    }\n" +
             "\n" +
             "    public Criteria or() {\n" +
             "        Criteria criteria = createCriteriaInternal();\n" +
-            "        oredCriteria.add(criteria);\n" +
+            "        conditionCriteria.add(criteria);\n" +
             "        return criteria;\n" +
             "    }\n" +
             "\n" +
             "    public Criteria createCriteria() {\n" +
             "        Criteria criteria = createCriteriaInternal();\n" +
-            "        if (oredCriteria.size() == 0) {\n" +
-            "            oredCriteria.add(criteria);\n" +
+            "        if (conditionCriteria.size() == 0) {\n" +
+            "            conditionCriteria.add(criteria);\n" +
             "        }\n" +
             "        return criteria;\n" +
             "    }\n" +
@@ -271,7 +304,7 @@ public class AutoCodeTemplate {
             "    }\n" +
             "\n" +
             "    public void clear() {\n" +
-            "        oredCriteria.clear();\n" +
+            "        conditionCriteria.clear();\n" +
             "        orderByClause = null;\n" +
             "        distinct = false;\n" +
             "    }\n" +
@@ -412,6 +445,7 @@ public class AutoCodeTemplate {
             "        }\n" +
             "    }\n" +
             "}");
+
     /**
      * Mapper.xml template string
      */
@@ -422,22 +456,22 @@ public class AutoCodeTemplate {
             "    <!-- 查询操作时条件 -->\n" +
             "    <sql id=\"Example_Where_Clause\">\n" +
             "        <where>\n" +
-            "            <foreach collection=\"oredCriteria\" item=\"criteria\" separator=\"or\">\n" +
+            "            <foreach collection=\"conditionCriteria\" item=\"criteria\" separator=\"or\">\n" +
             "                <if test=\"criteria.valid\">\n" +
             "                    <trim prefix=\"(\" prefixOverrides=\"and\" suffix=\")\">\n" +
             "                        <foreach collection=\"criteria.criteria\" item=\"criterion\">\n" +
             "                            <choose>\n" +
             "                                <when test=\"criterion.noValue\">\n" +
-            "                                    AND ${criterion.condition}\n" +
+            "                                    AND #{criterion.condition}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.singleValue\">\n" +
-            "                                    AND ${criterion.condition} #{criterion.value}\n" +
+            "                                    AND #{criterion.condition} #{criterion.value}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.betweenValue\">\n" +
-            "                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
+            "                                    AND #{criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.listValue\">\n" +
-            "                                    AND ${criterion.condition}\n" +
+            "                                    AND #{criterion.condition}\n" +
             "                                    <foreach close=\")\" collection=\"criterion.value\" item=\"listItem\" open=\"(\" separator=\",\">\n" +
             "                                        #{listItem}\n" +
             "                                    </foreach>\n" +
@@ -453,22 +487,22 @@ public class AutoCodeTemplate {
             "    <!-- 更新操作时条件 -->\n" +
             "    <sql id=\"Update_By_Example_Where_Clause\">\n" +
             "        <where>\n" +
-            "            <foreach collection=\"example.oredCriteria\" item=\"criteria\" separator=\"or\">\n" +
+            "            <foreach collection=\"example.conditionCriteria\" item=\"criteria\" separator=\"or\">\n" +
             "                <if test=\"criteria.valid\">\n" +
             "                    <trim prefix=\"(\" prefixOverrides=\"and\" suffix=\")\">\n" +
             "                        <foreach collection=\"criteria.criteria\" item=\"criterion\">\n" +
             "                            <choose>\n" +
             "                                <when test=\"criterion.noValue\">\n" +
-            "                                    AND ${criterion.condition}\n" +
+            "                                    AND #{criterion.condition}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.singleValue\">\n" +
-            "                                    AND ${criterion.condition} #{criterion.value}\n" +
+            "                                    AND #{criterion.condition} #{criterion.value}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.betweenValue\">\n" +
-            "                                    AND ${criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
+            "                                    AND #{criterion.condition} #{criterion.value} AND #{criterion.secondValue}\n" +
             "                                </when>\n" +
             "                                <when test=\"criterion.listValue\">\n" +
-            "                                    AND ${criterion.condition}\n" +
+            "                                    AND #{criterion.condition}\n" +
             "                                    <foreach close=\")\" collection=\"criterion.value\" item=\"listItem\" open=\"(\" separator=\",\">\n" +
             "                                        #{listItem}\n" +
             "                                    </foreach>\n" +
@@ -493,7 +527,10 @@ public class AutoCodeTemplate {
             "            <include refid=\"Example_Where_Clause\"/>\n" +
             "        </if>\n" +
             "        <if test=\"orderByClause != null\">\n" +
-            "            ORDER BY ${orderByClause}\n" +
+            "            ORDER BY #{orderByClause}\n" +
+            "        </if>\n" +
+            "        <if test=\"limit != null\">\n" +
+            "            LIMIT #{limit}\n" +
             "        </if>\n" +
             "    </select>\n" +
             "\n" +
@@ -589,7 +626,35 @@ public class AutoCodeTemplate {
             "        DELETE FROM `@mo_table_name@` WHERE `id` = #{id}\n" +
             "    </delete>\n" +
             "\n" +
+            "    <!-- 12.根据条件查询单个对象 -->\n" +
+            "    <select id=\"selectOneByExample\" parameterType=\"@moExamplePackage@.@MoName@Example\" resultType=\"@moPackage@.@MoName@Mo\">\n" +
+            "        SELECT\n" +
+            "        <if test=\"distinct\">\n" +
+            "            DISTINCT\n" +
+            "        </if>\n" +
+            "@SelectBaseColumnList@\n" +
+            "        FROM `@mo_table_name@`\n" +
+            "        <if test=\"_parameter != null\">\n" +
+            "            <include refid=\"Example_Where_Clause\"/>\n" +
+            "        </if>\n" +
+            "        <if test=\"orderByClause != null\">\n" +
+            "            ORDER BY #{orderByClause}\n" +
+            "        </if>\n" +
+            "        LIMIT 1\n" +
+            "    </select>\n" +
+            "\n" +
+            "    <!-- 13.增加单条非空字段记录, 返回主键 -->\n" +
+            "    <insert id=\"insertSelectiveWithId\" parameterType=\"@moPackage@.@MoName@Mo\" useGeneratedKeys=\"true\" keyProperty=\"id\">\n" +
+            "        INSERT INTO `@mo_table_name@`\n" +
+            "        <trim prefix=\"(\" suffix=\")\" suffixOverrides=\",\">\n" +
+            "@NonNullColumnList@\n" +
+            "        </trim>\n" +
+            "        <trim prefix=\"VALUES (\" suffix=\")\" suffixOverrides=\",\">\n" +
+            "@NonNullInsertField@\n" +
+            "        </trim>\n" +
+            "    </insert>\n" +
             "</mapper>");
+
     /**
      * Service interface template string
      */
@@ -655,6 +720,7 @@ public class AutoCodeTemplate {
             "    <T extends Number> int delete(T id);\n" +
             "\n" +
             "}");
+
     /**
      * Service implement template string
      */
@@ -691,8 +757,7 @@ public class AutoCodeTemplate {
             "     */\n" +
             "    @Override\n" +
             "    public int add(@MoName@Mo @uncapitallizeMoName@Mo) {\n" +
-            "        @uncapitallizeMoName@Mo.setId(null);\n" +
-            "        return @uncapitallizeMoName@Mapper.insertWithId(@uncapitallizeMoName@Mo);\n" +
+            "        return @uncapitallizeMoName@Mapper.insertSelectiveWithId(@uncapitallizeMoName@Mo);\n" +
             "    }\n" +
             "\n" +
             "    /**\n" +
@@ -758,6 +823,7 @@ public class AutoCodeTemplate {
             "    }\n" +
             "\n" +
             "}");
+
     /**
      * Controller template string
      */
@@ -1744,6 +1810,14 @@ public class AutoCodeTemplate {
             "\n" +
             "#### Other normal binary config\n" +
             "autoFormatStyle=true\n" +
+            "\n" +
+            "\n" +
+            "#### auto generating create_time and update_time SQL column definition\n" +
+            "autoDetectSQLTimeColumn=true\n" +
+            "\n" +
+            "\n" +
+            "#### if true then moMapper with annotation @Mapper, otherwise, with annotation @Repository\n" +
+            "mapperBatterThenRepository=true\n" +
             "\n" +
             "\n" +
             "#### Api path prefix\n" +

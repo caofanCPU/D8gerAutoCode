@@ -1,6 +1,7 @@
 package com.xyz.caofancpu.d8ger.util;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.Collections;
 
@@ -139,7 +140,7 @@ public class ConstantUtil {
     /**
      * SQL create time default definition
      */
-    public static final String SQL_CREATE_TIME_DEFAULT_DEFINITION = TAB + "create_time datetime default CURRENT_TIMESTAMP null comment '创建时间'" + ENGLISH_COMMA + NEXT_LINE;
+    public static final String SQL_CREATE_TIME_DEFAULT_DEFINITION = TAB + "create_time datetime default CURRENT_TIMESTAMP null comment 'createTime'" + ENGLISH_COMMA + NEXT_LINE;
 
     /**
      * SQL update time column
@@ -149,7 +150,7 @@ public class ConstantUtil {
     /**
      * SQL update time default definition
      */
-    public static final String SQL_UPDATE_TIME_DEFAULT_DEFINITION = TAB + "update_time datetime default CURRENT_TIMESTAMP null on update CURRENT_TIMESTAMP comment '更新时间'" + NEXT_LINE;
+    public static final String SQL_UPDATE_TIME_DEFAULT_DEFINITION = TAB + "update_time datetime default CURRENT_TIMESTAMP null on update CURRENT_TIMESTAMP comment 'updateTime'" + NEXT_LINE;
 
     /**
      * Mo name suffix
@@ -250,4 +251,14 @@ public class ConstantUtil {
      * Pagination size field name
      */
     public static final String PAGE_SIZE_NAME = "pageSize";
+
+    /**
+     * Spring MVC mapper with annotation @Repository
+     */
+    public static final Pair<String, String> MVC_MAPPER = Pair.of("org.springframework.stereotype.Repository", "@Repository");
+
+    /**
+     * SpringBoot mapper with annotation @Mapper
+     */
+    public static final Pair<String, String> BOOT_MAPPER = Pair.of("org.apache.ibatis.annotations.Mapper", "@Mapper");
 }
