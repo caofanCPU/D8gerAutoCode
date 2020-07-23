@@ -96,7 +96,11 @@
         </li>
         <li>Optimization: 'cause 'id' is the primary key, all insert operations should exclude 'id' column.<br>
         </li>
-        <li>BugFix: Generation 'update_time' column definition remove the rare comma.<br>
+        <li>BugFix:<br>
+            <ul>
+            <li>Generation 'update_time' column definition remove the rare comma.</li>
+            <li>Trouble shooting the rare dir named 'D8gerAutoCode', now you can see it only with unspecified directory configuration.</li>
+            </ul>
         </li>
         <li>Adjustment: Remove 'ServiceInterface' and 'ServiceImpl', 'cause I think 'Handler' is more suitable.<br>
         </li>
