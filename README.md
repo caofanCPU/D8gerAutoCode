@@ -7,8 +7,10 @@
 > [中文说明](./README_CN.md)
 
 ### Preface
-As JetBrains' said, I believe that you should be use of tools will save you precious hours when you're busing coding.  
-I always wonder, "If someone else has already solved the repeating work, why do I need to repeat it too?"  
+As JetBrains' said, I believe that you should be good use of tools will save you precious hours on your busing work.
+
+I always wonder, "If someone else has already solved the repeating work, why do I need to repeat it too?"
+
 Well, that's a valid question for my drive to find the repeat parts at daily work and develop this plugin to save my time.  
 
 ### Convention
