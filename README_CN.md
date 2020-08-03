@@ -84,7 +84,6 @@
 
 ##### 如何安装
 - IDEA官方插件库安装  
-- [下载插件包](http://file.debuggerpowerzcy.top/power/D8gerAutoCode-2.5.zip)  
 - 源码安装, 这需要你熟悉Gradle, 后期我会详细补充如何使用Gradle开发一个插件  
 
 ##### Bug&问题

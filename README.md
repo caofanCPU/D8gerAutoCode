@@ -83,7 +83,6 @@ Well, that's a valid question for my drive to find the repeat parts at daily wor
 
 ### How to install
 - IDEA official plugin library installation  
-- [Download plugin package](http://file.debuggerpowerzcy.top/power/D8gerAutoCode-2.5.zip)  
 - As for `Source installation` requires you're familiar with Gradle, I will add more details about how to develop a plugin by ***Gradle*** later
 
 ### Bug & Question
