@@ -16,7 +16,7 @@ public enum KeyEnum {
     MO_SQL("autoCreateDefinitionSQL"),
     FORMAT_STYLE("autoFormatStyle"),
     SQL_DETECT_TIME_COLUMN("autoDetectSQLTimeColumn"),
-    MO_MAPPER_ANNOTATION("mapperBatterThenRepository"),
+    MO_MAPPER_ANNOTATION("mapperBetterThenRepository"),
     ;
 
     private String key;

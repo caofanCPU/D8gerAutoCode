@@ -33,6 +33,11 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <applicationService serviceImplementation="com.xyz.caofancpu.d8ger.setting.D8gerState"/>
+        <projectConfigurable parentId="tools" instance="com.xyz.caofancpu.d8ger.setting.D8gerSettingsConfigurable"
+                             id="com.xyz.caofancpu.d8ger.setting.D8gerSettingsConfigurable"
+                             displayName="D8gerAutoCode Setting"
+                             nonDefaultProject="true"/>
     </extensions>
 
     <actions>
@@ -76,7 +81,11 @@
 
     <idea-version since-build="145.0"/>
 
+    <depends>com.intellij.modules.platform</depends>
+
     <depends>com.intellij.modules.java</depends>
+
+    <depends>com.intellij.java</depends>
 
     <change-notes>
         <![CDATA[

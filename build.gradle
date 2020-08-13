@@ -1,10 +1,10 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.intellij' version '0.4.15'
+    id 'org.jetbrains.intellij' version '0.4.21'
 }
 
 group 'com.xyz.caofancpu'
-version '2.5'
+version '3.0'
 
 sourceCompatibility = 1.8
 
@@ -21,6 +21,11 @@ tasks.withType(JavaCompile) {
 apply plugin: 'idea'
 apply plugin: 'org.jetbrains.intellij'
 apply plugin: 'java'
+
+//task myRun(type: JavaExec) {
+//    classpath sourceSets.main.runtimeClasspath
+//    main = "com.xyz.caofancpu.d8ger.action.D8gerSetting"
+//}
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
