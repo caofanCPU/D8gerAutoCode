@@ -34,10 +34,10 @@
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <applicationService serviceImplementation="com.xyz.caofancpu.d8ger.setting.D8gerState"/>
-        <projectConfigurable parentId="tools" instance="com.xyz.caofancpu.d8ger.setting.D8gerSettingsConfigurable"
+        <projectConfigurable parentId="default" instance="com.xyz.caofancpu.d8ger.setting.D8gerSettingsConfigurable"
                              id="com.xyz.caofancpu.d8ger.setting.D8gerSettingsConfigurable"
                              displayName="D8gerAutoCode Setting"
-                             nonDefaultProject="true"/>
+                             nonDefaultProject="false"/>
     </extensions>
 
     <actions>

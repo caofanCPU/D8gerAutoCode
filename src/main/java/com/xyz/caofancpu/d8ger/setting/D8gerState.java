@@ -19,7 +19,6 @@ import org.jetbrains.annotations.Nullable;
         storages = {@Storage("D8gerAutoCodePluginSetting.xml")}
 )
 public class D8gerState implements PersistentStateComponent<D8gerState> {
-
     public boolean moCheck = true;
     public boolean mapperCheck = true;
     public boolean mapperExampleCheck = true;

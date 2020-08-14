@@ -124,12 +124,11 @@ public class IdeaPlatformFileTreeUtil {
      * Get or create a subdirectory
      *
      * @param currentProject        current project
-     * @param directoryRelativePath directoryRelativePath refer project's root path, see: Project.getBasePath()
+     * @param directoryAbsolutePath directoryRelativePath refer project's root path, see: Project.getBasePath()
      * @return
      */
-    public static PsiDirectory getOrCreateSubDirByPath(@NonNull Project currentProject, @NonNull String directoryRelativePath) {
-        String projectRootPath = currentProject.getBasePath();
-        String fileDirAbsolutePath = VerbalExpressionUtil.correctUrl(projectRootPath + File.separator + directoryRelativePath);
+    public static PsiDirectory getOrCreateSubDirByPath(@NonNull Project currentProject, @NonNull String directoryAbsolutePath) {
+        String fileDirAbsolutePath = VerbalExpressionUtil.correctUrl(directoryAbsolutePath);
         VirtualFile fileByIoFileDir = LocalFileSystem.getInstance().findFileByIoFile(new File(fileDirAbsolutePath));
         if (Objects.isNull(fileByIoFileDir) || !fileByIoFileDir.exists()) {
             return null;

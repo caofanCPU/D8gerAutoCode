@@ -18,10 +18,9 @@ public class PropertiesUtil {
     /**
      * Load configuration file
      *
-     * @param configFileAbsolutePath
      * @return
      */
-    public static Properties loadPropertiesFromRootResource(String configFileAbsolutePath) {
+    public static Properties loadPropertiesFromRootResource() {
         Properties customerProperties = new Properties();
         D8gerState settings = D8gerState.getInstance();
         customerProperties.setProperty(KeyEnum.MO.getKey(), settings.moCheck + ConstantUtil.ENGLISH_COMMA + settings.moPath);
@@ -52,12 +51,6 @@ public class PropertiesUtil {
         LOG.debug(ConstantUtil.CONFIG_AUTHOR_KEY + ": [" + customerProperties.getProperty(ConstantUtil.CONFIG_AUTHOR_KEY) + "]");
         LOG.debug(ConstantUtil.CONFIG_API_URL_PREFIX_KEY + ": [" + customerProperties.getProperty(ConstantUtil.CONFIG_API_URL_PREFIX_KEY) + "]");
         LOG.debug(ConstantUtil.CONFIG_LANGUAGE_KEY + ": [" + customerProperties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY) + "]");
-//        try {
-//            // Try to read configuration items
-//            customerProperties.load(new FileInputStream(configFileAbsolutePath));
-//        } catch (IOException e) {
-//            // do nothing
-//        }
         return customerProperties;
     }
 

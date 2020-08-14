@@ -37,7 +37,7 @@ public class D8gerSettingsConfigurable implements Configurable {
     @Nullable
     @Override
     public JComponent createComponent() {
-        LOG.error("创建D8ger设置");
+        LOG.info("prepare D8gerAutoCode setting...");
         d8gerSetting = new D8gerSetting();
         return d8gerSetting.getPanel();
     }
@@ -129,7 +129,7 @@ public class D8gerSettingsConfigurable implements Configurable {
 
     @Override
     public void disposeUIResources() {
-        LOG.error("销毁D8GER-UI设置");
+        LOG.info("finish D8gerAutoCode setting");
         d8gerSetting = null;
     }
 

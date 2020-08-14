@@ -19,7 +19,6 @@ import lombok.experimental.Accessors;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Pair;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -196,7 +195,7 @@ public class D8gerAutoCoding {
      * @return
      */
     public Properties loadPropertiesFromRootResource() {
-        return PropertiesUtil.loadPropertiesFromRootResource(rootResource.getPath() + File.separator + ConstantUtil.D8GER_CONFIG_FILE_NAME);
+        return PropertiesUtil.loadPropertiesFromRootResource();
     }
 
     /**
