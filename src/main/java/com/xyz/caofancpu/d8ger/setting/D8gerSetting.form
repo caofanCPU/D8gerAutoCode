@@ -16,7 +16,7 @@
         </constraints>
         <properties>
           <selected value="true"/>
-          <text value="moCheck"/>
+          <text value="autoCreateMo"/>
         </properties>
       </component>
       <component id="d4069" class="com.intellij.openapi.ui.TextFieldWithBrowseButton" binding="moPath">
@@ -37,7 +37,7 @@
         </constraints>
         <properties>
           <selected value="true"/>
-          <text value="mapperCheck"/>
+          <text value="autoCreateMapper"/>
         </properties>
       </component>
       <component id="2eed7" class="com.intellij.openapi.ui.TextFieldWithBrowseButton" binding="mapperPath">
@@ -57,7 +57,7 @@
         </constraints>
         <properties>
           <selected value="true"/>
-          <text value="mapperExampleCheck"/>
+          <text value="autoCreateExample"/>
         </properties>
       </component>
       <component id="8feae" class="javax.swing.JCheckBox" binding="mapperXmlCheck">
@@ -66,7 +66,7 @@
         </constraints>
         <properties>
           <selected value="true"/>
-          <text value="mapperXmlCheck"/>
+          <text value="autoCreateXML"/>
         </properties>
       </component>
       <component id="5f84" class="javax.swing.JCheckBox" binding="sqlCheck">
@@ -75,7 +75,7 @@
         </constraints>
         <properties>
           <selected value="true"/>
-          <text value="sqlCheck"/>
+          <text value="autoCreateDefinitionSQL"/>
         </properties>
       </component>
       <component id="18e29" class="javax.swing.JCheckBox" binding="voCheck">
@@ -83,7 +83,7 @@
           <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="voCheck"/>
+          <text value="autoCreateSwaggerMo"/>
         </properties>
       </component>
       <component id="2f34" class="javax.swing.JCheckBox" binding="handlerCheck">
@@ -91,7 +91,7 @@
           <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="handlerCheck"/>
+          <text value="autoCreateHandler"/>
         </properties>
       </component>
       <component id="830e0" class="javax.swing.JCheckBox" binding="controllerCheck">
@@ -99,7 +99,7 @@
           <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="controllerCheck"/>
+          <text value="autoCreateController"/>
         </properties>
       </component>
       <component id="11b39" class="javax.swing.JCheckBox" binding="formatStyleCheck">
@@ -108,7 +108,7 @@
         </constraints>
         <properties>
           <selected value="true"/>
-          <text value="formatStyleCheck"/>
+          <text value="autoFormatStyle"/>
         </properties>
       </component>
       <component id="61c8d" class="javax.swing.JCheckBox" binding="detectSQLTimeColumnCheck">
@@ -117,7 +117,7 @@
         </constraints>
         <properties>
           <selected value="true"/>
-          <text value="detectSQLTimeColumnCheck"/>
+          <text value="autoDetectSQLTimeColumn"/>
         </properties>
       </component>
       <component id="ae2f5" class="javax.swing.JCheckBox" binding="mapperBetterThenRepositoryCheck">
@@ -126,7 +126,7 @@
         </constraints>
         <properties>
           <selected value="true"/>
-          <text value="mapperBetterThenRepositoryCheck"/>
+          <text value="mapperBatterThenRepository"/>
         </properties>
       </component>
       <component id="2fe6" class="javax.swing.JLabel" binding="author">
