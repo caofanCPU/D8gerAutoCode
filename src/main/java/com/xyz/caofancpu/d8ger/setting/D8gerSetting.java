@@ -2,12 +2,18 @@ package com.xyz.caofancpu.d8ger.setting;
 
 import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.fileChooser.FileChooserDescriptor;
+import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectUtil;
 import com.intellij.openapi.ui.TextBrowseFolderListener;
 import com.intellij.openapi.ui.TextFieldWithBrowseButton;
+import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.ui.JBUI;
+import com.xyz.caofancpu.d8ger.util.ConstantUtil;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
+import java.util.Objects;
 
 /**
  * Setting Form
@@ -15,6 +21,15 @@ import javax.swing.*;
  * @author D8GER
  */
 public class D8gerSetting {
+    /**
+     * Current project, this determines the root directory
+     */
+    private Project currentProject;
+
+    /**
+     * File choose descriptor
+     */
+    private FileChooserDescriptor cacheFolderDescriptor;
     /**
      * Root panel
      */
@@ -126,28 +141,46 @@ public class D8gerSetting {
      */
     private JButton donateButton;
 
-    public D8gerSetting() {
+    public D8gerSetting(Project project) {
+        this.currentProject = project;
         initDonate();
         initTbbListener();
     }
 
     private void initTbbListener() {
-        moPath.addBrowseFolderListener(new TextBrowseFolderListener(new FileChooserDescriptor(false, true, false, false, false, false)));
-        mapperPath.addBrowseFolderListener(new TextBrowseFolderListener(new FileChooserDescriptor(false, true, false, false, false, false)));
-        mapperExamplePath.addBrowseFolderListener(new TextBrowseFolderListener(new FileChooserDescriptor(false, true, false, false, false, false)));
-        mapperXmlPath.addBrowseFolderListener(new TextBrowseFolderListener(new FileChooserDescriptor(false, true, false, false, false, false)));
-        sqlPath.addBrowseFolderListener(new TextBrowseFolderListener(new FileChooserDescriptor(false, true, false, false, false, false)));
-        voPath.addBrowseFolderListener(new TextBrowseFolderListener(new FileChooserDescriptor(false, true, false, false, false, false)));
-        handlerPath.addBrowseFolderListener(new TextBrowseFolderListener(new FileChooserDescriptor(false, true, false, false, false, false)));
-        controllerPath.addBrowseFolderListener(new TextBrowseFolderListener(new FileChooserDescriptor(false, true, false, false, false, false)));
+        moPath.addBrowseFolderListener(getFolderChooseListener());
+        mapperPath.addBrowseFolderListener(getFolderChooseListener());
+        mapperExamplePath.addBrowseFolderListener(getFolderChooseListener());
+        mapperXmlPath.addBrowseFolderListener(getFolderChooseListener());
+        sqlPath.addBrowseFolderListener(getFolderChooseListener());
+        voPath.addBrowseFolderListener(getFolderChooseListener());
+        handlerPath.addBrowseFolderListener(getFolderChooseListener());
+        controllerPath.addBrowseFolderListener(getFolderChooseListener());
+    }
+
+    private TextBrowseFolderListener getFolderChooseListener() {
+        if (Objects.isNull(cacheFolderDescriptor)) {
+            cacheFolderDescriptor = FileChooserDescriptorFactory.createSingleFolderDescriptor();
+            cacheFolderDescriptor.setTitle(ConstantUtil.FILE_CHOOSE_TITLE);
+            cacheFolderDescriptor.setDescription(ConstantUtil.FILE_CHOOSE_DESCRIPTION);
+            cacheFolderDescriptor.setShowFileSystemRoots(false);
+            cacheFolderDescriptor.withTreeRootVisible(true);
+            cacheFolderDescriptor.setHideIgnored(true);
+            VirtualFile projectDir = ProjectUtil.guessProjectDir(this.currentProject);
+            if (Objects.nonNull(projectDir)) {
+                cacheFolderDescriptor.setRoots(projectDir);
+                cacheFolderDescriptor.setForcedToUseIdeaFileChooser(true);
+            }
+        }
+        return new TextBrowseFolderListener(cacheFolderDescriptor);
     }
 
     private void initDonate() {
         donateButton.setBorder(null);
         donateButton.setMargin(JBUI.emptyInsets());
         donateButton.setContentAreaFilled(false);
-        donateButton.addActionListener(e -> BrowserUtil.browse("http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/"));
-        donateButton.putClientProperty("JButton.backgroundColor", rootPanel.getBackground());
+        donateButton.addActionListener(e -> BrowserUtil.browse(ConstantUtil.DONATE_CLICK_URL));
+        donateButton.putClientProperty(ConstantUtil.DONATE_BACKGROUND_KEY, rootPanel.getBackground());
     }
 
     public JPanel getPanel() {

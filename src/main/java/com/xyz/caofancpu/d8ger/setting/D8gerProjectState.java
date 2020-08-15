@@ -4,6 +4,7 @@ import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
+import com.intellij.openapi.project.Project;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.xyz.caofancpu.d8ger.util.ConstantUtil;
 import org.jetbrains.annotations.NotNull;
@@ -15,10 +16,10 @@ import org.jetbrains.annotations.Nullable;
  * @author D8GER
  */
 @State(
-        name = "com.xyz.caofancpu.d8ger.setting.D8gerState",
-        storages = {@Storage("D8gerAutoCodePluginSetting.xml")}
+        name = "com.xyz.caofancpu.d8ger.setting.D8gerProjectState",
+        storages = {@Storage("D8gerAutoCodePluginProjectSetting.xml")}
 )
-public class D8gerState implements PersistentStateComponent<D8gerState> {
+public class D8gerProjectState implements PersistentStateComponent<D8gerProjectState> {
     public boolean moCheck = true;
     public boolean mapperCheck = true;
     public boolean mapperExampleCheck = true;
@@ -43,18 +44,18 @@ public class D8gerState implements PersistentStateComponent<D8gerState> {
     public String defaultUrlPrefix = ConstantUtil.DEFAULT_API_URL_PREFIX;
     public String defaultLocale = ConstantUtil.OPTIONAL_CONFIG_LANGUAGE;
 
-    public static D8gerState getInstance() {
-        return ServiceManager.getService(D8gerState.class);
+    public static D8gerProjectState getInstance(Project currentProject) {
+        return ServiceManager.getService(currentProject, D8gerProjectState.class);
     }
 
     @Nullable
     @Override
-    public D8gerState getState() {
+    public D8gerProjectState getState() {
         return this;
     }
 
     @Override
-    public void loadState(@NotNull D8gerState d8gerState) {
-        XmlSerializerUtil.copyBean(d8gerState, this);
+    public void loadState(@NotNull D8gerProjectState d8GerProjectState) {
+        XmlSerializerUtil.copyBean(d8GerProjectState, this);
     }
 }

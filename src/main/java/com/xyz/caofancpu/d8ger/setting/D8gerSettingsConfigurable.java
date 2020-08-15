@@ -2,6 +2,7 @@ package com.xyz.caofancpu.d8ger.setting;
 
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.options.Configurable;
+import com.intellij.openapi.project.Project;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.Nullable;
 
@@ -15,10 +16,22 @@ import java.util.Objects;
  */
 public class D8gerSettingsConfigurable implements Configurable {
     private static final Logger LOG = Logger.getInstance(D8gerSettingsConfigurable.class);
+
+    private Project currentProject;
+
     /**
      * User custom config result
      */
     private D8gerSetting d8gerSetting;
+
+    /**
+     * Must have this construct, and should only inject Project param
+     *
+     * @param currentProject
+     */
+    public D8gerSettingsConfigurable(Project currentProject) {
+        this.currentProject = currentProject;
+    }
 
     // A default constructor with no arguments is required because this implementation
     // is registered as an applicationConfigurable EP
@@ -38,13 +51,13 @@ public class D8gerSettingsConfigurable implements Configurable {
     @Override
     public JComponent createComponent() {
         LOG.info("prepare D8gerAutoCode setting...");
-        d8gerSetting = new D8gerSetting();
+        d8gerSetting = new D8gerSetting(this.currentProject);
         return d8gerSetting.getPanel();
     }
 
     @Override
     public boolean isModified() {
-        D8gerState settings = D8gerState.getInstance();
+        D8gerProjectState settings = D8gerProjectState.getInstance(this.currentProject);
         return !Objects.equals(d8gerSetting.getMoPath(), settings.moPath)
                 || !Objects.equals(d8gerSetting.getMapperPath(), settings.mapperPath)
                 || !Objects.equals(d8gerSetting.getMapperExamplePath(), settings.mapperExamplePath)
@@ -73,7 +86,7 @@ public class D8gerSettingsConfigurable implements Configurable {
 
     @Override
     public void apply() {
-        D8gerState settings = D8gerState.getInstance();
+        D8gerProjectState settings = D8gerProjectState.getInstance(this.currentProject);
         settings.moCheck = d8gerSetting.getMoCheck();
         settings.mapperCheck = d8gerSetting.getMapperCheck();
         settings.mapperExampleCheck = d8gerSetting.getMapperExampleCheck();
@@ -101,7 +114,7 @@ public class D8gerSettingsConfigurable implements Configurable {
 
     @Override
     public void reset() {
-        D8gerState settings = D8gerState.getInstance();
+        D8gerProjectState settings = D8gerProjectState.getInstance(this.currentProject);
         d8gerSetting.setMoCheck(settings.moCheck);
         d8gerSetting.setMapperCheck(settings.mapperCheck);
         d8gerSetting.setMapperExampleCheck(settings.mapperExampleCheck);

@@ -195,7 +195,7 @@ public class D8gerAutoCoding {
      * @return
      */
     public Properties loadPropertiesFromRootResource() {
-        return PropertiesUtil.loadPropertiesFromRootResource();
+        return PropertiesUtil.loadPropertiesFromRootResource(this.currentProject);
     }
 
     /**

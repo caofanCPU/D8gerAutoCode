@@ -33,7 +33,10 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <applicationService serviceImplementation="com.xyz.caofancpu.d8ger.setting.D8gerState"/>
+        <applicationService serviceImplementation="com.xyz.caofancpu.d8ger.setting.D8gerApplicationState"/>
+        <postStartupActivity implementation="com.xyz.caofancpu.d8ger.activity.D8gerActivity"/>
+
+        <projectService serviceImplementation="com.xyz.caofancpu.d8ger.setting.D8gerProjectState"/>
         <projectConfigurable parentId="default" instance="com.xyz.caofancpu.d8ger.setting.D8gerSettingsConfigurable"
                              id="com.xyz.caofancpu.d8ger.setting.D8gerSettingsConfigurable"
                              displayName="D8gerAutoCode Setting"
@@ -79,7 +82,7 @@
         </group>
     </actions>
 
-    <idea-version since-build="145.0"/>
+    <idea-version since-build="193"/>
 
     <depends>com.intellij.modules.platform</depends>
 

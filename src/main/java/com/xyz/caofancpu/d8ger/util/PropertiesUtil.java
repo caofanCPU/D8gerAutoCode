@@ -1,8 +1,9 @@
 package com.xyz.caofancpu.d8ger.util;
 
 import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.openapi.project.Project;
 import com.xyz.caofancpu.d8ger.core.KeyEnum;
-import com.xyz.caofancpu.d8ger.setting.D8gerState;
+import com.xyz.caofancpu.d8ger.setting.D8gerProjectState;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Properties;
@@ -20,9 +21,9 @@ public class PropertiesUtil {
      *
      * @return
      */
-    public static Properties loadPropertiesFromRootResource() {
+    public static Properties loadPropertiesFromRootResource(Project currentProject) {
         Properties customerProperties = new Properties();
-        D8gerState settings = D8gerState.getInstance();
+        D8gerProjectState settings = D8gerProjectState.getInstance(currentProject);
         customerProperties.setProperty(KeyEnum.MO.getKey(), settings.moCheck + ConstantUtil.ENGLISH_COMMA + settings.moPath);
         customerProperties.setProperty(KeyEnum.MO_MAPPER.getKey(), settings.mapperCheck + ConstantUtil.ENGLISH_COMMA + settings.mapperPath);
         customerProperties.setProperty(KeyEnum.MO_EXAMPLE.getKey(), settings.mapperExampleCheck + ConstantUtil.ENGLISH_COMMA + settings.mapperExamplePath);
