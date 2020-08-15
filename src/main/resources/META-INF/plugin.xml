@@ -82,7 +82,7 @@
         </group>
     </actions>
 
-    <idea-version since-build="193"/>
+    <idea-version since-build="181"/>
 
     <depends>com.intellij.modules.platform</depends>
 
