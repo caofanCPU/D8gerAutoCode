@@ -36,7 +36,11 @@
 - SwaggerVo字段排序, 默认快捷键 `alt`+`shift`+`cmd`+`O`
 
 
-##### 使用手册
+##### 使用手册(v3.0+)
+1.打开配置框设置生成参数 `Preference` --> `Other Settings` --> `D8gerAutoCode`
+2.勾选要生成的文件及生成路径, 指明 `author`、`author`、`locale`, 保存即可
+
+##### 使用手册(v3.0以下)
 1. 创建Model类  
 
 2. 选中类名, 按下(默认)快捷键 `alt`+`shift`+`cmd`+`D`  
@@ -87,7 +91,7 @@
 - 源码安装, 这需要你熟悉Gradle, 后期我会详细补充如何使用Gradle开发一个插件  
 
 ##### Bug&问题
-- 已知问题
+- 已知问题(最新版本3.0中已修复)
 >修改`d8ger.properties`文件后再生成代码, 配置文件不生效
 
 ```

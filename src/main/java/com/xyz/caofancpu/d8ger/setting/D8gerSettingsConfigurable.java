@@ -39,7 +39,7 @@ public class D8gerSettingsConfigurable implements Configurable {
     @Nls(capitalization = Nls.Capitalization.Title)
     @Override
     public String getDisplayName() {
-        return "D8gerAutoCode Setting";
+        return "D8gerAutoCode";
     }
 
     @Override

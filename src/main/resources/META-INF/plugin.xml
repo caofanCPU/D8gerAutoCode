@@ -39,7 +39,7 @@
         <projectService serviceImplementation="com.xyz.caofancpu.d8ger.setting.D8gerProjectState"/>
         <projectConfigurable parentId="default" instance="com.xyz.caofancpu.d8ger.setting.D8gerSettingsConfigurable"
                              id="com.xyz.caofancpu.d8ger.setting.D8gerSettingsConfigurable"
-                             displayName="D8gerAutoCode Setting"
+                             displayName="D8gerAutoCode"
                              nonDefaultProject="false"/>
     </extensions>
 
@@ -92,6 +92,22 @@
 
     <change-notes>
         <![CDATA[
+        <li>If you like D8gerAutoCode, please star <a href="https://github.com/caofanCPU/D8gerAutoCode">the source project</a> for supporting him, thanks!</li>
+        <li><h1>3.0</h1></li>
+        <ul>
+        <li>Addition:<br>
+            <ul>
+            <li>Grand celebration for 'D8gerAutoCode' getting his face! Now you can config the generate property parameters by setting GUI.</li>
+            <li>First, Open the configuration box to set the generation parameters, 'Preference' --> 'Other Settings' --> 'D8gerAutoCode'</li>
+            <li>Then, Check the file to be generated and choose the generation path, rewrite 'author'、'author' and 'locale', and click the button to save your configuration.</li>
+            </ul>
+        </li>
+        <li>Optimization: Support project level setting parameters for non-invasive, d8ger.properties should exist invisible.<br>
+        </li>
+        <li>Adjustment: Remove the generate params by 'd8ger.properties' file, replace of D8gerAutoCode setting GUI.<br>
+        </li>
+        </ul>
+        </br>
         <li><h1>2.5</h1></li>
         <ul>
         <li>Addition:<br>

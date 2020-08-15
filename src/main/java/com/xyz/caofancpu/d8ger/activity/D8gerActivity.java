@@ -38,7 +38,7 @@ public class D8gerActivity implements StartupActivity, DumbAware {
                         .invokeLater(() -> Notifications.Bus.notify(
                                 new Notification(ConstantUtil.NOTIFICATION_GROUP_VIEW_ID,
                                         ConstantUtil.RENDER_TITLE,
-                                        "Welcome to use D8gerAutoCode, for more information view source project <a href='https://github.com/caofanCPU/D8gerAutoCode'>D8gerAutoCode</a>",
+                                        "If you like D8gerAutoCode, please star the project <a href='https://github.com/caofanCPU/D8gerAutoCode'>D8gerAutoCode</a>",
                                         NotificationType.INFORMATION
                                 ))
                         );
