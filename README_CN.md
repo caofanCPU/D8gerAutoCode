@@ -38,7 +38,12 @@
 
 ##### 使用手册(v3.0+)
 1.打开配置框设置生成参数 `Preference` --> `Other Settings` --> `D8gerAutoCode`
+
 2.勾选要生成的文件及生成路径, 指明 `author`、`author`、`locale`, 保存即可
+
+<div align="center">
+    <img src="http://file.debuggerpowerzcy.top/power/ANNA.jpg" /> 
+</div>
 
 ##### 使用手册(v3.0以下)
 1. 创建Model类  

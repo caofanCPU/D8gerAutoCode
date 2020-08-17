@@ -36,9 +36,14 @@ Well, that's a valid question for my drive to find the repeat parts at daily wor
 - Reserve easter eggs, edit the blank file in IDEA and enter 'regex' to get some commonly used regular expressions. Other code Easter eggs will be added later.  
 - For automatic sorting `Vo` field , you just need one shortcut default as `alt`+`shift`+`cmd`+`O`  
 
-##### Using manual(v3.0+)
-1.Open the configuration box to set the generation parameters, `Preference` --> `Other Settings` --> `D8gerAutoCode`  
+### Using manual(v3.0+)
+1.Open the configuration box to set the generation parameters, `Preference` --> `Other Settings` --> `D8gerAutoCode`
+
 2.Check the file to be generated and choose the generation path, rewrite `author`、`author` and `locale`, and click the button to save your configuration.  
+
+<div align="center">
+    <img src="http://file.debuggerpowerzcy.top/power/ANNA.jpg" /> 
+</div>
 
 ### Using manual(under v3.0)
 1. Create Model Class
