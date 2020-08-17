@@ -46,6 +46,7 @@ intellij {
     plugins = ['java'] //Bundled plugin dependencies
     pluginName 'D8gerAutoCode'
     updateSinceUntilBuild false
+    sandboxDirectory = "${project.rootDir}/.sandbox"
 }
 patchPluginXml {
     changeNotes 
