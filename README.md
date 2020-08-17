@@ -1,7 +1,7 @@
 # D8gerAutoCode
 ## IDEA Code Automatically Generate Plugin • `For Java Version`  
 <div align="center">
-    <img src="http://file.debuggerpowerzcy.top/power/R-D8ger.png" /> 
+    <img src="http://file.debuggerpowerzcy.top/power/D8-V3.png" /> 
 </div>
 
 > [中文说明](./README_CN.md)

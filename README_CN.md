@@ -1,7 +1,7 @@
 # D8gerAutoCode
 ##### IDEA代码自动生成插件•`Java版本`
 <div align="center">
-    <img src="http://file.debuggerpowerzcy.top/power/R-D8ger.png" /> 
+    <img src="http://file.debuggerpowerzcy.top/power/D8-V3.png" /> 
 </div>
 
 ### 序言
