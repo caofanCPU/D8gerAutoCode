@@ -1,4 +1,11 @@
 # D8gerAutoCode
+
+<a href="https://github.com/caofanCPU/D8gerAutoCode/blob/master/LICENCE"><img src="https://badgen.net/github/license/caofanCPU/D8gerAutoCode?color=green" alt="license"></a>
+<a href="https://github.com/caofanCPU/D8gerAutoCode/issues"><img src="https://badgen.net/github/open-issues/caofanCPU/D8gerAutoCode" alt="issues"></a>
+<a href="https://github.com/caofanCPU/D8gerAutoCode/stargazers"><img src="https://badgen.net/github/stars/caofanCPU/D8gerAutoCode" alt="stars"></a>
+<a href="http://makeapullrequest.com"><img src="https://badgen.net/badge/PRs/welcome/cyan" alt="PRs Welcome"></a>
+<a href="http://www.debuggerpowerzcy.top/"><img src="https://badgen.net/badge/organization/join%20us/cyan" alt="open-source-organization"></a>
+
 ##### IDEA代码自动生成插件•`Java版本`
 <div align="center">
     <img src="http://file.debuggerpowerzcy.top/power/D8-V3.png" /> 
