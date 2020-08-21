@@ -3,7 +3,7 @@
 <a href="https://github.com/caofanCPU/D8gerAutoCode/blob/master/LICENCE"><img src="https://badgen.net/github/license/caofanCPU/D8gerAutoCode?color=green" alt="license"></a>
 <a href="https://github.com/caofanCPU/D8gerAutoCode/issues"><img src="https://badgen.net/github/open-issues/caofanCPU/D8gerAutoCode" alt="issues"></a>
 <a href="https://github.com/caofanCPU/D8gerAutoCode/stargazers"><img src="https://badgen.net/github/stars/caofanCPU/D8gerAutoCode" alt="stars"></a>
-<a href="http://makeapullrequest.com"><img src="https://badgen.net/badge/PRs/welcome/cyan" alt="PRs Welcome"></a>
+<a href="https://github.com/caofanCPU/D8gerAutoCode/pulls"><img src="https://badgen.net/badge/PRs/welcome/cyan" alt="PRs Welcome"></a>
 <a href="http://www.debuggerpowerzcy.top/"><img src="https://badgen.net/badge/organization/join%20us/cyan" alt="open-source-organization"></a>
 
 ## IDEA Code Automatically Generate Plugin • `For Java Version`  
@@ -95,7 +95,10 @@ Well, that's a valid question for my drive to find the repeat parts at daily wor
 </div>
 
 ### Thanks
-- With [![JetBrains](http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg)](https://www.jetbrains.com/idea) team's open source certificate supporting, this project will continue to develop in the spirit of open source
+<a href="https://www.jetbrains.com/idea">
+    <img src="http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg" style="width: 40px;"><br>
+    <sub>With JetBrains team's open source certificate supporting, this project will continue to develop in the spirit of open source</sub>
+</a>
 
 ### How to install
 - IDEA official plugin library installation  

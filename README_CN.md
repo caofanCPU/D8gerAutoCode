@@ -3,7 +3,7 @@
 <a href="https://github.com/caofanCPU/D8gerAutoCode/blob/master/LICENCE"><img src="https://badgen.net/github/license/caofanCPU/D8gerAutoCode?color=green" alt="license"></a>
 <a href="https://github.com/caofanCPU/D8gerAutoCode/issues"><img src="https://badgen.net/github/open-issues/caofanCPU/D8gerAutoCode" alt="issues"></a>
 <a href="https://github.com/caofanCPU/D8gerAutoCode/stargazers"><img src="https://badgen.net/github/stars/caofanCPU/D8gerAutoCode" alt="stars"></a>
-<a href="http://makeapullrequest.com"><img src="https://badgen.net/badge/PRs/welcome/cyan" alt="PRs Welcome"></a>
+<a href="https://github.com/caofanCPU/D8gerAutoCode/pulls"><img src="https://badgen.net/badge/PRs/welcome/cyan" alt="PRs Welcome"></a>
 <a href="http://www.debuggerpowerzcy.top/"><img src="https://badgen.net/badge/organization/join%20us/cyan" alt="open-source-organization"></a>
 
 ##### IDEA代码自动生成插件•`Java版本`
@@ -96,7 +96,10 @@
 
 ### 致谢
 
-- 感谢 [![JetBrains](http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg)](https://www.jetbrains.com/idea) 团队的开源证书支持, 本项目将秉承开源精神持续开发
+<a href="https://www.jetbrains.com/idea">
+    <img src="http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg" style="width: 40px;"><br>
+    <sub>感谢JetBrains团队的开源证书支持, 本项目将秉承开源精神持续开发</sub>
+</a>
 
 ##### 如何安装
 - IDEA官方插件库安装  
