@@ -49,7 +49,7 @@
 2.勾选要生成的文件及生成路径, 指明 `author`、`author`、`locale`, 保存即可
 
 <div align="center">
-    <img src="http://file.debuggerpowerzcy.top/power/ANNA.jpg" /> 
+    <img src="http://file.debuggerpowerzcy.top/power/D8King.jpg" /> 
 </div>
 
 ##### 使用手册(v3.0以下)

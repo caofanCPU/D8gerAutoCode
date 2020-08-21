@@ -49,7 +49,7 @@ Well, that's a valid question for my drive to find the repeat parts at daily wor
 2.Check the file to be generated and choose the generation path, rewrite `author`、`author` and `locale`, and click the button to save your configuration.  
 
 <div align="center">
-    <img src="http://file.debuggerpowerzcy.top/power/ANNA.jpg" /> 
+    <img src="http://file.debuggerpowerzcy.top/power/D8King.jpg" /> 
 </div>
 
 ### Using manual(under v3.0)
