@@ -99,7 +99,7 @@
             <ul>
             <li>Grand celebration for 'D8gerAutoCode' getting his face! Now you can config the generate property parameters by setting GUI.</li>
             <li>First, Open the configuration box to set the generation parameters, 'Preference' --> 'Other Settings' --> 'D8gerAutoCode'</li>
-            <li>Then, Check the file to be generated and choose the generation path, rewrite 'author'、'author' and 'locale', and click the button to save your configuration.</li>
+            <li>Then, Check the file to be generated and choose the generation path, rewrite 'author'、'apiUrlPrefix' and 'locale', and click the button to save your configuration.</li>
             </ul>
         </li>
         <li>Optimization: Support project level setting parameters for non-invasive, d8ger.properties should exist invisible.<br>
