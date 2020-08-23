@@ -3,7 +3,7 @@
 <a href="https://github.com/caofanCPU/D8gerAutoCode/blob/master/LICENCE"><img src="https://badgen.net/github/license/caofanCPU/D8gerAutoCode?color=green" alt="license"></a>
 <a href="https://github.com/caofanCPU/D8gerAutoCode/issues"><img src="https://badgen.net/github/open-issues/caofanCPU/D8gerAutoCode" alt="issues"></a>
 <a href="https://github.com/caofanCPU/D8gerAutoCode/stargazers"><img src="https://badgen.net/github/stars/caofanCPU/D8gerAutoCode" alt="stars"></a>
-<a href="https://github.com/caofanCPU/D8gerAutoCode/pulls"><img src="https://badgen.net/badge/PRs/welcome/cyan" alt="PRs Welcome"></a>
+<a href="https://github.com/caofanCPU/D8gerAutoCode/pulls"><img src="https://badgen.net/badge/PRs/welcome/cyan" alt="PRs welcome"></a>
 <a href="http://www.debuggerpowerzcy.top/"><img src="https://badgen.net/badge/organization/join%20us/cyan" alt="open-source-organization"></a>
 
 ## IDEA Code Automatically Generate Plugin • `For Java Version`  
@@ -46,7 +46,7 @@ Well, that's a valid question for my drive to find the repeat parts at daily wor
 ### Using manual(v3.0+)
 1.Open the configuration box to set the generation parameters, `Preference` --> `Other Settings` --> `D8gerAutoCode`
 
-2.Check the file to be generated and choose the generation path, rewrite `author`、`author` and `locale`, and click the button to save your configuration.  
+2.Check the file to be generated and choose the generation path, rewrite `author`、`apiUrlPrefix` and `locale`, and click the button to save your configuration.  
 
 <div align="center">
     <img src="http://file.debuggerpowerzcy.top/power/D8King.jpg" /> 
@@ -60,32 +60,32 @@ Well, that's a valid question for my drive to find the repeat parts at daily wor
 3. Under the default configuration, `D8gerAutoCode` directory and `data table SQL definitions` and **Web codes** will be generated
 
 4. So, What you need to do:
-- Under a multi-module project, configure the generated file output directory, for example, **`Mo.java`** should be moved into the `model` directory  
-- Add non-null constraints to **`xx.sql`** as required  
-- If you generated the **Controller.java** file, please note the interface returns type of **`Object`**, it should be modified to the project's uniform return type  
-- In the above steps the `xx.java` file will report some errors, ***don't worry***, these just require you to import packages
+    - Under a multi-module project, configure the generated file output directory, for example, **`Mo.java`** should be moved into the `model` directory  
+    - Add non-null constraints to **`xx.sql`** as required  
+    - If you generated the **Controller.java** file, please note the interface returns type of **`Object`**, it should be modified to the project's uniform return type  
+    - In the above steps the `xx.java` file will report some errors, ***don't worry***, these just require you to import packages
 
-5.1 Default configuration file template for easter egg:  
-    - In the ***`resource`*** root directory of the module where the `Model class` is located, create `d8ger.properties` property configuration file  
-    - Type `d8ger` and click on `Tools`-> `D8ger`-> `D8gerMore`, and you will find some surprise
+5. Default configuration file template for easter egg:  
+    - In the ***`resource`*** root directory of the module where the `Model class` is located, create `d8ger.properties` property configuration file  
+    - Type `d8ger` and click on `Tools`-> `D8ger`-> `D8gerMore`, and you will find some surprise
 
-5.2 Regex template for easter egg:
+6. Regex template for easter egg:
     - Choose any blank file, Type `regex` and click on `Tools`-> `D8ger`-> `D8gerMore`, and you will find some surprise
 
-5.2 NASA template for easter egg:
+7. NASA template for easter egg:
     - Choose any blank file, Type `nasa` and click on` Tools`-> `D8ger`-> `D8gerMore`, and you will get the NASA manual
     - Follow the manual, custom your config and write your own multi-lines need to be batch handled, then you will find some surprise
 
-5.3 Camel-Underline-Uppercase-Uncapitalize-Lowercase circle convert by one-click
+8. Camel-Underline-Uppercase-Uncapitalize-Lowercase circle convert by one-click
     - Choose word text in any editing file, press `alt` + `shift` + `cmd` + `U`, you'll find the changed word
     - If not satisfied just press the shortcut again and again util you are.
 
-6. You will get the following default configuration information  
-    - It's recommended that you change the configuration items  
-        - `author` (you can't sign my name for the pits you dug!)  
-        - `apiUrlPrefix` (the interface url prefix should be configured as the project interface unified URL prefix)  
-        - generate file output directory under a multi-module project  
-    - As for `boolean` configuration items, let you choose which files need to be generated, and specify output directory is optional  
+9. You will get the following default configuration information  
+    - It's recommended that you change the configuration items  
+        - `author` (you can't sign my name for the pits you dug!)  
+        - `apiUrlPrefix` (the interface url prefix should be configured as the project interface unified URL prefix)  
+        - generate file output directory under a multi-module project  
+    - As for `boolean` configuration items, let you choose which files need to be generated, and specify output directory is optional  
 
 > By the way, these default shortcuts used in Mac OS, if you use Windows just take `cmd` into `ctrl`.
 
@@ -110,6 +110,7 @@ Well, that's a valid question for my drive to find the repeat parts at daily wor
 
 ```
 Solution
+0. If you upgrade version 3.0+, you won't see it again.
 1. Because the IDEA file uses the VFS mechanism, as a plug-in to use the monitoring file I think it is not cost-effective  
 2. I also found a reason aboub editing .properties file, sometimes it will take one or two minutes to refresh after you finished  
 3. So, press 'cmd' + 's' to force refreshing .properties file and you will solve it.
