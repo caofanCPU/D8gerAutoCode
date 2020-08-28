@@ -6,30 +6,32 @@
 <a href="https://github.com/caofanCPU/D8gerAutoCode/pulls"><img src="https://badgen.net/badge/PRs/welcome/cyan" alt="PRs Welcome"></a>
 <a href="http://www.debuggerpowerzcy.top/"><img src="https://badgen.net/badge/organization/join%20us/cyan" alt="open-source-organization"></a>
 
-##### IDEA代码自动生成插件•`Java版本`
+## IDEA代码自动生成插件•`Java版本`
 <div align="center">
     <img src="http://file.debuggerpowerzcy.top/power/D8-V3.png" /> 
 </div>
 
 ### 序言
-正如JetBrains所说，我相信你在繁忙编码工作中时应该善用工具以节省宝贵的时间。
+正如JetBrains所说, 我相信你在繁忙编码工作中时应该善用工具以节省宝贵的时间。
 
-我时常在思考, "如果其他人已经解决了这些重复工作，为什么我还需要重复解决?"
+我时常在思考, "如果其他人已经解决了这些重复工作, 为什么我还需要重复解决?"
 
 这个好问题一直驱动着我, 在日常工作中探寻重复部分并开发此插件以节省时间。 
 
-##### 约定
+### [快速开始](http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/)
+
+### 约定
 - 通用问题提供规范解法
 - 个性化问题只提供示例解法
 
-##### 设计初衷
+### 设计初衷
 - 移除开发中的固定的重复编码过程, 提升开发效率
 - 提供可用的代码模板, 基本不用修改就可使用的代码
 - 支持代码目录配置, 一键自动生成代码, 仅需自行导包即可完成智能编程
 - 支持用户自定义配置, 可指定需要生成的文件
 
 
-##### 功能特性
+### 功能特性
 - 驼峰-下划线-大写-首字母小写-小写, 一键转换, 默认快捷键`alt` + `shift` + `cmd` + `U`  
 - 生成代码的注释支持英语|汉语配置
 - JSON格式化与单行文本转换, 默认快捷键 `alt`+`shift`+`cmd`+`J` | `S`
@@ -43,7 +45,7 @@
 - SwaggerVo字段排序, 默认快捷键 `alt`+`shift`+`cmd`+`O`
 
 
-##### 使用手册(v3.0+)
+### 使用手册(v3.0+)
 1.打开配置框设置生成参数 `Preference` --> `Other Settings` --> `D8gerAutoCode`
 
 2.勾选要生成的文件及生成路径, 指明 `author`、`apiUrlPrefix`、`locale`, 保存即可
@@ -52,7 +54,7 @@
     <img src="http://file.debuggerpowerzcy.top/power/D8King.jpg" /> 
 </div>
 
-##### 使用手册(v3.0以下)
+### 使用手册(v3.0以下)
 1. 创建Model类  
 
 2. 选中类名, 按下(默认)快捷键 `alt`+`shift`+`cmd`+`D`  
@@ -101,11 +103,12 @@
     <sub>感谢JetBrains团队的开源证书支持, 本项目将秉承开源精神持续开发</sub>
 </a>
 
-##### 如何安装
-- IDEA官方插件库安装  
+### 如何安装
+- `Preference` --> `Plugins` --> `Marketplace` --> type `D8` --> install
+- [IDEA官方插件库安装](https://plugins.jetbrains.com/plugin/13576-d8gerautocode)  
 - 源码安装, 这需要你熟悉Gradle, 后期我会详细补充如何使用Gradle开发一个插件  
 
-##### Bug&问题
+### Bug&问题
 - 已知问题(最新版本3.0中已修复)
 >修改`d8ger.properties`文件后再生成代码, 配置文件不生效
 
@@ -117,7 +120,7 @@
 3.所以, 执行快捷键'cmd' + 's'强制刷新.properties文件, 即可解决
 ```
 
-> 插件图标显示异常，图标内只出现相交的红叉
+> 插件图标显示异常, 图标内只出现相交的红叉
 <div align="center">
     <img src="http://file.debuggerpowerzcy.top/power/W-D8ger.png" /> 
 </div>

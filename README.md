@@ -20,6 +20,8 @@ I always wonder, "If someone else has already solved the repeating work, why do 
 
 Well, that's a valid question for my drive to find the repeat parts at daily work and develop this plugin to save my time.  
 
+### [Quick Start](http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/)
+
 ### Convention
 - The general problem provides standard solutions
 - The personalized problem only provides example solutions
@@ -101,7 +103,8 @@ Well, that's a valid question for my drive to find the repeat parts at daily wor
 </a>
 
 ### How to install
-- IDEA official plugin library installation  
+- `Preference` --> `Plugins` --> `Marketplace` --> type `D8` --> install
+- [IDEA official plugin library installation](https://plugins.jetbrains.com/plugin/13576-d8gerautocode)  
 - As for `Source installation` requires you're familiar with Gradle, I will add more details about how to develop a plugin by ***Gradle*** later
 
 ### Bug & Question
