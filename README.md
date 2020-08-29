@@ -21,6 +21,7 @@ I always wonder, "If someone else has already solved the repeating work, why do 
 Well, that's a valid question for my drive to find the repeat parts at daily work and develop this plugin to save my time.  
 
 ### [Quick Start](http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/)
+<a href="http://file.debuggerpowerzcy.top/power/html/IntelliJBestAction.html" target="_blank">ZN程序员福利</a>
 
 ### Convention
 - The general problem provides standard solutions
