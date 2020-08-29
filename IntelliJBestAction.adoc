@@ -4,7 +4,7 @@
 * 快捷键
 * 插件
 * 快速测试
-* 工具包
+* Java工具包
 . Intellij IDEA for Scala 开发(ing)
 . Intellij IDEA for Kotlin 开发(ing)
 
@@ -141,7 +141,7 @@ image::http://file.debuggerpowerzcy.top/power/SequenceDiagram.png[title=Sequence
 * 我的编码生涯里也有不少这样的回忆, 只是里面仍旧有不少重复操作, 甚至多人操作时会产生冲突
 * 于是, 我从Mo出发, 写了D8gerAutoCode这个插件, 一切以表设计为核心, 你专注设计好Mo就可以, 其他基本代码使用快捷键一键搞定
 * 如果D8gerAutoCode只有这个功能, 那其实和其他大佬插件相比没有啥可比性, 大家都用习惯了, 为何要使用新的呢?
-* 重点来了: D8gerAutoCode插件专注**`解决重复`**, 在平常工作中的重复工作应该被简化, 在我开来, 程序的初衷不就是如此吗?
+* 重点来了: D8gerAutoCode插件专注**`解决重复`**, 在平常工作中的重复工作应该被简化, 在我看来, 程序的初衷不就是如此吗?
 * 所以, D8gerAutoCode插件还带有字符串批处理, JSON处理, MySQL处理, 字段命名处理, 针对SwaggerAPI文档的处理, 这些功能是项目开发中都会用到的, 本着一键搞定原则而开发, 欲知详情参见后文
 
 image::http://file.debuggerpowerzcy.top/power/D8Config.png[title=插件配置]
@@ -156,4 +156,106 @@ image::http://file.debuggerpowerzcy.top/power/D8Regrex.png[title=正则彩蛋]
 
 === 快速测试
 
+- 基于接口进行Http测试
+- 整合Swagger-API, 代码及文档, 且支持文档界面进行调试(ing, 后续补充对应的Java实现代码)
+- 项目中涉及登录权限等问题, 在HTTP测试时应尽量模拟全, 为前端联调创造真实环境
+- 辅助工具
+* shell + python脚本
+* https://httpie.org/[httpie], 可视化格式化的HTTP请求调用工具包
+* https://github.com/kevinburke/sshpass[sshpass], 登录服务器自动输入指定密码, 可实现自动登录
+* https://github.com/caofanCPU/D8gerConcurrent[D8gerConcurrent], 支持登陆解析、自动封装Cookie、 http://www.debuggerpowerzcy.top/home/2020/05/15/EasyHttp%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/[接口并发性能测试]
 
+[source,shell script]
+----
+function downLoadResponse() {
+    echo "执行命令内容: \n    http --verify=no -v --session-read-only=~/session-cookie-read-only.json POST ${1} < ~/Desktop/ssoLogin/requestBody.json -d >>~/Desktop/ssoLogin/ResponseBody.json ${@:2}\n"
+    http --verify=no -v --session-read-only=~/session-cookie-read-only.json POST ${1} < ~/Desktop/ssoLogin/requestBody.json -d >>~/Desktop/ssoLogin/ResponseBody.json ${@:2}
+}
+
+function downLoadExcel() {
+    echo "执行命令内容: \n    http --verify=no -v --download  --session-read-only=~/session-cookie-read-only.json POST ${1} < ~/Desktop/ssoLogin/requestBody.json -o ${2}"
+    http --verify=no -v --download  --session-read-only=~/session-cookie-read-only.json POST ${1} < ~/Desktop/ssoLogin/requestBody.json -o ${2}
+}
+
+function show() {
+    echo "执行命令内容: \n    http --verify=no -v --session-read-only=~/session-cookie-read-only.json POST ${1} < ~/Desktop/ssoLogin/requestBody.json ${@:2}\n"
+    http --verify=no -v --session-read-only=~/session-cookie-read-only.json POST ${1} < ~/Desktop/ssoLogin/requestBody.json ${@:2}
+}
+
+# 开发环境机器
+function xDev() {
+    # 借助sshpass工具, 将服务器密码保存在文件第一行, 实现自动登录; 且-t 参数支持登录后跳转到指定目录
+    sshpass -f /Users/D8GER/Desktop/CAOFAN/sshpass/caofan-ssh-dev.txt  ssh Mr.X@xxx.xx.xx.${1}  -t  'cd /XXX/logs/; exec $SHELL'
+}
+
+# 将HTPP请求的响应结果存入指定文件中, 示例: https-downLoadResponse https://www.baidu.com/
+alias https-downLoadResponse='downLoadResponse'
+# 在控制台展示完整的HTTP请求过程, 响应打印在控制台, 示例: https-show https://www.baidu.com/
+alias https-show='show'
+# 对于文件下载, 通过输入参数指定下载后的文件名, 示例: https-downLoadExcel https://www.baidu.com/file/123456 D8ger.zip
+alias https-downLoadExcel='downLoadExcel'
+# 对于开发测试环境多服务器, 简化为: xDev 99, 则自动登录xxx.xx.xx。99服务器
+alias 'xDev=xDev'
+----
+
+image::http://file.debuggerpowerzcy.top/power/D8Login.png[登录获取COOKIE,并写入指定文件]
+
+image::http://file.debuggerpowerzcy.top/power/D8Http.png[调用HTTP接口进行测试]
+
+IMPORT: 采用这种方法, 可以告别PostMan或PostWoman及其他软件了, 你只需要**Intellij IDEA** + *iterm2*|xshell + **python**环境
+
+=== Java工具包
+
+- Intellij IDEA代码简化模板, 这个技巧很香的, 比如常见的判断字符串不为空, 我只需要敲下``**fsnb**``, 就会得到如下代码
+
+[source,text]
+----
+if (StringUtils.isNotBlank(光标在这)) {
+
+}
+
+话不多说, 常用模板定义如下:
+/apim : SwaggerModel字段属性模板
+
+oin  : 对象为null         ==> Objects.isNull()
+onn  : 对象不为null       ==> Objects.nonNull()
+o2e  : 两对象相等          ==> Objects.equals(, )
+one  : 两对象不相等        ==> !Objects.equals(, )
+foin : 判断对象为null      ==> if (Objects.isNull()) {}
+fonn : 判断对象不为null    ==> if (Objects.nonNull()) {}
+fo2e : 判断两对象相等      ==> if (Objects.equals(, )) {}
+fone : 判断两对象不相等    ==> if (!Objects.equals(, )) {}
+
+cie  : 集合为空           ==> CollectionUtil.isEmpty()
+cne  : 集合不为空          ==> CollectionUtil.isNotEmpty()
+sib  : 字符串为空          ==> StringUtils.isBlank()
+snb  : 字符串不为空        ==> StringUtils.isNotBlank()
+fcie : 判断集合为空        ==> if (CollectionUtil.isEmpty()){}
+fcne : 判断集合不为空      ==> if (CollectionUtil.isNotEmpty()){}
+fsib : 判断字符串为空      ==> if (StringUtils.isBlank()) {}
+fsnb : 判断字符串不为空    ==> if (StringUtils.isNotBlank()) {}
+----
+
+image::http://file.debuggerpowerzcy.top/power/D8LiveTemplate.png[代码模板]
+
+- 高频工具包, 推荐GitHub开源项目 https://github.com/caofanCPU/D8gerStarters[D8gerStarters]
+* 通用工具包子项目 https://github.com/caofanCPU/D8gerStarters/tree/master/spring-cloud-starter-d8ger-common-util[``**spring-cloud-starter-d8ger-common-util**``]
+. 集合流式处理工具**CollectionUtil**, 分组、求和、排序应有尽有, 基本可以告别for循环
+. 树形处理工具**WrapTreeUtil**, 列表与树的多种转换骚操作也是应有尽有, 并且具有无侵入性, 开箱即用
+. 数字精度运算工具**NumberUtil**, 金额进度计算, 精准百分比
+. 枚举处理规范**IEnum**, 为项目打好根基, 规范枚举值用
+
+- 中间件可插拔Starters整合工具包, 推荐GitHub开源项目 https://github.com/caofanCPU/D8gerStarters[D8gerStarters]
+* 通用工具包子项目 https://github.com/caofanCPU/D8gerStarters/tree/master/spring-cloud-starter-d8ger-web-util[``**spring-cloud-starter-d8ger-web-util**``]
+. 整合常用中间件, 例如业务线程池、邮件、Redis缓存、RestTemplate调用、消息队列、接口响应消息转换器、SwaggerAPI文档处理器
+. 开关型可插拔, 默认有一套经过大型生产环境检验过的配置, 支持通过配置文件更改配置
+. 保留扩展点, 通过继承等方式覆盖原有组件
+
+=== 总结
+- 3个开源项目相辅相成, 目的与Spring等框架一致, 解决'最后一站'的重复问题, 以工具的使命提高编码效率, 让我们专注于业务开发
+* Intelli IDEA智能生码插件, https://plugins.jetbrains.com/plugin/13576-d8gerautocode/[D8gerAutoCode]
+* Python脚本, 解决服务器、登录以及HTTP接口测试里的重复工作, https://github.com/caofanCPU/D8gerConcurrent[D8gerConcurrent]
+* Java开发者的福利, 炒鸡香的工具集, https://github.com/caofanCPU/D8gerStarters[D8gerStarters]
+- *捐赠|Donate*, **实践撰文分享**实属不易, 您的支持能为更多省时省事的分享提速, 如果💰不行, 那就帮上面的开源项目点量⭐吧, 谢谢!
+
+image::http://file.debuggerpowerzcy.top/power/D8WZ.png[]
