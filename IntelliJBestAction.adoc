@@ -19,7 +19,7 @@ Intellij IDEA高版本功能是兼容低版本功能的, 只是部分插件会�
 - 确实有点多, 不着急, 知道了方法, 后续只是时间问题.
 如何搜索快捷键, 参见下图
 
-image::doc/img/Shortcut.png[title=如何搜索快捷键]
+image::http://file.debuggerpowerzcy.top/power/Shortcut.png[title=如何搜索快捷键]
 
 .10个高频快捷键
 |===
@@ -103,7 +103,7 @@ public class PormHub extends GitHub{
 * **Spring**官方、**Spring-Alibaba**官方都采用AsciiDoc撰写文档, **GitHub**也支持AsciiDoc, AsciiDoc是未来的主流, MarkDown貌似要成替补了
 * 个人使用体验, 对于写技术文档, 上手快, 简洁, 本文的一个小目标就是为新手提供常用的模块, 支持ctrl + c | v
 
-image::doc/img/AsciiDoc.png[title=AsciiDoc文档速览]
+image::http://file.debuggerpowerzcy.top/power/AsciiDoc.png[title=AsciiDoc文档速览]
 
 - https://plugins.jetbrains.com/plugin/8579-translation/[Translation]
 * 作为中国程序员, 英语不会咋办?
@@ -117,14 +117,14 @@ image::doc/img/AsciiDoc.png[title=AsciiDoc文档速览]
 * 就这样, 凉拌吧!
 * 又或者, MavenHelper带你浴火重生, 请看下图
 
-image::doc/img/MavenHelper.png[title=MavenHelper特性速览]
+image::http://file.debuggerpowerzcy.top/power/MavenHelper.png[title=MavenHelper特性速览]
 
 - https://plugins.jetbrains.com/plugin/8286-sequencediagram/[SequenceDiagram]
 * 当我们跳槽后接坑时, 代码的链路是怎样的, 怎么没完没了呢?
 * 这个时候, SequenceDiagram带你一览全貌
 * 方法调用时序图出来了, 慢慢瞅吧!
 
-image::doc/img/SequenceDiagram.png[title=SequenceDiagram特性速览]
+image::http://file.debuggerpowerzcy.top/power/SequenceDiagram.png[title=SequenceDiagram特性速览]
 
 - https://plugins.jetbrains.com/plugin/13576-d8gerautocode/[D8gerAutoCode]
 * 作为Web开发, 当业务理解清楚后, 开发过程就可以量化如下:
@@ -144,15 +144,15 @@ image::doc/img/SequenceDiagram.png[title=SequenceDiagram特性速览]
 * 重点来了: D8gerAutoCode插件专注**`解决重复`**, 在平常工作中的重复工作应该被简化, 在我开来, 程序的初衷不就是如此吗?
 * 所以, D8gerAutoCode插件还带有字符串批处理, JSON处理, MySQL处理, 字段命名处理, 针对SwaggerAPI文档的处理, 这些功能是项目开发中都会用到的, 本着一键搞定原则而开发, 欲知详情参见后文
 
-image::doc/img/D8Config.png[title=插件配置]
+image::http://file.debuggerpowerzcy.top/power/D8Config.png[title=插件配置]
 
-image::doc/img/D8Generate.png[title=生成代码]
+image::http://file.debuggerpowerzcy.top/power/D8Generate.png[title=生成代码]
 
-image::doc/img/D8String.png[title=字符串批处理]
+image::http://file.debuggerpowerzcy.top/power/D8String.png[title=字符串批处理]
 
-image::doc/img/D8Format.png[title=格式化]
+image::http://file.debuggerpowerzcy.top/power/D8Format.png[title=格式化]
 
-image::doc/img/D8Regrex.png[title=正则彩蛋]
+image::http://file.debuggerpowerzcy.top/power/D8Regrex.png[title=正则彩蛋]
 
 === 快速测试
 
