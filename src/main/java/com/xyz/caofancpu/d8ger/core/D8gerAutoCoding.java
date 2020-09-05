@@ -406,9 +406,8 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * SQL-SelectBaseColumnList, exclude primary key column `id`
+     * SQL-BaseColumnList, exclude primary key column `id` | `createTime` | `updateTime`
      * example:
-     * `id`,
      * `name`,
      * `hello_d8ger`
      *
@@ -416,7 +415,7 @@ public class D8gerAutoCoding {
      */
     private StringBuilder getXMLBaseColumnList() {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
-                item -> item.getName().equals(ConstantUtil.SQL_ID),
+                item -> item.getName().equals(ConstantUtil.SQL_ID) || item.getName().equals(ConstantUtil.SQL_CREATE_TIME) || item.getName().equals(ConstantUtil.SQL_UPDATE_TIME),
                 item -> ConstantUtil.TRIPLE_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`"
         ), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE));
     }
@@ -479,12 +478,13 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * SQL-UpdateNonNullFieldByExample
+     * SQL-UpdateNonNullFieldByExample, exclude primary key column `id`
      *
      * @return
      */
     private StringBuilder getXMLUpdateNonNullFieldByExample() {
-        return new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList,
+        return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
+                item -> item.getName().equals(ConstantUtil.SQL_ID),
                 item -> ConstantUtil.TRIPLE_TAB + "<if test=\"record." + item.getName() + ConstantUtil.SPACE + "!= null\">" + ConstantUtil.NEXT_LINE
                         + ConstantUtil.QUATERNARY_TAB + "`" + VerbalExpressionUtil.sqlUnderLineName(item.getName()) + "`" + ConstantUtil.SPACE + "=" + ConstantUtil.SPACE + "#{record." + item.getName() + "}," + ConstantUtil.NEXT_LINE
                         + ConstantUtil.TRIPLE_TAB + "</if>"
@@ -492,13 +492,13 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * SQL-Insert, exclude primary key column `id`
+     * SQL-Insert, exclude primary key column `id` | `createTime` | `updateTime`
      *
      * @return
      */
     private StringBuilder getXMLInsertField() {
         return new StringBuilder(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
-                item -> item.getName().equals(ConstantUtil.SQL_ID),
+                item -> item.getName().equals(ConstantUtil.SQL_ID) || item.getName().equals(ConstantUtil.SQL_CREATE_TIME) || item.getName().equals(ConstantUtil.SQL_UPDATE_TIME),
                 item -> ConstantUtil.TRIPLE_TAB + "#{" + item.getName() + "}"
         ), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE));
     }

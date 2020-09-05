@@ -97,8 +97,8 @@
         <ul>
         <li>BugFix:<br>
             <ul>
-            <li>Fix config item 'locale' problem when selected as 'ZN', and before this version all comment was English default.</li>
-            <li>Fix SQL definition in x.sql file. ✌️</li>
+            <li>Fix config item 'locale' problem when selected as 'ZN', and before before the 3.0 version's comment was English default.</li>
+            <li>Fix SQL definition in x.sql file.️</li>
             <li>Fix batch insert records in xMapper.xml file cause 'id', 'createTime', 'updateTime' all should according to the Database.</li>
             </ul>
         </li>

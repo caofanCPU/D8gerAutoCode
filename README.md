@@ -136,7 +136,7 @@ Solution
 ### VersionRoadHistory
 - 3.1
     - BugFix:
-        - Fix config item 'locale' problem when selected as 'ZN', and before this version all comment was English default.
+        - Fix config item 'locale' problem when selected as 'ZN', and before the 3.0 version's comment was English default.
         - Fix SQL definition in x.sql file ✌️.
         - Fix batch insert records in xMapper.xml file cause 'id', 'createTime', 'updateTime' all should be according to the Database.
     - Optimization: Config item 'autoDetectSQLTimeColumn' now is more intelligent. If you checked, 'createTime' and 'updateTime' would be generated perfectly in there right position.
