@@ -132,3 +132,96 @@ Solution
 ```
 
 [Other issues, please come to join room](https://github.com/caofanCPU/D8gerAutoCode/issues)
+
+### VersionRoadHistory
+- 3.1
+    - BugFix:
+        - Fix config item 'locale' problem when selected as 'ZN', and before this version all comment was English default.
+        - Fix SQL definition in x.sql file ✌️.
+        - Fix batch insert records in xMapper.xml file cause 'id', 'createTime', 'updateTime' all should be according to the Database.
+    - Optimization: Config item 'autoDetectSQLTimeColumn' now is more intelligent. If you checked, 'createTime' and 'updateTime' would be generated perfectly in there right position.
+
+- 3.0
+    - Addition:
+        - Grand celebration for 'D8gerAutoCode' getting his face! Now you can config the generated property parameters by setting GUI.
+        - First, Open the configuration box to set the generation parameters, 'Preference' --> 'Other Settings' --> 'D8gerAutoCode'
+        - Then, Check the file to be generated and choose the generation path, rewrite 'author'、'apiUrlPrefix' and 'locale', and click the button to save your configuration.
+    - Optimization: Support project level setting parameters for non-invasive, d8ger.properties should exist invisible.
+    - Adjustment: Remove the generated params by 'd8ger.properties' file, replace of D8gerAutoCode setting GUI.
+
+- 2.5
+    - Addition:
+        - Add 'autoDetectSQLTimeColumn' configuration for supporting disable default generating 'create_time' and 'update_time' column definition in SQL.
+        - Add 'mapperBatterThenRepository' configuration for supporting custom mapper annotation in both SpringMVC and SpringBoot.
+        - Add 'selectOneByExample' in Mapper.java for supporting query one record.
+        - Add 'insertSelectiveWithId' in Mapper.java for supporting insert 'non null' field and 'null' field will be filled with the database default value.
+    - Optimization: 'cause 'id' is the primary key, all insert operations should exclude 'id' column.
+    - BugFix:
+        - Generation 'update_time' column definition remove the rare comma.
+        - Trouble shooting the rare dir named 'D8gerAutoCode', now you can see it only with unspecified directory configuration.
+    - Adjustment: Remove 'ServiceInterface' and 'ServiceImpl', 'cause I think 'Handler' is more suitable.
+
+- 2.4
+    - Addition: One-click to beauty MySQL, isn't fragrant?
+    - Optimization: String parsing performance.
+    - Attention: Select your MySQL text, ctrl + alt + shift + 'B' will back a surprise.
+
+- 2.3
+    - BugFix: Json format bug.
+    - Addition:
+        - NASA easter eggs, try to type 'nasa' in the blank file in IDEA to get the nasa-template.
+        - NASA easter eggs, multi-lines can be batch handled with the nasa-template, special for sql columns.
+    - Optimization: 
+        - Optimize some regex performance.
+        - Support linebreak or comma as the delimiter.
+        - Support windows linebreak when rendering origin code.
+    - Attention: 
+        - When execute auto-coding, you should be careful at the linebreak, it maybe different from your project config.
+    - Adjustment: 
+        - Icons changed for align, friendly view etc.
+        - The manual of this plugin has been moved to my <a href="http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">website</a>.
+    
+- 2.2(private)
+    - Addition:
+        - END easter eggs, try to type 'end' in the blank file in IDEA to get the end-template(encryption and decryption).
+        - END easter eggs, multi-lines can be batch handled with the end-template, it's very useful for encryption and decryption.
+    - Optimization: Support linebreak or comma as the delimiter.
+    - Attention: This version is private, you can <a href="http://www.debuggerpowerzcy.top/about/">send me a email</a> and clarify your needs, such as what algorithm you'll take.
+
+- 2.1
+    - BugFix: add Uncapitalize, and the circle is Camel-Underline-Uppercase-Uncapitalize-Lowercase.
+    - Optimization: Optimize some regex performance.
+    - Attention: Regex easter eggs add some very useful regex search-replace skills hidden in JetBrains' IDE products. Try to learn and you will save much time at working.
+
+- 2.0
+    - BugFix: Modify method name in Controller.java.
+    - Addition:
+        - Remove repeat work of moving file into directories for smart coding.
+        - Camel-Underline-Uppercase-Lowercase can be converted to each other by shortcut `alt` + `shift` + `cmd` + `U`.
+        - Regex easter eggs, try to type 'regex' in the blank file in IDEA to find it.
+    - Optimization: Optimize source code and improve performance.
+    - Attention: If the icon of plugin shows error(red square with a cross), try to upgrade the version of Intellij util 2019.3.*(greater than 2019.2.*).
+
+- 1.24
+    - BugFix: Update method named'updateBatchByPrimaryKeySelective' in mapper.xml.
+    - Addition: Set default language English and you can config it as Chinese Simplified, as before, typing 'd8ger' for the latest configuration template.
+    - Attention: You should configure your database connection like 'allowMultiQueries=true' for supporting batchUpdate operation.
+
+- 1.23
+    - BugFix: Fix required dependencies by JetBrains's suggestion for some known compatibility issues.
+    - Addition: Add JSON-formatter and WhiteChar-cleaner.
+    - Attention: Can you star the project on the github?
+
+- 1.22
+    - BugFix: Fix README of style, description, picture problems.
+    - Enhance: Enhance profile for generating codes by using regex to replace the circle of matching string.
+    - Attention: Can you star the project on the github?
+
+- 1.21
+    - BugFix: Fix README of style, description, picture problems.
+    - Addition: Add MoExample autoCoding for supporting simple sql.
+    - Attention: Can you star the project on the github?
+
+- 1.20
+    - Completion: Auto coding for Mo/Example/Mapper/Xml/SQL/Service completed, wow!
+    - Attention: Can you star the project on the github?

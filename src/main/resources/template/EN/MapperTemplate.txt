@@ -66,6 +66,7 @@ public interface @MoName@Mapper {
 
     /**
      * Batch add records, and set the ID for the input MoList parameters
+     * Attention: `id` | `createTime` | `updateTime` fields will be ignored cause these should according to the Database
      *
      * @param @uncapitallizeMoName@MoList
      * @return

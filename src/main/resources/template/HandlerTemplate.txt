@@ -34,12 +34,12 @@ public class @MoName@Handler {
 
     /**
      * 批量插入
+     * 注意: `id` | `createTime` | `updateTime`字段将被忽略, 以数据库为准
      *
      * @param @uncapitallizeMoName@MoList
      * @return
      */
     public int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList) {
-        @uncapitallizeMoName@MoList.forEach(item -> item.setId(null));
         return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@MoList);
     }
 

@@ -100,7 +100,7 @@
 ### 致谢
 
 <a href="https://www.jetbrains.com/idea">
-    <img src="http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg" style="width: 40px;"><br>
+    <img src="http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg" style="width: 40px;">
     <sub>感谢JetBrains团队的开源证书支持, 本项目将秉承开源精神持续开发</sub>
 </a>
 
@@ -108,6 +108,7 @@
 - `Preference` --> `Plugins` --> `Marketplace` --> type `D8` --> install
 - [IDEA官方插件库安装](https://plugins.jetbrains.com/plugin/13576-d8gerautocode)  
 - 源码安装, 这需要你熟悉Gradle, 后期我会详细补充如何使用Gradle开发一个插件  
+
 
 ### Bug&问题
 - 已知问题(最新版本3.0中已修复)
@@ -132,3 +133,96 @@
 ```
 
 [其他问题, 欢迎前来查房](https://github.com/caofanCPU/D8gerAutoCode/issues)
+
+### 版本演进历史
+- 3.1
+    - Bug修复:
+        - 修复配置项'locale'为中文时不生效的问题, 在之前的3.0版本只能生成英文注释.
+        - 修复x.sql中在某些情况下因缺失','导致报错的问题.
+        - 批量插入记录, 字段'id', 'createTime', 'updateTime'将被忽略强制采用数据库的默认值.
+    - 体验优化: 配置项'autoDetectSQLTimeColumn'现在更加智能. 当你勾选改配置项时, 'createTime' and 'updateTime'字段将会自动填充到合适的位置.
+
+- 3.0
+    - 新增功能:
+        - 很高兴宣布插件'D8gerAutoCode'终于有脸(面)了! 现在你将通过设置界面配置生码参数.
+        - 第一步, 打开设置界面, 'Preference' --> 'Other Settings' --> 'D8gerAutoCode'
+        - 第二步, 勾选你要生成的文件并指明文件生成后所在目录, 填写'author'、'apiUrlPrefix' and 'locale', 保存就完事了.
+    - 体验优化: 使用项目级别的界面配置, 对用户的代码无任何侵入性.
+    - 功能调整: 移除'd8ger.properties'配置文件, 一键生码配置参数将通过D8gerAutoCode设置GUI完成.
+
+- 2.5
+    - 新增功能:
+        - 新增配置项'autoDetectSQLTimeColumn'用以支持'create_time'和'update_time'字段的自动探测定义.
+        - 新增配置项'mapperBatterThenRepository' configuration for supporting custom mapper annotation in both SpringMVC and SpringBoot.
+        - 在Mapper.java文件中新增'selectOneByExample'方法用以支持根据条件查询单条记录, 慢走不送: 'xList.get(0)'.
+        - 在Mapper.java文件中新增'insertSelectiveWithId'用以支持只插入非NULL字段, NULL字段将采用数据库默认值.
+    - 体验优化: 考虑到'id'是约定的主键字段, 所有插入操作都应该排除该字段.
+    - Bug修复:
+        - 在x.sql文件定义中, 'update_time'在某些情况下会出现多余的','.
+        - 颇费周折地抓获冗余目录'D8gerAutoCode'莫名出现的现场, 现在只有在你未指明生成目录的情况下才能遇到他, 版本不停步, 且用且珍惜.
+    - 功能调整: 去除'ServiceInterface'和'ServiceImpl', 因为针对自动生码的通用性而言'Handler'将更合适.
+
+- 2.4
+    - 新增功能: 一键美化SQL, 不香吗?
+    - 体验优化: 优化字符串解析性能.
+    - TheShy提示: 选中MySQL文本, 快捷键ctrl + alt + shift + 'B'将奉上惊喜.
+
+- 2.3
+    - Bug修复: Json字符串格式化的问题.
+    - 新增功能:
+        - NASA彩蛋, 空白文件中输入'nasa'获取模板.
+        - NASA彩蛋, 支持字符串批处理, 例如多行文本对齐, 提供SQL格式化及自动生成别名功能, 搞数据分析的小伙伴值得一试.
+    - 体验优化: 
+        - 优化正则处理性能.
+        - 支持换行符作为分割符.
+        - 针对Windows系统, 字符串批处理结果渲染时使用Windows换行符.
+    - TheShy提示: 
+        - 运行自动生码前, 请留意IDE项目默认换行符配置.
+    - 功能调整: 
+        - 插件功能图标调整对齐.
+        - 插件使用指南搬迁到我的<a href="http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">博客</a>.
+    
+- 2.2(private)
+    - 新增功能:
+        - 加解密彩蛋, 空白文档输入'end'获取加解密模板.
+        - 加解密彩蛋, 针对多行文本, 提供多种加密算法下的加密、解密、加解密全过程的处理功能
+    - 体验优化: 支持用中英文逗号作为多行文本的分隔符.
+    - TheShy提示: 该版本是私有版本, 你可以向我<a href="http://www.debuggerpowerzcy.top/about/">发邮件</a>阐明你需要定制的加解密功能, 例如你要使用的加解密算法是哪一种.
+
+- 2.1
+    - Bug修复: 补充一键首字母小写转换功能, 完成字段命名闭环: 驼峰-下划线-全大写-首字母小写-全小写.
+    - 体验优化: 优化一些正则处理的性能.
+    - TheShy提示: 正则神器彩蛋中增加IDEA自带的高效查找与替换功能, 花点时间瞄一瞄, 之后工作快到飞起.
+
+- 2.0
+    - Bug修复: 修改Controller.java文件中方法名.
+    - 新增功能:
+        - 通过配置指定文件生成目录, 不用再手动拖入目录了, 就应该是这样的, 重复工作应该被剔除.
+        - 驼峰-下划线-大写-小写一键转化: `alt` + `shift` + `cmd` + `U`.
+        - 空白文件中输入'regex' 获取正则神器菜单.
+    - 体验优化: 代码优化与性能优化.
+    - TheShy提示: 如果插件图标出现红叉, 这是IDEA版本不兼容引起的, 将IDEA版本升级至2019.3.*(至少是2019.2.*以后).
+
+- 1.24
+    - Bug修复: mapper.xml文件中 'updateBatchByPrimaryKeySelective' SQL生成修复.
+    - 新增功能: 空白文件中输入'd8ger'以获取最新模板参数配置, 该版本支持代码注释中英文, 默认英文.
+    - TheShy提示: **对于批量更新功能, 数据库连接参数必须开启该功能: 'allowMultiQueries=true'**.
+
+- 1.23
+    - Bug修复: 修复Intellij版本间的依赖包兼容问题.
+    - 新增功能: 新增一键JSON美化和一键剔除空白字符.
+    - TheShy提示: 老铁, 点亮一颗🌟可好?
+
+- 1.22
+    - Bug修复: 修正图片及文档格式.
+    - 体验优化: Enhance profile for generating codes by using regex to replace the circle of matching string.
+    - TheShy提示: 小伙伴, 点亮一颗🌟可好?
+
+- 1.21
+    - Bug修复: 修正图片及文档格式.
+    - 新增功能: 新增MoExample查询条件对象以支持简单查询.
+    - TheShy提示: 同学, 点亮一颗🌟可好?
+
+- 1.20
+    - 首发上阵: 一键自动生成Mo/Example/Mapper/Xml/SQL/Service 完成, wow!
+    - TheShy提示: 少年, 点亮一颗🌟可好?

@@ -215,13 +215,6 @@ public class D8gerAutoCoding {
         } else {
             apiUrlPrefix = VerbalExpressionUtil.correctUrl(properties.getProperty(ConstantUtil.CONFIG_API_URL_PREFIX_KEY));
         }
-        // Language configuration
-        if (ConstantUtil.OPTIONAL_CONFIG_LANGUAGE.equals(properties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY))) {
-            // Annotation Chinese Culture
-            AutoCodeTemplate.IS_EN_LOCALE = Boolean.FALSE;
-        } else {
-            AutoCodeTemplate.IS_EN_LOCALE = Boolean.TRUE;
-        }
 
         // handle mapper's annotation
         boolean isMapper = PropertiesUtil.checkConfigTakeEffect(properties, KeyEnum.MO_MAPPER_ANNOTATION.getKey());
@@ -235,24 +228,7 @@ public class D8gerAutoCoding {
         keyWordMatchMap.put(TemplateKeyWordEnum.MO_EXAMPLE_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toMoExampleDefinitionMethodString), ConstantUtil.EMPTY)));
         keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_TABLE_KEY.getName(), new StringBuilder(VerbalExpressionUtil.sqlUnderLineName(this.getMoName())));
         keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_COLUMN_KEY.getName(), new StringBuilder(CollectionUtil.join(CollectionUtil.transToList(moFieldList, MoField::toSqlColumnDefinitionString), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE)));
-        if (Objects.isNull(CollectionUtil.findFirst(moFieldList, item -> item.getName().equals(ConstantUtil.SQL_ID)))) {
-            keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_ID_KEY.getName(), new StringBuilder(ConstantUtil.SQL_ID_DEFAULT_DEFINITION));
-        } else {
-            keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_ID_KEY.getName(), new StringBuilder());
-        }
-        // whether auto generate create_time and update_time column definition by custom config
-        boolean sqlDetectTimeColumn = PropertiesUtil.checkConfigTakeEffect(properties, KeyEnum.SQL_DETECT_TIME_COLUMN.getKey());
 
-        if (sqlDetectTimeColumn && Objects.isNull(CollectionUtil.findFirst(moFieldList, item -> item.getName().equals(ConstantUtil.SQL_CREATE_TIME)))) {
-            keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_CREATE_TIME_KEY.getName(), new StringBuilder(ConstantUtil.SQL_CREATE_TIME_DEFAULT_DEFINITION));
-        } else {
-            keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_CREATE_TIME_KEY.getName(), new StringBuilder());
-        }
-        if (sqlDetectTimeColumn && Objects.isNull(CollectionUtil.findFirst(moFieldList, item -> item.getName().equals(ConstantUtil.SQL_UPDATE_TIME)))) {
-            keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_UPDATE_TIME_KEY.getName(), new StringBuilder(ConstantUtil.SQL_UPDATE_TIME_DEFAULT_DEFINITION));
-        } else {
-            keyWordMatchMap.put(TemplateKeyWordEnum.SQL_MO_UPDATE_TIME_KEY.getName(), new StringBuilder());
-        }
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_BASE_COLUMN_LIST_KEY.getName(), this.getXMLBaseColumnList());
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_SELECT_BASE_COLUMN_LIST_KEY.getName(), this.getXMLSelectBaseColumnList());
         keyWordMatchMap.put(TemplateKeyWordEnum.XML_BATCH_UPDATE_NONNULL_FIELD_BY_ID_KEY.getName(), this.getXMLBatchUpdateNonNullFieldByID());
@@ -329,10 +305,7 @@ public class D8gerAutoCoding {
             case MO_SQL:
                 keyWordEnumList.add(TemplateKeyWordEnum.AUTHOR_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.SQL_MO_TABLE_KEY);
-                keyWordEnumList.add(TemplateKeyWordEnum.SQL_MO_ID_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.SQL_MO_COLUMN_KEY);
-                keyWordEnumList.add(TemplateKeyWordEnum.SQL_MO_CREATE_TIME_KEY);
-                keyWordEnumList.add(TemplateKeyWordEnum.SQL_MO_UPDATE_TIME_KEY);
                 keyWordEnumList.add(TemplateKeyWordEnum.MO_NAME_KEY);
                 break;
             case MO_MAPPER:
@@ -376,7 +349,28 @@ public class D8gerAutoCoding {
      */
     private D8gerAutoCoding initMoFieldList() {
         PsiField[] selfOwnedFields = this.originMoPsiClass.getFields();
+        // extract original field list
         this.setMoFieldList(CollectionUtil.transToList(Arrays.asList(selfOwnedFields), MoField::new));
+        // enhance by configuration
+        Properties properties = loadPropertiesFromRootResource();
+        // Language configuration
+        if (ConstantUtil.OPTIONAL_CONFIG_LANGUAGE.equals(properties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY))) {
+            // Annotation Chinese Culture
+            AutoCodeTemplate.IS_EN_LOCALE = Boolean.FALSE;
+        } else {
+            AutoCodeTemplate.IS_EN_LOCALE = Boolean.TRUE;
+        }
+        if (Objects.isNull(CollectionUtil.findFirst(moFieldList, item -> item.getName().equals(ConstantUtil.SQL_ID)))) {
+            this.produceIdField();
+        }
+        // whether auto generate create_time and update_time column definition by custom config
+        boolean sqlDetectTimeColumn = PropertiesUtil.checkConfigTakeEffect(properties, KeyEnum.SQL_DETECT_TIME_COLUMN.getKey());
+        if (sqlDetectTimeColumn && Objects.isNull(CollectionUtil.findFirst(moFieldList, item -> item.getName().equals(ConstantUtil.SQL_CREATE_TIME)))) {
+            this.produceCreateTimeField();
+        }
+        if (sqlDetectTimeColumn && Objects.isNull(CollectionUtil.findFirst(moFieldList, item -> item.getName().equals(ConstantUtil.SQL_UPDATE_TIME)))) {
+            this.produceUpdateTimeField();
+        }
         // Set field order
         moFieldList.forEach(item -> item.setIndex(moFieldList.indexOf(item)));
         return this;
@@ -510,14 +504,14 @@ public class D8gerAutoCoding {
     }
 
     /**
-     * SQL-BatchInsertField, exclude primary key column `id`
+     * SQL-BatchInsertField, exclude primary key column `id` | `createTime` | `updateTime`
      *
      * @return
      */
     private StringBuilder getXMLBatchInsertField() {
         return new StringBuilder(ConstantUtil.TRIPLE_TAB).append("(").append(ConstantUtil.NEXT_LINE)
                 .append(CollectionUtil.join(CollectionUtil.removeAndTransList(moFieldList,
-                        item -> item.getName().equals(ConstantUtil.SQL_ID),
+                        item -> item.getName().equals(ConstantUtil.SQL_ID) || item.getName().equals(ConstantUtil.SQL_CREATE_TIME) || item.getName().equals(ConstantUtil.SQL_UPDATE_TIME),
                         item -> ConstantUtil.QUATERNARY_TAB + "#{item." + item.getName() + "}"
                 ), ConstantUtil.ENGLISH_COMMA + ConstantUtil.NEXT_LINE))
                 .append(ConstantUtil.NEXT_LINE).append(ConstantUtil.TRIPLE_TAB).append(")");
@@ -565,6 +559,54 @@ public class D8gerAutoCoding {
      */
     public D8gerAutoCoding configOriginPsiClass() {
         return this.setOriginMoPsiClass(originMoJavaFile.getClasses()[0]);
+    }
+
+    /**
+     * For an optional, auto add 'id' field
+     */
+    private void produceIdField() {
+        String comment = StringUtils.upperCase(ConstantUtil.SQL_ID);
+        SupportFieldTypeEnum idFieldType = SupportFieldTypeEnum.LONG;
+        MoField idField = new MoField()
+                .setComment(comment)
+                .setAccessModifier(ConstantUtil.DEFAULT_ACCESS_MODIFIER)
+                .setFieldOriginTypeName(idFieldType.getOriginName())
+                .setFieldTypeShortName(idFieldType.getShortName())
+                .setFieldSqlTypeName(idFieldType.getSqlName())
+                .setName(ConstantUtil.SQL_ID);
+        this.moFieldList.add(0, idField);
+    }
+
+    /**
+     * For an optional, auto add 'createTime' field
+     */
+    private void produceCreateTimeField() {
+        String comment = AutoCodeTemplate.IS_EN_LOCALE ? ConstantUtil.SQL_CREATE_TIME : ConstantUtil.ZN_SQL_CREATE_TIME;
+        SupportFieldTypeEnum idFieldType = SupportFieldTypeEnum.LOCAL_DATE_TIME;
+        MoField idField = new MoField()
+                .setComment(comment)
+                .setAccessModifier(ConstantUtil.DEFAULT_ACCESS_MODIFIER)
+                .setFieldOriginTypeName(idFieldType.getOriginName())
+                .setFieldTypeShortName(idFieldType.getShortName())
+                .setFieldSqlTypeName(idFieldType.getSqlName())
+                .setName(ConstantUtil.SQL_CREATE_TIME);
+        this.moFieldList.add(idField);
+    }
+
+    /**
+     * For an optional, auto add 'updateTime' field
+     */
+    private void produceUpdateTimeField() {
+        String comment = AutoCodeTemplate.IS_EN_LOCALE ? ConstantUtil.SQL_UPDATE_TIME : ConstantUtil.ZN_SQL_UPDATE_TIME;
+        SupportFieldTypeEnum idFieldType = SupportFieldTypeEnum.LOCAL_DATE_TIME;
+        MoField idField = new MoField()
+                .setComment(comment)
+                .setAccessModifier(ConstantUtil.DEFAULT_ACCESS_MODIFIER)
+                .setFieldOriginTypeName(idFieldType.getOriginName())
+                .setFieldTypeShortName(idFieldType.getShortName())
+                .setFieldSqlTypeName(idFieldType.getSqlName())
+                .setName(ConstantUtil.SQL_UPDATE_TIME);
+        this.moFieldList.add(idField);
     }
 
 }

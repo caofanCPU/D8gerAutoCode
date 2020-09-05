@@ -7,7 +7,6 @@
 -- DROP TABLE IF EXISTS `@mo_table_name@`;
 CREATE TABLE `@mo_table_name@`
 (
-@id@@sql_column@
-@create_time@@update_time@
+@sql_column@
 )
     comment '@MoName@' charset = utf8mb4;

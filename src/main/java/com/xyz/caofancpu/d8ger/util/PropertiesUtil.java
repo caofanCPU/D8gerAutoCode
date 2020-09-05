@@ -37,21 +37,7 @@ public class PropertiesUtil {
         customerProperties.setProperty(KeyEnum.MO_MAPPER_ANNOTATION.getKey(), settings.mapperBetterThenRepositoryCheck + ConstantUtil.EMPTY);
         customerProperties.setProperty(ConstantUtil.CONFIG_AUTHOR_KEY, settings.defaultAuthor);
         customerProperties.setProperty(ConstantUtil.CONFIG_API_URL_PREFIX_KEY, settings.defaultUrlPrefix);
-        customerProperties.setProperty(ConstantUtil.CONFIG_LANGUAGE_KEY, settings.defaultUrlPrefix);
-        LOG.debug(KeyEnum.MO.getKey() + ": [" + customerProperties.getProperty(KeyEnum.MO.getKey()) + "]");
-        LOG.debug(KeyEnum.MO_MAPPER.getKey() + ": [" + customerProperties.getProperty(KeyEnum.MO_MAPPER.getKey()) + "]");
-        LOG.debug(KeyEnum.MO_EXAMPLE.getKey() + ": [" + customerProperties.getProperty(KeyEnum.MO_EXAMPLE.getKey()) + "]");
-        LOG.debug(KeyEnum.MO_MAPPER_XML.getKey() + ": [" + customerProperties.getProperty(KeyEnum.MO_MAPPER_XML.getKey()) + "]");
-        LOG.debug(KeyEnum.MO_SQL.getKey() + ": [" + customerProperties.getProperty(KeyEnum.MO_SQL.getKey()) + "]");
-        LOG.debug(KeyEnum.SWAGGER_MO.getKey() + ": [" + customerProperties.getProperty(KeyEnum.SWAGGER_MO.getKey()) + "]");
-        LOG.debug(KeyEnum.MO_HANDLER.getKey() + ": [" + customerProperties.getProperty(KeyEnum.MO_HANDLER.getKey()) + "]");
-        LOG.debug(KeyEnum.MO_CONTROLLER.getKey() + ": [" + customerProperties.getProperty(KeyEnum.MO_CONTROLLER.getKey()) + "]");
-        LOG.debug(KeyEnum.FORMAT_STYLE.getKey() + ": [" + customerProperties.getProperty(KeyEnum.FORMAT_STYLE.getKey()) + "]");
-        LOG.debug(KeyEnum.SQL_DETECT_TIME_COLUMN.getKey() + ": [" + customerProperties.getProperty(KeyEnum.SQL_DETECT_TIME_COLUMN.getKey()) + "]");
-        LOG.debug(KeyEnum.MO_MAPPER_ANNOTATION.getKey() + ": [" + customerProperties.getProperty(KeyEnum.MO_MAPPER_ANNOTATION.getKey()) + "]");
-        LOG.debug(ConstantUtil.CONFIG_AUTHOR_KEY + ": [" + customerProperties.getProperty(ConstantUtil.CONFIG_AUTHOR_KEY) + "]");
-        LOG.debug(ConstantUtil.CONFIG_API_URL_PREFIX_KEY + ": [" + customerProperties.getProperty(ConstantUtil.CONFIG_API_URL_PREFIX_KEY) + "]");
-        LOG.debug(ConstantUtil.CONFIG_LANGUAGE_KEY + ": [" + customerProperties.getProperty(ConstantUtil.CONFIG_LANGUAGE_KEY) + "]");
+        customerProperties.setProperty(ConstantUtil.CONFIG_LANGUAGE_KEY, settings.defaultLocale);
         return customerProperties;
     }
 

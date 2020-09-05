@@ -87,10 +87,7 @@ public class AutoCodeTemplate {
             "-- DROP TABLE IF EXISTS `@mo_table_name@`;\n" +
             "CREATE TABLE `@mo_table_name@`\n" +
             "(\n" +
-            "@id@" +
             "@sql_column@\n" +
-            "@create_time@" +
-            "@update_time@" +
             ")\n" +
             "    comment '@MoName@表' charset = utf8mb4;\n");
 
@@ -165,6 +162,7 @@ public class AutoCodeTemplate {
             "\n" +
             "    /**\n" +
             "     * 批量增加记录, 并为入参设置ID\n" +
+            "     * 注意: `id` | `createTime` | `updateTime`字段将被忽略, 以数据库为准\n" +
             "     *\n" +
             "     * @param @uncapitallizeMoName@MoList\n" +
             "     * @return\n" +
@@ -697,12 +695,12 @@ public class AutoCodeTemplate {
             "\n" +
             "    /**\n" +
             "     * 批量插入\n" +
+            "     * 注意: `id` | `createTime` | `updateTime`字段将被忽略, 以数据库为准\n" +
             "     *\n" +
             "     * @param @uncapitallizeMoName@MoList\n" +
             "     * @return\n" +
             "     */\n" +
             "    public int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList) {\n" +
-            "        @uncapitallizeMoName@MoList.forEach(item -> item.setId(null));\n" +
             "        return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@MoList);\n" +
             "    }\n" +
             "\n" +
@@ -942,8 +940,7 @@ public class AutoCodeTemplate {
             "-- DROP TABLE IF EXISTS `@mo_table_name@`;\n" +
             "CREATE TABLE `@mo_table_name@`\n" +
             "(\n" +
-            "@id@@sql_column@\n" +
-            "@create_time@@update_time@\n" +
+            "@sql_column@\n" +
             ")\n" +
             "    comment '@MoName@' charset = utf8mb4;\n");
     /**
@@ -1017,6 +1014,7 @@ public class AutoCodeTemplate {
             "\n" +
             "    /**\n" +
             "     * Batch add records, and set the ID for the input MoList parameters\n" +
+            "     * Attention: `id` | `createTime` | `updateTime` fields will be ignored cause these should according to the Database\n" +
             "     *\n" +
             "     * @param @uncapitallizeMoName@MoList\n" +
             "     * @return\n" +
@@ -1547,12 +1545,12 @@ public class AutoCodeTemplate {
             "\n" +
             "    /**\n" +
             "     * Batch insert records\n" +
+            "     * Attention: `id` | `createTime` | `updateTime` fields will be ignored cause these should according to the Database\n" +
             "     *\n" +
             "     * @param @uncapitallizeMoName@MoList\n" +
             "     * @return\n" +
             "     */\n" +
             "    public int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList) {\n" +
-            "        @uncapitallizeMoName@MoList.forEach(item -> item.setId(null));\n" +
             "        return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@MoList);\n" +
             "    }\n" +
             "\n" +

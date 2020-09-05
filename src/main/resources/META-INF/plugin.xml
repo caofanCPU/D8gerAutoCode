@@ -92,12 +92,25 @@
 
     <change-notes>
         <![CDATA[
-        <li>If you like D8gerAutoCode, please star <a href="https://github.com/caofanCPU/D8gerAutoCode">the source project</a> for supporting him, thanks!</li>
+        <li>If you like D8gerAutoCode, please star <a href="https://github.com/caofanCPU/D8gerAutoCode">the source project</a> for supporting me, thanks!</li>
+        <li><h1>3.1</h1></li>
+        <ul>
+        <li>BugFix:<br>
+            <ul>
+            <li>Fix config item 'locale' problem when selected as 'ZN', and before this version all comment was English default.</li>
+            <li>Fix SQL definition in x.sql file. ✌️</li>
+            <li>Fix batch insert records in xMapper.xml file cause 'id', 'createTime', 'updateTime' all should according to the Database.</li>
+            </ul>
+        </li>
+        <li>Optimization: Config item 'autoDetectSQLTimeColumn' now is more intelligent. If you checked, 'createTime' and 'updateTime' would be generated perfectly in there right position.<br>
+        </li>
+        </ul>
+        </br>
         <li><h1>3.0</h1></li>
         <ul>
         <li>Addition:<br>
             <ul>
-            <li>Grand celebration for 'D8gerAutoCode' getting his face! Now you can config the generate property parameters by setting GUI.</li>
+            <li>Grand celebration for 'D8gerAutoCode' getting his face! Now you can config the generated property parameters by setting GUI.</li>
             <li>First, Open the configuration box to set the generation parameters, 'Preference' --> 'Other Settings' --> 'D8gerAutoCode'</li>
             <li>Then, Check the file to be generated and choose the generation path, rewrite 'author'、'apiUrlPrefix' and 'locale', and click the button to save your configuration.</li>
             </ul>
@@ -139,8 +152,6 @@
         </li>
         <li>Attention: Select your MySQL text, ctrl + alt + shift + 'B' will back a surprise.<br>
         </li>
-        <li>Adjustment: The manual of this plugin has been moved to my <a href="http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">website</a>.<br>
-        </li>
         </ul>
         </br>
         <li><h1>2.3</h1></li>
@@ -159,12 +170,7 @@
             <li>Support windows linebreak when rendering origin code.</li>
             </ul>
         </li>
-        <li>Attention: <br>
-            <ul>
-            <li>Regex easter eggs add some very useful regex search-replace skills hidden in JetBrains' IDE products. Try to learn and you will save much time at working.</li>
-            <li>When execute auto-coding, you should be careful at the linebreak, it maybe different from your project config.</li>
-            </ul>
-        </li>
+        <li>Attention: When execute auto-coding, you should be careful at the linebreak, it maybe different from your project config.</li>
         <li>Adjustment: <br>
             <ul>
             <li>Icons changed for align, friendly view etc.</li>
@@ -188,12 +194,6 @@
         <li><h1>2.1</h1></li>
         <ul>
         <li>BugFix: add Uncapitalize, and the circle is Camel-Underline-Uppercase-Uncapitalize-Lowercase.</li>
-        <li>Addition:<br>
-            <ul>
-            <li>NASA easter eggs, try to type 'nasa' in the blank file in IDEA to get the nasa-template.</li>
-            <li>NASA easter eggs, multi-lines can be batch handled with the nasa-template, special for sql columns.</li>
-            </ul>
-        </li>
         <li>Optimization: Optimize some regex performance.</li>
         <li>Attention: Regex easter eggs add some very useful regex search-replace skills hidden in JetBrains' IDE products. Try to learn and you will save much time at working.</li>
         </ul>
@@ -214,14 +214,14 @@
         </br>
         <li><h1>1.24</h1></li>
         <ul>
-        <li>BugFix: Update method named'updateBatchByPrimaryKeySelective' in mapper.xml.</li>
+        <li>BugFix: Update method named 'updateBatchByPrimaryKeySelective' in mapper.xml.</li>
         <li>Addition: Set default language English and you can config it as Chinese Simplified, as before, typing 'd8ger' for the latest configuration template.</li>
         <li>Attention: You should configure your database connection like 'allowMultiQueries=true' for supporting batchUpdate operation.</li>
         </ul>
         </br>
         <li><h1>1.23</h1></li>
         <ul>
-        <li>BugFix: Fix required dependencies by Jetbrains's suggestion for some known compatibility issues.</li>
+        <li>BugFix: Fix required dependencies by JetBrains' suggestion for some known compatibility issues.</li>
         <li>Addition: Add JSON-formatter and WhiteChar-cleaner.</li>
         <li>Attention: Can you star the project on the github?</li>
         </ul>
@@ -242,7 +242,7 @@
         </br>
         <li><h1>1.20</h1></li>
         <ul>
-        <li>Completion: Auto coding for Mo/Example/Mapper/Xml/SQL/Service is completed, wow!</li>
+        <li>Completion: Auto coding for Mo/Example/Mapper/Xml/SQL/Service completed, wow!</li>
         <li>Attention: Can you star the project on the github?</li>
         </ul>
         ]]>

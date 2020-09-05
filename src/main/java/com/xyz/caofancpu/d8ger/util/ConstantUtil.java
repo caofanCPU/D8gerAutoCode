@@ -128,19 +128,14 @@ public class ConstantUtil {
     public static final String SQL_ID = "id";
 
     /**
-     * SQL ID default definition
-     */
-    public static final String SQL_ID_DEFAULT_DEFINITION = TAB + "id bigint unsigned auto_increment comment 'id' primary key" + ENGLISH_COMMA + NEXT_LINE;
-
-    /**
      * SQL create time column
      */
     public static final String SQL_CREATE_TIME = "createTime";
 
     /**
-     * SQL create time default definition
+     * ZN SQL create time
      */
-    public static final String SQL_CREATE_TIME_DEFAULT_DEFINITION = TAB + "create_time datetime default CURRENT_TIMESTAMP null comment 'createTime'" + ENGLISH_COMMA + NEXT_LINE;
+    public static final String ZN_SQL_CREATE_TIME = "创建时间";
 
     /**
      * SQL update time column
@@ -148,9 +143,9 @@ public class ConstantUtil {
     public static final String SQL_UPDATE_TIME = "updateTime";
 
     /**
-     * SQL update time default definition
+     * ZN SQL update time
      */
-    public static final String SQL_UPDATE_TIME_DEFAULT_DEFINITION = TAB + "update_time datetime default CURRENT_TIMESTAMP null on update CURRENT_TIMESTAMP comment 'updateTime'" + NEXT_LINE;
+    public static final String ZN_SQL_UPDATE_TIME = "更新时间";
 
     /**
      * Mo name suffix

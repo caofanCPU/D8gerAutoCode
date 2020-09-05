@@ -66,6 +66,7 @@ public interface @MoName@Mapper {
 
     /**
      * 批量增加记录, 并为入参设置ID
+     * 注意: `id` | `createTime` | `updateTime`字段将被忽略, 以数据库为准
      *
      * @param @uncapitallizeMoName@MoList
      * @return

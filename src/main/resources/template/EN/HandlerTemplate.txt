@@ -34,12 +34,12 @@ public class @MoName@Handler {
 
     /**
      * Batch insert records
+     * Attention: `id` | `createTime` | `updateTime` fields will be ignored cause these should according to the Database
      *
      * @param @uncapitallizeMoName@MoList
      * @return
      */
     public int batchAdd(List<@MoName@Mo> @uncapitallizeMoName@MoList) {
-        @uncapitallizeMoName@MoList.forEach(item -> item.setId(null));
         return @uncapitallizeMoName@Mapper.insertBatchWithId(@uncapitallizeMoName@MoList);
     }
 
