@@ -31,7 +31,6 @@
 - 支持代码目录配置, 一键自动生成代码, 仅需自行导包即可完成智能编程
 - 支持用户自定义配置, 可指定需要生成的文件
 
-
 ### 功能特性
 - 驼峰-下划线-大写-首字母小写-小写, 一键转换, 默认快捷键`alt` + `shift` + `cmd` + `U`  
 - 生成代码的注释支持英语|汉语配置
@@ -44,7 +43,6 @@
 - 预留彩蛋, 在IDEA中编辑空白文件输入'nasa'即可得到NASA模板, 针对多行字符串批量处理, 尤其是SQL字段命名处理   
 - 预留彩蛋, 在IDEA中编辑空白文件输入'regex'即可得到一些常用的有趣正则表达式, 后期会增加其他代码彩蛋
 - SwaggerVo字段排序, 默认快捷键 `alt`+`shift`+`cmd`+`O`
-
 
 ### 使用手册(v3.0+)
 1.打开配置框设置生成参数 `Preference` --> `Other Settings` --> `D8gerAutoCode`
@@ -108,7 +106,6 @@
 - `Preference` --> `Plugins` --> `Marketplace` --> type `D8` --> install
 - [IDEA官方插件库安装](https://plugins.jetbrains.com/plugin/13576-d8gerautocode)  
 - 源码安装, 这需要你熟悉Gradle, 后期我会详细补充如何使用Gradle开发一个插件  
-
 
 ### Bug&问题
 - 已知问题(最新版本3.0中已修复)
