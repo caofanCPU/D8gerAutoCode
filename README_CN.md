@@ -11,6 +11,9 @@
     <img src="http://file.debuggerpowerzcy.top/power/D8-V3.png" /> 
 </div>
 
+## 说明
+最新版本为**3.1**, 状态为官方审核中, 在**`9月8号`**前正式发布
+
 ### 序言
 正如JetBrains所说, 我相信你在繁忙编码工作中时应该善用工具以节省宝贵的时间。
 

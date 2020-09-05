@@ -13,6 +13,9 @@
 
 > [中文说明](./README_CN.md)
 
+## Attention
+The latest version is 3.1 which is approving by JetBrains, and I'm sure it will be published before 8th, Sep.
+
 ### Preface
 As JetBrains' said, I believe that you should be good use of tools will save you precious hours on your busing work.
 
