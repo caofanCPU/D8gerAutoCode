@@ -226,9 +226,28 @@ Solution
 - Please give me a 🌟
 - Raise demand, write the repetitive problems you often handled at daily work in [issue](https://github.com/caofanCPU/D8gerAutoCode/issues)
 - Invite me to sit at the 🍦 shop
-<div align="center">
-    <img src="http://file.debuggerpowerzcy.top/power/D8WZ.png" /> 
-</div>
+<table>
+    <tr>
+      <td align="center" style="width: 200px;">
+        <a href="https://github.com/D8ger">
+          <img src="http://file.debuggerpowerzcy.top/power/WX.png" style="width: 400px;"><br>
+          <sub>微信</sub>
+        </a><br>
+      </td>
+      <td align="center" style="width: 200px;">
+        <a href="http://www.debuggerpowerzcy.top/">
+          <img src="http://file.debuggerpowerzcy.top/power/ZFB.png" style="width: 400px;"><br>
+          <sub>支付宝</sub>
+        </a><br>
+      </td>
+      <td align="center" style="width: 200px;">
+          <a href="https://github.com/caofanCPU">
+            <img src="http://file.debuggerpowerzcy.top/power/MX.jpg" style="width: 400px;"><br>
+            <sub>MiXin</sub>
+          </a><br>
+      </td>
+    </tr>
+</table>
 
 ### Thanks
 <a href="https://www.jetbrains.com/idea">

@@ -224,13 +224,32 @@
 - 帮我点亮一颗🌟
 - 提需求, 在[issue](https://github.com/caofanCPU/D8gerAutoCode/issues)描述工作中经常处理的重复问题
 - 请我到🍦店坐坐
-<div align="center">
-    <img src="http://file.debuggerpowerzcy.top/power/D8WZ.png" /> 
-</div>
+<table>
+    <tr>
+      <td align="center" style="width: 200px;">
+        <a href="https://github.com/D8ger">
+          <img src="http://file.debuggerpowerzcy.top/power/WX.png" style="width: 400px;"><br>
+          <sub>微信</sub>
+        </a><br>
+      </td>
+      <td align="center" style="width: 200px;">
+        <a href="http://www.debuggerpowerzcy.top/">
+          <img src="http://file.debuggerpowerzcy.top/power/ZFB.png" style="width: 400px;"><br>
+          <sub>支付宝</sub>
+        </a><br>
+      </td>
+      <td align="center" style="width: 200px;">
+          <a href="https://github.com/caofanCPU">
+            <img src="http://file.debuggerpowerzcy.top/power/MX.jpg" style="width: 400px;"><br>
+            <sub>MiXin</sub>
+          </a><br>
+      </td>
+    </tr>
+</table>
 
 ### 致谢
 
 <a href="https://www.jetbrains.com/idea">
-    <img src="http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg" style="width: 40px;">
+    <img src="http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg" style="width: 40px;"><br>
     <sub>感谢JetBrains团队的开源证书支持, 本项目将秉承开源精神持续开发</sub>
 </a>
