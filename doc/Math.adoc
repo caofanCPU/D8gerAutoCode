@@ -1,0 +1,18 @@
+== Math
+- A
+\begin{equation}
+\left[\begin{array}{cccccc}
+{a_{11}} & {a_{12}} & {\cdots} & {a_{1 n}} \\
+{a_{21}} & {a_{22}} & {\cdots} & {a_{2 n}} \\
+{\vdots} & {\vdots} & {\ddots} & {\vdots} \\
+{\sin x} & {\ln x} & {\cdots} & {\vdots} \\
+{-} & {c} & {} & {\underline{c}} & {\supset} & {\epsilon} \\
+{} & {\varnothing} & {} & {\Psi} & {\exists} & {\ddots} \\
+{\nabla} & {\partial} & {} & {a} & {b_{3}} & {a b} & {a_{x y z}}
+\end{array}\right]
+\end{equation}
+- B
+
+\(\left[\begin{array}{cccccc}{a_{11}} & {a_{12}} & {\cdots} & {a_{1 n}} \\ {a_{21}} & {a_{22}} & {\cdots} & {a_{2 n}} \\ {\vdots} & {\vdots} & {\ddots} & {\vdots} \\ {\sin x} & {\ln x} & {\cdots} & {\vdots} \\ {-} & {c} & {} & {\underline{c}} & {\supset} & {\epsilon} \\ {} & {\varnothing} & {} & {\Psi} & {\exists} & {\ddots} \\ {\nabla} & {\partial} & {} & {a} & {b_{3}} & {a b} & {a_{x y z}}\end{array}\right]\)
+
+- C
