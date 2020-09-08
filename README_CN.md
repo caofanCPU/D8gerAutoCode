@@ -18,6 +18,7 @@
 
 ## 说明
 最新版本为**3.1**, 状态为官方审核中, 在**`9月8号`**前正式发布
+如果无法获取, [戳此](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.1) 下载~~.zip~~压缩包
 
 ### 序言
 正如JetBrains所说, 我相信你在繁忙编码工作中时应该善用工具以节省宝贵的时间。
