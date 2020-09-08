@@ -25,7 +25,7 @@
 
 我时常在思考, "如果其他人已经解决了这些重复工作, 为什么我还需要重复解决?"
 
-这个好问题一直驱动着我, 在日常工作中探寻重复部分并开发此插件以节省时间。 
+这个问题一直驱动着我, 在日常工作中探寻重复部分并开发此插件以节省时间。 
 
 ### [快速开始](http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/)
 <a href="http://file.debuggerpowerzcy.top/power/html/IntelliJBestAction.html" target="_blank">ZN程序员福利, IntelliJ IDEA最佳实践</a>
