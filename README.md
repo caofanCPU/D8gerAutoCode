@@ -23,11 +23,11 @@ If you can't fetch it, then [click here](https://github.com/caofanCPU/D8gerAutoC
 By the way, I hope you use happy and give me a 🌟, thx!
 
 ### Preface
-As JetBrains` said, I believe that you should be good use of tools will save you precious hours on your busing work.
+As JetBrains' said, I believe that you should be good use of tools will save you precious hours on your busing work.
 
 I always wonder, "If someone else has already solved the repeating work, why do I need to repeat it again?"
 
-Well, that`s a valid question for my drive to find the repeat parts at daily work and develop this plugin to save my time.  
+Well, that's a valid question for my drive to find the repeat parts at daily work and develop this plugin to save my time.  
 
 ### [Quick Start](http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/)
 <a href="http://file.debuggerpowerzcy.top/power/html/IntelliJBestAction.html" target="_blank">ZN程序员福利</a>
@@ -74,8 +74,8 @@ Well, that`s a valid question for my drive to find the repeat parts at daily wor
 4. So, What you need to do:
     - Under a multi-module project, configure the generated file output directory, for example, **`Mo.java`** should be moved into the `model` directory  
     - Add non-null constraints to **`xx.sql`** as required  
-    - If you generated the **Controller.java** file, please note the interface returns type of **`Object`**, it should be modified to the project`s uniform return type  
-    - In the above steps the `xx.java` file will report some errors, ***don`t worry***, these just require you to import packages
+    - If you generated the **Controller.java** file, please note the interface returns type of **`Object`**, it should be modified to the project's uniform return type  
+    - In the above steps the `xx.java` file will report some errors, ***don't worry***, these just require you to import packages
 
 5. Default configuration file template for easter egg:  
     - In the ***`resource`*** root directory of the module where the `Model class` is located, create `d8ger.properties` property configuration file  
@@ -93,8 +93,8 @@ Well, that`s a valid question for my drive to find the repeat parts at daily wor
     - If not satisfied just press the shortcut again and again util you are.
 
 9. You will get the following default configuration information  
-    - It`s recommended that you change the configuration items  
-        - `author` (you can`t sign my name for the pits you dug!)  
+    - It's recommended that you change the configuration items  
+        - `author` (you can't sign my name for the pits you dug!)  
         - `apiUrlPrefix` (the interface url prefix should be configured as the project interface unified URL prefix)  
         - generate file output directory under a multi-module project  
     - As for `boolean` configuration items, let you choose which files need to be generated, and specify output directory is optional  
@@ -104,7 +104,7 @@ Well, that`s a valid question for my drive to find the repeat parts at daily wor
 ### How to install
 - `Preference` --> `Plugins` --> `Marketplace` --> type `D8` --> install
 - [IDEA official plugin library installation](https://plugins.jetbrains.com/plugin/13576-d8gerautocode)  
-- As for `Source installation` requires you`re familiar with Gradle, I will add more details about how to develop a plugin by ***Gradle*** later
+- As for `Source installation` requires you're familiar with Gradle, I will add more details about how to develop a plugin by ***Gradle*** later
 
 ### Bug & Question
 - Known issues
@@ -126,7 +126,7 @@ Solution
 ```
 Solution
 1.This issue is caused by Intellij IDEA of new version feature.
-2.Try to upgrade the version of Intellij util 2019.3.*(greater than 2019.2.*), you`ll fix it.
+2.Try to upgrade the version of Intellij util 2019.3.*(greater than 2019.2.*), you'll fix it.
 ```
 
 [Other issues, please come to join room](https://github.com/caofanCPU/D8gerAutoCode/issues)
@@ -153,11 +153,11 @@ Solution
         - Add `mapperBatterThenRepository` configuration for supporting custom mapper annotation in both SpringMVC and SpringBoot.
         - Add `selectOneByExample` in Mapper.java for supporting query one record.
         - Add `insertSelectiveWithId` in Mapper.java for supporting insert `non null` field and `null` field will be filled with the database default value.
-    - Optimization: `cause `id` is the primary key, all insert operations should exclude `id` column.
+    - Optimization: 'cause `id` is the primary key, all insert operations should exclude `id` column.
     - BugFix:
         - Generation `update_time` column definition remove the rare comma.
         - Trouble shooting the rare dir named `D8gerAutoCode`, now you can see it only with unspecified directory configuration.
-    - Adjustment: Remove `ServiceInterface` and `ServiceImpl`, `cause I think `Handler` is more suitable.
+    - Adjustment: Remove `ServiceInterface` and `ServiceImpl`, 'cause I think `Handler` is more suitable.
 
 - 2.4
     - Addition: One-click to beauty MySQL, isn't fragrant?
@@ -182,7 +182,7 @@ Solution
 - 2.2(private)
     - Addition:
         - END easter eggs, try to type `end` in the blank file in IDEA to get the end-template(encryption and decryption).
-        - END easter eggs, multi-lines can be batch handled with the end-template, it`s very useful for encryption and decryption.
+        - END easter eggs, multi-lines can be batch handled with the end-template, it's very useful for encryption and decryption.
     - Optimization: Support linebreak or comma as the delimiter.
     - Attention: This version is private, you can <a href="http://www.debuggerpowerzcy.top/about/">send me a email</a> and clarify your needs, such as what algorithm you'll take.
 
@@ -254,5 +254,5 @@ Solution
 ### Thanks
 <a href="https://www.jetbrains.com/idea">
     <img src="http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg" style="width: 40px;"><br>
-    <sub>With JetBrains team`s open source certificate supporting, this project will continue to develop in the spirit of open source</sub>
+    <sub>With JetBrains team's open source certificate supporting, this project will continue to develop in the spirit of open source</sub>
 </a>
