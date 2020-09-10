@@ -11,8 +11,18 @@
 {\nabla} & {\partial} & {} & {a} & {b_{3}} & {a b} & {a_{x y z}}
 \end{array}\right]
 \end{equation}
-- B
 
+- B
 \(\left[\begin{array}{cccccc}{a_{11}} & {a_{12}} & {\cdots} & {a_{1 n}} \\ {a_{21}} & {a_{22}} & {\cdots} & {a_{2 n}} \\ {\vdots} & {\vdots} & {\ddots} & {\vdots} \\ {\sin x} & {\ln x} & {\cdots} & {\vdots} \\ {-} & {c} & {} & {\underline{c}} & {\supset} & {\epsilon} \\ {} & {\varnothing} & {} & {\Psi} & {\exists} & {\ddots} \\ {\nabla} & {\partial} & {} & {a} & {b_{3}} & {a b} & {a_{x y z}}\end{array}\right]\)
 
 - C
+\begin{equation}
+\sum_{i=0}^{N} \int_{a}^{b} g(t, i) \mathrm{d} t
+\end{equation}
+
+- D
+\begin{equation}
+\frac{\partial^{2} f}{\partial x^{2}}=\frac{\partial\left(\Delta_{\mathcal{X}} f(i, j)\right)}{\partial x}=\frac{\partial(f(i+1, j)-f(i, j))}{\partial x}=\frac{\partial f(i+1, j)}{\partial x}-\frac{\partial f(i, j)}{\partial x}=f(i+2, j)-2 f(f+1, j)+f(i, j)
+\end{equation}
+
+- E
