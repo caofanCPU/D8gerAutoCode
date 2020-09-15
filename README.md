@@ -132,6 +132,10 @@ Solution
 [Other issues, please come to join room](https://github.com/caofanCPU/D8gerAutoCode/issues)
 
 ### VersionRoadHistory
+- 3.2
+    - BugFix: Fix 'BeautifulJSON' issue when parsing complex JSON string.
+    - Optimization: 'CamelUnderlineConvert' now supports Timestamp-LocalDateTime convert, select the text and use origin shortcut `alt` + `shift` + `cmd` + `U` to find out.
+
 - 3.1
     - BugFix:
         - Fix config item `locale` problem when selected as `ZN`, and before the 3.0 version`s comment was English default.
