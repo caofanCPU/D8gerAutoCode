@@ -61,4 +61,13 @@ Usage, static pattern can improve performance in regex searching:
   ReplaceString@   [EMPTY]
  III.Watch out whether need to clear the rare character ',' at the last line
 
-
+12. Cron Expression
+每隔5秒执行一次:                  */5 * * * * ?
+每隔5分钟执行一次:                0 */5 * * * ?
+每天23点执行一次:                 0 0 23 * * ?
+每天凌晨2点执行一次:               0 0 2 * * ?
+每月2号凌晨4点执行一次：            0 0 2 4 * ?
+每月最后一天23点执行一次：          0 0 23 L * ?
+每周星期天凌晨2点实行一次：          0 0 2 ? * L
+在26分、29分、33分执行一次：        0 26,29,33 * * * ?
+每天的0点、22点、23点都执行一次：    0 0 0 0,22,23 * * ?

@@ -9,8 +9,11 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.TextRange;
+import com.xyz.caofancpu.d8ger.util.ConstantUtil;
+import com.xyz.caofancpu.d8ger.util.DateUtil;
 import com.xyz.caofancpu.d8ger.util.VerbalExpressionUtil;
 import lombok.NonNull;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * 1.Camel-Underline convert
@@ -45,8 +48,35 @@ public class CamelUnderlineConvertAction extends AnAction {
         int selectionStart = selectionModel.getSelectionStart();
         int selectionEnd = selectionModel.getSelectionEnd();
         String originWord = currentDocument.getText(new TextRange(selectionStart, selectionEnd));
-        String replacement = VerbalExpressionUtil.camelUnderLineNameConverter(originWord);
+        String replacement = handleReplacement(originWord);
         currentDocument.replaceString(selectionStart, selectionEnd, replacement);
         selectionModel.removeSelection();
+    }
+
+    /**
+     * TimeStamp - LocalDateTime
+     *
+     * @param originWord
+     * @return
+     */
+    private String handleReplacement(@NonNull String originWord) {
+        String result = null;
+        try {
+            // First, 1600069557000 to 1600069557000
+            Long milliSeconds = Long.valueOf(originWord);
+            result = DateUtil.toLocalDateTime(milliSeconds).toString().replace("T", ConstantUtil.SPACE).replace("t", ConstantUtil.SPACE);
+        } catch (Exception e) {
+            // ignore
+            try {
+                // Second, 2020-09-14 15:45:57 to 1600069557000
+                result = DateUtil.parseStandardMilliSeconds(originWord.replace("T", ConstantUtil.SPACE).replace("t", ConstantUtil.SPACE)).toString();
+            } catch (Exception exception) {
+                // ignore
+            }
+        }
+        if (StringUtils.isBlank(result)) {
+            result = VerbalExpressionUtil.camelUnderLineNameConverter(originWord);
+        }
+        return result;
     }
 }
