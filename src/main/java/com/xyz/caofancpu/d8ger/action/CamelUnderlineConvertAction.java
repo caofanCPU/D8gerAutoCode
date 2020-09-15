@@ -15,6 +15,8 @@ import com.xyz.caofancpu.d8ger.util.VerbalExpressionUtil;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.regex.Pattern;
+
 /**
  * 1.Camel-Underline convert
  * 2.Uppercase-Lowercase convert
@@ -23,6 +25,8 @@ import org.apache.commons.lang3.StringUtils;
  * @author caofanCPU
  */
 public class CamelUnderlineConvertAction extends AnAction {
+
+    public static final Pattern DATE_TIME_REGEX = Pattern.compile("(?:[Tt])+");
 
     @Override
     public void actionPerformed(AnActionEvent e) {
@@ -64,12 +68,12 @@ public class CamelUnderlineConvertAction extends AnAction {
         try {
             // First, 1600069557000 to 2020-09-14 15:45:57
             Long milliSeconds = Long.valueOf(originWord);
-            result = DateUtil.toLocalDateTime(milliSeconds).toString().replace("T", ConstantUtil.SPACE).replace("t", ConstantUtil.SPACE);
+            result = DateUtil.toLocalDateTime(milliSeconds).toString().replaceAll(DATE_TIME_REGEX.pattern(), ConstantUtil.SPACE);
         } catch (Exception e) {
             // ignore
             try {
                 // Second, 2020-09-14 15:45:57 to 1600069557000
-                result = DateUtil.parseStandardMilliSeconds(originWord.replace("T", ConstantUtil.SPACE).replace("t", ConstantUtil.SPACE)).toString();
+                result = DateUtil.parseStandardMilliSeconds(originWord.replaceAll(DATE_TIME_REGEX.pattern(), ConstantUtil.SPACE)).toString();
             } catch (Exception exception) {
                 // ignore
             }
