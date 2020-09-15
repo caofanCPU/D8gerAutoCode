@@ -62,7 +62,7 @@ public class CamelUnderlineConvertAction extends AnAction {
     private String handleReplacement(@NonNull String originWord) {
         String result = null;
         try {
-            // First, 1600069557000 to 1600069557000
+            // First, 1600069557000 to 2020-09-14 15:45:57
             Long milliSeconds = Long.valueOf(originWord);
             result = DateUtil.toLocalDateTime(milliSeconds).toString().replace("T", ConstantUtil.SPACE).replace("t", ConstantUtil.SPACE);
         } catch (Exception e) {
