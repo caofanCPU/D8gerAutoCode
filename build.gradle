@@ -36,6 +36,7 @@ dependencies {
     compile group: 'ru.lanwen.verbalregex', name: 'java-verbal-expressions', version: '1.4'
     compile group: 'com.alibaba', name: 'druid', version: '0.2.9'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.8.1'
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
 }
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
