@@ -182,13 +182,6 @@ Solution
     - Adjustment: 
         - Icons changed for align, friendly view etc.
         - The manual of this plugin has been moved to my <a href="http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">website</a>.
-    
-- 2.2(private)
-    - Addition:
-        - END easter eggs, try to type `end` in the blank file in IDEA to get the end-template(encryption and decryption).
-        - END easter eggs, multi-lines can be batch handled with the end-template, it's very useful for encryption and decryption.
-    - Optimization: Support linebreak or comma as the delimiter.
-    - Attention: This version is private, you can <a href="http://www.debuggerpowerzcy.top/about/">send me a email</a> and clarify your needs, such as what algorithm you'll take.
 
 - 2.1
     - BugFix: add Uncapitalize, and the circle is Camel-Underline-Uppercase-Uncapitalize-Lowercase.

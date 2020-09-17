@@ -9,13 +9,10 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.TextRange;
-import com.xyz.caofancpu.d8ger.util.ConstantUtil;
 import com.xyz.caofancpu.d8ger.util.DateUtil;
 import com.xyz.caofancpu.d8ger.util.VerbalExpressionUtil;
 import lombok.NonNull;
 import org.apache.commons.lang3.StringUtils;
-
-import java.util.regex.Pattern;
 
 /**
  * 1.Camel-Underline convert
@@ -25,9 +22,6 @@ import java.util.regex.Pattern;
  * @author caofanCPU
  */
 public class CamelUnderlineConvertAction extends AnAction {
-
-    public static final Pattern DATE_TIME_REGEX = Pattern.compile("(?:[Tt])+");
-
     @Override
     public void actionPerformed(AnActionEvent e) {
         final Editor currentEditor = e.getRequiredData(CommonDataKeys.EDITOR);
@@ -66,17 +60,12 @@ public class CamelUnderlineConvertAction extends AnAction {
     private String handleReplacement(@NonNull String originWord) {
         String result = null;
         try {
-            // First, 1600069557000 to 2020-09-14 15:45:57
+            // First, 1600069557000 to 2020-09-14 15:45:57.000
             Long milliSeconds = Long.valueOf(originWord);
-            result = DateUtil.toLocalDateTime(milliSeconds).toString().replaceAll(DATE_TIME_REGEX.pattern(), ConstantUtil.SPACE);
+            result = DateUtil.enhanceToLocalDateTime(milliSeconds);
         } catch (Exception e) {
             // ignore
-            try {
-                // Second, 2020-09-14 15:45:57 to 1600069557000
-                result = DateUtil.parseStandardMilliSeconds(originWord.replaceAll(DATE_TIME_REGEX.pattern(), ConstantUtil.SPACE)).toString();
-            } catch (Exception exception) {
-                // ignore
-            }
+            result = DateUtil.enhanceParseMilliSeconds(originWord);
         }
         if (StringUtils.isBlank(result)) {
             result = VerbalExpressionUtil.camelUnderLineNameConverter(originWord);

@@ -192,18 +192,6 @@
         </li>
         </ul>
         </br>
-        <li><h1>2.2(private)</h1></li>
-        <ul>
-        <li>Addition:<br>
-            <ul>
-            <li>END easter eggs, try to type 'end' in the blank file in IDEA to get the end-template(encryption and decryption).</li>
-            <li>END easter eggs, multi-lines can be batch handled with the end-template, it's very useful for encryption and decryption.</li>
-            </ul>
-        </li>
-        <li>Optimization: Support linebreak or comma as the delimiter.</li>
-        <li>Attention: This version is private, you can <a href="http://www.debuggerpowerzcy.top/about/">send me a email</a> and clarify your needs, such as what algorithm you'll take.</li>
-        </ul>
-        </br>
         <li><h1>2.1</h1></li>
         <ul>
         <li>BugFix: add Uncapitalize, and the circle is Camel-Underline-Uppercase-Uncapitalize-Lowercase.</li>

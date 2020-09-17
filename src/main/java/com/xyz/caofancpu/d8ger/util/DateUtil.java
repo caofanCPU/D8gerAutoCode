@@ -20,11 +20,14 @@ package com.xyz.caofancpu.d8ger.util;
 
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
+import java.util.regex.Pattern;
 
 
 /**
@@ -34,7 +37,11 @@ import java.time.format.DateTimeFormatter;
  */
 @Slf4j
 public class DateUtil {
+    public static final Pattern DATE_TIME_REGEX = Pattern.compile("(?:[Tt])+");
     public final static String DATETIME_FORMAT_SIMPLE = "yyyy-MM-dd HH:mm:ss";
+    public final static String DATETIME_FORMAT_DETAIL = "yyyy-MM-dd HH:mm:ss:SSS";
+    public final static String DATETIME_FORMAT_DETAIL_DOT = "yyyy-MM-dd HH:mm:ss.SSS";
+    public final static String DATETIME_FORMAT_CN = "yyyy年MM月dd日HH时mm分ss秒";
 
     public final static ZoneOffset DEFAULT_ZONE_OFFSET = ZoneOffset.of("+8");
 
@@ -63,6 +70,49 @@ public class DateUtil {
      */
     public static LocalDateTime parseStandardDateTime(String dateTimeStr) {
         return LocalDateTime.parse(dateTimeStr, DateTimeFormatter.ofPattern(DATETIME_FORMAT_SIMPLE));
+    }
+
+    /**
+     * Long to LocalDateTimeString
+     */
+    public static String enhanceToLocalDateTime(@NonNull Long milliSeconds) {
+        LocalDateTime localDateTime = LocalDateTime.ofInstant(Instant.ofEpochMilli(milliSeconds), DEFAULT_ZONE_OFFSET);
+        return localDateTime.format(DateTimeFormatter.ofPattern(DATETIME_FORMAT_DETAIL_DOT));
+    }
+
+    /**
+     * String of date and time, convert to String: milliseconds
+     * for example:
+     * 2020-09-14 15:45:57
+     * 2020-09-14T15:45:57
+     * 2020-09-14t15:45:57
+     * 2020-09-14 15:45:57.007
+     * 2020-09-14 15:45:57:007
+     * 2020年09月14日15时45分57秒
+     *
+     * @param dateTimeStr
+     * @return
+     */
+    public static String enhanceParseMilliSeconds(String dateTimeStr) {
+        if (StringUtils.isBlank(dateTimeStr)) {
+            return dateTimeStr;
+        }
+        String originWord = dateTimeStr.replaceAll(DATE_TIME_REGEX.pattern(), ConstantUtil.SPACE);
+        LocalDateTime parse = null;
+        try {
+            parse = LocalDateTime.parse(originWord, DateTimeFormatter.ofPattern(DATETIME_FORMAT_SIMPLE));
+        } catch (Exception e) {
+            try {
+                parse = LocalDateTime.parse(originWord, DateTimeFormatter.ofPattern(DATETIME_FORMAT_DETAIL));
+            } catch (Exception exception) {
+                try {
+                    parse = LocalDateTime.parse(originWord, DateTimeFormatter.ofPattern(DATETIME_FORMAT_DETAIL_DOT));
+                } catch (Exception ex) {
+                    parse = LocalDateTime.parse(originWord, DateTimeFormatter.ofPattern(DATETIME_FORMAT_CN));
+                }
+            }
+        }
+        return Objects.nonNull(parse) ? String.valueOf(parse.toInstant(DEFAULT_ZONE_OFFSET).toEpochMilli()) : dateTimeStr;
     }
 
 }
