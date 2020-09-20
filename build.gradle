@@ -43,7 +43,7 @@ dependencies {
 intellij {
 //    version '2019.1.4'
 //    Adjust when toolbox update IDEA app
-    localPath '/Users/D8GER/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/201.8743.12/IntelliJ IDEA.app'
+    localPath '/Users/D8GER/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/202.7319.50/IntelliJ IDEA.app'
     plugins = ['java'] //Bundled plugin dependencies
     pluginName 'D8gerAutoCode'
     updateSinceUntilBuild false

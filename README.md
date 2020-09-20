@@ -12,14 +12,14 @@
 
 ## IDEA Code Automatically Generate Plugin • `For Java Version`  
 <div align="center">
-    <img src="http://file.debuggerpowerzcy.top/power/D8-V3.png" /> 
+    <img src="http://file.debuggerpowerzcy.top/power/D8ger-V5.jpg" /> 
 </div>
 
 > [中文说明](./README_CN.md)
 
 ## Attention
-The latest version is **3.1** which is approved on 8th, Sep.  
-If you can't fetch it, then [click here](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.1) to download ~~.zip~~ file.  
+The latest version is **3.2** which is approved on 16th, Sep.  
+If you can't fetch it, then [click here](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.2) to download ~~.zip~~ file.  
 By the way, I hope you use happy and give me a 🌟, thx!
 
 ### Preface

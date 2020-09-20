@@ -13,12 +13,12 @@
 
 ## IDEA代码自动生成插件•`Java版本`
 <div align="center">
-    <img src="http://file.debuggerpowerzcy.top/power/D8-V3.png" /> 
+    <img src="http://file.debuggerpowerzcy.top/power/D8ger-V5.jpg" /> 
 </div>
 
 ## 说明
-最新版本为**3.1**, 在 _**`9月8号`**_ 已通过官方审核发布  
-如果无法获取, [戳此](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.1) 下载~~.zip~~压缩包  
+最新版本为**3.2**, 在 _**`9月16号`**_ 已通过官方审核发布  
+如果无法获取, [戳此](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.2) 下载~~.zip~~压缩包  
 如果用的不错, 给我点个🌟呗, thx!
 
 ### 序言
