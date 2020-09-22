@@ -65,7 +65,11 @@ public class CamelUnderlineConvertAction extends AnAction {
             result = DateUtil.enhanceToLocalDateTime(milliSeconds);
         } catch (Exception e) {
             // ignore
-            result = DateUtil.enhanceParseMilliSeconds(originWord);
+            try {
+                result = DateUtil.enhanceParseMilliSeconds(originWord);
+            } catch (Exception exception) {
+                // ignore
+            }
         }
         if (StringUtils.isBlank(result)) {
             result = VerbalExpressionUtil.camelUnderLineNameConverter(originWord);
