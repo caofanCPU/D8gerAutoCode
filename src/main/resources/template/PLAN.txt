@@ -1,0 +1,25 @@
+- Redis
+    1.Redis常用数据结构: 理论+实践
+    2.Redis锁: 理论+实践
+    3.Redis缓存、队列、雪崩、击穿、热点、布隆过滤器, LRU, 单线程IO多路复用, 了解
+- RocketMQ
+    1.设计架构
+    2.部署架构
+    3.常见描述
+    4.实践问题
+- Kafka
+    1.原理
+- 工具
+    1.CollectionUtil, Stream底层原理, Fork/Join框架
+    2.DateUtil, LocalDateTime
+    3.WrapTreeUtil, 万能无侵入性, 平铺列表<->树形化
+    4.SpringBoot-Start
+- 算法
+    1.SkipList, TreeMap原理
+    2.Tarjan鉴环算法, 背景及代码示例
+    3.其他
+- 项目
+    1.用户系统重构, 拆分SSO
+    2.数据报告系统, 多线程任务计算框架
+    3.供应链金融
+    4.开源插件(软件命令初始化提示集成)

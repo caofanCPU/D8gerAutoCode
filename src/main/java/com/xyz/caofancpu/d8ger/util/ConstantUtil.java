@@ -258,7 +258,7 @@ public class ConstantUtil {
 
     public static final String DONATE_BACKGROUND_KEY = "JButton.backgroundColor";
 
-    public static final String DONATE_CLICK_URL = "http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/";
+    public static final String DONATE_CLICK_URL = "http://www.debuggerpowerzcy.top/home/2020/09/05/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/";
 
     public static final String PLUGIN_ID = "com.xyz.caofancpu.D8gerAutoCode";
 
