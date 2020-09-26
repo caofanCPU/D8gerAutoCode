@@ -1,0 +1,88 @@
+🌟 autojump
+🌟 dart
+🌟 ffmpeg
+🌟 gource
+🌟 gradle
+🌟 httpie
+🌟 keystone
+🌟 lrzsz
+🌟 openssl
+🌟 python@3.8
+🌟 rename
+🌟 sshpass
+🌟 thefuck
+🌟 tree
+🌟 youtube🌟dl
+🌟 zsh
+
+aom
+boost
+cairo
+capstone
+flac
+fontconfig
+freetype
+frei0r
+fribidi
+gdbm
+gettext
+giflib
+glew
+glib
+gmp
+gnutls
+graphite2
+harfbuzz
+icu4c
+jpeg
+lame
+leptonica
+libass
+libbluray
+libevent
+libffi
+libidn2
+libogg
+libplist
+libpng
+libsamplerate
+libsndfile
+libsoxr
+libtasn1
+libtiff
+libunistring
+libvidstab
+libvorbis
+libvpx
+little-cms2
+lzo
+ncurses
+nettle
+opencore-amr
+openjpeg
+openssl@1.1
+opus
+p11-kit
+pcre
+pixman
+python
+rapidjson
+readline
+rtmpdump
+rubberband
+sdl2
+sdl2_image
+snappy
+speex
+sqlite
+tesseract
+tesseract🌟lang
+theora
+unbound
+webp
+wget
+x264
+x265
+xvid
+xz
+

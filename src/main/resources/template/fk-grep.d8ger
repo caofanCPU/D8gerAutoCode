@@ -1,0 +1,17 @@
+grep -n '[a-zA-Z0-9]D8' X.txt
+grep -n '[^a-zA-Z0-9]D9' X.txt
+grep -n '^[a-z]' X.txt
+grep -n '^[^a-z]' X.txt
+grep -n '^$' X.txt
+grep -n '\.$' X.txt
+grep -n 'g.*d' X.txt
+grep -n 'go*d' X.txt
+grep -n 'o\{2,3\}' X.txt
+grep -En 'God|The'  X.txt     grep -n 'god\|The' X.txt
+grep -En 'o+' X.txt           grep -n 'o\+' X.txt
+grep -n '\.' X.txt            grep -En '\.' X.txt
+grep -En '(oo)+' X.txt        grep -n '\(oo\)\+' X.txt
+grep -A 10  "1600333257GZ68NcOA5y1\]#\[请求数据\]" web.log
+grep '\#子任务ID:\[587\]' all.log
+查询当日日志: ll -ah | grep "[a-z_A-Z]\+\.log"
+

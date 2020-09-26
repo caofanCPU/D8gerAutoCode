@@ -1,0 +1,19 @@
+/apim : SwaggerModel字段属性模板
+
+oin  : 对象为null         ==> Objects.isNull()
+onn  : 对象不为null       ==> Objects.nonNull()
+o2e  : 两对象相等         ==> Objects.equals(, )
+one  : 两对象不相等       ==> !Objects.equals(, )
+foin : 判断对象为null     ==> if (Objects.isNull()) {}
+fonn : 判断对象不为null   ==> if (Objects.nonNull()) {}
+fo2e : 判断两对象相等     ==> if (Objects.equals(, )) {}
+fone : 判断两对象不相等   ==> if (!Objects.equals(, )) {}
+
+cie  : 集合为空           ==> CollectionUtil.isEmpty()
+cne  : 集合不为空         ==> CollectionUtil.isNotEmpty()
+sib  : 字符串为空         ==> StringUtils.isBlank()
+snb  : 字符串不为空       ==> StringUtils.isNotBlank()
+fcie : 判断集合为空       ==> if (CollectionUtil.isEmpty()){}
+fcne : 判断集合不为空     ==> if (CollectionUtil.isNotEmpty()){}
+fsib : 判断字符串为空     ==> if (StringUtils.isBlank()) {}
+fsnb : 判断字符串不为空   ==> if (StringUtils.isNotBlank()) {}

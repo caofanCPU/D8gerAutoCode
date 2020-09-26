@@ -1,0 +1,31 @@
+alias searchPID='searchPID'
+alias killPID='killPID'
+alias searchPortOccupy='searchPortOccupy'
+alias https-downLoadResponse='downLoadResponse'
+alias 'showssh=ps -ef | grep ssh'
+alias https-show='show'
+alias https-downLoadExcel='downLoadExcel'
+alias https-downloadD8ger='downloadD8ger'
+
+alias 'xDev=xDev'
+alias 'xDevNormal=xDevNormal'
+alias 'xDevSSO=xDevSSO'
+alias 'refreshDevAccount=refreshDevAccount'
+
+alias 'rh=reportHelp'
+alias 'logo=logo'
+alias 'hison=history | grep "https.*willclass\.com" | tail -n 8'
+alias 'tsm=teacherChangeSchool'
+
+alias 'ip=ifconfig | grep 172'
+alias 'arthas-start=java -jar /Users/D8GER/Desktop/CAOFAN/Arthas/arthas-boot.jar'
+
+alias 'jsh=cat ~/javaShorts.txt'
+alias 'fkgrep=cat ~/fk-grep.d8ger'
+alias 'dev=cat ~/DEV.properties'
+alias 'devShow=cat ~/dev.yml'
+alias 'phelp=cat ~/pad.command'
+alias 'chelp=cat ~/normal.command'
+alias 'arthasHelp=cat ~/althas-help.command'
+alias 'logSH=cat ~/project-log-help.command'
+
