@@ -97,6 +97,7 @@
         <li>If you like D8gerAutoCode, please star <a href="https://github.com/caofanCPU/D8gerAutoCode">the source project</a> for supporting me, thanks!</li>
         <li><h1>3.4</h1></li>
         <ul>
+        <li>Addition: 'OhMyZSH' easter eggs, try to type 'ohmyzsh' in the blank file in IDEA to get some useful linux commands. I'm sure you'll save much time.<br> </li>
         <li>BugFix: Fix donate url(I'm waiting for your 🌟 the project on the github).<br> </li>
         <li>Optimization: 'BeautifulJSON', 'SimplifyOneLine' and 'BeautifulMySQL' now supports section or whole document convert.<br> </li>
         </ul>

@@ -71,6 +71,9 @@ public class D8gerNoteAction extends AnAction {
         if (StringUtils.containsIgnoreCase(text, EasterEggCodeTemplateEnum.REGEX_CONFIG_FILE_KEY.getCodeKey())) {
             contentEnumList.add(EasterEggCodeTemplateEnum.REGEX_CONFIG_FILE_KEY);
         }
+        if (StringUtils.containsIgnoreCase(text, EasterEggCodeTemplateEnum.OH_MY_ZSH_CONFIG_FILE_KEY.getCodeKey())) {
+            contentEnumList.add(EasterEggCodeTemplateEnum.OH_MY_ZSH_CONFIG_FILE_KEY);
+        }
         if (StringUtils.containsIgnoreCase(text, EasterEggCodeTemplateEnum.END_CONFIG_FILE_KEY.getCodeKey())) {
             contentEnumList.add(EasterEggCodeTemplateEnum.END_CONFIG_FILE_KEY);
         }

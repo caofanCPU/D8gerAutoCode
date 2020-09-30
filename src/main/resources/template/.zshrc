@@ -191,6 +191,93 @@ function justDoIT(){
     http --verify=no -v --session-read-only=~/session-cookie-read-only.json POST ${url} sId:=${SID} bId:=50220671 cIds:='[]' areUok:=false healthy:=true
 }
 
+function cph(){
+    echo ",------.   ,---.  ,----.   ,------.,------."
+    echo "|  .-.  \\ |  o  |'  .-./   |  .---'|  .--. '"
+    echo "|  |  \\  :.'   '.|  | .---.|  \`--, |  '--'.'"
+    echo "|  '--'  /|  o  |'  '--'  ||  \`---.|  |\\  \\"
+    echo "\`-------'  \`---'  \`------' \`------'\`--' '--'"
+    echo "##### SCP命令 #####"
+    echo "# -r 支持复制目录及其子文件"
+    echo "- 本地文件传到远程服务器"
+    echo "scp /X_DIR/LEARN-SH.sh  xx@xx.xx.xx.xx:~/"
+    echo "- 从远程服务器拉取文件"
+    echo "scp xx@xx.xx.xx.xx:~/HAHA.tmp /X_DIR/ZZ.xls"
+    echo "- 无痕登录"
+    echo "xD8scp || d8scp"
+    echo "sshpass -f /X_DIR/PWD-SSH.txt scp /X_DIR/LEARN-SH.sh  xx@xx.xx.xx.xx:~/"
+    echo "sshpass -f /X_DIR/PWD-SSH.txt scp xx@xx.xx.xx.xx:~/HAHA.tmp /X_DIR/ZZ.xls"
+    echo "##### cpv #####, zsh的一个插件cp, 文件复制时展示进度条"
+    echo "##### sudo cp #####, 普通复制"
+}
+
+function fkgrep(){
+    echo ",------.,--. ,--. ,----.   ,------. ,------.,------."
+    echo "|  .---'|  .'   /'  .-./   |  .--. '|  .---'|  .--. '"
+    echo "|  \`--, |  .   ' |  | .---.|  '--'.'|  \`--, |  '--' |"
+    echo "|  |\`   |  |\\   \'  '--'  ||  |\\  \\ |  \`---.|  | --'"
+    echo "\`--'    \`--' '--' \`------' \`--' '--'\`------'\`--'"
+    echo ""
+    echo "grep -n '[a-zA-Z0-9]D8' X.txt"
+    echo "grep -n '[^a-zA-Z0-9]D9' X.txt"
+    echo "grep -n '^[a-z]' X.txt"
+    echo "grep -n '^[^a-z]' X.txt"
+    echo "grep -n '^$' X.txt"
+    echo "grep -n '\.$' X.txt"
+    echo "grep -n 'g.*d' X.txt"
+    echo "grep -n 'go*d' X.txt"
+    echo "grep -n 'o\{2,3\}' X.txt"
+    echo "grep -En 'God|The'  X.txt     grep -n 'god\|The' X.txt"
+    echo "grep -En 'o+' X.txt           grep -n 'o\+' X.txt"
+    echo "grep -n '\.' X.txt            grep -En '\.' X.txt"
+    echo "grep -En '(oo)+' X.txt        grep -n '\(oo\)\+' X.txt"
+    echo "Search Today's log: ll -ah | grep \"[a-z_A-Z]\+\.log\""
+}
+
+function arthasHelp(){
+    echo "  ,---.  ,------. ,--------.,--.  ,--.  ,---.   ,---."
+    echo " /  O  \\ |  .--. ''--.  .--'|  '--'  | /  O  \\ '   .-'"
+    echo "|  .-.  ||  '--'.'   |  |   |  .--.  ||  .-.  |\`.  \`-."
+    echo "|  | |  ||  |\\  \\    |  |   |  |  |  ||  | |  |.-'    |"
+    echo "\`--' \`--'\`--' '--'   \`--'   \`--'  \`--'\`--' \`--'\`-----'"
+    # `和\ 为特殊字符, 必须使用\转义
+    echo "\n# 观察方法返回值"
+    echo "watch com.xyz.caofancpu.trackingtime.controller.D8gerController queryD8gerMoPage \"{params,returnObj}\" -x 2"
+    echo "watch com.xyz.caofancpu.trackingtime.controller.D8gerController queryD8gerMoPage \"{params,returnObj}\""
+    echo "# 观察方法入参, 对象层次限制2级"
+    echo "watch com.xyz.caofancpu.trackingtime.controller.D8gerController queryD8gerMoPage \"{params,returnObj}\" -x 2 -b"
+    echo "# 持续记录3次接口调用"
+    echo "tt -t -n 3 com.xyz.caofancpu.trackingtime.controller.D8gerController queryD8gerMoPage"
+    echo "# 展示记录接口调用的列表"
+    echo "tt -l"
+    echo "# 展示某个具体调用过程"
+    echo "tt -i 1002"
+    echo "# 重复某个具体调用, 重复3次, 重复间隔2秒"
+    echo "tt -i 1002 -p --replay-times 3  --replay-interval 2000"
+    echo "# 日志器"
+    echo "logger"
+    echo "# 类加载器列表"
+    echo "classloader -t"
+    echo "history"
+    echo "help"
+    echo "keymap"
+    echo "dashboard"
+    echo "# 清屏"
+    echo "cls"
+    echo "# 线程"
+    echo "thread"
+    echo "thread --state WAITING"
+    echo "thread --state TIMED_WAITING"
+    echo "thread --state RUNNABLE"
+    echo "\n# 退出、关闭等命令, 禁止ctrl + C"
+    echo "# 退出某个命令"
+    echo "Q"
+    echo "# 退出当前arthas-client"
+    echo "quit"
+    echo "# 关闭arthas-server"
+    echo "shutdown"
+}
+
 alias searchPID='searchPID'
 alias killPID='killPID'
 alias searchPortOccupy='searchPortOccupy'
@@ -204,20 +291,14 @@ alias 'xDevNormal=xDevNormal'
 alias 'backgroundENV=backgroundENV'
 
 alias 'showssh=ps -ef | grep ssh'
-alias 'hison=history | grep "https.*willclass\.com" | tail -n 8'
 alias 'tsm=justDoIT'
 # 开隧道
 alias 'iphone4j=nohup sshpass -f TUNNEL_DIR ssh xx@xx.xx.xx.xx -L 11186:xx.xx.xx.xx:1186 -N &'
-
 alias 'ip=ifconfig | grep xxx'
-alias 'v587=nohup python3 /Users/D8GER/Desktop/ssoLogin/JetDoinB/D8ger.py -l 4000 -d 1  > /Users/D8GER/Desktop/ssoLogin/JetDoinB/v5.log 2>&1 &'
-alias 'arthas-start=java -jar /Users/D8GER/Desktop/CAOFAN/Arthas/arthas-boot.jar'
 
-alias 'jsh=cat ~/javaShorts.txt'
-alias 'fkgrep=cat ~/fk-grep.d8ger'
-alias 'chelp=cat ~/normal.command'
-alias 'arthasHelp=cat ~/althas-help.command'
-alias 'ohmyd8ger=cat ~/ohmyd8ger.command'
+alias 'cph=cph'
+alias 'fkgrep=fkgrep'
+alias 'arthasHelp=arthasHelp'
 # 快速编辑.zshrc
 alias 'vrc=vim ~/.zshrc'
 # 快速展示.zshrc
@@ -230,4 +311,3 @@ fi
 
 
 source $ZSH/oh-my-zsh.sh
-

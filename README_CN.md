@@ -130,7 +130,8 @@
 [其他问题, 欢迎前来查房](https://github.com/caofanCPU/D8gerAutoCode/issues)
 
 ### 版本演进历史
-- 3.3
+- 3.4
+    - 新增功能: 'OhMyZSH' 彩蛋, 空白文件中输入 'ohmyzsh' 将获得一些有用的linux命令工具及使用技巧. 这将节省你不少时间.
     - Bug修复: 修复donate链接(铁子, 等着你🌟该项目, thx!).
     - 体验优化: 'BeautifulJSON', 'SimplifyOneLine' 和 'BeautifulMySQL' 现在同时支持部分和整个文件内容转换.
 - 3.2

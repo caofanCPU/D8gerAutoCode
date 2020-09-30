@@ -133,6 +133,7 @@ Solution
 
 ### VersionRoadHistory
 - 3.4
+    - Addition: 'OhMyZSH' easter eggs, try to type 'ohmyzsh' in the blank file in IDEA to get some useful linux commands. I'm sure you'll save much time.
     - BugFix: Fix donate url(I'm waiting for your 🌟 the project on the github).
     - Optimization: 'BeautifulJSON', 'SimplifyOneLine' and 'BeautifulMySQL' now supports section or whole document convert.
 - 3.2
