@@ -17,7 +17,7 @@
 </div>
 
 ## 说明
-最新版本为**3.2**, 在 _**`9月16号`**_ 已通过官方审核发布  
+最新版本为**3.4**, 在 _**`9月16号`**_ 已通过官方审核发布  
 如果无法获取, [戳此](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.2) 下载~~.zip~~压缩包  
 如果用的不错, 给我点个🌟呗, thx!
 
@@ -130,9 +130,12 @@
 [其他问题, 欢迎前来查房](https://github.com/caofanCPU/D8gerAutoCode/issues)
 
 ### 版本演进历史
+- 3.3
+    - Bug修复: 修复donate链接(铁子, 等着你🌟该项目, thx!).
+    - 体验优化: 'BeautifulJSON', 'SimplifyOneLine' 和 'BeautifulMySQL' 现在同时支持部分和整个文件内容转换.
 - 3.2
     - Bug修复: 修复'BeautifulJSON'在解析复杂JSON字符串时的问题
-    - 体验优化: 'CamelUnderlineConvert'支持时间戳与标准时间字符串相互转换
+    - 体验优化: 'CamelUnderlineConvert' 支持时间戳与标准时间字符串相互转换
 
 - 3.1
     - Bug修复:

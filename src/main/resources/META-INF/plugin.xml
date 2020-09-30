@@ -95,6 +95,12 @@
     <change-notes>
         <![CDATA[
         <li>If you like D8gerAutoCode, please star <a href="https://github.com/caofanCPU/D8gerAutoCode">the source project</a> for supporting me, thanks!</li>
+        <li><h1>3.4</h1></li>
+        <ul>
+        <li>BugFix: Fix donate url(I'm waiting for your 🌟 the project on the github).<br> </li>
+        <li>Optimization: 'BeautifulJSON', 'SimplifyOneLine' and 'BeautifulMySQL' now supports section or whole document convert.<br> </li>
+        </ul>
+        </br>
         <li><h1>3.2</h1></li>
         <ul>
         <li>BugFix:<br>
@@ -102,8 +108,7 @@
             <li>Fix 'BeautifulJSON' issue when parsing complex JSON string.</li>
             </ul>
         </li>
-        <li>Optimization: 'CamelUnderlineConvert' now supports timestamp-dateTime convert, select the text and use shortcut `alt` + `shift` + `cmd` + `U` to find out.<br>
-        </li>
+        <li>Optimization: 'CamelUnderlineConvert' now supports timestamp-dateTime convert, select the text and use shortcut `alt` + `shift` + `cmd` + `U` to find out.<br> </li>
         </ul>
         </br>
         <li><h1>3.1</h1></li>
@@ -115,8 +120,7 @@
             <li>Fix batch insert records in xMapper.xml file cause 'id', 'createTime', 'updateTime' all should according to the Database.</li>
             </ul>
         </li>
-        <li>Optimization: Config item 'autoDetectSQLTimeColumn' now is more intelligent. If you checked, 'createTime' and 'updateTime' would be generated perfectly in there right position.<br>
-        </li>
+        <li>Optimization: Config item 'autoDetectSQLTimeColumn' now is more intelligent. If you checked, 'createTime' and 'updateTime' would be generated perfectly in there right position.<br> </li>
         </ul>
         </br>
         <li><h1>3.0</h1></li>
@@ -128,10 +132,8 @@
             <li>Then, Check the file to be generated and choose the generation path, rewrite 'author'、'apiUrlPrefix' and 'locale', and click the button to save your configuration.</li>
             </ul>
         </li>
-        <li>Optimization: Support project level setting parameters for non-invasive, d8ger.properties should exist invisible.<br>
-        </li>
-        <li>Adjustment: Remove the generate params by 'd8ger.properties' file, replace of D8gerAutoCode setting GUI.<br>
-        </li>
+        <li>Optimization: Support project level setting parameters for non-invasive, d8ger.properties should exist invisible.<br> </li>
+        <li>Adjustment: Remove the generate params by 'd8ger.properties' file, replace of D8gerAutoCode setting GUI.<br> </li>
         </ul>
         </br>
         <li><h1>2.5</h1></li>
@@ -144,27 +146,21 @@
             <li>Add 'insertSelectiveWithId' in Mapper.java for supporting insert non null field and the null field will be filled with the database default value.</li>
             </ul>
         </li>
-        </li>
-        <li>Optimization: 'cause 'id' is the primary key, all insert operations should exclude 'id' column.<br>
-        </li>
+        <li>Optimization: 'cause 'id' is the primary key, all insert operations should exclude 'id' column.<br> </li>
         <li>BugFix:<br>
             <ul>
             <li>Generation 'update_time' column definition remove the rare comma.</li>
             <li>Trouble shooting the rare dir named 'D8gerAutoCode', now you can see it only with unspecified directory configuration.</li>
             </ul>
         </li>
-        <li>Adjustment: Remove 'ServiceInterface' and 'ServiceImpl', 'cause I think 'Handler' is more suitable.<br>
-        </li>
+        <li>Adjustment: Remove 'ServiceInterface' and 'ServiceImpl', 'cause I think 'Handler' is more suitable.<br> </li>
         </ul>
         </br>
         <li><h1>2.4</h1></li>
         <ul>
-        <li>Addition: One-click to beauty MySQL, isn't fragrant?<br>
-        </li>
-        <li>Optimization: String parsing performance.<br>
-        </li>
-        <li>Attention: Select your MySQL text, ctrl + alt + shift + 'B' will back a surprise.<br>
-        </li>
+        <li>Addition: One-click to beauty MySQL, isn't fragrant?<br> </li>
+        <li>Optimization: String parsing performance.<br> </li>
+        <li>Attention: Select your MySQL text, ctrl + alt + shift + 'B' will back a surprise.<br> </li>
         </ul>
         </br>
         <li><h1>2.3</h1></li>

@@ -37,6 +37,7 @@ public class CamelUnderlineConvertAction extends AnAction {
      * Rewrite files for removing whitespace and reducing to one line
      *
      * @param currentDocument
+     * @param selectionModel
      */
     private void executeCamelUnderlineConvert(@NonNull Document currentDocument, @NonNull SelectionModel selectionModel) {
         if (!selectionModel.hasSelection()) {

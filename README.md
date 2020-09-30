@@ -18,7 +18,7 @@
 > [中文说明](./README_CN.md)
 
 ## Attention
-The latest version is **3.2** which is approved on 16th, Sep.  
+The latest version is **3.4** which is approved on 16th, Sep.  
 If you can't fetch it, then [click here](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.2) to download ~~.zip~~ file.  
 By the way, I hope you use happy and give me a 🌟, thx!
 
@@ -45,7 +45,7 @@ Well, that's a valid question for my drive to find the repeat parts at daily wor
 ### Features
 - Camel-Underline-Uppercase-Uncapitalize-Lowercase can be converted to each other by shortcut `alt` + `shift` + `cmd` + `U`
 - The comments of generated codes support English(Default) | Chinese Simplified(Optional) configuration
-- JSON formatting and single line text conversion, default shortcut `alt`+`shift`+`cmd`+`J` | `S`
+- JSON formatting and single line text conversion, supporting section and whole document, default shortcut `alt`+`shift`+`cmd`+`J` | `S`
 - Generating `data table definition SQL` | `Mo` | `Mapper` | `Handler`, single table addition, deletion, modification and search with paging in one click  
 - Under the help of SwaggerApi generating `Vo` | `Controller` with friendly document description, in addition to this, supporting `Vo` field automatic sorting  
 - For smart coding, you just need one shortcut default as `alt`+`shift`+`cmd`+`D`  
@@ -132,6 +132,9 @@ Solution
 [Other issues, please come to join room](https://github.com/caofanCPU/D8gerAutoCode/issues)
 
 ### VersionRoadHistory
+- 3.4
+    - BugFix: Fix donate url(I'm waiting for your 🌟 the project on the github).
+    - Optimization: 'BeautifulJSON', 'SimplifyOneLine' and 'BeautifulMySQL' now supports section or whole document convert.
 - 3.2
     - BugFix: Fix 'BeautifulJSON' issue when parsing complex JSON string.
     - Optimization: 'CamelUnderlineConvert' now supports Timestamp-LocalDateTime convert, select the text and use origin shortcut `alt` + `shift` + `cmd` + `U` to find out.

@@ -8,9 +8,9 @@ import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.SelectionModel;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.TextRange;
 import com.xyz.caofancpu.d8ger.util.StringAlignUtil;
 import lombok.NonNull;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Beautiful MySQL
@@ -34,17 +34,15 @@ public class BeautifulMySQLAction extends AnAction {
      * Rewrite files for removing whitespace and reducing to one line
      *
      * @param currentDocument
+     * @param selectionModel
      */
     private void executeCamelUnderlineConvert(@NonNull Document currentDocument, @NonNull SelectionModel selectionModel) {
-        if (!selectionModel.hasSelection()) {
-            selectionModel.selectWordAtCaret(true);
+        String originSql = selectionModel.getSelectedText();
+        if (StringUtils.isNotBlank(originSql)) {
+            String replacement = StringAlignUtil.formatMySQL(originSql);
+            currentDocument.replaceString(selectionModel.getSelectionStart(), selectionModel.getSelectionEnd(), replacement);
+        } else {
+            currentDocument.setText(StringAlignUtil.formatMySQL(currentDocument.getText()));
         }
-
-        int selectionStart = selectionModel.getSelectionStart();
-        int selectionEnd = selectionModel.getSelectionEnd();
-        String originSql = currentDocument.getText(new TextRange(selectionStart, selectionEnd));
-        String replacement = StringAlignUtil.formatMySQL(originSql);
-        currentDocument.replaceString(selectionStart, selectionEnd, replacement);
-        selectionModel.removeSelection();
     }
 }

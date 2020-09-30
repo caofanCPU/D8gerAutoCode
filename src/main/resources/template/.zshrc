@@ -222,6 +222,7 @@ alias 'ohmyd8ger=cat ~/ohmyd8ger.command'
 alias 'vrc=vim ~/.zshrc'
 # 快速展示.zshrc
 alias 'crc=cat ~/.zshrc'
+
 # source ~/.bash_profile
 if [ -f ~/.bash_profile ]; then
     . ~/.bash_profile;
