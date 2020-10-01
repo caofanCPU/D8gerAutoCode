@@ -18,8 +18,8 @@
 > [中文说明](./README_CN.md)
 
 ## Attention
-The latest version is **3.4** which is approved on 16th, Sep.  
-If you can't fetch it, then [click here](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.2) to download ~~.zip~~ file.  
+The latest version is **3.4** which is approved on 1st, October.  
+If you can't fetch it, then [click here](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.4) to download ~~.zip~~ file.  
 By the way, I hope you use happy and give me a 🌟, thx!
 
 ### Preface

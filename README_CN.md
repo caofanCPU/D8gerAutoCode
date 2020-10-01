@@ -17,8 +17,8 @@
 </div>
 
 ## 说明
-最新版本为**3.4**, 在 _**`9月16号`**_ 已通过官方审核发布  
-如果无法获取, [戳此](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.2) 下载~~.zip~~压缩包  
+最新版本为**3.4**, 在 _**`10月1号`**_ 已通过官方审核发布  
+如果无法获取, [戳此](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.4) 下载~~.zip~~压缩包  
 如果用的不错, 给我点个🌟呗, thx!
 
 ### 序言
