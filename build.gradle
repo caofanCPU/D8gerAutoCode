@@ -52,11 +52,6 @@ intellij {
 patchPluginXml {
     changeNotes 
     """
-        What encounter to pain me ever belongs to see you now.<br>
-        <br>
-        Plug-in new revision, new features and high performance.<br>
-        One-click to handle multi-lines, isn't cool?<br>
-        One-click to beauty MySQL, isn't fragrant?<br>
-        It's very sure that you deserve to use.<br>
+        每天老油条, 和今日油条相比, 不香吗?<br>
     """
 }

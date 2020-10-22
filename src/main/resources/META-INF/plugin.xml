@@ -1,17 +1,13 @@
 <idea-plugin>
-    <id>com.xyz.caofancpu.D8gerAutoCode.JetBrainsFullPlatform</id>
+    <id>com.xyz.caofancpu.LaoYouTiao</id>
     <name>LaoYouTiao</name>
     <vendor email="xyb5to0ZCY@gmail.com" url="http://www.debuggerpowerzcy.top/about/">D8ger•帝八哥</vendor>
 
     <description>
-        <![CDATA[Java Automatic coding and Multi-lines wrapping and Linux commands and Regex skill are integrated by one plugin.
+        <![CDATA[老油条是一款JetBrains全平台产品的多功能整合插件, 旨在去除日常工作中的重复活动.
         <p>
-        As JetBrains' said, I believe that you should be good use of tools will save you precious hours on your busing work.<br>
-        I always wonder, "If someone else has already solved the repeating work, why do I need to repeat it again?"<br>
-        Well, that's a valid question for my drive to find the repeat parts at daily work and develop this plugin to save my time.<br>
-        After 13 version iterations, I believe you're really worthy of using this plugin.<br>
-        重复编码老瞎忙,️ 写来写去那几行. 不知工具在何方? 八哥智能一键帮!<br>
-        Java自动代码生成利器, 字符串批处理, Linux命令工具, 正则表达式奇淫巧技. <br>
+        JSON美化|MySQL美化, 字符串批处理, Linux命令工具, 正则表达式奇淫巧技. <br>
+        使用IntelliJ IDEA的Java同学可参考使用D8gerAutoCode插件, 其他伙伴参照下述指南, 忽略Java部分即可. <br>
         <ul>
             <li><a href="https://github.com/caofanCPU/D8gerAutoCode">项目|Project</a><br></li>
             <li><a href="http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">博客指南|Blog guide</a><br></li>
@@ -73,155 +69,19 @@
 
     <change-notes>
         <![CDATA[
-        <li>If you like D8gerAutoCode, please star <a href="https://github.com/caofanCPU/D8gerAutoCode">the source project</a> for supporting me, thanks!</li>
-        <li><h1>3.4</h1></li>
+        <li>觉得LaoYouTiao不错的,请给个🌟 <a href="https://github.com/caofanCPU/D8gerAutoCode">插件地址</a>, 感谢老铁!</li>
+        <li><h1>1.0.RELEASE</h1></li>
         <ul>
-        <li>Addition: 'OhMyZSH' easter eggs, try to type 'ohmyzsh' in the blank file in IDEA to get some useful linux commands. I'm sure you'll save much time.<br> </li>
-        <li>BugFix: Fix donate url(I'm waiting for your 🌟 the project on the github).<br> </li>
-        <li>Optimization: 'BeautifulJSON', 'SimplifyOneLine' and 'BeautifulMySQL' now supports section or whole document convert.<br> </li>
+        <li>自从'今日油条'被'今日头条'起诉侵权后, 本人夙兴夜寐, 久不得眠.<br> </li>
+        <li>连隔壁王家的撕葱都要一口吞的好油条, 怎么就被干趴了呢?<br> </li>
+        <li>经过以下一系列的探索:<br> </li>
+        <li>1.一键JSON美化与简化(以及剔除空白字符)<br> </li>
+        <li>2.一键MySQL格式化<br> </li>
+        <li>3.一键驼峰下划线(以及'-'拼接)自由转化, 居然还可以转换时间戳, 你敢信?<br> </li>
+        <li>4.彩蛋集锦, 字符串批处理(对齐), 正则表达式的奇淫巧技<br> </li>
+        <li>终究悟得真相: 油条虽好, 但不够老道! 丰富的工作去重经验助你省时免坑, 请认准独家: LaoYouTiao(老油条)<br> </li>
         </ul>
         </br>
-        <li><h1>3.2</h1></li>
-        <ul>
-        <li>BugFix:<br>
-            <ul>
-            <li>Fix 'BeautifulJSON' issue when parsing complex JSON string.</li>
-            </ul>
-        </li>
-        <li>Optimization: 'CamelUnderlineConvert' now supports timestamp-dateTime convert, select the text and use shortcut `alt` + `shift` + `cmd` + `U` to find out.<br> </li>
-        </ul>
-        </br>
-        <li><h1>3.1</h1></li>
-        <ul>
-        <li>BugFix:<br>
-            <ul>
-            <li>Fix config item 'locale' problem when selected as 'ZN', and before before the 3.0 version's comment was English default.</li>
-            <li>Fix SQL definition in x.sql file.️</li>
-            <li>Fix batch insert records in xMapper.xml file cause 'id', 'createTime', 'updateTime' all should according to the Database.</li>
-            </ul>
-        </li>
-        <li>Optimization: Config item 'autoDetectSQLTimeColumn' now is more intelligent. If you checked, 'createTime' and 'updateTime' would be generated perfectly in there right position.<br> </li>
-        </ul>
-        </br>
-        <li><h1>3.0</h1></li>
-        <ul>
-        <li>Addition:<br>
-            <ul>
-            <li>Grand celebration for 'D8gerAutoCode' getting his face! Now you can config the generated property parameters by setting GUI.</li>
-            <li>First, Open the configuration box to set the generation parameters, 'Preference' --> 'Other Settings' --> 'D8gerAutoCode'</li>
-            <li>Then, Check the file to be generated and choose the generation path, rewrite 'author'、'apiUrlPrefix' and 'locale', and click the button to save your configuration.</li>
-            </ul>
-        </li>
-        <li>Optimization: Support project level setting parameters for non-invasive, d8ger.properties should exist invisible.<br> </li>
-        <li>Adjustment: Remove the generate params by 'd8ger.properties' file, replace of D8gerAutoCode setting GUI.<br> </li>
-        </ul>
-        </br>
-        <li><h1>2.5</h1></li>
-        <ul>
-        <li>Addition:<br>
-            <ul>
-            <li>Add 'autoDetectSQLTimeColumn' configuration for supporting disable default generating 'create_time' and 'update_time' column definition in SQL.</li>
-            <li>Add 'mapperBatterThenRepository' configuration for supporting custom mapper annotation in both SpringMVC and SpringBoot.</li>
-            <li>Add 'selectOneByExample' in Mapper.java for supporting query one record.</li>
-            <li>Add 'insertSelectiveWithId' in Mapper.java for supporting insert non null field and the null field will be filled with the database default value.</li>
-            </ul>
-        </li>
-        <li>Optimization: 'cause 'id' is the primary key, all insert operations should exclude 'id' column.<br> </li>
-        <li>BugFix:<br>
-            <ul>
-            <li>Generation 'update_time' column definition remove the rare comma.</li>
-            <li>Trouble shooting the rare dir named 'D8gerAutoCode', now you can see it only with unspecified directory configuration.</li>
-            </ul>
-        </li>
-        <li>Adjustment: Remove 'ServiceInterface' and 'ServiceImpl', 'cause I think 'Handler' is more suitable.<br> </li>
-        </ul>
-        </br>
-        <li><h1>2.4</h1></li>
-        <ul>
-        <li>Addition: One-click to beauty MySQL, isn't fragrant?<br> </li>
-        <li>Optimization: String parsing performance.<br> </li>
-        <li>Attention: Select your MySQL text, ctrl + alt + shift + 'B' will back a surprise.<br> </li>
-        </ul>
-        </br>
-        <li><h1>2.3</h1></li>
-        <ul>
-        <li>BugFix: Json format bug.</li>
-        <li>Addition:<br>
-            <ul>
-            <li>NASA easter eggs, try to type 'nasa' in the blank file in IDEA to get the nasa-template.</li>
-            <li>NASA easter eggs, multi-lines can be batch handled with the nasa-template, special for sql columns.</li>
-            </ul>
-        </li>
-        <li>Optimization: <br>
-            <ul>
-            <li>Optimize some regex performance.</li>
-            <li>Support linebreak or comma as the delimiter.</li>
-            <li>Support windows linebreak when rendering origin code.</li>
-            </ul>
-        </li>
-        <li>Attention: When execute auto-coding, you should be careful at the linebreak, it maybe different from your project config.</li>
-        <li>Adjustment: <br>
-            <ul>
-            <li>Icons changed for align, friendly view etc.</li>
-            <li>The manual of this plugin has been moved to my <a href="http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">website</a>.</li>
-            </ul>
-        </li>
-        </ul>
-        </br>
-        <li><h1>2.1</h1></li>
-        <ul>
-        <li>BugFix: add Uncapitalize, and the circle is Camel-Underline-Uppercase-Uncapitalize-Lowercase.</li>
-        <li>Optimization: Optimize some regex performance.</li>
-        <li>Attention: Regex easter eggs add some very useful regex search-replace skills hidden in JetBrains' IDE products. Try to learn and you will save much time at working.</li>
-        </ul>
-        </br>
-        <li><h1>2.0</h1></li>
-        <ul>
-        <li>BugFix: Modify method name in Controller.java.</li>
-        <li>Addition:<br>
-            <ul>
-            <li>Remove repeat work of moving file into directories for smart coding.</li>
-            <li>Camel-Underline-Uppercase-Lowercase can be converted to each other by shortcut `alt` + `shift` + `cmd` + `U`.</li>
-            <li>Regex easter eggs, try to type 'regex' in the blank file in IDEA to find it.</li>
-            </ul>
-        </li>
-        <li>Optimization: Optimize source code and improve performance.</li>
-        <li>Attention: If the icon of plugin shows error(red square with a cross), try to upgrade the version of Intellij util 2019.3.*(greater than 2019.2.*).</li>
-        </ul>
-        </br>
-        <li><h1>1.24</h1></li>
-        <ul>
-        <li>BugFix: Update method named 'updateBatchByPrimaryKeySelective' in mapper.xml.</li>
-        <li>Addition: Set default language English and you can config it as Chinese Simplified, as before, typing 'd8ger' for the latest configuration template.</li>
-        <li>Attention: You should configure your database connection like 'allowMultiQueries=true' for supporting batchUpdate operation.</li>
-        </ul>
-        </br>
-        <li><h1>1.23</h1></li>
-        <ul>
-        <li>BugFix: Fix required dependencies by JetBrains' suggestion for some known compatibility issues.</li>
-        <li>Addition: Add JSON-formatter and WhiteChar-cleaner.</li>
-        <li>Attention: Can you star the project on the github?</li>
-        </ul>
-        </br>
-        <li><h1>1.22</h1></li>
-        <ul>
-        <li>BugFix: Fix README of style, description, picture problems.</li>
-        <li>Enhance: Enhance profile for generating codes by using regex to replace the circle of matching string.</li>
-        <li>Attention: Can you star the project on the github?</li>
-        </ul>
-        </br>
-        <li><h1>1.21</h1></li>
-        <ul>
-        <li>BugFix: Fix README of style, description, picture problems.</li>
-        <li>Addition: Add MoExample autoCoding for supporting simple sql.</li>
-        <li>Attention: Can you star the project on the github?</li>
-        </ul>
-        </br>
-        <li><h1>1.20</h1></li>
-        <ul>
-        <li>Completion: Auto coding for Mo/Example/Mapper/Xml/SQL/Service completed, wow!</li>
-        <li>Attention: Can you star the project on the github?</li>
-        </ul>
         ]]>
     </change-notes>
 </idea-plugin>
