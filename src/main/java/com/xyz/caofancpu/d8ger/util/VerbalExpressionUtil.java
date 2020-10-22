@@ -23,24 +23,24 @@ public class VerbalExpressionUtil {
     public static final Pattern HUMP_TO_UNDERLINE = Pattern.compile("[A-Z]");
 
     /**
-     * No '_' and begin with [A-Z] regex, it will trigger to execute CamelToUnderline when regex detect is true
+     * No '_' or '-' and begin with [A-Z] regex, it will trigger to execute CamelToUnderline when regex detect is true
      */
-    public static final Pattern CAMEL_UNDERLINE_1_NO_UNDERLINE_CAPITALIZE = Pattern.compile("^(?!_)(?:[A-Z])[a-zA-Z0-9\\W]+$");
+    public static final Pattern CAMEL_UNDERLINE_1_NO_UNDERLINE_CAPITALIZE = Pattern.compile("^(?![_-])(?:[A-Z])[a-zA-Z0-9\\W]+$");
 
     /**
-     * No '_' and begin with [a-z] regex, it will trigger to execute CamelToUnderline when regex detect is true
+     * No '_' or '-' and begin with [a-z] regex, it will trigger to execute CamelToUnderline when regex detect is true
      */
-    public static final Pattern CAMEL_UNDERLINE_2_NO_UNDERLINE_UNCAPITALIZE = Pattern.compile("^(?!_)(?:[a-z])[a-zA-Z0-9\\W]+$");
+    public static final Pattern CAMEL_UNDERLINE_2_NO_UNDERLINE_UNCAPITALIZE = Pattern.compile("^(?![_-])(?:[a-z])[a-zA-Z0-9\\W]+$");
 
     /**
      * No upper case regex, it will trigger to execute LowerCaseToUpperCase when regex detect is true
      */
-    public static final Pattern CAMEL_UNDERLINE_3_NO_UPPER_CASE = Pattern.compile("^(?![A-Z])[a-z0-9\\W_]+$");
+    public static final Pattern CAMEL_UNDERLINE_3_NO_UPPER_CASE = Pattern.compile("^(?![A-Z])[a-z0-9\\W_-]+$");
 
     /**
      * No lower case, it will trigger to execute UpperCaseToCamel when regex detect is true
      */
-    public static final Pattern CAMEL_UNDERLINE_4_NO_LOWER_CASE = Pattern.compile("^(?![a-z])[A-Z0-9\\W_]+$");
+    public static final Pattern CAMEL_UNDERLINE_4_NO_LOWER_CASE = Pattern.compile("^(?![a-z])[A-Z0-9\\W_-]+$");
 
     /**
      * Swagger field | interface position order regular match expression
