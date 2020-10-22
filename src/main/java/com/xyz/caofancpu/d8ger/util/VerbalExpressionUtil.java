@@ -101,7 +101,7 @@ public class VerbalExpressionUtil {
                 break;
             case 4:
                 // UpperCaseToCamel
-                String[] words = originName.split("_");
+                String[] words = originName.split("[_-]");
                 List<String> resultItemWordList = new ArrayList<>(words.length);
                 for (String word : words) {
                     resultItemWordList.add(StringUtils.capitalize(StringUtils.lowerCase(word)));
