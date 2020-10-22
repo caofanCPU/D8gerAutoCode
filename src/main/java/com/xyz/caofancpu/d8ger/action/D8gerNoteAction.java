@@ -65,9 +65,6 @@ public class D8gerNoteAction extends AnAction {
     private List<EasterEggCodeTemplateEnum> judgeContent(@NonNull Document currentDocument) {
         List<EasterEggCodeTemplateEnum> contentEnumList = new ArrayList<>(8);
         String text = currentDocument.getText();
-        if (StringUtils.containsIgnoreCase(text, EasterEggCodeTemplateEnum.D8GER_CONFIG_FILE_KEY.getCodeKey())) {
-            contentEnumList.add(EasterEggCodeTemplateEnum.D8GER_CONFIG_FILE_KEY);
-        }
         if (StringUtils.containsIgnoreCase(text, EasterEggCodeTemplateEnum.REGEX_CONFIG_FILE_KEY.getCodeKey())) {
             contentEnumList.add(EasterEggCodeTemplateEnum.REGEX_CONFIG_FILE_KEY);
         }

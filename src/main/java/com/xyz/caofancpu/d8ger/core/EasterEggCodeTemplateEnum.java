@@ -6,7 +6,6 @@ package com.xyz.caofancpu.d8ger.core;
  * @author caofanCPU
  */
 public enum EasterEggCodeTemplateEnum {
-    D8GER_CONFIG_FILE_KEY("D8GER", AutoCodeTemplate.TEMPLATE_D8GER),
     REGEX_CONFIG_FILE_KEY("REGEX", AutoCodeTemplate.TEMPLATE_REGEX),
     OH_MY_ZSH_CONFIG_FILE_KEY("OHMYZSH", AutoCodeTemplate.TEMPLATE_OH_MY_ZSH),
     END_CONFIG_FILE_KEY("END", AutoCodeTemplate.TEMPLATE_END),

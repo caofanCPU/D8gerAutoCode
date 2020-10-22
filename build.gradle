@@ -1,10 +1,10 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.intellij' version '0.4.21'
+    id 'org.jetbrains.intellij' version '0.4.15'
 }
 
 group 'com.xyz.caofancpu'
-version '3.5'
+version '1.0.RELEASE'
 
 sourceCompatibility = 1.8
 
@@ -45,7 +45,7 @@ intellij {
 //    Adjust when toolbox update IDEA app
     localPath '/Users/D8GER/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/202.7660.26/IntelliJ IDEA.app'
     plugins = ['java'] //Bundled plugin dependencies
-    pluginName 'D8gerAutoCode'
+    pluginName 'LaoYouTiao'
     updateSinceUntilBuild false
     sandboxDirectory = "${project.rootDir}/.sandbox"
 }

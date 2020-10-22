@@ -1,6 +1,6 @@
 <idea-plugin>
-    <id>com.xyz.caofancpu.D8gerAutoCode</id>
-    <name>D8gerAutoCode</name>
+    <id>com.xyz.caofancpu.D8gerAutoCode.JetBrainsFullPlatform</id>
+    <name>LaoYouTiao</name>
     <vendor email="xyb5to0ZCY@gmail.com" url="http://www.debuggerpowerzcy.top/about/">D8ger•帝八哥</vendor>
 
     <description>
@@ -33,17 +33,7 @@
     :<depends>com.intellij.modules.lang</depends>
     -->
 
-    <extensions defaultExtensionNs="com.intellij">
-        <!-- Add your extensions here -->
-        <applicationService serviceImplementation="com.xyz.caofancpu.d8ger.setting.D8gerApplicationState"/>
-        <postStartupActivity implementation="com.xyz.caofancpu.d8ger.activity.D8gerActivity"/>
-
-        <projectService serviceImplementation="com.xyz.caofancpu.d8ger.setting.D8gerProjectState"/>
-        <projectConfigurable parentId="default" instance="com.xyz.caofancpu.d8ger.setting.D8gerSettingsConfigurable"
-                             id="com.xyz.caofancpu.d8ger.setting.D8gerSettingsConfigurable"
-                             displayName="D8gerAutoCode"
-                             nonDefaultProject="false"/>
-    </extensions>
+    <extensions defaultExtensionNs="com.intellij"></extensions>
 
     <actions>
         <!-- refer https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=991968
@@ -54,13 +44,6 @@
             <separator/>
 
             <!-- Add your actions here -->
-            <action id="D8gerAutoCode" class="com.xyz.caofancpu.d8ger.action.D8gerAutoCodeAction" text="D8gerAutoCode" description="D8gerAutoCode" icon="/icons/D8Oxygen.png">
-                <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl D"/>
-            </action>
-
-            <action id="SwaggerModelAutoRender" class="com.xyz.caofancpu.d8ger.action.SwaggerModelAutoRenderAction" text="SwaggerModelAutoRender" description="SwaggerModelAutoRender" icon="/icons/Ocket.png">
-                <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl O"/>
-            </action>
 
             <action id="BeautifulJSONAction" class="com.xyz.caofancpu.d8ger.action.BeautifulJSONAction" text="BeautifulJSON" description="BeautifulJSON" icon="/icons/JetBeFaker.png">
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl J"/>
@@ -84,13 +67,9 @@
         </group>
     </actions>
 
-    <idea-version since-build="193"/>
+    <idea-version since-build="162"/>
 
     <depends>com.intellij.modules.platform</depends>
-
-    <depends>com.intellij.modules.java</depends>
-
-    <depends>com.intellij.java</depends>
 
     <change-notes>
         <![CDATA[
