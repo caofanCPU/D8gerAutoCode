@@ -1,11 +1,13 @@
 <idea-plugin>
     <id>com.xyz.caofancpu.LaoYouTiao</id>
     <name>LaoYouTiao</name>
-    <vendor email="xyb5to0ZCY@gmail.com" url="http://www.debuggerpowerzcy.top/about/">D8ger•帝八哥</vendor>
+    <vendor email="xyb5to0ZCY@gmail.com" url="http://www.debuggerpowerzcy.top/about/">D8GER</vendor>
 
     <description>
-        <![CDATA[老油条是一款JetBrains全平台产品的多功能整合插件, 旨在去除日常工作中的重复活动.
+        <![CDATA[LaoYouTiao is a multifunctional integrated plugin which is designed to remove repetitive activities at daily work.
         <p>
+        JSON format, MySQL format, camel-underline convert, normal linux commands and wonderful regex!
+        老油条是一款JetBrains全平台产品的多功能整合插件, 旨在去除日常工作中的重复活动.
         JSON美化|MySQL美化, 字符串批处理, Linux命令工具, 正则表达式奇淫巧技. <br>
         使用IntelliJ IDEA的Java同学可参考使用D8gerAutoCode插件, 其他伙伴参照下述指南, 忽略Java部分即可. <br>
         <ul>
