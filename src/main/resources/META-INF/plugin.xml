@@ -62,7 +62,7 @@
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl O"/>
             </action>
 
-            <action id="D8GER-GraphEasy" class="com.xyz.caofancpu.d8ger.action.GraphEasyAction" text="Graph::Easy" description="Graph::Easy" icon="/icons/XFinger.png">
+            <action id="D8GER-GraphEasy" class="com.xyz.caofancpu.d8ger.action.GraphEasyAction" text="GraphEasy" description="GraphEasy" icon="/icons/XFinger.png">
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl T"/>
             </action>
 

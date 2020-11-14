@@ -78,6 +78,11 @@ public class VerbalExpressionUtil {
     public static final Pattern KEY_COLLECTION_EDGE_SYMBOL_REGEX = Pattern.compile("[\\[\\]<>]");
 
     /**
+     * Code note regex such as, ' /**' or ' *' etc.
+     */
+    public static final Pattern CODE_NOTE_REGEX = Pattern.compile("((?: *)(?:/*)(?:\\*+)(?: *))+");
+
+    /**
      * String.replaceAll(), matched result can be access by $0
      */
     public static final String REPLACE_MATCH_RESULT_SYMBOL = "$0";
