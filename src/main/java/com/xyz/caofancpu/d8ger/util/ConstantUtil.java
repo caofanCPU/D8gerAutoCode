@@ -36,11 +36,30 @@ public class ConstantUtil {
      * English double quotes
      */
     public static final String ENGLISH_DOUBLE_QUOTES = "\"";
+    /**
+     * Escapes
+     */
+    public static final String ESCAPES = "\\";
+
+    /**
+     * Double Escapes, normally used in regex
+     */
+    public static final String DOUBLE_ESCAPES = "\\\\";
 
     /**
      * Period
      */
     public static final String ENGLISH_STOP = ".";
+
+    /**
+     * Fill in the blank placeholder: two dashes
+     */
+    public static final String FILL_EMPTY_PLACE_HOLDER = "--";
+
+    /**
+     * Joiner: single dash
+     */
+    public static final String JOINER = "-";
 
     /**
      * Underline
@@ -264,5 +283,24 @@ public class ConstantUtil {
 
     public static final String RENDER_TITLE = "D8ger•帝八哥";
 
+    /**
+     * Greater
+     */
+    public static final String GREATER = ">";
+
+    /**
+     * Less then
+     */
+    public static final String LESS_THEN = "<";
+
+    /**
+     * English mid left bracket
+     */
+    public static final String ENGLISH_MID_LEFT_BRACKET = "[";
+
+    /**
+     * English mid right bracket
+     */
+    public static final String ENGLISH_MID_RIGHT_BRACKET = "]";
 
 }

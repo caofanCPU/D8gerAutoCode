@@ -62,6 +62,10 @@
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl O"/>
             </action>
 
+            <action id="D8GER-GraphEasy" class="com.xyz.caofancpu.d8ger.action.GraphEasyAction" text="Graph::Easy" description="Graph::Easy" icon="/icons/XFinger.png">
+                <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl T"/>
+            </action>
+
             <action id="BeautifulJSONAction" class="com.xyz.caofancpu.d8ger.action.BeautifulJSONAction" text="BeautifulJSON" description="BeautifulJSON" icon="/icons/JetBeFaker.png">
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl J"/>
             </action>

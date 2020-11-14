@@ -63,6 +63,26 @@ public class VerbalExpressionUtil {
     public static final Pattern JSON_STRING_JUDGE_REGEX = Pattern.compile("^(?:\\{).*(?:})$");
 
     /**
+     * Next line separator regex
+     */
+    public static final Pattern NEXT_LINE_REGEX = Pattern.compile("(?:\\n|(?:\\r\\n))+");
+
+    /**
+     * English dot as key symbol regex
+     */
+    public static final Pattern KEY_ENGLISH_DOT_REGEX = Pattern.compile("\\.");
+
+    /**
+     * Symbols '[', ']', '<', '>' OR relationship regex
+     */
+    public static final Pattern KEY_COLLECTION_EDGE_SYMBOL_REGEX = Pattern.compile("[\\[\\]<>]");
+
+    /**
+     * String.replaceAll(), matched result can be access by $0
+     */
+    public static final String REPLACE_MATCH_RESULT_SYMBOL = "$0";
+
+    /**
      * CaoFAn -->(Uncapitalize) caoFAn -->(CamelToUnderline) cao_f_an -->(LowerCaseToUpperCase) CAO_F_AN -->(UpperCaseToCamel) CaoFAn
      *
      * @param originName
