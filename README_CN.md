@@ -17,9 +17,12 @@
 </div>
 
 ## 说明
-最新版本为**3.4**, 在 _**`10月1号`**_ 已通过官方审核发布  
+最新版本为**3.6**, 在 _**`11月15号`**_ 已提交待官方审核  
 如果无法获取, [戳此](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.4) 下载~~.zip~~压缩包  
-如果用的不错, 给我点个🌟呗, thx!
+如果用的不错, 给我点个🌟呗, thx!  
+重要: 下个开发版本将遵循[DSP(D8ger Series Plan)](https://www.processon.com/view/5f96a5f35653bb06ef1870e8).  
+即部分功能将迁入另一个插件[LaoYouTiao](https://github.com/caofanCPU/LaoYouTiao).  
+
 
 ### 序言
 正如JetBrains所说, 我相信你在繁忙编码工作中时应该善用工具以节省宝贵的时间。

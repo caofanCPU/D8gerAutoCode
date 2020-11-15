@@ -99,6 +99,12 @@
     <change-notes>
         <![CDATA[
         <li>If you like D8gerAutoCode, please star <a href="https://github.com/caofanCPU/D8gerAutoCode">the source project</a> for supporting me, thanks!</li>
+        <li><h1>3.6</h1></li>
+        <ul>
+        <li>Add: Support <a href="http://debuggerpowerzcy.top/home/2020/04/25/MacOS%E8%BD%AF%E4%BB%B6%E5%88%9D%E5%A7%8B%E5%8C%96/">Graph::Easy</a> for easier DSL, default shortcut is `alt` + `shift` + `cmd` + `T` <br> </li>
+        <li>Attention, NEXT Developing plan is <a href="https://www.processon.com/view/5f96a5f35653bb06ef1870e8">DSP(D8ger Series Plan)</a> <br></li>
+        <li>Attention, that means some features will be migrated into another plugin named <a href="https://github.com/caofanCPU/LaoYouTiao">LaoYouTiao</a> <br></li>
+        </ul>
         <li><h1>3.4</h1></li>
         <ul>
         <li>Addition: 'OhMyZSH' easter eggs, try to type 'ohmyzsh' in the blank file in IDEA to get some useful linux commands. I'm sure you'll save much time.<br> </li>

@@ -18,9 +18,12 @@
 > [中文说明](./README_CN.md)
 
 ## Attention
-The latest version is **3.4** which is approved on 1st, October.  
+The latest version is **3.6** which is approving on 15th, November.  
 If you can't fetch it, then [click here](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.4) to download ~~.zip~~ file.  
 By the way, I hope you use happy and give me a 🌟, thx!
+
+**IMPORTANT**: NEXT Developing plan is [DSP(D8ger Series Plan)](https://www.processon.com/view/5f96a5f35653bb06ef1870e8).  
+That means some features will be migrated into another plugin named [LaoYouTiao](https://github.com/caofanCPU/LaoYouTiao).
 
 ### Preface
 As JetBrains' said, I believe that you should be good use of tools will save you precious hours on your busing work.
