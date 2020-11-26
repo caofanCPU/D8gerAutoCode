@@ -27,6 +27,14 @@ apply plugin: 'java'
 //    main = "com.xyz.caofancpu.d8ger.action.D8gerSetting"
 //}
 
+// 自定义task跑代码
+task D8ENV {
+    println('帝八哥正在编译插件....')
+//    println "$System.env.IDEA_HOME"
+    println("IDEA安装环境目录: " + System.getenv("IDEA_HOME"))
+    println("更新IDEA后, 别忘修改变量\$IDEA_HOME")
+}
+
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
@@ -43,7 +51,7 @@ dependencies {
 intellij {
 //    version '2019.1.4'
 //    Adjust when toolbox update IDEA app
-    localPath '/Users/D8GER/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/202.7660.26/IntelliJ IDEA.app'
+    localPath System.getenv("IDEA_HOME")
     plugins = ['java'] //Bundled plugin dependencies
     pluginName 'D8gerAutoCode'
     updateSinceUntilBuild false
