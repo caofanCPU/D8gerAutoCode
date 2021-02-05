@@ -75,6 +75,38 @@
     <change-notes>
         <![CDATA[
         <li>If you like D8gerAutoCode, please star <a href="https://github.com/caofanCPU/D8gerAutoCode">the source project</a> for supporting me, thanks!</li>
+        <li><h1>4.0(HIGH.START)</h1></li>
+        <ul>
+        <li>Important note: This time the function is migrated and upgraded, the plug-in has been divided into functions, the purpose is to be full-time and dedicated, and the general functions are sinking to serve more programmers<br>
+            <ul>
+                <li>No.0: Each plug-in is positioned in two aspects, one is efficient coding, and the other is high-quality knowledge links to help users obtain enough useful information to improve their skills</li>
+                <li>No.1: <a href="https://github.com/caofanCPU/LaoYouTiao">LaoYouTiao</a>, **Published**, located JetBrains full product plug-in, General functions, covering text parsing, numerical processing, shell script processing</li>
+                <li>No.2: [D8gerAutoCode](https://github.com/caofanCPU/D8gerAutoCode), **Published**, located IntelliJ IDEA, auto coding</li>
+                <li>No.3: D8gerByteSleep, Hatching, located PyCharm</li>
+                <li>No.4: D8gerJustGo, Hatching, located GoLand</li>
+                <li>No.5: D8gerAndison, Hatching, located Android Studio</li>
+                <li>No.6: D8gerWebit, Hatching, located WebStorm</li>
+                <li>No.7: RoadMap refers <a href="https://www.processon.com/view/5f96a5f35653bb06ef1870e8">DSP(D8ger Series Plan)</a></li>
+            </ul>
+        </li>
+        <li>Function migration:<br>
+            <ul>
+            <li>BeautifulJSON、SimplifyOneLine、BeautifulMySQL、CamelUnderlineConvert、D8gerMore are migrated into plugin named <a href="https://github.com/caofanCPU/LaoYouTiao">LaoYouTiao</a>.</li>
+            <li>The shortcut keys and usage methods have not changed, only the code generation functions related to Java are retained.</li>
+            </ul>
+        </li>
+        </ul>
+        </br>
+        <li><h1>3.2</h1></li>
+        <ul>
+        <li>BugFix:<br>
+            <ul>
+            <li>Fix 'BeautifulJSON' issue when parsing complex JSON string.</li>
+            </ul>
+        </li>
+        <li>Optimization: 'CamelUnderlineConvert' now supports timestamp-dateTime convert, select the text and use shortcut `alt` + `shift` + `cmd` + `U` to find out.<br> </li>
+        </ul>
+        </br>
         <li><h1>3.4</h1></li>
         <ul>
         <li>Addition: 'OhMyZSH' easter eggs, try to type 'ohmyzsh' in the blank file in IDEA to get some useful linux commands. I'm sure you'll save much time.<br> </li>

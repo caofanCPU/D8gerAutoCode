@@ -10,23 +10,27 @@
 <a href="https://github.com/D8ger"><img src="https://badgen.net/badge/organization/join%20us/cyan" alt="open-source-organization"></a>
 <a href="https://github.com/caofanCPU/D8gerAutoCode/blob/master/LICENCE"><img src="https://badgen.net/github/license/caofanCPU/D8gerAutoCode?color=green" alt="license"></a>
 
-
 ## IDEA代码自动生成插件•`Java版本`
+
 <div align="center">
     <img src="http://file.debuggerpowerzcy.top/power/D8ger-V5.jpg" /> 
 </div>
 
 ## 说明
-最新版本为**3.4**, 在 _**`10月1号`**_ 已通过官方审核发布  
-如果无法获取, [戳此](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.4) 下载~~.zip~~压缩包  
-如果用的不错, 给我点个🌟呗, thx!
+
+最新版本为**3.6**, 在 _**`11月15号`**_ 已通过官方审核  
+如果无法获取, [戳此](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/3.6) 下载~~.zip~~压缩包  
+如果用的不错, 给我点个🌟呗, thx!  
+重要: 下个开发版本将遵循[DSP(D8ger Series Plan)](https://www.processon.com/view/5f96a5f35653bb06ef1870e8).  
+即部分功能将迁入另一个插件[LaoYouTiao](https://github.com/caofanCPU/LaoYouTiao).
 
 ### 序言
+
 正如JetBrains所说, 我相信你在繁忙编码工作中时应该善用工具以节省宝贵的时间。
 
 我时常在思考, "如果其他人已经解决了这些重复工作, 为什么我还需要重复解决?"
 
-这个问题一直驱动着我, 在日常工作中探寻重复部分并开发此插件以节省时间。 
+这个问题一直驱动着我, 在日常工作中探寻重复部分并开发此插件以节省时间。
 
 ### [快速开始](http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/)
 <a href="http://file.debuggerpowerzcy.top/power/html/IntelliJBestAction.html" target="_blank">ZN程序员福利, IntelliJ IDEA最佳实践</a>
@@ -42,7 +46,8 @@
 - 支持用户自定义配置, 可指定需要生成的文件
 
 ### 功能特性
-- 驼峰-下划线-大写-首字母小写-小写, 时间戳与标准时间字符串(香!), 一键转换, 默认快捷键`alt` + `shift` + `cmd` + `U`  
+
+- 驼峰-下划线-大写-首字母小写-小写, 时间戳与标准时间字符串(香!), 一键转换, 默认快捷键`alt` + `shift` + `cmd` + `U`
 - 生成代码的注释支持英语|汉语配置
 - JSON格式化与单行文本转换, 默认快捷键 `alt`+`shift`+`cmd`+`J` | `S`
 - 一键生成`数据表定义SQL` | `Mo` | `Mapper` | `Handler`, 单表增删改查+分页一键搞定
@@ -50,7 +55,7 @@
 - 一键智能编程, 默认快捷键 `alt`+`shift`+`cmd`+`D`
 - 支持用户自定义配置, 指定生成哪些文件及文件author等
 - 预留彩蛋, 在IDEA中编辑空白文件输入`d8ger`即可得到配置文件模板
-- 预留彩蛋, 在IDEA中编辑空白文件输入`nasa`即可得到NASA模板, 针对多行字符串批量处理, 尤其是SQL字段命名处理   
+- 预留彩蛋, 在IDEA中编辑空白文件输入`nasa`即可得到NASA模板, 针对多行字符串批量处理, 尤其是SQL字段命名处理
 - 预留彩蛋, 在IDEA中编辑空白文件输入`regex`即可得到一些常用的有趣正则表达式, 后期会增加其他代码彩蛋
 - SwaggerVo字段排序, 默认快捷键 `alt`+`shift`+`cmd`+`O`
 
@@ -64,20 +69,21 @@
 </div>
 
 ### 使用手册(v3.0以下)
-1. 创建Model类  
 
-2. 选中类名, 按下(默认)快捷键 `alt`+`shift`+`cmd`+`D`  
+1. 创建Model类
 
-3. 默认配置下, 会生成`D8gerAutoCode`目录及数据表SQL定义和Web代码, 共9个  
+2. 选中类名, 按下(默认)快捷键 `alt`+`shift`+`cmd`+`D`
+
+3. 默认配置下, 会生成`D8gerAutoCode`目录及数据表SQL定义和Web代码, 共9个
 
 4. 你需要做的:
-    - 多模块工程下, 配置生成文件输出目录, 例如 **`Mo.java`** 配置`model`目录  
-    - 根据需求对 **`xx.sql`** 增加非空约束  
-    - 如果你生成了 **`Controller.java`** 文件, ***请注意接口返回对象类型***, 应修改为项目统一的返回类型  
-    - 在上述步骤中, 代码文件会飘红报错, 别慌, 这需要你自行导包解决  
+    - 多模块工程下, 配置生成文件输出目录, 例如 **`Mo.java`** 配置`model`目录
+    - 根据需求对 **`xx.sql`** 增加非空约束
+    - 如果你生成了 **`Controller.java`** 文件, ***请注意接口返回对象类型***, 应修改为项目统一的返回类型
+    - 在上述步骤中, 代码文件会飘红报错, 别慌, 这需要你自行导包解决
 
-5. 默认配置文件模板, 代码彩蛋:  
-    - 在`Model类`所在模块的 ***`resource`*** 根目录下, 创建`d8ger.properties`属性配置文件  
+5. 默认配置文件模板, 代码彩蛋:
+    - 在`Model类`所在模块的 ***`resource`*** 根目录下, 创建`d8ger.properties`属性配置文件
     - 输入`d8ger`并点击`Tools`-->`D8ger`-->`D8gerMore`
 
 6. 正则表达式模板, 代码彩蛋:
@@ -91,19 +97,20 @@
     - 选中任意编辑状态下文件里的单词, 按下快捷键`alt` + `shift` + `cmd` + `U`, 你会发现选中单词转换了
     - 如果不是你想要的结果那就继续重复按下快捷键, 直到是你想要的为止
 
-9. 你就得到如下默认配置信息  
-    - 推荐你更改的配置项  
-        - `author`(你挖的坑可不许署我的名!)  
-        - `apiUrlPrefix`(接口url前缀应配置为项目接口统一Url前缀)  
+9. 你就得到如下默认配置信息
+    - 推荐你更改的配置项
+        - `author`(你挖的坑可不许署我的名!)
+        - `apiUrlPrefix`(接口url前缀应配置为项目接口统一Url前缀)
         - 多模块工程下, 生成文件输出目录
-    - 其他`boolean`配置项, 是让你选择需要生成哪些文件, 可选指定输出目录  
+    - 其他`boolean`配置项, 是让你选择需要生成哪些文件, 可选指定输出目录
 
 >以上默认快捷键针对MacOS系统, 对于Windows用户将`cmd`看做`ctrl`即可
 
 ### 如何安装
+
 - `Preference` --> `Plugins` --> `Marketplace` --> type `D8` --> install
-- [IDEA官方插件库安装](https://plugins.jetbrains.com/plugin/13576-d8gerautocode)  
-- 源码安装, 这需要你熟悉Gradle, 后期我会详细补充如何使用Gradle开发一个插件  
+- [IDEA官方插件库安装](https://plugins.jetbrains.com/plugin/13576-d8gerautocode)
+- 源码安装, 这需要你熟悉Gradle, 后期我会详细补充如何使用Gradle开发一个插件
 
 ### Bug&问题
 - 已知问题(最新版本3.0中已修复)
@@ -130,6 +137,22 @@
 [其他问题, 欢迎前来查房](https://github.com/caofanCPU/D8gerAutoCode/issues)
 
 ### 版本演进历史
+
+- 4.0(HIGH.START)
+    - 重要提示: 本次进行功能迁移升级, 插件已进行功能拆分, 目的是专职专责, 通用功能下沉以服务主流编程语言的程序YUAN
+        - No.0: 每个插件定位两方面, 一是高效编码, 二是高质量的知识链接, 帮助用户获取足够有用的信息, 以提高技能
+        - No.1: [LaoYouTiao](https://github.com/caofanCPU/LaoYouTiao), **已发布**, 坐标JetBrains全产品插件, 通用功能, 涵盖文本解析, 数值处理, shell脚本处理
+        - No.2: [D8gerAutoCode](https://github.com/caofanCPU/D8gerAutoCode), **已发布**, 坐标IntelliJ IDEA插件, 智能生码
+        - No.3: D8gerByteSleep, 孵化中, 坐标PyCharm插件
+        - No.4: D8gerJustGo, 孵化中, 坐标GoLand插件
+        - No.5: D8gerAndison, 孵化中, 坐标Android Studio插件
+        - No.6: D8gerWebit, 孵化中, 坐标WebStorm插件
+        - No.7: 插件RoadMap参见[DSP(D8ger Series Plan)](https://www.processon.com/view/5f96a5f35653bb06ef1870e8)
+    - 功能迁移:
+        - BeautifulJSON、SimplifyOneLine、BeautifulMySQL、CamelUnderlineConvert、D8gerMore均迁移至插件[LaoYouTiao](https://github.com/caofanCPU/LaoYouTiao)
+        - 快捷键及使用方法均未改变, 仅保留与Java相关的生码功能
+- 3.6
+    - 体验优化: 修改插件LOGO
 - 3.4
     - 新增功能: 'OhMyZSH' 彩蛋, 空白文件中输入 'ohmyzsh' 将获得一些有用的linux命令工具及使用技巧. 这将节省你不少时间.
     - Bug修复: 修复donate链接(铁子, 等着你🌟该项目, thx!).
@@ -175,13 +198,13 @@
     - 新增功能:
         - NASA彩蛋, 空白文件中输入`nasa`获取模板.
         - NASA彩蛋, 支持字符串批处理, 例如多行文本对齐, 提供SQL格式化及自动生成别名功能, 搞数据分析的小伙伴值得一试.
-    - 体验优化: 
+    - 体验优化:
         - 优化正则处理性能.
         - 支持换行符作为分割符.
         - 针对Windows系统, 字符串批处理结果渲染时使用Windows换行符.
-    - TheShy提示: 
+    - TheShy提示:
         - 运行自动生码前, 请留意IDE项目默认换行符配置.
-    - 功能调整: 
+    - 功能调整:
         - 插件功能图标调整对齐.
         - 插件使用指南搬迁到我的<a href="http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">博客</a>.
 

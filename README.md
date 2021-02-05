@@ -132,6 +132,19 @@ Solution
 [Other issues, please come to join room](https://github.com/caofanCPU/D8gerAutoCode/issues)
 
 ### VersionRoadHistory
+- 4.0(HIGH.START)
+    - Important note: This time the function is migrated and upgraded, the plug-in has been divided into functions, the purpose is to be full-time and dedicated, and the general functions are sinking to serve more programmers
+        - No.0: Each plug-in is positioned in two aspects, one is efficient coding, and the other is high-quality knowledge links to help users obtain enough useful information to improve their skills
+        - No.1: [LaoYouTiao](https://github.com/caofanCPU/LaoYouTiao), **Published**, located JetBrains full product plug-in, General functions, covering text parsing, numerical processing, shell script processing
+        - No.2: [D8gerAutoCode](https://github.com/caofanCPU/D8gerAutoCode), **Published**, located IntelliJ IDEA, auto coding
+        - No.3: D8gerByteSleep, Hatching, located PyCharm
+        - No.4: D8gerJustGo, Hatching, located GoLand
+        - No.5: D8gerAndison, Hatching, located Android Studio
+        - No.6: D8gerWebit, Hatching, located WebStorm
+        - No.7: RoadMap refers [DSP(D8ger Series Plan)](https://www.processon.com/view/5f96a5f35653bb06ef1870e8)
+    - Function migration:
+        - BeautifulJSON、SimplifyOneLine、BeautifulMySQL、CamelUnderlineConvert、D8gerMore are migrated into plugin named [LaoYouTiao](https://github.com/caofanCPU/LaoYouTiao)
+        - The shortcut keys and usage methods have not changed, only the code generation functions related to Java are retained
 - 3.4
     - Addition: 'OhMyZSH' easter eggs, try to type 'ohmyzsh' in the blank file in IDEA to get some useful linux commands. I'm sure you'll save much time.
     - BugFix: Fix donate url(I'm waiting for your 🌟 the project on the github).
