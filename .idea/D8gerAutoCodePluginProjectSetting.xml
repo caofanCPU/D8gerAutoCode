@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="com.xyz.caofancpu.d8ger.setting.D8gerProjectState">
+    <option name="voCheck" value="true" />
+    <option name="handlerCheck" value="true" />
+    <option name="controllerCheck" value="true" />
+    <option name="moPath" value="$PROJECT_DIR$/src/main/java/com/xyz/caofancpu/d8ger/test/mo" />
+    <option name="mapperPath" value="$PROJECT_DIR$/src/main/java/com/xyz/caofancpu/d8ger/test/mapper" />
+    <option name="mapperExamplePath" value="$PROJECT_DIR$/src/main/java/com/xyz/caofancpu/d8ger/test/mapper/example" />
+    <option name="mapperXmlPath" value="$PROJECT_DIR$/src/main/resources/mybatis" />
+    <option name="sqlPath" value="$PROJECT_DIR$/doc" />
+    <option name="voPath" value="$PROJECT_DIR$/src/main/java/com/xyz/caofancpu/d8ger/test/vo" />
+    <option name="handlerPath" value="$PROJECT_DIR$/src/main/java/com/xyz/caofancpu/d8ger/test/handler" />
+    <option name="controllerPath" value="$PROJECT_DIR$/src/main/java/com/xyz/caofancpu/d8ger/test/controller" />
+    <option name="defaultUrlPrefix" value="/d8gerAutoCode" />
+  </component>
+</project>
