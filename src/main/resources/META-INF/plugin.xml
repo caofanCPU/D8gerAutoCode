@@ -61,10 +61,6 @@
             <action id="SwaggerModelAutoRender" class="com.xyz.caofancpu.d8ger.action.SwaggerModelAutoRenderAction" text="SwaggerModelAutoRender" description="SwaggerModelAutoRender" icon="/icons/Ocket.png">
                 <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl O"/>
             </action>
-
-            <action id="D8gerLink" class="com.xyz.caofancpu.d8ger.action.LinkAction" text="D8gerLink" description="D8gerLink" icon="/icons/Link.png">
-                <keyboard-shortcut keymap="$default" first-keystroke="alt shift ctrl K"/>
-            </action>
         </group>
     </actions>
 
