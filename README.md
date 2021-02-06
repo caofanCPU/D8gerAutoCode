@@ -18,7 +18,7 @@
 > [中文说明](./README_CN.md)
 
 ## Attention
-The latest version is **4.0** which is approving on 5th, February.  
+The latest version is **4.0** is submitted and under the official approval on 5th, February.  
 If you can't fetch it, then [click here](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/4.0) to download ~~.zip~~ file.  
 Important: This version has been implemented [DSP(D8ger Series Plan)](https://www.processon.com/view/5f96a5f35653bb06ef1870e8).  
 That is, some functions have been migrated to another plugin named [LaoYouTiao](https://github.com/caofanCPU/LaoYouTiao). After testing, installing two plugins will not affect performance. So, I hope you use happy and give me a 🌟, thx!
@@ -44,17 +44,18 @@ Well, that's a valid question for my drive to find the repeat parts at daily wor
 - Support user-defined configuration, you can specify which file to be generated  
 
 ### Features
-- Camel-Underline-Uppercase-Uncapitalize-Lowercase can be converted to each other by shortcut `alt` + `shift` + `cmd` + `U`
+
+- ~~Camel-Underline-Uppercase-Uncapitalize-Lowercase can be converted to each other by shortcut~~ `alt` + `shift` + `cmd` + `U`
 - The comments of generated codes support English(Default) | Chinese Simplified(Optional) configuration
-- JSON formatting and single line text conversion, supporting section and whole document, default shortcut `alt`+`shift`+`cmd`+`J` | `S`
-- Generating `data table definition SQL` | `Mo` | `Mapper` | `Handler`, single table addition, deletion, modification and search with paging in one click  
-- Under the help of SwaggerApi generating `Vo` | `Controller` with friendly document description, in addition to this, supporting `Vo` field automatic sorting  
-- For smart coding, you just need one shortcut default as `alt`+`shift`+`cmd`+`D`  
-- Supporting customer configuration, for example, specify the author who you are  
-- Reserve easter eggs, you can try to edit the blank file in IDEA and type `d8ger` to get the default configuration template  
-- Reserve easter eggs, edit the blank file in IDEA and enter `nasa` to get the NASA configuration file template. This is very useful and efficient for handling multi-lines, especially SQL field naming processing.
-- Reserve easter eggs, edit the blank file in IDEA and enter `regex` to get some commonly used regular expressions. Other code Easter eggs will be added later.  
-- For automatic sorting `Vo` field , you just need one shortcut default as `alt`+`shift`+`cmd`+`O`  
+- ~~JSON formatting and single line text conversion, supporting section and whole document, default shortcut~~ `alt`+`shift`+`cmd`+`J` | `S`
+- Generating `data table definition SQL` | `Mo` | `Mapper` | `Handler`, single table addition, deletion, modification and search with paging in one click
+- Under the help of SwaggerApi generating `Vo` | `Controller` with friendly document description, in addition to this, supporting `Vo` field automatic sorting
+- For smart coding, you just need one shortcut default as `alt`+`shift`+`cmd`+`D`
+- Supporting customer configuration, for example, specify the author who you are
+- Reserve easter eggs, you can try to edit the blank file in IDEA and type `d8ger` to get the default configuration template
+- ~~Reserve easter eggs, edit the blank file in IDEA and enter `nasa` to get the NASA configuration file template. This is very useful and efficient for handling multi-lines, especially SQL field naming processing.~~
+- ~~Reserve easter eggs, edit the blank file in IDEA and enter `regex` to get some commonly used regular expressions. Other code Easter eggs will be added later.~~
+- For automatic sorting `Vo` field , you just need one shortcut default as `alt`+`shift`+`cmd`+`O`
 
 ### Using manual(v3.0+)
 1.Open the configuration box to set the generation parameters, `Preference` --> `Other Settings` --> `D8gerAutoCode`
@@ -78,27 +79,27 @@ Well, that's a valid question for my drive to find the repeat parts at daily wor
     - If you generated the **Controller.java** file, please note the interface returns type of **`Object`**, it should be modified to the project's uniform return type  
     - In the above steps the `xx.java` file will report some errors, ***don't worry***, these just require you to import packages
 
-5. Default configuration file template for easter egg:  
-    - In the ***`resource`*** root directory of the module where the `Model class` is located, create `d8ger.properties` property configuration file  
+5. Default configuration file template for easter egg:
+    - In the ***`resource`*** root directory of the module where the `Model class` is located, create `d8ger.properties` property configuration file
     - Type `d8ger` and click on `Tools`-> `D8ger`-> `D8gerMore`, and you will find some surprise
 
-6. Regex template for easter egg:
-    - Choose any blank file, Type `regex` and click on `Tools`-> `D8ger`-> `D8gerMore`, and you will find some surprise
+6. ~~Regex template for easter egg:~~
+    - ~~Choose any blank file, Type `regex` and click on `Tools`-> `D8ger`-> `D8gerMore`, and you will find some surprise~~
 
-7. NASA template for easter egg:
-    - Choose any blank file, Type `nasa` and click on` Tools`-> `D8ger`-> `D8gerMore`, and you will get the NASA manual
-    - Follow the manual, custom your config and write your own multi-lines need to be batch handled, then you will find some surprise
+7. ~~NASA template for easter egg:~~
+    - ~~Choose any blank file, Type `nasa` and click on` Tools`-> `D8ger`-> `D8gerMore`, and you will get the NASA manual~~
+    - ~~Follow the manual, custom your config and write your own multi-lines need to be batch handled, then you will find some surprise~~
 
-8. Camel-Underline-Uppercase-Uncapitalize-Lowercase circle convert by one-click
-    - Choose word text in any editing file, press `alt` + `shift` + `cmd` + `U`, you`ll find the changed word
-    - If not satisfied just press the shortcut again and again util you are.
+8. ~~Camel-Underline-Uppercase-Uncapitalize-Lowercase circle convert by one-click~~
+    - ~~Choose word text in any editing file, press `alt` + `shift` + `cmd` + `U`, you`ll find the changed word~~
+    - ~~If not satisfied just press the shortcut again and again util you are.~~
 
-9. You will get the following default configuration information  
-    - It's recommended that you change the configuration items  
-        - `author` (you can't sign my name for the pits you dug!)  
-        - `apiUrlPrefix` (the interface url prefix should be configured as the project interface unified URL prefix)  
-        - generate file output directory under a multi-module project  
-    - As for `boolean` configuration items, let you choose which files need to be generated, and specify output directory is optional  
+9. You will get the following default configuration information
+    - It's recommended that you change the configuration items
+        - `author` (you can't sign my name for the pits you dug!)
+        - `apiUrlPrefix` (the interface url prefix should be configured as the project interface unified URL prefix)
+        - generate file output directory under a multi-module project
+    - As for `boolean` configuration items, let you choose which files need to be generated, and specify output directory is optional
 
 > By the way, these default shortcuts used in Mac OS, if you use Windows just take `cmd` into `ctrl`.
 
@@ -153,14 +154,12 @@ Solution
 - 3.2
     - BugFix: Fix 'BeautifulJSON' issue when parsing complex JSON string.
     - Optimization: 'CamelUnderlineConvert' now supports Timestamp-LocalDateTime convert, select the text and use origin shortcut `alt` + `shift` + `cmd` + `U` to find out.
-
 - 3.1
     - BugFix:
         - Fix config item `locale` problem when selected as `ZN`, and before the 3.0 version`s comment was English default.
         - Fix SQL definition in x.sql file ✌️.
         - Fix batch insert records in xMapper.xml file cause `id`, `createTime`, `updateTime` all should be according to the Database.
     - Optimization: Config item `autoDetectSQLTimeColumn` now is more intelligent. If you checked, `createTime` and `updateTime` would be generated perfectly in there right position.
-
 - 3.0
     - Addition:
         - Grand celebration for `D8gerAutoCode` getting his face! Now you can config the generated property parameters by setting GUI.
@@ -168,7 +167,6 @@ Solution
         - Then, Check the file to be generated and choose the generation path, rewrite `author`、`apiUrlPrefix` and `locale`, and click the button to save your configuration.
     - Optimization: Support project level setting parameters for non-invasive, d8ger.properties should exist invisible.
     - Adjustment: Remove the generated params by `d8ger.properties` file, replace of D8gerAutoCode setting GUI.
-
 - 2.5
     - Addition:
         - Add `autoDetectSQLTimeColumn` configuration for supporting disable default generating `create_time` and `update_time` column definition in SQL.
@@ -178,14 +176,12 @@ Solution
     - Optimization: 'cause `id` is the primary key, all insert operations should exclude `id` column.
     - BugFix:
         - Generation `update_time` column definition remove the rare comma.
-        - Trouble shooting the rare dir named `D8gerAutoCode`, now you can see it only with unspecified directory configuration.
+        - Troubleshooting the rare dir named `D8gerAutoCode`, now you can see it only with unspecified directory configuration.
     - Adjustment: Remove `ServiceInterface` and `ServiceImpl`, 'cause I think `Handler` is more suitable.
-
 - 2.4
     - Addition: One-click to beauty MySQL, isn't fragrant?
     - Optimization: String parsing performance.
     - Attention: Select your MySQL text, ctrl + alt + shift + `B` will back a surprise.
-
 - 2.3
     - BugFix: Json format bug.
     - Addition:
@@ -200,12 +196,10 @@ Solution
     - Adjustment: 
         - Icons changed for align, friendly view etc.
         - The manual of this plugin has been moved to my <a href="http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">website</a>.
-
 - 2.1
     - BugFix: add Uncapitalize, and the circle is Camel-Underline-Uppercase-Uncapitalize-Lowercase.
     - Optimization: Optimize some regex performance.
     - Attention: Regex easter eggs add some very useful regex search-replace skills hidden in JetBrains's IDE products. Try to learn, and you will save much time at working.
-
 - 2.0
     - BugFix: Modify method name in Controller.java.
     - Addition:
@@ -214,27 +208,22 @@ Solution
         - Regex easter eggs, try to type `regex` in the blank file in IDEA to find it.
     - Optimization: Optimize source code and improve performance.
     - Attention: If the icon of plugin shows error(red square with a cross), try to upgrade the version of Intellij util 2019.3.*(greater than 2019.2.*).
-
 - 1.24
     - BugFix: Update method named `updateBatchByPrimaryKeySelective` in mapper.xml.
     - Addition: Set default language English and you can config it as Chinese Simplified, as before, typing `d8ger` for the latest configuration template.
     - Attention: You should configure your database connection like `allowMultiQueries=true` for supporting batchUpdate operation.
-
 - 1.23
     - BugFix: Fix required dependencies by JetBrains's suggestion for some known compatibility issues.
     - Addition: Add JSON-formatter and WhiteChar-cleaner.
     - Attention: Can you 🌟 the project on the github?
-
 - 1.22
     - BugFix: Fix README of style, description, picture problems.
     - Enhance: Enhance profile for generating codes by using regex to replace the circle of matching string.
     - Attention: Can you 🌟 the project on the github?
-
 - 1.21
     - BugFix: Fix README of style, description, picture problems.
     - Addition: Add MoExample autoCoding for supporting simple sql.
     - Attention: Can you 🌟 the project on the github?
-
 - 1.20
     - Completion: Auto coding for Mo/Example/Mapper/Xml/SQL/Service completed, wow!
     - Attention: Can you 🌟 the project on the github?

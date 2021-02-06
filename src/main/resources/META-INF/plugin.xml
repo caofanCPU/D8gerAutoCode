@@ -11,7 +11,7 @@
         Well, that's a valid question for my drive to find the repeat parts at daily work and develop this plugin to save my time.<br>
         After 13 version iterations, I believe you're really worthy of using this plugin.<br>
         重复编码老瞎忙,️ 写来写去那几行. 不知工具在何方? 八哥智能一键帮!<br>
-        Java自动代码生成利器, 字符串批处理, Linux命令工具, 正则表达式奇淫巧技. <br>
+        Java自动代码生成利器, 配合<a href="https://github.com/caofanCPU/LaoYouTiao">LaoYouTiao</a>, 还有强大的字符串批处理, Linux命令工具, 正则表达式奇淫巧技. <br>
         <ul>
             <li><a href="https://github.com/caofanCPU/D8gerAutoCode">项目|Project</a><br></li>
             <li><a href="http://www.debuggerpowerzcy.top/home/2020/03/14/D8gerAutoCode%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/">博客指南|Blog guide</a><br></li>
@@ -163,7 +163,7 @@
         <li>BugFix:<br>
             <ul>
             <li>Generation 'update_time' column definition remove the rare comma.</li>
-            <li>Trouble shooting the rare dir named 'D8gerAutoCode', now you can see it only with unspecified directory configuration.</li>
+            <li>Troubleshooting the rare dir named 'D8gerAutoCode', now you can see it only with unspecified directory configuration.</li>
             </ul>
         </li>
         <li>Adjustment: Remove 'ServiceInterface' and 'ServiceImpl', 'cause I think 'Handler' is more suitable.<br> </li>
