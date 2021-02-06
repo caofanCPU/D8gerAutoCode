@@ -39,7 +39,7 @@ public class LinkDialogWrapper extends DialogWrapper {
     }
 
     public static class DialogPanel extends JPanel {
-        public DialogPanel(String url, String title) {
+        public DialogPanel(String title, String url) {
             BufferedImage image;
             try {
                 image = QRCodeUtil.createImage(url, null, true);

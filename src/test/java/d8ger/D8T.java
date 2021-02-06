@@ -1,6 +1,6 @@
 package d8ger;
 
-import com.xyz.caofancpu.d8ger.util.DateUtil;
+import com.xyz.caofancpu.d8ger.core.LinkUrlEnum;
 import org.junit.Test;
 
 /**
@@ -12,7 +12,7 @@ public class D8T {
 
     @Test
     public void hello() {
-        System.out.println(DateUtil.enhanceParseMilliSeconds("2020-02-02T13:14:00"));
+        System.out.println(LinkUrlEnum.loadHelpInfo());
     }
 
 }
