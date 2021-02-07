@@ -80,8 +80,8 @@
         <li>Important note: This time the function is migrated and upgraded, the plug-in has been divided into functions, the purpose is to be full-time and dedicated, and the general functions are sinking to serve more programmers<br>
             <ul>
                 <li>No.0: Each plug-in is positioned in two aspects, one is efficient coding, and the other is high-quality knowledge links to help users obtain enough useful information to improve their skills</li>
-                <li>No.1: <a href="https://github.com/caofanCPU/LaoYouTiao">LaoYouTiao</a>, **Published**, located JetBrains full product plug-in, General functions, covering text parsing, numerical processing, shell script processing</li>
-                <li>No.2: [D8gerAutoCode](https://github.com/caofanCPU/D8gerAutoCode), **Published**, located IntelliJ IDEA, auto coding</li>
+                <li>No.1: <a href="https://github.com/caofanCPU/LaoYouTiao">LaoYouTiao</a>, Published, located JetBrains full product plug-in, general functions, covering text parsing, numerical processing, shell script processing</li>
+                <li>No.2: <a href="https://github.com/caofanCPU/D8gerAutoCode">D8gerAutoCode</a>, Published, located IntelliJ IDEA, auto coding</li>
                 <li>No.3: D8gerByteSleep, Hatching, located PyCharm</li>
                 <li>No.4: D8gerJustGo, Hatching, located GoLand</li>
                 <li>No.5: D8gerAndison, Hatching, located Android Studio</li>
