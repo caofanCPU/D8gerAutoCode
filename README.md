@@ -134,6 +134,9 @@ Solution
 [Other issues, please come to join room](https://github.com/caofanCPU/D8gerAutoCode/issues)
 
 ### VersionRoadHistory
+- 4.1
+    - Fix 'D8gerAutoCode' error file path parsing while in WINDOWS system. For more detail, please refer [issue2](https://github.com/caofanCPU/D8gerAutoCode/issues/2)
+
 - 4.0(HIGH.START)
     - Important note: This time the function is migrated and upgraded, the plug-in has been divided into functions, the purpose is to be full-time and dedicated, and the general functions are sinking to serve more programmers
         - No.0: Each plug-in is positioned in two aspects, one is efficient coding, and the other is high-quality knowledge links to help users obtain enough useful information to improve their skills

@@ -75,6 +75,15 @@
     <change-notes>
         <![CDATA[
         <li>If you like D8gerAutoCode, please star <a href="https://github.com/caofanCPU/D8gerAutoCode">the source project</a> for supporting me, thanks!</li>
+        <li><h1>4.1</h1></li>
+        <ul>
+        <li>BugFix:<br>
+            <ul>
+            <li>Fix 'D8gerAutoCode' error file path parsing while in WINDOWS system. For more detail, please refer <a href="https://github.com/caofanCPU/D8gerAutoCode/issues/2">issue2</a></li>
+            </ul>
+        </li>
+        </ul>
+        </br>
         <li><h1>4.0(HIGH.START)</h1></li>
         <ul>
         <li>Important note: This time the function is migrated and upgraded, the plug-in has been divided into functions, the purpose is to be full-time and dedicated, and the general functions are sinking to serve more programmers<br>

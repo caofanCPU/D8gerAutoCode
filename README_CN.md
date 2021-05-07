@@ -137,6 +137,8 @@
 [其他问题, 欢迎前来查房](https://github.com/caofanCPU/D8gerAutoCode/issues)
 
 ### 版本演进历史
+- 4.1
+    - Bug修复: 修复'D8gerAutoCode'在WINDOWS系统中文件路径解析错误的问题, 参见[issue2](https://github.com/caofanCPU/D8gerAutoCode/issues/2)
 - 4.0(HIGH.START)
     - 重要提示: 本次进行功能迁移升级, 插件已进行功能拆分, 目的是专职专责, 通用功能下沉以服务主流编程语言的程序YUAN
         - No.0: 每个插件定位两方面, 一是高效编码, 二是高质量的知识链接, 帮助用户获取足够有用的信息, 以提高技能

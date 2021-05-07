@@ -7,6 +7,7 @@ import ru.lanwen.verbalregex.VerbalExpression;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,6 +17,7 @@ import java.util.regex.Pattern;
  * @author caofanCPU
  */
 public class VerbalExpressionUtil {
+    public static boolean CURRENT_OS_IS_WINDOWS = Objects.equals(System.getProperty("os.name").toLowerCase(), "windows");
 
     /**
      * Uppercase regular expression
@@ -242,13 +244,35 @@ public class VerbalExpressionUtil {
 
     /**
      * url path correction, remove rare '/' to keep just one '/' and begin with it
+     * compatible windows file path
      *
      * @param property
      * @return
      */
     public static String correctUrl(String property) {
-        VerbalExpression regex = VerbalExpression.regex().capt().find(File.separator).oneOrMore().endCapt().build();
-        return executePatternRex(regex, File.separator + property, File.separator);
+        String resultPrefix = File.separator;
+        try {
+            if (CURRENT_OS_IS_WINDOWS) {
+                String[] splits = property.split(ConstantUtil.ENGLISH_COLON);
+                resultPrefix = splits[0] + "ConstantUtil.ENGLISH_COLON";
+                if (splits.length == 1 || StringUtils.isBlank(splits[1])) {
+                    return resultPrefix + "/";
+                }
+                property = splits[1];
+            } else {
+                property = resultPrefix + property;
+            }
+        } catch (Throwable e) {
+            throw new RuntimeException("Illegal file path, please check carefully!");
+        }
+        VerbalExpression regex = VerbalExpression.regex()
+                .capt()
+                .find("\\").oneOrMore()
+                .or("/").oneOrMore()
+                .endCapt()
+                .build();
+        String tempResult = executePatternRex(regex, property, "/");
+        return CURRENT_OS_IS_WINDOWS ? resultPrefix + tempResult : tempResult;
     }
 
     /**
