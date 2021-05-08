@@ -206,7 +206,7 @@ public class VerbalExpressionUtil {
     public static String extractComment(String originComment) {
         VerbalExpression regex = VerbalExpression.regex()
                 .capt()
-                .oneOf("/", "*", ConstantUtil.NEXT_LINE, ConstantUtil.TAB).oneOrMore()
+                .oneOf("/", "\\*", ConstantUtil.NEXT_LINE, ConstantUtil.TAB, ConstantUtil.ORIGIN_TAB, ConstantUtil.MINI_TAB).oneOrMore()
                 .endCapt()
                 .build();
         return executePatternRex(regex, originComment, ConstantUtil.EMPTY);

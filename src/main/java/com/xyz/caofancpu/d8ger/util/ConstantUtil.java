@@ -77,9 +77,14 @@ public class ConstantUtil {
     public static final String SPACE = StringUtils.SPACE;
 
     /**
+     * Tab: Two spaces
+     */
+    public static final String MINI_TAB = CollectionUtil.join(Collections.nCopies(2, SPACE), EMPTY);
+
+    /**
      * Tab: Four spaces
      */
-    public static final String TAB = CollectionUtil.join(Collections.nCopies(4, SPACE), EMPTY);
+    public static final String TAB = CollectionUtil.join(Collections.nCopies(2, MINI_TAB), EMPTY);
 
     /**
      * Origin Tab character
