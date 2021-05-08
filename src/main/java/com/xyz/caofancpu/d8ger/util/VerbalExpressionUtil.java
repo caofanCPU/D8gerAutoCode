@@ -24,7 +24,7 @@ public class VerbalExpressionUtil {
     /**
      * Judge current system is WINDOWS, by the way, WINDOWS is real ***...
      */
-    public static boolean CURRENT_OS_IS_WINDOWS = Objects.equals(System.getProperty("os.name").toLowerCase(), "windows");
+    public static final boolean CURRENT_OS_IS_WINDOWS = Objects.equals(System.getProperty("os.name").toLowerCase(), "windows");
 
     /**
      * Uppercase regular expression
