@@ -17,6 +17,9 @@ import java.util.regex.Pattern;
  * @author caofanCPU
  */
 public class VerbalExpressionUtil {
+    /**
+     * Judge current system is WINDOWS, by the way, WINDOWS is real ***...
+     */
     public static boolean CURRENT_OS_IS_WINDOWS = Objects.equals(System.getProperty("os.name").toLowerCase(), "windows");
 
     /**
@@ -83,6 +86,21 @@ public class VerbalExpressionUtil {
      * String.replaceAll(), matched result can be access by $0
      */
     public static final String REPLACE_MATCH_RESULT_SYMBOL = "$0";
+
+    /**
+     * Java file as source code, which prefix path
+     */
+    public static Pattern PREFIX_JAVA_SOURCE_FILE_PATH = Pattern.compile("^(?:.*)(?:[/\\\\]*)(?:src)(?:[/\\\\]+)(?:main)(?:[/\\\\]+)(?:java)(?:[/\\\\]+)");
+
+    /**
+     * File path split symbol
+     */
+    public static Pattern FILE_PATH_SPLIT_SYMBOL = Pattern.compile("(?:[/\\\\]+)");
+
+    /**
+     * File path prefix split in Windows OS
+     */
+    public static Pattern WINDOWS_PREFIX_JAVA_SOURCE_FILE_PATH = Pattern.compile("(?:[a-zA-Z]*:\\.*)");
 
     /**
      * CaoFAn -->(Uncapitalize) caoFAn -->(CamelToUnderline) cao_f_an -->(LowerCaseToUpperCase) CAO_F_AN -->(UpperCaseToCamel) CaoFAn
@@ -254,7 +272,7 @@ public class VerbalExpressionUtil {
         try {
             if (CURRENT_OS_IS_WINDOWS) {
                 String[] splits = property.split(ConstantUtil.ENGLISH_COLON);
-                resultPrefix = splits[0] + "ConstantUtil.ENGLISH_COLON";
+                resultPrefix = splits[0] + ConstantUtil.ENGLISH_COLON;
                 if (splits.length == 1 || StringUtils.isBlank(splits[1])) {
                     return resultPrefix + "/";
                 }
@@ -277,29 +295,26 @@ public class VerbalExpressionUtil {
 
     /**
      * Convert path string to package,
-     * for example: /ModuleName/src/main/java/com/xyz/caofancpu/d8ger/test --> com.xyz.caofancpu.d8ger.test
+     * for example: /ModuleName//src/main/java/com/xyz/caofancpu/d8ger/test --> com.xyz.caofancpu.d8ger.test
+     * Compatible with WINDOWS: D:/ModuleName//src\main\\java/com/xyz/caofancpu/d8ger/test --> com.xyz.caofancpu.d8ger.test
      *
      * @param originPath
      * @return
      */
     public static String convertPathToPackage(String originPath) {
-        VerbalExpression regex1 = VerbalExpression.regex()
-                .capt()
-                .startOfLine()
-                .anything()
-                .find(File.separator).zeroOrMore()
-                .then("src").then(File.separator).zeroOrMore()
-                .then("main").then(File.separator).zeroOrMore()
-                .then("java")
-                .endCapt()
-                .build();
-        String first = executePatternRex(regex1, originPath, ConstantUtil.EMPTY);
-        VerbalExpression regex2 = VerbalExpression.regex()
-                .startOfLine()
-                .then(File.separator).oneOrMore()
-                .build();
-        String second = executePatternRex(regex2, first, ConstantUtil.EMPTY);
-        return second.replaceAll(File.separator, ConstantUtil.ENGLISH_STOP);
+        String first = originPath.replaceAll(PREFIX_JAVA_SOURCE_FILE_PATH.pattern(), ConstantUtil.EMPTY);
+        String second = first.replaceAll(FILE_PATH_SPLIT_SYMBOL.pattern(), ConstantUtil.ENGLISH_FULL_STOP);
+        if (StringUtils.isBlank(second) || second.length() < 2) {
+            throw new RuntimeException("Illegal file path, please check carefully!");
+        }
+        if (CURRENT_OS_IS_WINDOWS) {
+            String winR = second.replaceAll(WINDOWS_PREFIX_JAVA_SOURCE_FILE_PATH.pattern(), ConstantUtil.EMPTY);
+            if (StringUtils.isBlank(winR)) {
+                throw new RuntimeException("Illegal file path, please check carefully!");
+            }
+            return winR;
+        }
+        return Objects.equals(second.charAt(0), '.') ? second.substring(1) : second;
     }
 
     /**

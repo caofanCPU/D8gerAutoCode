@@ -49,7 +49,7 @@ public class ConstantUtil {
     /**
      * Period
      */
-    public static final String ENGLISH_STOP = ".";
+    public static final String ENGLISH_FULL_STOP = ".";
 
     /**
      * Fill in the blank placeholder: two dashes

@@ -402,7 +402,7 @@ public class D8gerAutoCoding {
      * @return
      */
     public String getPackageName() {
-        return originMoJavaFile.getPackageName() + ConstantUtil.ENGLISH_STOP + ConstantUtil.GENERATE_DIR;
+        return originMoJavaFile.getPackageName() + ConstantUtil.ENGLISH_FULL_STOP + ConstantUtil.GENERATE_DIR;
     }
 
     /**
