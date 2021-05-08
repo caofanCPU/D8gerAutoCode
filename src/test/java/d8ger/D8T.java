@@ -16,7 +16,6 @@ public class D8T {
 
     @Test
     public void hello() {
-
         String nonW = "/myProject/common/src/main/java/com/cy/common/model/Student";
         String nonW1 = "myProject/common/src/main/java/com/cy/common/model/Student";
         String w1 = "D:/myProject/common/src/main/java/com/cy/common/model/Student";
@@ -29,12 +28,13 @@ public class D8T {
         String w2 = "D:\\myProject\\common\\src\\main\\java\\com\\cy\\common\\model\\Student";
         String w3 = "D:\\\\myProject\\\\common\\\\src\\\\main\\\\java\\\\com\\\\cy\\\\common\\\\model\\\\Student";
         List<String> nonWindowsSourceList = Lists.newArrayList(nonW, nonW1);
-        List<String> windowsSourceList = Lists.newArrayList(w1, w11, w121, w122, w123, w124, w125, w2, w3);
+        //
+        List<String> windowsSourceList = Lists.newArrayList(w1, w11, w2, w3, w121, w122, w123, w124, w125);
         System.out.println("非Windows系统:");
         for (String s : nonWindowsSourceList) {
             try {
-                System.out.println("    原串 " + s + " 处理后变为 " + VerbalExpressionUtil.correctUrl(s) + " ");
                 System.out.println("    原串 " + s + " 处理后变为 " + VerbalExpressionUtil.convertPathToPackage(s) + " ");
+                System.out.println("    原串2 " + s + " 处理后变为 " + VerbalExpressionUtil.convertPathToPackage2(s) + " ");
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -43,8 +43,8 @@ public class D8T {
         VerbalExpressionUtil.CURRENT_OS_IS_WINDOWS = Boolean.TRUE;
         for (String s : windowsSourceList) {
             try {
-                System.out.println("    原串 " + s + " 处理后变为 " + VerbalExpressionUtil.correctUrl(s) + " ");
                 System.out.println("    原串 " + s + " 处理后变为 " + VerbalExpressionUtil.convertPathToPackage(s) + " ");
+                System.out.println("    原串2 " + s + " 处理后变为 " + VerbalExpressionUtil.convertPathToPackage2(s) + " ");
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -13,6 +13,10 @@ import java.util.regex.Pattern;
 
 /**
  * Regex common util
+ * Tips: https://github.com/VerbalExpressions/JavaVerbalExpressions
+ * 1. DO NOT USE or(), take oneOf() | add(Regex string) place of it
+ * 2. USE multi segment capt()+endCapt() for easy reading
+ * 3. add() is very powerful, some times it's easy to express OR logic
  *
  * @author caofanCPU
  */
@@ -202,10 +206,7 @@ public class VerbalExpressionUtil {
     public static String extractComment(String originComment) {
         VerbalExpression regex = VerbalExpression.regex()
                 .capt()
-                .find("/").oneOrMore()
-                .or("*").oneOrMore()
-                .or(ConstantUtil.NEXT_LINE).oneOrMore()
-                .or(ConstantUtil.TAB).oneOrMore()
+                .oneOf("/", "*", ConstantUtil.NEXT_LINE, ConstantUtil.TAB).oneOrMore()
                 .endCapt()
                 .build();
         return executePatternRex(regex, originComment, ConstantUtil.EMPTY);
@@ -285,8 +286,7 @@ public class VerbalExpressionUtil {
         }
         VerbalExpression regex = VerbalExpression.regex()
                 .capt()
-                .find("\\").oneOrMore()
-                .or("/").oneOrMore()
+                .oneOf("/", "\\\\").oneOrMore()
                 .endCapt()
                 .build();
         String tempResult = executePatternRex(regex, property, "/");
@@ -316,6 +316,40 @@ public class VerbalExpressionUtil {
         }
         return Objects.equals(second.charAt(0), '.') ? second.substring(1) : second;
     }
+
+    public static String convertPathToPackage2(String originPath) {
+        VerbalExpression regex1 = VerbalExpression.regex()
+                .startOfLine().anything()
+                .capt().oneOf("/", "\\\\").zeroOrMore().endCapt()
+                .capt().find("src").oneOf("/", "\\\\").oneOrMore().endCapt()
+                .capt().find("main").oneOf("/", "\\\\").oneOrMore().endCapt()
+                .capt().find("java").oneOf("/", "\\\\").oneOrMore().endCapt()
+                .build();
+        String first = executePatternRex(regex1, originPath, ConstantUtil.EMPTY);
+        VerbalExpression regex2 = VerbalExpression.regex()
+                .capt()
+                .oneOf("/", "\\\\").oneOrMore()
+                .endCapt()
+                .build();
+        String second = executePatternRex(regex2, first, ConstantUtil.ENGLISH_FULL_STOP);
+        if (StringUtils.isBlank(second) || second.length() < 2) {
+            throw new RuntimeException("Illegal file path, please check carefully!");
+        }
+        if (CURRENT_OS_IS_WINDOWS) {
+            VerbalExpression regex3 = VerbalExpression.regex()
+                    .capt()
+                    .add("[a-zA-Z]").zeroOrMore().then(":").then(".").zeroOrMore()
+                    .endCapt()
+                    .build();
+            String winR = executePatternRex(regex3, second, ConstantUtil.EMPTY);
+            if (StringUtils.isBlank(winR)) {
+                throw new RuntimeException("Illegal file path, please check carefully!");
+            }
+            return winR;
+        }
+        return Objects.equals(second.charAt(0), '.') ? second.substring(1) : second;
+    }
+
 
     /**
      * Beautify multiple newlines
