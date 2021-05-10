@@ -18,8 +18,8 @@
 
 ## 说明
 
-最新版本为**4.0**, 在 _**`02月05号`**_ 提交官方待审核  
-如果无法获取, [戳此](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/4.0) 下载~~.zip~~压缩包  
+最新版本为**4.1**, 在 _**`05月10号`**_ 通过官方审核  
+如果无法获取, [戳此](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/4.1) 下载~~.zip~~压缩包  
 如果用的不错, 给我点个🌟呗, thx!  
 重要: 本版本已执行[DSP(D8ger Series Plan)](https://www.processon.com/view/5f96a5f35653bb06ef1870e8).  
 即部分功能已迁入另一个插件[LaoYouTiao](https://github.com/caofanCPU/LaoYouTiao). 经过测试, 安装两个插件一本不会影响性能, 还请小伙伴们支持
