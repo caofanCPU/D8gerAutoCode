@@ -18,7 +18,7 @@
 > [中文说明](./README_CN.md)
 
 ## Attention
-The latest version is **4.0** is submitted and under the official approval on 5th, February.  
+The latest version is **4.1** is approved by the official on 10th, May.  
 If you can't fetch it, then [click here](https://github.com/caofanCPU/D8gerAutoCode/releases/tag/4.0) to download ~~.zip~~ file.  
 Important: This version has been implemented [DSP(D8ger Series Plan)](https://www.processon.com/view/5f96a5f35653bb06ef1870e8).  
 That is, some functions have been migrated to another plugin named [LaoYouTiao](https://github.com/caofanCPU/LaoYouTiao). After testing, installing two plugins will not affect performance. So, I hope you use happy and give me a 🌟, thx!
