@@ -10,6 +10,8 @@
 <a href="https://github.com/D8ger"><img src="https://badgen.net/badge/organization/join%20us/cyan" alt="open-source-organization"></a>
 <a href="https://github.com/caofanCPU/D8gerAutoCode/blob/master/LICENCE"><img src="https://badgen.net/github/license/caofanCPU/D8gerAutoCode?color=green" alt="license"></a>
 
+[![Stargazers over time](https://starchart.cc/caofanCPU/D8gerAutoCode.svg)](#)
+
 ## IDEA代码自动生成插件•`Java版本`
 
 <div align="center">
