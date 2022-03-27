@@ -109,6 +109,9 @@
 >以上默认快捷键针对MacOS系统, 对于Windows用户将`cmd`看做`ctrl`即可
 
 ### 如何安装
+<a href="https://plugins.jetbrains.com/plugin/13576-d8gerautocode" target="_blank">
+    <img src="https://cdn.jsdelivr.net/gh/YiiGuxing/TranslationPlugin@master/images/button-install.png" alt="Get from Marketplace" title="Get from Marketplace">
+</a>
 
 - `Preference` --> `Plugins` --> `Marketplace` --> type `D8` --> install
 - [IDEA官方插件库安装](https://plugins.jetbrains.com/plugin/13576-d8gerautocode)
