@@ -106,6 +106,10 @@ Well, that's a valid question for my drive to find the repeat parts at daily wor
 > By the way, these default shortcuts used in Mac OS, if you use Windows just take `cmd` into `ctrl`.
 
 ### How to install
+<a href="https://plugins.jetbrains.com/plugin/13576-d8gerautocode" target="_blank">
+    <img src="https://cdn.jsdelivr.net/gh/YiiGuxing/TranslationPlugin@master/images/button-install.png" alt="Get from Marketplace" title="Get from Marketplace">
+</a>
+
 - `Preference` --> `Plugins` --> `Marketplace` --> type `D8` --> install
 - [IDEA official plugin library installation](https://plugins.jetbrains.com/plugin/13576-d8gerautocode)  
 - As for `Source installation` requires you're familiar with Gradle, I will add more details about how to develop a plugin by ***Gradle*** later
@@ -261,7 +265,7 @@ Solution
 </table>
 
 ### Thanks
-<a href="https://www.jetbrains.com/idea">
-    <img src="http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg" style="width: 40px;"><br>
+<a href="https://www.jetbrains.com/?from=D8gerAutoCode">
+    <img border="0" src="http://file.debuggerpowerzcy.top/power/jetbrains-variant-4.svg" width="131" alt="JetBrains"><br>
     <sub>With JetBrains team's open source certificate supporting, this project will continue to develop in the spirit of open source</sub>
 </a>
